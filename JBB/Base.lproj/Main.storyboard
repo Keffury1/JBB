@@ -7,22 +7,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Subscribe-->
-        <scene sceneID="Nmh-ar-iI9">
-            <objects>
-                <viewController id="dRA-yZ-JQs" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="WY7-dU-FNG">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <viewLayoutGuide key="safeArea" id="op3-7r-HG6"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Subscribe" image="gift" catalog="system" id="p0L-hO-72F"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uQs-Zj-KZV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-6" y="911"/>
-        </scene>
         <!--News-->
         <scene sceneID="k2V-L2-hR2">
             <objects>
@@ -325,19 +309,17 @@
                     <connections>
                         <segue destination="y2A-HN-vwi" kind="relationship" relationship="viewControllers" id="Xdf-w6-qpU"/>
                         <segue destination="dhk-z2-Lfh" kind="relationship" relationship="viewControllers" id="X65-lP-Dov"/>
-                        <segue destination="dRA-yZ-JQs" kind="relationship" relationship="viewControllers" id="x5p-MQ-76t"/>
                         <segue destination="ZgA-94-lVW" kind="relationship" relationship="viewControllers" id="1Ed-LW-rdV"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cYC-BH-KoZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1358" y="911"/>
+            <point key="canvasLocation" x="-1397" y="248"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="422" height="334"/>
         <image name="antenna.radiowaves.left.and.right" catalog="system" width="128" height="109"/>
-        <image name="gift" catalog="system" width="128" height="121"/>
         <image name="list.number" catalog="system" width="128" height="97"/>
         <image name="rectangle.stack" catalog="system" width="128" height="122"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
