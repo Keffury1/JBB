@@ -1,1 +1,1 @@
-JBB
+Juco Baseball Blog
