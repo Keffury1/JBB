@@ -113,7 +113,7 @@
         <!--Podcast-->
         <scene sceneID="WgJ-0s-xqu">
             <objects>
-                <viewController id="dhk-z2-Lfh" sceneMemberID="viewController">
+                <viewController id="dhk-z2-Lfh" customClass="PodcastViewController" customModule="JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Pzt-D6-6vQ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -151,6 +151,9 @@
                                         <state key="normal" title="Subscribe to podcast">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
+                                        <connections>
+                                            <action selector="subscribeButtonTapped:" destination="dhk-z2-Lfh" eventType="touchUpInside" id="BAQ-4U-jJh"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -231,6 +234,10 @@
                         <viewLayoutGuide key="safeArea" id="NBC-LM-Vjc"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Podcast" image="antenna.radiowaves.left.and.right" catalog="system" id="gCC-Fb-iNc"/>
+                    <connections>
+                        <outlet property="podcastTableView" destination="g7L-fR-V0S" id="SGF-XT-PFD"/>
+                        <outlet property="subscribeButton" destination="T5D-bH-Ivu" id="IgW-zr-JLu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKS-gt-EQj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
