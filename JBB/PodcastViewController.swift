@@ -41,7 +41,7 @@ class PodcastViewController: UIViewController, UITableViewDataSource {
     //MARK: - Methods
     
     private func setupSubviews() {
-        subscribeButton.layer.cornerRadius = 50.0
+        subscribeButton.layer.cornerRadius = 15.0
     }
     
     //MARK: - Actions
