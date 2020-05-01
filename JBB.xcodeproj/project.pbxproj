@@ -14,6 +14,7 @@
 		3752E7C8245C91FA000F0783 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3752E7C6245C91FA000F0783 /* LaunchScreen.storyboard */; };
 		3752E7D6245CAF19000F0783 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752E7D5245CAF19000F0783 /* NewsTableViewController.swift */; };
 		3752E7D8245CAFBF000F0783 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752E7D7245CAFBF000F0783 /* ArticleTableViewCell.swift */; };
+		3752E7DA245CCFB0000F0783 /* PodcastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752E7D9245CCFB0000F0783 /* PodcastTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3752E7C9245C91FA000F0783 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3752E7D5245CAF19000F0783 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		3752E7D7245CAFBF000F0783 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		3752E7D9245CCFB0000F0783 /* PodcastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 			isa = PBXGroup;
 			children = (
 				3752E7D7245CAFBF000F0783 /* ArticleTableViewCell.swift */,
+				3752E7D9245CCFB0000F0783 /* PodcastTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -192,6 +195,7 @@
 				3752E7D8245CAFBF000F0783 /* ArticleTableViewCell.swift in Sources */,
 				3752E7BC245C91F8000F0783 /* AppDelegate.swift in Sources */,
 				3752E7BE245C91F8000F0783 /* SceneDelegate.swift in Sources */,
+				3752E7DA245CCFB0000F0783 /* PodcastTableViewCell.swift in Sources */,
 				3752E7D6245CAF19000F0783 /* NewsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
