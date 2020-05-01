@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		37517096245CE5910001C54E /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517095245CE5910001C54E /* RankingTableViewCell.swift */; };
 		37517098245CE6300001C54E /* RankingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517097245CE6300001C54E /* RankingsTableViewController.swift */; };
+		3751709A245CEF4F0001C54E /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517099245CEF4F0001C54E /* MembershipViewController.swift */; };
 		3752E7BC245C91F8000F0783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752E7BB245C91F8000F0783 /* AppDelegate.swift */; };
 		3752E7BE245C91F8000F0783 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752E7BD245C91F8000F0783 /* SceneDelegate.swift */; };
 		3752E7C3245C91F8000F0783 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3752E7C1245C91F8000F0783 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		37517095245CE5910001C54E /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		37517097245CE6300001C54E /* RankingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsTableViewController.swift; sourceTree = "<group>"; };
+		37517099245CEF4F0001C54E /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		3752E7B8245C91F8000F0783 /* JBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JBB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3752E7BB245C91F8000F0783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3752E7BD245C91F8000F0783 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				3752E7D5245CAF19000F0783 /* NewsTableViewController.swift */,
 				3752E7DB245CD16B000F0783 /* PodcastViewController.swift */,
 				37517097245CE6300001C54E /* RankingsTableViewController.swift */,
+				37517099245CEF4F0001C54E /* MembershipViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 				37517098245CE6300001C54E /* RankingsTableViewController.swift in Sources */,
 				3752E7D8245CAFBF000F0783 /* ArticleTableViewCell.swift in Sources */,
 				3752E7BC245C91F8000F0783 /* AppDelegate.swift in Sources */,
+				3751709A245CEF4F0001C54E /* MembershipViewController.swift in Sources */,
 				3752E7BE245C91F8000F0783 /* SceneDelegate.swift in Sources */,
 				3752E7DC245CD16B000F0783 /* PodcastViewController.swift in Sources */,
 				37517096245CE5910001C54E /* RankingTableViewCell.swift in Sources */,
