@@ -14,6 +14,8 @@ class MembershipViewController: UIViewController {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var subscribeButton: UIButton!
+    
     //MARK: - Views
     
     override func viewDidLoad() {
@@ -23,7 +25,14 @@ class MembershipViewController: UIViewController {
     
     //MARK: - Methods
     
+    private func setupSubviews() {
+        subscribeButton.layer.cornerRadius = 20.0
+    }
+    
     //MARK: - Actions
+    
+    @IBAction func subscribeButtonTapped(_ sender: Any) {
+    }
     
     //MARK: - Navigation
     

@@ -320,7 +320,7 @@
         <!--Membership-->
         <scene sceneID="bVo-ht-YgO">
             <objects>
-                <viewController id="Oe0-zG-bX2" sceneMemberID="viewController">
+                <viewController id="Oe0-zG-bX2" customClass="MembershipViewController" customModule="JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cN0-uJ-Mjm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -354,6 +354,9 @@
                                 <state key="normal" title="Subscribe">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="subscribeButtonTapped:" destination="Oe0-zG-bX2" eventType="touchUpInside" id="zm8-Jk-8hd"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -373,6 +376,9 @@
                         <viewLayoutGuide key="safeArea" id="1cq-2i-IIr"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Membership" id="CvP-DE-A45"/>
+                    <connections>
+                        <outlet property="subscribeButton" destination="imQ-N9-cOy" id="STG-wt-KoC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qf2-3G-3Sw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
