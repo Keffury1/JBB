@@ -375,7 +375,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1cq-2i-IIr"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Membership" id="CvP-DE-A45"/>
+                    <tabBarItem key="tabBarItem" title="Membership" image="person" catalog="system" id="CvP-DE-A45"/>
                     <connections>
                         <outlet property="subscribeButton" destination="imQ-N9-cOy" id="STG-wt-KoC"/>
                     </connections>
@@ -389,6 +389,7 @@
         <image name="Logo" width="422" height="334"/>
         <image name="antenna.radiowaves.left.and.right" catalog="system" width="128" height="109"/>
         <image name="list.number" catalog="system" width="128" height="97"/>
+        <image name="person" catalog="system" width="128" height="117"/>
         <image name="rectangle.stack" catalog="system" width="128" height="122"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
     </resources>

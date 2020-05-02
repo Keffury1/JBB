@@ -20,6 +20,8 @@ class MembershipViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupSubviews()
     }
     
     
