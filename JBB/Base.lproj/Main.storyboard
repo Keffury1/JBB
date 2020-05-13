@@ -358,18 +358,27 @@
                                     <action selector="subscribeButtonTapped:" destination="Oe0-zG-bX2" eventType="touchUpInside" id="zm8-Jk-8hd"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Membership Pricing" translatesAutoresizingMaskIntoConstraints="NO" id="74z-0I-cap">
+                                <rect key="frame" x="5" y="528" width="404" height="275"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="275" id="0i8-dw-usq"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="74z-0I-cap" secondAttribute="trailing" constant="5" id="2G1-8h-3vc"/>
                             <constraint firstItem="imQ-N9-cOy" firstAttribute="top" secondItem="zub-A8-fGw" secondAttribute="top" id="39k-KS-DFY"/>
                             <constraint firstItem="hCN-vF-zov" firstAttribute="top" secondItem="zub-A8-fGw" secondAttribute="bottom" id="498-JX-hvb"/>
                             <constraint firstItem="hCN-vF-zov" firstAttribute="trailing" secondItem="zub-A8-fGw" secondAttribute="trailing" constant="-5" id="AHi-97-KkU"/>
                             <constraint firstItem="hCN-vF-zov" firstAttribute="leading" secondItem="zub-A8-fGw" secondAttribute="leading" id="CVL-f3-r28"/>
                             <constraint firstItem="imQ-N9-cOy" firstAttribute="leading" secondItem="zub-A8-fGw" secondAttribute="trailing" id="F52-8W-rM9"/>
+                            <constraint firstItem="74z-0I-cap" firstAttribute="leading" secondItem="cN0-uJ-Mjm" secondAttribute="leading" constant="5" id="Hyd-H2-xXy"/>
                             <constraint firstAttribute="trailing" secondItem="imQ-N9-cOy" secondAttribute="trailing" constant="20" id="anr-tH-Ldb"/>
                             <constraint firstItem="zub-A8-fGw" firstAttribute="leading" secondItem="1cq-2i-IIr" secondAttribute="leading" constant="20" id="cvU-wc-kGo"/>
                             <constraint firstItem="c5i-vI-0je" firstAttribute="bottom" secondItem="imQ-N9-cOy" secondAttribute="bottom" id="gbk-Rj-u9g"/>
                             <constraint firstItem="c5i-vI-0je" firstAttribute="top" secondItem="hCN-vF-zov" secondAttribute="bottom" id="rXY-dC-W3g"/>
+                            <constraint firstItem="1cq-2i-IIr" firstAttribute="bottom" secondItem="74z-0I-cap" secondAttribute="bottom" constant="10" id="uw6-cH-n1j"/>
                             <constraint firstItem="c5i-vI-0je" firstAttribute="leading" secondItem="hCN-vF-zov" secondAttribute="leading" id="vaj-Mt-knx"/>
                             <constraint firstItem="zub-A8-fGw" firstAttribute="top" secondItem="1cq-2i-IIr" secondAttribute="top" constant="30" id="zt8-QE-8bL"/>
                         </constraints>
@@ -377,6 +386,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Membership" image="person" catalog="system" id="CvP-DE-A45"/>
                     <connections>
+                        <outlet property="pricingImageView" destination="74z-0I-cap" id="eX7-yf-5zH"/>
                         <outlet property="subscribeButton" destination="imQ-N9-cOy" id="STG-wt-KoC"/>
                     </connections>
                 </viewController>
@@ -387,6 +397,7 @@
     </scenes>
     <resources>
         <image name="Logo" width="422" height="334"/>
+        <image name="Membership Pricing" width="1398" height="707"/>
         <image name="White Logo" width="300" height="256"/>
         <image name="antenna.radiowaves.left.and.right" catalog="system" width="128" height="109"/>
         <image name="list.number" catalog="system" width="128" height="97"/>

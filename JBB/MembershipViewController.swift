@@ -15,6 +15,7 @@ class MembershipViewController: UIViewController {
     //MARK: - Outlets
     
     @IBOutlet weak var subscribeButton: UIButton!
+    @IBOutlet weak var pricingImageView: UIImageView!
     
     //MARK: - Views
     
@@ -29,6 +30,7 @@ class MembershipViewController: UIViewController {
     
     private func setupSubviews() {
         subscribeButton.layer.cornerRadius = 20.0
+        pricingImageView.layer.cornerRadius = 20.0
     }
     
     //MARK: - Actions
