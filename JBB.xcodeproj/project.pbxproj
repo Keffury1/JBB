@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3710E4A5246CC67D00D3D5CD /* MembershipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3710E4A4246CC67D00D3D5CD /* MembershipCollectionViewCell.swift */; };
 		3710E4A7246CC8D600D3D5CD /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3710E4A6246CC8D600D3D5CD /* Membership.swift */; };
+		37442123247DB75700F196C4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37442122247DB75700F196C4 /* Post.swift */; };
 		37517096245CE5910001C54E /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517095245CE5910001C54E /* RankingTableViewCell.swift */; };
 		37517098245CE6300001C54E /* RankingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517097245CE6300001C54E /* RankingsTableViewController.swift */; };
 		3751709A245CEF4F0001C54E /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517099245CEF4F0001C54E /* MembershipViewController.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		3710E4A4246CC67D00D3D5CD /* MembershipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCollectionViewCell.swift; sourceTree = "<group>"; };
 		3710E4A6246CC8D600D3D5CD /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
+		37442122247DB75700F196C4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		37517095245CE5910001C54E /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		37517097245CE6300001C54E /* RankingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsTableViewController.swift; sourceTree = "<group>"; };
 		37517099245CEF4F0001C54E /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37442124247DB8F600F196C4 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Model Controllers";
+			sourceTree = "<group>";
+		};
 		3752E7AF245C91F8000F0783 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +83,7 @@
 			children = (
 				3752E7D4245C9210000F0783 /* App Lifecycle */,
 				3752E7D3245C920D000F0783 /* Models */,
+				37442124247DB8F600F196C4 /* Model Controllers */,
 				3752E7D2245C920B000F0783 /* Views */,
 				3752E7D1245C9208000F0783 /* View Controllers */,
 				3752E7D0245C9206000F0783 /* Storyboards */,
@@ -126,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				3710E4A6246CC8D600D3D5CD /* Membership.swift */,
+				37442122247DB75700F196C4 /* Post.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -213,6 +224,7 @@
 				37517098245CE6300001C54E /* RankingsTableViewController.swift in Sources */,
 				3752E7D8245CAFBF000F0783 /* ArticleTableViewCell.swift in Sources */,
 				3752E7BC245C91F8000F0783 /* AppDelegate.swift in Sources */,
+				37442123247DB75700F196C4 /* Post.swift in Sources */,
 				3751709A245CEF4F0001C54E /* MembershipViewController.swift in Sources */,
 				3752E7BE245C91F8000F0783 /* SceneDelegate.swift in Sources */,
 				3752E7DC245CD16B000F0783 /* PodcastViewController.swift in Sources */,
