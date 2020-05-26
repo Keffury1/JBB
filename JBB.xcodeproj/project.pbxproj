@@ -10,6 +10,7 @@
 		3710E4A5246CC67D00D3D5CD /* MembershipCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3710E4A4246CC67D00D3D5CD /* MembershipCollectionViewCell.swift */; };
 		3710E4A7246CC8D600D3D5CD /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3710E4A6246CC8D600D3D5CD /* Membership.swift */; };
 		37442123247DB75700F196C4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37442122247DB75700F196C4 /* Post.swift */; };
+		37442126247DBABB00F196C4 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37442125247DBABB00F196C4 /* PostController.swift */; };
 		37517096245CE5910001C54E /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517095245CE5910001C54E /* RankingTableViewCell.swift */; };
 		37517098245CE6300001C54E /* RankingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517097245CE6300001C54E /* RankingsTableViewController.swift */; };
 		3751709A245CEF4F0001C54E /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37517099245CEF4F0001C54E /* MembershipViewController.swift */; };
@@ -28,6 +29,7 @@
 		3710E4A4246CC67D00D3D5CD /* MembershipCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipCollectionViewCell.swift; sourceTree = "<group>"; };
 		3710E4A6246CC8D600D3D5CD /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
 		37442122247DB75700F196C4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		37442125247DBABB00F196C4 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		37517095245CE5910001C54E /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		37517097245CE6300001C54E /* RankingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsTableViewController.swift; sourceTree = "<group>"; };
 		37517099245CEF4F0001C54E /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 		37442124247DB8F600F196C4 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				37442125247DBABB00F196C4 /* PostController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				3752E7DC245CD16B000F0783 /* PodcastViewController.swift in Sources */,
 				3710E4A5246CC67D00D3D5CD /* MembershipCollectionViewCell.swift in Sources */,
 				37517096245CE5910001C54E /* RankingTableViewCell.swift in Sources */,
+				37442126247DBABB00F196C4 /* PostController.swift in Sources */,
 				3752E7DA245CCFB0000F0783 /* PodcastTableViewCell.swift in Sources */,
 				3710E4A7246CC8D600D3D5CD /* Membership.swift in Sources */,
 				3752E7D6245CAF19000F0783 /* NewsTableViewController.swift in Sources */,

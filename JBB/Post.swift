@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Post {
+class Post: Codable {
     var date: String
     var link: String
     var title: Title

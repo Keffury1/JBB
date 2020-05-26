@@ -10,7 +10,7 @@ import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var postTitleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var exportButton: UIButton!
     
