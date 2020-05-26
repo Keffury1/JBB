@@ -27,6 +27,10 @@ class NewsTableViewController: UITableViewController {
     
     //MARK: - Table view data source
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return CGFloat(integerLiteral: 150)
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
@@ -56,7 +60,10 @@ class NewsTableViewController: UITableViewController {
             }
             
             self.posts = posts
-            self.tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         }
     }
     
