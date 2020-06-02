@@ -14,13 +14,15 @@ class Post: Codable {
     var title: Title
     var content: Content
     var categories: [Int]
+    var jetpack_featured_media_url: String
     
-    internal init(date: String, link: String, title: Title, content: Content, categories: [Int]) {
+    internal init(date: String, link: String, title: Title, content: Content, categories: [Int], photoString: String) {
         self.date = date
         self.link = link
         self.title = title
         self.content = content
         self.categories = categories
+        self.jetpack_featured_media_url = photoString
     }
 }
 

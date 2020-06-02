@@ -40,6 +40,12 @@ class NewsTableViewController: UITableViewController {
         
         let post = posts[indexPath.row]
         
+        if let image = UIImage(contentsOfFile: post.jetpack_featured_media_url) {
+            cell.articleImageView.image = image
+        } else {
+            cell.articleImageView.image = UIImage(named: "White Logo")
+        }
+
         cell.postTitleLabel.text = post.title.rendered
         cell.textView.text = post.content.rendered
         
