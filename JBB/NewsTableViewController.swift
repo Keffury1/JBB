@@ -45,7 +45,16 @@ class NewsTableViewController: UITableViewController {
         } else {
             cell.articleImageView.image = UIImage(named: "White Logo")
         }
-
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "MMM dd yyyy"
+        
+        if let date = dateFormatter.date(from: post.date) {
+            let dateString = dateFormatterPrint.string(from: date)
+            cell.dateLabel.text = dateString
+        }
         cell.postTitleLabel.text = post.title.rendered
         cell.textView.text = post.content.rendered
         
@@ -72,7 +81,7 @@ class NewsTableViewController: UITableViewController {
             }
         }
     }
-    
+
     //MARK: - Actions
     
     //MARK: - Navigation

@@ -14,6 +14,7 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var exportButton: UIButton!
     @IBOutlet weak var articleImageView: UIImageView!
+    @IBOutlet weak var dateLabel: UILabel!
     
     @IBAction func exportButtonTapped(_ sender: Any) {
         
