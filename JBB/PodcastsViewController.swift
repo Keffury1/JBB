@@ -1,5 +1,5 @@
 //
-//  MembershipViewController.swift
+//  PodcastsViewController.swift
 //  JBB
 //
 //  Created by Bobby Keffury on 8/31/20.
@@ -8,21 +8,28 @@
 
 import UIKit
 
-class MembershipViewController: UIViewController {
+class PodcastsViewController: UIViewController {
 
     // MARK: - Properties
     
     // MARK: - Outlets
     
+    @IBOutlet weak var subscribeButton: UIButton!
+    
     // MARK: - Views
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        subscribeButton.addShadow()
+        subscribeButton.addRounding()
     }
     
     // MARK: - Methods
     
     // MARK: - Actions
+    
+    @IBAction func subscribeButtonTapped(_ sender: Any) {
+    }
     
     // MARK: - Navigation
     

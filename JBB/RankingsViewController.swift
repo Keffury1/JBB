@@ -1,5 +1,5 @@
 //
-//  MembershipViewController.swift
+//  RankingsViewController.swift
 //  JBB
 //
 //  Created by Bobby Keffury on 8/31/20.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MembershipViewController: UIViewController {
+class RankingsViewController: UIViewController {
 
     // MARK: - Properties
     

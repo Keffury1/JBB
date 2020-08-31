@@ -13,7 +13,7 @@ class PostController {
     var badData = 9999
     
     func fetchPosts(completion: @escaping ([Post]?, Error?) -> Void) {
-        let url = URL(string: "https://thejbb.net/wp-json/wp/v2/posts/?per_page=100")!
+        let url = URL(string: "https://thejbb.net/wp-json/wp/v2/posts/?per_page=50")!
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
         
