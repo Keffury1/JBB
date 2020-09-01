@@ -18,6 +18,7 @@ class RankingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     // MARK: - Methods
