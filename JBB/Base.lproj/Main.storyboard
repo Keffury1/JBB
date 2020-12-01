@@ -1,202 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="q0l-Hu-e6k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Podcast-->
-        <scene sceneID="WgJ-0s-xqu">
-            <objects>
-                <viewController id="dhk-z2-Lfh" customClass="PodcastsViewController" customModule="JBB" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Pzt-D6-6vQ">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="- List of podcasts - Detail page - Summary - Play/Pause options " selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYp-Vb-bgZ">
-                                <rect key="frame" x="20" y="144" width="374" height="732"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="NBC-LM-Vjc"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="OYp-Vb-bgZ" secondAttribute="bottom" constant="20" id="NEs-yb-XMp"/>
-                            <constraint firstItem="OYp-Vb-bgZ" firstAttribute="leading" secondItem="Pzt-D6-6vQ" secondAttribute="leading" constant="20" id="QZC-bs-FvC"/>
-                            <constraint firstItem="OYp-Vb-bgZ" firstAttribute="top" secondItem="NBC-LM-Vjc" secondAttribute="top" constant="100" id="fJK-Kf-R1m"/>
-                            <constraint firstAttribute="trailing" secondItem="OYp-Vb-bgZ" secondAttribute="trailing" constant="20" id="iZf-Fs-Epv"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Podcast" image="antenna.radiowaves.left.and.right" catalog="system" id="gCC-Fb-iNc"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="fKS-gt-EQj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-52" y="-899"/>
-        </scene>
-        <!--Feed-->
-        <scene sceneID="mh9-1e-dvZ">
-            <objects>
-                <viewController id="eEv-sE-XkO" customClass="FeedViewController" customModule="JBB" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="xGY-Xf-UtC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="- All articles on JBB - Ads" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uxb-rY-Y9P">
-                                <rect key="frame" x="20" y="144" width="374" height="732"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="xvT-vQ-fef"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Uxb-rY-Y9P" secondAttribute="trailing" constant="20" id="6j9-hU-BZV"/>
-                            <constraint firstItem="Uxb-rY-Y9P" firstAttribute="leading" secondItem="xGY-Xf-UtC" secondAttribute="leading" constant="20" id="BpM-As-lNH"/>
-                            <constraint firstAttribute="bottom" secondItem="Uxb-rY-Y9P" secondAttribute="bottom" constant="20" id="LGs-Wd-860"/>
-                            <constraint firstItem="Uxb-rY-Y9P" firstAttribute="top" secondItem="xvT-vQ-fef" secondAttribute="top" constant="100" id="yYT-YL-UG8"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Feed" image="square.stack" catalog="system" id="DE4-Uv-6mL"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="duc-pe-W72" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-52" y="572"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="6vW-V4-Jqb">
-            <objects>
-                <tabBarController id="q0l-Hu-e6k" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5Ua-kp-PnL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <color key="selectedImageTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="dhk-z2-Lfh" kind="relationship" relationship="viewControllers" id="X65-lP-Dov"/>
-                        <segue destination="2pf-qI-uNV" kind="relationship" relationship="viewControllers" id="xHX-uP-Y2q"/>
-                        <segue destination="eEv-sE-XkO" kind="relationship" relationship="viewControllers" id="uEk-N4-noZ"/>
-                        <segue destination="Oe0-zG-bX2" kind="relationship" relationship="viewControllers" id="8i2-s3-2Tb"/>
-                        <segue destination="3jj-9b-YKu" kind="relationship" relationship="viewControllers" id="vHd-jW-P9H"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="cYC-BH-KoZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1607" y="2019"/>
-        </scene>
         <!--Rankings-->
-        <scene sceneID="uWf-Bm-2NC">
+        <scene sceneID="ByT-Ps-Hm6">
             <objects>
-                <viewController id="2pf-qI-uNV" customClass="RankingsViewController" customModule="JBB" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="SLX-Ex-b48">
+                <viewController id="wrX-1w-WWh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ptI-cR-fO6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="- Rankings - Player pictures - Player stats - Trophies / &quot;Wins&quot; " selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mwp-nP-7nS">
-                                <rect key="frame" x="20" y="144" width="374" height="732"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="mDh-XQ-j0K"/>
+                        <viewLayoutGuide key="safeArea" id="uAk-eB-whx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Mwp-nP-7nS" secondAttribute="trailing" constant="20" id="FWd-GB-dPz"/>
-                            <constraint firstAttribute="bottom" secondItem="Mwp-nP-7nS" secondAttribute="bottom" constant="20" id="SOc-7D-rlw"/>
-                            <constraint firstItem="Mwp-nP-7nS" firstAttribute="top" secondItem="mDh-XQ-j0K" secondAttribute="top" constant="100" id="lw6-tS-jER"/>
-                            <constraint firstItem="Mwp-nP-7nS" firstAttribute="leading" secondItem="SLX-Ex-b48" secondAttribute="leading" constant="20" id="wgF-6C-4j1"/>
-                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Rankings" image="list.number" catalog="system" id="7Zt-xB-Q1i"/>
+                    <tabBarItem key="tabBarItem" title="Rankings" image="list.bullet.rectangle" catalog="system" id="iGV-11-d3W"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4kD-Wq-DuR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mP1-u4-JdK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="-177"/>
+            <point key="canvasLocation" x="-471" y="1915"/>
         </scene>
-        <!--Games-->
-        <scene sceneID="bVo-ht-YgO">
+        <!--Top 100-->
+        <scene sceneID="nXl-V4-xVx">
             <objects>
-                <viewController id="Oe0-zG-bX2" customClass="MembershipViewController" customModule="JBB" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="cN0-uJ-Mjm">
+                <viewController id="ik2-zh-eWx" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dIe-g3-LEg">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="- List of games - Scores  - Stats - Box Score - Schedule" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ntJ-y5-a1K">
-                                <rect key="frame" x="20" y="144" width="374" height="732"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="1cq-2i-IIr"/>
+                        <viewLayoutGuide key="safeArea" id="csx-C4-2sa"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="ntJ-y5-a1K" secondAttribute="bottom" constant="20" id="Kd6-It-zGX"/>
-                            <constraint firstAttribute="trailing" secondItem="ntJ-y5-a1K" secondAttribute="trailing" constant="20" id="WEo-9z-8A7"/>
-                            <constraint firstItem="ntJ-y5-a1K" firstAttribute="top" secondItem="1cq-2i-IIr" secondAttribute="top" constant="100" id="e8S-1I-Pd2"/>
-                            <constraint firstItem="ntJ-y5-a1K" firstAttribute="leading" secondItem="cN0-uJ-Mjm" secondAttribute="leading" constant="20" id="g8t-Ya-eBN"/>
-                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Games" image="waveform.path.ecg.rectangle" catalog="system" id="CvP-DE-A45"/>
+                    <tabBarItem key="tabBarItem" title="Top 100" image="flame" catalog="system" id="DaR-D7-Oa1"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qf2-3G-3Sw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FD-1m-PRl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="1283"/>
+            <point key="canvasLocation" x="-471" y="574"/>
         </scene>
         <!--Archives-->
-        <scene sceneID="ofA-eb-uEX">
+        <scene sceneID="xmg-2E-Fnc">
             <objects>
-                <viewController id="3jj-9b-YKu" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Hc8-tS-N9h">
+                <viewController id="zKU-2d-2Qk" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UqL-iq-dad">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="- Teams By Conference - Rosters  - Team Stats - Player Images - Player Stats" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kFe-xA-uJ9">
-                                <rect key="frame" x="20" y="144" width="374" height="649"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="NWG-Yc-NBP"/>
+                        <viewLayoutGuide key="safeArea" id="45K-ld-AQY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="NWG-Yc-NBP" firstAttribute="trailing" secondItem="kFe-xA-uJ9" secondAttribute="trailing" constant="20" id="K75-wP-850"/>
-                            <constraint firstItem="kFe-xA-uJ9" firstAttribute="leading" secondItem="NWG-Yc-NBP" secondAttribute="leading" constant="20" id="KRp-vi-zIi"/>
-                            <constraint firstItem="kFe-xA-uJ9" firstAttribute="top" secondItem="NWG-Yc-NBP" secondAttribute="top" constant="100" id="SJZ-5f-Tpx"/>
-                            <constraint firstItem="NWG-Yc-NBP" firstAttribute="bottom" secondItem="kFe-xA-uJ9" secondAttribute="bottom" constant="20" id="Tb7-mD-xWD"/>
-                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Archives" image="books.vertical" catalog="system" id="htH-iw-zlb"/>
+                    <tabBarItem key="tabBarItem" title="Archives" image="books.vertical" catalog="system" id="wkv-2L-jz2"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rmu-95-ob6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M2V-sJ-ZSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-52" y="2019"/>
+            <point key="canvasLocation" x="-471" y="1260"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="fYf-qC-hDg">
+            <objects>
+                <tabBarController id="0dV-x4-Lle" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EWI-Hk-4Ir">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="zKU-2d-2Qk" kind="relationship" relationship="viewControllers" id="Nzl-H9-MqC"/>
+                        <segue destination="wrX-1w-WWh" kind="relationship" relationship="viewControllers" id="PbA-1k-8YO"/>
+                        <segue destination="ik2-zh-eWx" kind="relationship" relationship="viewControllers" id="9Fk-SE-hip"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Seq-3y-Zhd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1370" y="1915"/>
         </scene>
     </scenes>
     <resources>
-        <image name="antenna.radiowaves.left.and.right" catalog="system" width="128" height="109"/>
         <image name="books.vertical" catalog="system" width="128" height="103"/>
-        <image name="list.number" catalog="system" width="128" height="97"/>
-        <image name="square.stack" catalog="system" width="113" height="128"/>
-        <image name="waveform.path.ecg.rectangle" catalog="system" width="128" height="93"/>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="flame" catalog="system" width="108" height="128"/>
+        <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

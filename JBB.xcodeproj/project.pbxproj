@@ -7,16 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3710E4A7246CC8D600D3D5CD /* Membership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3710E4A6246CC8D600D3D5CD /* Membership.swift */; };
-		371AB11724FD53E200C3A58D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371AB11624FD53E200C3A58D /* FeedViewController.swift */; };
-		371AB11924FD53ED00C3A58D /* PodcastsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371AB11824FD53ED00C3A58D /* PodcastsViewController.swift */; };
-		371AB11B24FD53F800C3A58D /* RankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371AB11A24FD53F800C3A58D /* RankingsViewController.swift */; };
-		371AB11D24FD540900C3A58D /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371AB11C24FD540900C3A58D /* MembershipViewController.swift */; };
 		371AB12024FD555500C3A58D /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371AB11F24FD555500C3A58D /* UIView+Extension.swift */; };
-		371AB12424FD596900C3A58D /* PodcastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 371AB12324FD596900C3A58D /* PodcastTableViewCell.swift */; };
 		371AB12824FD789700C3A58D /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 371AB12624FD780600C3A58D /* WebKit.framework */; };
-		37442123247DB75700F196C4 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37442122247DB75700F196C4 /* Post.swift */; };
-		37442126247DBABB00F196C4 /* PostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37442125247DBABB00F196C4 /* PostController.swift */; };
 		3752E7BC245C91F8000F0783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752E7BB245C91F8000F0783 /* AppDelegate.swift */; };
 		3752E7BE245C91F8000F0783 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3752E7BD245C91F8000F0783 /* SceneDelegate.swift */; };
 		3752E7C3245C91F8000F0783 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3752E7C1245C91F8000F0783 /* Main.storyboard */; };
@@ -25,16 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3710E4A6246CC8D600D3D5CD /* Membership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Membership.swift; sourceTree = "<group>"; };
-		371AB11624FD53E200C3A58D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
-		371AB11824FD53ED00C3A58D /* PodcastsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastsViewController.swift; sourceTree = "<group>"; };
-		371AB11A24FD53F800C3A58D /* RankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsViewController.swift; sourceTree = "<group>"; };
-		371AB11C24FD540900C3A58D /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		371AB11F24FD555500C3A58D /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		371AB12324FD596900C3A58D /* PodcastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastTableViewCell.swift; sourceTree = "<group>"; };
 		371AB12624FD780600C3A58D /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		37442122247DB75700F196C4 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		37442125247DBABB00F196C4 /* PostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostController.swift; sourceTree = "<group>"; };
 		3752E7B8245C91F8000F0783 /* JBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JBB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3752E7BB245C91F8000F0783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3752E7BD245C91F8000F0783 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -75,7 +59,6 @@
 		37442124247DB8F600F196C4 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				37442125247DBABB00F196C4 /* PostController.swift */,
 			);
 			name = "Model Controllers";
 			sourceTree = "<group>";
@@ -133,10 +116,6 @@
 		3752E7D1245C9208000F0783 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				371AB11624FD53E200C3A58D /* FeedViewController.swift */,
-				371AB11824FD53ED00C3A58D /* PodcastsViewController.swift */,
-				371AB11A24FD53F800C3A58D /* RankingsViewController.swift */,
-				371AB11C24FD540900C3A58D /* MembershipViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -144,7 +123,6 @@
 		3752E7D2245C920B000F0783 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				371AB12324FD596900C3A58D /* PodcastTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -152,8 +130,6 @@
 		3752E7D3245C920D000F0783 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				3710E4A6246CC8D600D3D5CD /* Membership.swift */,
-				37442122247DB75700F196C4 /* Post.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -239,16 +215,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3752E7BC245C91F8000F0783 /* AppDelegate.swift in Sources */,
-				37442123247DB75700F196C4 /* Post.swift in Sources */,
-				371AB11924FD53ED00C3A58D /* PodcastsViewController.swift in Sources */,
-				371AB11D24FD540900C3A58D /* MembershipViewController.swift in Sources */,
-				371AB12424FD596900C3A58D /* PodcastTableViewCell.swift in Sources */,
-				371AB11B24FD53F800C3A58D /* RankingsViewController.swift in Sources */,
 				3752E7BE245C91F8000F0783 /* SceneDelegate.swift in Sources */,
-				37442126247DBABB00F196C4 /* PostController.swift in Sources */,
-				371AB11724FD53E200C3A58D /* FeedViewController.swift in Sources */,
 				371AB12024FD555500C3A58D /* UIView+Extension.swift in Sources */,
-				3710E4A7246CC8D600D3D5CD /* Membership.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
