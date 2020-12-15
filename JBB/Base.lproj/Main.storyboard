@@ -3,20 +3,40 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Rankings-->
         <scene sceneID="ByT-Ps-Hm6">
             <objects>
-                <viewController id="wrX-1w-WWh" sceneMemberID="viewController">
+                <viewController title="Rankings" id="wrX-1w-WWh" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ptI-cR-fO6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zUA-3B-EVf">
+                                <rect key="frame" x="20" y="0.0" width="394" height="96"/>
+                                <textAttributes key="largeTitleTextAttributes">
+                                    <color key="textColor" name="Bistre"/>
+                                    <color key="textShadowColor" name="Magnolia"/>
+                                    <offsetWrapper key="textShadowOffset" horizontal="2" vertical="2"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Rankings" id="hhp-dt-T1S"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="uAk-eB-whx"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="zUA-3B-EVf" firstAttribute="top" secondItem="ptI-cR-fO6" secondAttribute="top" id="6Xr-vC-Bss"/>
+                            <constraint firstAttribute="trailing" secondItem="zUA-3B-EVf" secondAttribute="trailing" id="eFC-3o-Hud"/>
+                            <constraint firstItem="zUA-3B-EVf" firstAttribute="leading" secondItem="ptI-cR-fO6" secondAttribute="leading" constant="20" id="wES-i1-dlR"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="flame" catalog="system" id="iGV-11-d3W"/>
                 </viewController>
@@ -24,19 +44,61 @@
             </objects>
             <point key="canvasLocation" x="-471" y="1915"/>
         </scene>
-        <!--View Controller-->
+        <!--Archives-->
         <scene sceneID="xmg-2E-Fnc">
             <objects>
-                <viewController id="zKU-2d-2Qk" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M2V-sJ-ZSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController title="Archives" id="zKU-2d-2Qk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UqL-iq-dad">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="DyT-uF-rz3">
+                                <rect key="frame" x="0.0" y="96" width="414" height="717"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="BWs-Sl-iKy">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="articleCell" id="1qe-SE-rbV">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="9OC-8Y-Q7G">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8rQ-B1-ko9">
+                                <rect key="frame" x="20" y="0.0" width="394" height="96"/>
+                                <textAttributes key="largeTitleTextAttributes">
+                                    <color key="textColor" name="Bistre"/>
+                                    <color key="textShadowColor" name="Magnolia"/>
+                                    <offsetWrapper key="textShadowOffset" horizontal="2" vertical="2"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Archives" id="ghX-2y-kP4"/>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="45K-ld-AQY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="8rQ-B1-ko9" firstAttribute="leading" secondItem="UqL-iq-dad" secondAttribute="leading" constant="20" id="IF4-wh-bMC"/>
+                            <constraint firstItem="DyT-uF-rz3" firstAttribute="leading" secondItem="45K-ld-AQY" secondAttribute="leading" id="Qil-lA-PCz"/>
+                            <constraint firstItem="8rQ-B1-ko9" firstAttribute="top" secondItem="UqL-iq-dad" secondAttribute="top" id="Wyx-xQ-H0g"/>
+                            <constraint firstItem="DyT-uF-rz3" firstAttribute="top" secondItem="8rQ-B1-ko9" secondAttribute="bottom" id="X3Q-kj-92n"/>
+                            <constraint firstItem="45K-ld-AQY" firstAttribute="trailing" secondItem="DyT-uF-rz3" secondAttribute="trailing" id="bvX-rZ-aCu"/>
+                            <constraint firstAttribute="trailing" secondItem="8rQ-B1-ko9" secondAttribute="trailing" id="gkK-yp-KdN"/>
+                            <constraint firstItem="45K-ld-AQY" firstAttribute="bottom" secondItem="DyT-uF-rz3" secondAttribute="bottom" id="yQz-K7-i1V"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="books.vertical" catalog="system" id="wkv-2L-jz2"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M2V-sJ-ZSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-471" y="1260"/>
         </scene>
@@ -49,6 +111,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" name="Indigo"/>
+                        <color key="selectedImageTintColor" name="Burlywood"/>
                     </tabBar>
                     <connections>
                         <segue destination="zKU-2d-2Qk" kind="relationship" relationship="viewControllers" id="Nzl-H9-MqC"/>
@@ -63,6 +127,18 @@
     <resources>
         <image name="books.vertical" catalog="system" width="128" height="103"/>
         <image name="flame" catalog="system" width="108" height="128"/>
+        <namedColor name="Bistre">
+            <color red="0.5607843137254902" green="0.45882352941176469" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Burlywood">
+            <color red="0.84313725490196079" green="0.70196078431372544" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Indigo">
+            <color red="0.16862745098039217" green="0.25490196078431371" blue="0.3843137254901961" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="Magnolia">
+            <color red="0.96078431372549022" green="0.94117647058823528" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
