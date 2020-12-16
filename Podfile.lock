@@ -1,0 +1,31 @@
+PODS:
+  - Alamofire (5.4.0)
+  - GoogleAPIClientForREST/Core (1.5.1):
+    - GTMSessionFetcher (>= 1.1.7)
+  - GoogleAPIClientForREST/Drive (1.5.1):
+    - GoogleAPIClientForREST/Core
+    - GTMSessionFetcher (>= 1.1.7)
+  - GTMSessionFetcher (1.4.0):
+    - GTMSessionFetcher/Full (= 1.4.0)
+  - GTMSessionFetcher/Core (1.4.0)
+  - GTMSessionFetcher/Full (1.4.0):
+    - GTMSessionFetcher/Core (= 1.4.0)
+
+DEPENDENCIES:
+  - Alamofire (~> 5.2)
+  - GoogleAPIClientForREST/Drive
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - GoogleAPIClientForREST
+    - GTMSessionFetcher
+
+SPEC CHECKSUMS:
+  Alamofire: 3b6a534a3df22db367e4dedeeca73d1ddfcf0e2f
+  GoogleAPIClientForREST: 4bb409633efcc2e1b3f945afe7e35039b5a61db2
+  GTMSessionFetcher: 6f5c8abbab8a9bce4bb3f057e317728ec6182b10
+
+PODFILE CHECKSUM: 51abb1bc4ad6d09ca35de088d2519bf644609f4f
+
+COCOAPODS: 1.10.0

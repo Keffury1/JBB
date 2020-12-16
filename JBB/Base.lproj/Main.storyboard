@@ -29,7 +29,6 @@
         <!--Archives-->
         <scene sceneID="xmg-2E-Fnc">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="M2V-sJ-ZSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <viewController title="Archives" id="zKU-2d-2Qk" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UqL-iq-dad">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -68,6 +67,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="books.vertical" catalog="system" id="wkv-2L-jz2"/>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M2V-sJ-ZSP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-471.01449275362324" y="1259.5982142857142"/>
         </scene>
