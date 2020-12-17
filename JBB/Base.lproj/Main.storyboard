@@ -13,7 +13,7 @@
         <!--Rankings-->
         <scene sceneID="ByT-Ps-Hm6">
             <objects>
-                <viewController title="Rankings" id="wrX-1w-WWh" sceneMemberID="viewController">
+                <viewController title="Rankings" id="wrX-1w-WWh" customClass="RankingsViewController" customModule="JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ptI-cR-fO6">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
