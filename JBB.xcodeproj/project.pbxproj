@@ -186,6 +186,7 @@
 				3752E7B5245C91F8000F0783 /* Frameworks */,
 				3752E7B6245C91F8000F0783 /* Resources */,
 				4B5DB3F912E8D090FAB9C1BE /* [CP] Embed Pods Frameworks */,
+				6789B9DD1C92DB8E2CC335C6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -260,6 +261,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JBB/Pods-JBB-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6789B9DD1C92DB8E2CC335C6 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JBB/Pods-JBB-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-JBB/Pods-JBB-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-JBB/Pods-JBB-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		8FADAC33FE854BEB1F21AEF8 /* [CP] Check Pods Manifest.lock */ = {

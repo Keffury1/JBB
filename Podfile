@@ -6,5 +6,6 @@ target 'JBB' do
   use_frameworks!
 
   # Pods for JBB
-  pod 'Firebase/Analytics', '7.2-M1'
+  pod 'GoogleAPIClientForREST/Sheets'
+  pod 'GoogleSignIn'
 end
