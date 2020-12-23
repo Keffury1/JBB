@@ -19,6 +19,7 @@
 		37C3975B2592DE8000690FC0 /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */; };
 		37C3975F2592E2A600690FC0 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */; };
 		37C397622592E30C00690FC0 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C397612592E30C00690FC0 /* TeamsViewController.swift */; };
+		37C397652592E53A00690FC0 /* TeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C397642592E53A00690FC0 /* TeamDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		37C397612592E30C00690FC0 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
+		37C397642592E53A00690FC0 /* TeamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 			children = (
 				3795219B2592767D0093BF62 /* RankingsViewController.swift */,
 				37C397612592E30C00690FC0 /* TeamsViewController.swift */,
+				37C397642592E53A00690FC0 /* TeamDetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37C397652592E53A00690FC0 /* TeamDetailViewController.swift in Sources */,
 				37952195259275500093BF62 /* Networking.swift in Sources */,
 				379521722592747B0093BF62 /* AppDelegate.swift in Sources */,
 				3795219C2592767D0093BF62 /* RankingsViewController.swift in Sources */,

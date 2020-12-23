@@ -62,6 +62,7 @@
                                         <connections>
                                             <outlet property="nameLabel" destination="zof-qc-Yjy" id="wft-xg-arQ"/>
                                             <outlet property="teamImageView" destination="3Tb-NF-Cje" id="nSt-km-ggp"/>
+                                            <segue destination="OEk-U0-avN" kind="show" id="RTh-LU-duN"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -88,6 +89,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlg-q5-etN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="669.56521739130437" y="344.86607142857139"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="G9o-v9-wAK">
+            <objects>
+                <viewController id="OEk-U0-avN" customClass="TeamDetailViewController" customModule="The_JBB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8id-8k-wMF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="PoL-74-VOu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="Lt9-UV-Pej"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="trz-94-kLU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1635" y="345"/>
         </scene>
         <!--Rankings View Controller-->
         <scene sceneID="Fij-nO-gsV">

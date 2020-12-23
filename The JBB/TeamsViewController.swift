@@ -22,11 +22,20 @@ class TeamsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         teamsTableView.dataSource = self
+        teamsMapView.delegate = self
     }
     
     // MARK: - Methods
     
     // MARK: - Actions
+    
+    func addAnnotations() {
+        // GO THROUGH ALL TEAMS
+        let annotation = MKPointAnnotation()
+        annotation.title = ""
+        annotation.coordinate = CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275)
+        teamsMapView.addAnnotation(annotation)
+    }
     
     // MARK: - Navigation
     
@@ -44,6 +53,22 @@ extension TeamsViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
+}
+
+extension TeamsViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+
+        return annotationView
+    }
 }
