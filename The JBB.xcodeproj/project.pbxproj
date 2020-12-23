@@ -17,6 +17,7 @@
 		3795219C2592767D0093BF62 /* RankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3795219B2592767D0093BF62 /* RankingsViewController.swift */; };
 		379521A52592A4700093BF62 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521A42592A4700093BF62 /* Player.swift */; };
 		37C3975B2592DE8000690FC0 /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */; };
+		37C3975F2592E2A600690FC0 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		3795219B2592767D0093BF62 /* RankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsViewController.swift; sourceTree = "<group>"; };
 		379521A42592A4700093BF62 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
+		37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */,
+				37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -209,6 +212,7 @@
 				379521722592747B0093BF62 /* AppDelegate.swift in Sources */,
 				3795219C2592767D0093BF62 /* RankingsViewController.swift in Sources */,
 				37952198259275A40093BF62 /* Ranking.swift in Sources */,
+				37C3975F2592E2A600690FC0 /* TeamTableViewCell.swift in Sources */,
 				379521A52592A4700093BF62 /* Player.swift in Sources */,
 				379521742592747B0093BF62 /* SceneDelegate.swift in Sources */,
 				37C3975B2592DE8000690FC0 /* TeamCollectionViewCell.swift in Sources */,
