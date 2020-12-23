@@ -1,19 +1,21 @@
 //
 //  AppDelegate.swift
-//  JBB
+//  The JBB
 //
-//  Created by Bobby Keffury on 5/1/20.
-//  Copyright © 2020 Bobby Keffury. All rights reserved.
+//  Created by Bobby Keffury on 12/22/20.
 //
 
 import UIKit
 
-@UIApplicationMain
+@main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
+        Networking.shared.fetchRankings()
+        Networking.shared.fetchTeams()
         return true
     }
 
