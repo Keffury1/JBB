@@ -11,11 +11,11 @@
 		379521742592747B0093BF62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521732592747B0093BF62 /* SceneDelegate.swift */; };
 		379521792592747B0093BF62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379521772592747B0093BF62 /* Main.storyboard */; };
 		3795217E2592747C0093BF62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3795217C2592747C0093BF62 /* LaunchScreen.storyboard */; };
-		379521912592753E0093BF62 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 379521902592753E0093BF62 /* Assets.xcassets */; };
 		37952195259275500093BF62 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37952194259275500093BF62 /* Networking.swift */; };
 		37952198259275A40093BF62 /* Ranking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37952197259275A40093BF62 /* Ranking.swift */; };
 		3795219C2592767D0093BF62 /* RankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3795219B2592767D0093BF62 /* RankingsViewController.swift */; };
 		379521A52592A4700093BF62 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521A42592A4700093BF62 /* Player.swift */; };
+		37B43C3025958C07005D6452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B43C2F25958C07005D6452 /* Assets.xcassets */; };
 		37C3975B2592DE8000690FC0 /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */; };
 		37C3975F2592E2A600690FC0 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */; };
 		37C397622592E30C00690FC0 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C397612592E30C00690FC0 /* TeamsViewController.swift */; };
@@ -29,11 +29,11 @@
 		379521782592747B0093BF62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3795217D2592747C0093BF62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3795217F2592747C0093BF62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		379521902592753E0093BF62 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../../JBB/JBB/Assets.xcassets; sourceTree = "<group>"; };
 		37952194259275500093BF62 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
 		37952197259275A40093BF62 /* Ranking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ranking.swift; sourceTree = "<group>"; };
 		3795219B2592767D0093BF62 /* RankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsViewController.swift; sourceTree = "<group>"; };
 		379521A42592A4700093BF62 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		37B43C2F25958C07005D6452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		37C397612592E30C00690FC0 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		37952187259274E60093BF62 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				379521902592753E0093BF62 /* Assets.xcassets */,
+				37B43C2F25958C07005D6452 /* Assets.xcassets */,
 				3795217F2592747C0093BF62 /* Info.plist */,
 			);
 			name = Resources;
@@ -202,7 +202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3795217E2592747C0093BF62 /* LaunchScreen.storyboard in Resources */,
-				379521912592753E0093BF62 /* Assets.xcassets in Resources */,
+				37B43C3025958C07005D6452 /* Assets.xcassets in Resources */,
 				379521792592747B0093BF62 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,7 +368,6 @@
 		379521832592747C0093BF62 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFT6PV3RZ7;
@@ -387,7 +386,6 @@
 		379521842592747C0093BF62 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = TFT6PV3RZ7;

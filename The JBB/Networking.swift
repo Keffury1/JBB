@@ -70,6 +70,40 @@ class Networking {
             }
         }.resume()
     }
+    
+    func sortTeamsByDivision() -> [[Ranking]] {
+        var rankings: [[Ranking]] = [[]]
+        
+        var previous: String? = nil
+        
+        for team in ranking {
+            let first = team.Division
+            
+            if first != previous {
+                rankings.append([])
+                previous = first
+            }
+            rankings[rankings.endIndex - 1].append(team)
+        }
+        return rankings
+    }
+    
+    func sortPlayersByTeam() -> [[Player]] {
+        var league: [[Player]] = [[]]
+        
+        var previous: String? = nil
+        
+        for player in teams {
+            let first = player.School
+            
+            if first != previous {
+                league.append([])
+                previous = first
+            }
+            league[league.endIndex - 1].append(player)
+        }
+        return league
+    }
 }
 
 

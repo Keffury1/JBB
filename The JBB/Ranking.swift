@@ -12,4 +12,5 @@ struct Ranking: Codable {
     var Team: String
     var Record: String
     var Change: String?
+    var Division: String
 }
