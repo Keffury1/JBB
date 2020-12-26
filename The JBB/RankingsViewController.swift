@@ -27,6 +27,7 @@ class RankingsViewController: UIViewController {
     var division3: [Ranking] = []
     var CCCAA: [Ranking] = []
     var selectedSegmentIndex = 0
+    let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
     
     // MARK: - Outlets
     
@@ -64,11 +65,17 @@ class RankingsViewController: UIViewController {
     // MARK: - Methods
     
     private func updateViews() {
-        guard let leader = leader else { return }
+        guard let leader = leader, let change = leader.Change else { return }
         leaderNameLabel.text = leader.Team
         leaderRecordLabel.text = leader.Record
         leaderChangeLabel.text = leader.Change
         leaderImageView.image = UIImage(named: "Logo")
+        
+        if change.rangeOfCharacter(from: characterset.inverted) != nil {
+            leaderChangeLabel.textColor = .red
+        } else {
+            leaderChangeLabel.textColor = .green
+        }
     }
     
     func sortTeamsByDivision() -> [[Ranking]] {
@@ -146,12 +153,18 @@ extension RankingsViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        guard let rank = cellRank else { return UICollectionViewCell() }
+        guard let rank = cellRank, let change = rank.Change else { return UICollectionViewCell() }
         
         cell.nameLabel.text = rank.Team
         cell.rankLabel.text = "# \(rank.Rank)"
         cell.recordLabel.text = rank.Record
-        cell.changeLabel.text = rank.Change
+        cell.changeLabel.text = change
+        
+        if change.rangeOfCharacter(from: characterset.inverted) != nil {
+            cell.changeLabel.textColor = .red
+        } else {
+            cell.changeLabel.textColor = .green
+        }
         cell.logoImageView.image = UIImage(named: "Logo")
         
         return cell
