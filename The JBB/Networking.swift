@@ -9,10 +9,10 @@
 import Foundation
 import UIKit
 
+
 class Networking {
     
     static let shared = Networking()
-    var ranking: [Ranking] = []
     var teams: [Player] = []
     
     // MARK: - URLs
@@ -21,14 +21,15 @@ class Networking {
     
     private let teamsUrl = URL(string: "https://sheetdb.io/api/v1/af61ce4gn2ps4")!
     
-    func fetchRankings() {
+    func fetchRankings(completion: @escaping (Result<[Ranking], Error>) -> Void) {
         var request = URLRequest(url: rankingsUrl)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
-            if let _ = error {
+            if let error = error {
                 print(String(describing: error))
+                completion(.failure(error))
                 return
             }
             
@@ -38,22 +39,24 @@ class Networking {
             
             do {
                 let rankings = try decoder.decode([Ranking].self, from: data)
-                self.ranking = rankings
+                completion(.success(rankings))
             } catch {
                 print("Error decoding rankings: \(error)")
+                completion(.failure(error))
                 return
             }
         }.resume()
     }
     
-    func fetchTeams() {
+    func fetchTeams(completion: @escaping (Result<[Player], Error>) -> Void) {
         var request = URLRequest(url: teamsUrl)
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             
-            if let _ = error {
+            if let error = error {
                 print(String(describing: error))
+                completion(.failure(error))
                 return
             }
             
@@ -63,29 +66,13 @@ class Networking {
             
             do {
                 let teams = try decoder.decode([Player].self, from: data)
-                self.teams = teams
+                completion(.success(teams))
             } catch {
                 print("Error decoding rankings: \(error)")
+                completion(.failure(error))
                 return
             }
         }.resume()
-    }
-    
-    func sortTeamsByDivision() -> [[Ranking]] {
-        var rankings: [[Ranking]] = [[]]
-        
-        var previous: String? = nil
-        
-        for team in ranking {
-            let first = team.Division
-            
-            if first != previous {
-                rankings.append([])
-                previous = first
-            }
-            rankings[rankings.endIndex - 1].append(team)
-        }
-        return rankings
     }
     
     func sortPlayersByTeam() -> [[Player]] {
