@@ -101,19 +101,11 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension TeamsViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard annotation is MKPointAnnotation else { return nil }
-
         let identifier = "Annotation"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
-
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView!.canShowCallout = true
-            annotationView!.tintColor = UIColor(named: "Burlywood")
-        } else {
-            annotationView!.annotation = annotation
-        }
-
+        let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+        annotationView.canShowCallout = true
+        annotationView.pinTintColor = UIColor.init(named: "Space")
+        
         return annotationView
     }
 }
