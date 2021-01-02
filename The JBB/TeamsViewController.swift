@@ -20,6 +20,7 @@ class TeamsViewController: UIViewController {
     
     @IBOutlet weak var teamsMapView: MKMapView!
     @IBOutlet weak var teamsTableView: UITableView!
+    @IBOutlet weak var teamsSearchBar: UISearchBar!
     
     // MARK: - Views
     
@@ -43,12 +44,13 @@ class TeamsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         teamsTableView.dataSource = self
+        teamsTableView.delegate = self
         teamsMapView.delegate = self
+        teamsSearchBar.delegate = self
+        teamsSearchBar.backgroundImage = UIImage()
     }
     
     // MARK: - Methods
-    
-    // MARK: - Actions
     
     func addAnnotations() {
         let all = teamsMapView.annotations
@@ -64,6 +66,8 @@ class TeamsViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Actions
     
     // MARK: - Navigation
     
@@ -112,4 +116,8 @@ extension TeamsViewController: MKMapViewDelegate {
 
         return annotationView
     }
+}
+
+extension TeamsViewController: UISearchBarDelegate {
+    
 }
