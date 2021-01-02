@@ -13,12 +13,12 @@ struct Player: Codable {
     var division: Int
     var lat: Int
     var lon: Int
-    var num: Int
-    var name: String
-    var pos: String
-    var batThrow: String
-    var year: Int
-    var height: String
-    var weight: String
-    var hometown: String
+    var num: Int?
+    var name: String?
+    var pos: String?
+    var batThrow: String?
+    var year: Int?
+    var height: String?
+    var weight: String?
+    var hometown: String?
 }

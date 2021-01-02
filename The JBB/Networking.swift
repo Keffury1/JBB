@@ -81,7 +81,7 @@ class Networking {
         var previous: String? = nil
         
         for player in teams {
-            let first = player.School
+            let first = player.school
             
             if first != previous {
                 league.append([])
