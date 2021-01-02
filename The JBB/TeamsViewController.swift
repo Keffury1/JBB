@@ -12,12 +12,33 @@ class TeamsViewController: UIViewController {
 
     // MARK: - Properties
     
+    var players: [Player] = []
+    var teams: [[Player]] = []
+    
+    
     // MARK: - Outlets
     
     @IBOutlet weak var teamsMapView: MKMapView!
     @IBOutlet weak var teamsTableView: UITableView!
     
     // MARK: - Views
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        Networking.shared.fetchTeams(completion: { (result) in
+            DispatchQueue.main.async {
+                do {
+                    let result = try result.get()
+                    self.players = result
+                    self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
+                    self.teamsTableView.reloadData()
+                    self.addAnnotations()
+                } catch {
+                    print("Error getting rankings: \(error)")
+                }
+            }
+        })
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,11 +51,18 @@ class TeamsViewController: UIViewController {
     // MARK: - Actions
     
     func addAnnotations() {
-        // GO THROUGH ALL TEAMS
-        let annotation = MKPointAnnotation()
-        annotation.title = ""
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 51.507222, longitude: -0.1275)
-        teamsMapView.addAnnotation(annotation)
+        let all = teamsMapView.annotations
+        teamsMapView.removeAnnotations(all)
+        for team in teams {
+            if let player = team.first {
+                let annotation = MKPointAnnotation()
+                annotation.title = player.school
+                let lat = CLLocationDegrees(player.lat)
+                let lon = CLLocationDegrees(player.lon)
+                annotation.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+                teamsMapView.addAnnotation(annotation)
+            }
+        }
     }
     
     // MARK: - Navigation
@@ -43,15 +71,27 @@ class TeamsViewController: UIViewController {
     }
 }
 
-extension TeamsViewController: UITableViewDataSource {
+extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return teams.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as? TeamTableViewCell else { return UITableViewCell() }
         
+        let team = teams[indexPath.row]
+        
+        guard let player = team.first else { return UITableViewCell() }
+        
+        cell.nameLabel.text = player.school
+        
+        cell.teamImageView.image = UIImage(named: "Logo")
+        
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
     }
 }
 
@@ -65,6 +105,7 @@ extension TeamsViewController: MKMapViewDelegate {
         if annotationView == nil {
             annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
             annotationView!.canShowCallout = true
+            annotationView!.tintColor = UIColor(named: "Burlywood")
         } else {
             annotationView!.annotation = annotation
         }

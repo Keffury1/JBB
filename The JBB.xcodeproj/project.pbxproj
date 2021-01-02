@@ -93,8 +93,8 @@
 		37952189259274EA0093BF62 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				3795217C2592747C0093BF62 /* LaunchScreen.storyboard */,
 				379521772592747B0093BF62 /* Main.storyboard */,
+				3795217C2592747C0093BF62 /* LaunchScreen.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";

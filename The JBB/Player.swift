@@ -9,16 +9,16 @@ import Foundation
 
 struct Player: Codable {
     var school: String
-    var region: Int
-    var division: Int
-    var lat: Int
-    var lon: Int
-    var num: Int?
-    var name: String?
-    var pos: String?
-    var batThrow: String?
-    var year: Int?
-    var height: String?
-    var weight: String?
-    var hometown: String?
+    var region: String
+    var division: String
+    var lat: String
+    var lon: String
+    var num: String
+    var name: String
+    var pos: String
+    var batThrow: String
+    var year: String
+    var height: String
+    var weight: String
+    var hometown: String
 }

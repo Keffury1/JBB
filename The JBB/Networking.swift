@@ -13,7 +13,6 @@ import UIKit
 class Networking {
     
     static let shared = Networking()
-    var teams: [Player] = []
     
     // MARK: - URLs
     
@@ -75,12 +74,12 @@ class Networking {
         }.resume()
     }
     
-    func sortPlayersByTeam() -> [[Player]] {
+    func sortPlayersByTeam(from players: [Player]) -> [[Player]] {
         var league: [[Player]] = [[]]
         
         var previous: String? = nil
         
-        for player in teams {
+        for player in players {
             let first = player.school
             
             if first != previous {
