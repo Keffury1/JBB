@@ -52,7 +52,7 @@ extension TeamDetailViewController: UICollectionViewDataSource, UICollectionView
             
             let player = team[indexPath.row]
             
-            cell.numberLabel.text = player.num
+            cell.numberLabel.text = "#\(player.num)"
             cell.positionLabel.text = player.pos
             cell.batThrowLabel.text = player.batThrow
             cell.nameLabel.text = player.name
