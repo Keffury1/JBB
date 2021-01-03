@@ -27,7 +27,7 @@ class RankingsViewController: UIViewController {
     var division3: [Ranking] = []
     var CCCAA: [Ranking] = []
     var selectedSegmentIndex = 0
-    let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789")
+    let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+")
     
     // MARK: - Outlets
     
@@ -68,7 +68,11 @@ class RankingsViewController: UIViewController {
         guard let leader = leader, let change = leader.Change else { return }
         leaderNameLabel.text = leader.Team
         leaderRecordLabel.text = leader.Record
-        leaderChangeLabel.text = leader.Change
+        if leader.Change == "-" {
+            leaderChangeLabel.text = "👑"
+        } else {
+            leaderChangeLabel.text = leader.Change
+        }
         leaderImageView.image = UIImage(named: "Logo")
         
         if change.rangeOfCharacter(from: characterset.inverted) != nil {
@@ -161,9 +165,9 @@ extension RankingsViewController: UICollectionViewDataSource {
         cell.changeLabel.text = change
         
         if change.rangeOfCharacter(from: characterset.inverted) != nil {
-            cell.changeLabel.textColor = .red
+            cell.changeLabel.textColor = .systemRed
         } else {
-            cell.changeLabel.textColor = .green
+            cell.changeLabel.textColor = .systemGreen
         }
         cell.logoImageView.image = UIImage(named: "Logo")
         

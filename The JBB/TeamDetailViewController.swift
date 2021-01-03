@@ -24,7 +24,9 @@ class TeamDetailViewController: UIViewController {
         super.viewDidLoad()
         
         playerSearchBar.delegate = self
+        playerSearchBar.backgroundImage = UIImage()
         rosterCollectionView.dataSource = self
+        rosterCollectionView.delegate = self
     }
     
     // MARK: - Methods
@@ -37,19 +39,28 @@ class TeamDetailViewController: UIViewController {
     }
 }
 
-extension TeamDetailViewController: UICollectionViewDataSource {
+extension TeamDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let team = team else { return 1 }
         return team.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath) as? PlayerCollectionViewCell, let team = team else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath) as? PlayerCollectionViewCell else { return UICollectionViewCell() }
         
-        let player = team[indexPath.row]
-        
-        
-        
+        if let team = team {
+            
+            let player = team[indexPath.row]
+            
+            cell.numberLabel.text = player.num
+            cell.positionLabel.text = player.pos
+            cell.batThrowLabel.text = player.batThrow
+            cell.nameLabel.text = player.name
+            cell.heightLabel.text = player.height
+            cell.weightLabel.text = player.weight
+            cell.hometownLabel.text = player.hometown
+            
+        }
         return cell
     }
 }

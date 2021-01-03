@@ -72,6 +72,12 @@ class TeamsViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "rosterSegue" {
+            if let detailVC = segue.destination as? TeamDetailViewController,
+               let indexPath = teamsTableView.indexPathForSelectedRow {
+                detailVC.team = teams[indexPath.row]
+            }
+        }
     }
 }
 
@@ -104,7 +110,7 @@ extension TeamsViewController: MKMapViewDelegate {
         let identifier = "Annotation"
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         annotationView.canShowCallout = true
-        annotationView.pinTintColor = UIColor.init(named: "Space")
+        annotationView.pinTintColor = .systemGreen
         
         return annotationView
     }

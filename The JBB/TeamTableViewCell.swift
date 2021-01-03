@@ -7,8 +7,9 @@
 
 import UIKit
 
-class TeamTableViewCell: UITableViewCell {
 
+class TeamTableViewCell: UITableViewCell {
+    
     //MARK: - Outlets
     
     @IBOutlet weak var teamImageView: UIImageView!
