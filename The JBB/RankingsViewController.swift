@@ -73,7 +73,7 @@ class RankingsViewController: UIViewController {
         } else {
             leaderChangeLabel.text = leader.Change
         }
-        leaderImageView.image = UIImage(named: "Logo")
+        leaderImageView.image = leader.Image.toImage()
         
         if change.rangeOfCharacter(from: characterset.inverted) != nil {
             leaderChangeLabel.textColor = .red
@@ -169,7 +169,9 @@ extension RankingsViewController: UICollectionViewDataSource {
         } else {
             cell.changeLabel.textColor = .systemGreen
         }
-        cell.logoImageView.image = UIImage(named: "Logo")
+        
+        cell.logoImageView.image = rank.Image.toImage()
+        
         
         return cell
     }

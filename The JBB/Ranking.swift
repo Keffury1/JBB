@@ -13,4 +13,5 @@ struct Ranking: Codable {
     var Record: String
     var Change: String?
     var Division: String
+    var Image: String
 }
