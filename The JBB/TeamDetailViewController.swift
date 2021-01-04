@@ -15,6 +15,7 @@ class TeamDetailViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var playerSearchBar: UISearchBar!
     @IBOutlet weak var rosterCollectionView: UICollectionView!
     
@@ -23,13 +24,18 @@ class TeamDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupSubviews()
+    }
+    
+    // MARK: - Methods
+    
+    func setupSubviews() {
         playerSearchBar.delegate = self
         playerSearchBar.backgroundImage = UIImage()
         rosterCollectionView.dataSource = self
         rosterCollectionView.delegate = self
+        teamNameLabel.text = team?.first?.school
     }
-    
-    // MARK: - Methods
     
     // MARK: - Actions
     

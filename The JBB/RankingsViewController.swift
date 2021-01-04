@@ -61,10 +61,19 @@ class RankingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
-        rankingsCollectionView.dataSource = self
     }
     
     // MARK: - Methods
+    
+    private func setupSubviews() {
+        rankingsCollectionView.dataSource = self
+        leaderView.layer.shadowColor = UIColor.lightGray.cgColor
+        leaderView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
+        leaderView.layer.shadowRadius = 2.0
+        leaderView.layer.shadowOpacity = 1.0
+        leaderView.layer.cornerRadius = 10.0
+        leaderView.layer.masksToBounds = false
+    }
     
     private func updateViews() {
         guard let leader = leader, let change = leader.Change else { return }
@@ -99,15 +108,6 @@ class RankingsViewController: UIViewController {
             rankings[rankings.endIndex - 1].append(team)
         }
         return rankings
-    }
-    
-    private func setupSubviews() {
-        leaderView.layer.shadowColor = UIColor.lightGray.cgColor
-        leaderView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
-        leaderView.layer.shadowRadius = 2.0
-        leaderView.layer.shadowOpacity = 1.0
-        leaderView.layer.cornerRadius = 10.0
-        leaderView.layer.masksToBounds = false
     }
     
     // MARK: - Actions

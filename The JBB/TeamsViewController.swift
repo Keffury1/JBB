@@ -15,12 +15,12 @@ class TeamsViewController: UIViewController {
     var players: [Player] = []
     var teams: [[Player]] = []
     
-    
     // MARK: - Outlets
     
     @IBOutlet weak var teamsMapView: MKMapView!
     @IBOutlet weak var teamsTableView: UITableView!
     @IBOutlet weak var teamsSearchBar: UISearchBar!
+    @IBOutlet weak var divisionSegmentedControl: UISegmentedControl!
     
     // MARK: - Views
     
@@ -32,8 +32,8 @@ class TeamsViewController: UIViewController {
                     let result = try result.get()
                     self.players = result
                     self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
-                    self.teamsTableView.reloadData()
                     self.addAnnotations()
+                    self.teamsTableView.reloadData()
                 } catch {
                     print("Error getting rankings: \(error)")
                 }
@@ -43,14 +43,19 @@ class TeamsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupSubviews()
+    }
+    
+    // MARK: - Methods
+    
+    func setupSubviews() {
         teamsTableView.dataSource = self
         teamsTableView.delegate = self
         teamsMapView.delegate = self
         teamsSearchBar.delegate = self
         teamsSearchBar.backgroundImage = UIImage()
     }
-    
-    // MARK: - Methods
     
     func addAnnotations() {
         let all = teamsMapView.annotations
@@ -68,6 +73,10 @@ class TeamsViewController: UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func indexDidChange(_ sender: Any) {
+        // Handle Multiple Divisions
+    }
     
     // MARK: - Navigation
     
@@ -87,15 +96,13 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as? TeamTableViewCell else { return UITableViewCell() }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath)
         
         let team = teams[indexPath.row]
         
         guard let player = team.first else { return UITableViewCell() }
         
-        cell.nameLabel.text = player.school
-        
-        cell.teamImageView.image = UIImage(named: "Logo")
+        cell.textLabel?.text = player.school
         
         return cell
     }
