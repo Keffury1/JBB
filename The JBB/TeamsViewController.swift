@@ -32,7 +32,6 @@ class TeamsViewController: UIViewController {
                     let result = try result.get()
                     self.players = result
                     self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
-                    self.addAnnotations()
                     self.teamsTableView.reloadData()
                 } catch {
                     print("Error getting rankings: \(error)")

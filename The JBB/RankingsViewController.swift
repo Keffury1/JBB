@@ -67,12 +67,8 @@ class RankingsViewController: UIViewController {
     
     private func setupSubviews() {
         rankingsCollectionView.dataSource = self
-        leaderView.layer.shadowColor = UIColor.lightGray.cgColor
-        leaderView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
-        leaderView.layer.shadowRadius = 2.0
-        leaderView.layer.shadowOpacity = 1.0
-        leaderView.layer.cornerRadius = 10.0
-        leaderView.layer.masksToBounds = false
+        leaderView.addShadowAndRadius()
+        leaderImageView.addShadowAndRadius()
     }
     
     private func updateViews() {
@@ -204,12 +200,8 @@ extension RankingsViewController: UICollectionViewDataSource {
         
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
-        cell.shadowView.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.shadowView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
-        cell.shadowView.layer.shadowRadius = 2.0
-        cell.shadowView.layer.shadowOpacity = 1.0
-        cell.shadowView.layer.cornerRadius = 10.0
-        cell.shadowView.layer.masksToBounds = false
+        cell.shadowView.addShadowAndRadius()
+        cell.logoImageView.addShadowAndRadius()
         
         return cell
     }
