@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+enum NetworkError: Error {
+    case badData
+    case otherError
+    case noDecode
+}
 
 class Networking {
     
@@ -89,6 +94,29 @@ class Networking {
             league[league.endIndex - 1].append(player)
         }
         return league
+    }
+    
+    func fetchImage(at urlString: String, completion: @escaping (_ data: Data?) -> ()) {
+        let imageUrl = URL(string: urlString)!
+        
+        var request = URLRequest(url: imageUrl)
+        request.httpMethod = "GET"
+        
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            
+            if let _ = error {
+                completion(nil)
+                return
+            }
+            
+            guard let data = data else {
+                completion(nil)
+                return
+            }
+            
+            completion(data)
+        }.resume()
     }
 }
 

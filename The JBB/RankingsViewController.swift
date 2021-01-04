@@ -84,7 +84,17 @@ class RankingsViewController: UIViewController {
         } else {
             leaderChangeLabel.text = leader.Change
         }
-        leaderImageView.image = UIImage(named: "Logo")
+        
+        Networking.shared.fetchImage(at: leader.Image) { (data) in
+            
+            if let data = data {
+                DispatchQueue.main.async {
+                    self.leaderImageView.image = UIImage(data: data)
+                }
+            } else {
+                print("Error fetching leader image")
+            }
+        }
         
         if change.rangeOfCharacter(from: characterset.inverted) != nil {
             leaderChangeLabel.textColor = .red
@@ -181,7 +191,16 @@ extension RankingsViewController: UICollectionViewDataSource {
             cell.changeLabel.textColor = .systemGreen
         }
         
-        cell.logoImageView.image = UIImage(named: "Logo")
+        Networking.shared.fetchImage(at: rank.Image) { (data) in
+            
+            if let data = data {
+                DispatchQueue.main.async {
+                    cell.logoImageView.image = UIImage(data: data)
+                }
+            } else {
+                print("Error fetching leader image")
+            }
+        }
         
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
