@@ -60,6 +60,14 @@ extension TeamDetailViewController: UICollectionViewDataSource, UICollectionView
             cell.weightLabel.text = player.weight
             cell.hometownLabel.text = player.hometown
             
+            cell.backgroundColor = .clear
+            cell.contentView.backgroundColor = .clear
+            cell.shadowView.layer.shadowColor = UIColor.lightGray.cgColor
+            cell.shadowView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
+            cell.shadowView.layer.shadowRadius = 2.0
+            cell.shadowView.layer.shadowOpacity = 1.0
+            cell.shadowView.layer.cornerRadius = 10.0
+            cell.shadowView.layer.masksToBounds = false
         }
         return cell
     }

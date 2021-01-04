@@ -16,4 +16,6 @@ class PlayerCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var weightLabel: UILabel!
     @IBOutlet weak var hometownLabel: UILabel!
+    @IBOutlet weak var shadowView: UIView!
+    
 }
