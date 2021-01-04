@@ -37,6 +37,7 @@ class RankingsViewController: UIViewController {
     @IBOutlet weak var leaderRecordLabel: UILabel!
     @IBOutlet weak var leaderChangeLabel: UILabel!
     @IBOutlet weak var leaderImageView: UIImageView!
+    @IBOutlet weak var leaderView: UIView!
     
     // MARK: - Views
     
@@ -59,6 +60,7 @@ class RankingsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupSubviews()
         rankingsCollectionView.dataSource = self
     }
     
@@ -73,7 +75,7 @@ class RankingsViewController: UIViewController {
         } else {
             leaderChangeLabel.text = leader.Change
         }
-        leaderImageView.image = leader.Image.toImage()
+        leaderImageView.image = UIImage(named: "Logo")
         
         if change.rangeOfCharacter(from: characterset.inverted) != nil {
             leaderChangeLabel.textColor = .red
@@ -82,7 +84,7 @@ class RankingsViewController: UIViewController {
         }
     }
     
-    func sortTeamsByDivision() -> [[Ranking]] {
+    private func sortTeamsByDivision() -> [[Ranking]] {
         var rankings: [[Ranking]] = [[]]
         
         var previous: String? = nil
@@ -97,6 +99,15 @@ class RankingsViewController: UIViewController {
             rankings[rankings.endIndex - 1].append(team)
         }
         return rankings
+    }
+    
+    private func setupSubviews() {
+        leaderView.layer.shadowColor = UIColor.lightGray.cgColor
+        leaderView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
+        leaderView.layer.shadowRadius = 2.0
+        leaderView.layer.shadowOpacity = 1.0
+        leaderView.layer.cornerRadius = 10.0
+        leaderView.layer.masksToBounds = false
     }
     
     // MARK: - Actions
@@ -170,8 +181,16 @@ extension RankingsViewController: UICollectionViewDataSource {
             cell.changeLabel.textColor = .systemGreen
         }
         
-        cell.logoImageView.image = rank.Image.toImage()
+        cell.logoImageView.image = UIImage(named: "Logo")
         
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
+        cell.shadowView.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.shadowView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
+        cell.shadowView.layer.shadowRadius = 2.0
+        cell.shadowView.layer.shadowOpacity = 1.0
+        cell.shadowView.layer.cornerRadius = 10.0
+        cell.shadowView.layer.masksToBounds = false
         
         return cell
     }

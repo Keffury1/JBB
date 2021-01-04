@@ -16,7 +16,6 @@
 		3795219C2592767D0093BF62 /* RankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3795219B2592767D0093BF62 /* RankingsViewController.swift */; };
 		379521A52592A4700093BF62 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521A42592A4700093BF62 /* Player.swift */; };
 		37B43C3025958C07005D6452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B43C2F25958C07005D6452 /* Assets.xcassets */; };
-		37B79F2225A2C11C005F397C /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B79F2125A2C11C005F397C /* String+Helpers.swift */; };
 		37C3975B2592DE8000690FC0 /* TeamCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */; };
 		37C3975F2592E2A600690FC0 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */; };
 		37C397622592E30C00690FC0 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C397612592E30C00690FC0 /* TeamsViewController.swift */; };
@@ -36,7 +35,6 @@
 		3795219B2592767D0093BF62 /* RankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsViewController.swift; sourceTree = "<group>"; };
 		379521A42592A4700093BF62 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		37B43C2F25958C07005D6452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		37B79F2125A2C11C005F397C /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		37C3975A2592DE8000690FC0 /* TeamCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCollectionViewCell.swift; sourceTree = "<group>"; };
 		37C3975E2592E2A600690FC0 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		37C397612592E30C00690FC0 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
@@ -90,7 +88,6 @@
 			children = (
 				37B43C2F25958C07005D6452 /* Assets.xcassets */,
 				3795217F2592747C0093BF62 /* Info.plist */,
-				37B79F2125A2C11C005F397C /* String+Helpers.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -228,7 +225,6 @@
 				37C3975F2592E2A600690FC0 /* TeamTableViewCell.swift in Sources */,
 				379521A52592A4700093BF62 /* Player.swift in Sources */,
 				379521742592747B0093BF62 /* SceneDelegate.swift in Sources */,
-				37B79F2225A2C11C005F397C /* String+Helpers.swift in Sources */,
 				37C397622592E30C00690FC0 /* TeamsViewController.swift in Sources */,
 				37C3975B2592DE8000690FC0 /* TeamCollectionViewCell.swift in Sources */,
 				37D5B94425A141B0006EB814 /* PlayerCollectionViewCell.swift in Sources */,

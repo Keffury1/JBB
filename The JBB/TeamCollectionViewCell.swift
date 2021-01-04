@@ -11,6 +11,7 @@ class TeamCollectionViewCell: UICollectionViewCell {
     
     //MARK: - Outlets
     
+    @IBOutlet weak var shadowView: UIView!
     @IBOutlet weak var rankLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var recordLabel: UILabel!
