@@ -149,7 +149,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as? TeamTableViewCell else { return UITableViewCell() }
         
         var team: [Player]?
         
@@ -168,7 +168,18 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         
         guard let teamCell = team else { return UITableViewCell() }
         
-        cell.textLabel?.text = teamCell.first?.school
+        cell.teamNameLabel.text = teamCell.first?.school
+        
+        Networking.shared.fetchImage(at: teamCell.first?.image) { (data) in
+            
+            if let data = data {
+                DispatchQueue.main.async {
+                    cell.teamImageView.image = UIImage(data: data)
+                }
+            } else {
+                print("Error fetching leader image")
+            }
+        }
         
         return cell
     }

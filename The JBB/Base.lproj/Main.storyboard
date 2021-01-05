@@ -25,23 +25,55 @@
                                 <rect key="frame" x="10" y="420.5" width="394" height="382.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" textLabel="oYs-Le-SSW" style="IBUITableViewCellStyleDefault" id="CE1-rv-Akf">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="50"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" rowHeight="60" id="CE1-rv-Akf" customClass="TeamTableViewCell" customModule="The_JBB" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="394" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CE1-rv-Akf" id="zcm-D8-ehK">
-                                            <rect key="frame" x="0.0" y="0.0" width="363" height="50"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oYs-Le-SSW">
-                                                    <rect key="frame" x="20" y="0.0" width="335" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                    <color key="textColor" name="Indigo"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75q-Nv-Kan">
+                                                    <rect key="frame" x="344" y="0.0" width="40" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="40" id="12t-D8-F3S"/>
+                                                    </constraints>
+                                                    <color key="tintColor" name="Bistre"/>
+                                                    <state key="normal" image="list.bullet.rectangle" catalog="system"/>
+                                                    <connections>
+                                                        <action selector="rosterButtonTapped:" destination="CE1-rv-Akf" eventType="touchUpInside" id="7EY-3B-9f1"/>
+                                                    </connections>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvC-mn-GJl">
+                                                    <rect key="frame" x="55" y="0.0" width="289" height="60"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bod-Jh-9nE">
+                                                    <rect key="frame" x="5" y="5" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="ioZ-ad-Tdw"/>
+                                                        <constraint firstAttribute="width" constant="50" id="k1X-14-iaZ"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bod-Jh-9nE" firstAttribute="top" secondItem="zcm-D8-ehK" secondAttribute="top" constant="5" id="ALb-1a-TyG"/>
+                                                <constraint firstAttribute="bottom" secondItem="bod-Jh-9nE" secondAttribute="bottom" constant="5" id="En7-0o-YYc"/>
+                                                <constraint firstItem="75q-Nv-Kan" firstAttribute="top" secondItem="zcm-D8-ehK" secondAttribute="top" id="FIB-gF-fi6"/>
+                                                <constraint firstAttribute="bottom" secondItem="75q-Nv-Kan" secondAttribute="bottom" id="JE9-pP-QIi"/>
+                                                <constraint firstAttribute="trailing" secondItem="75q-Nv-Kan" secondAttribute="trailing" constant="10" id="Qdb-Ik-GiO"/>
+                                                <constraint firstItem="gvC-mn-GJl" firstAttribute="top" secondItem="zcm-D8-ehK" secondAttribute="top" id="STX-KW-DCn"/>
+                                                <constraint firstItem="75q-Nv-Kan" firstAttribute="leading" secondItem="gvC-mn-GJl" secondAttribute="trailing" id="V94-iI-C3L"/>
+                                                <constraint firstItem="bod-Jh-9nE" firstAttribute="leading" secondItem="zcm-D8-ehK" secondAttribute="leading" constant="5" id="X0T-Ob-iIa"/>
+                                                <constraint firstItem="gvC-mn-GJl" firstAttribute="leading" secondItem="bod-Jh-9nE" secondAttribute="trailing" id="cg3-Eg-2am"/>
+                                                <constraint firstAttribute="bottom" secondItem="gvC-mn-GJl" secondAttribute="bottom" id="f9r-g1-0A2"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="rosterButton" destination="75q-Nv-Kan" id="eHs-c5-gX9"/>
+                                            <outlet property="teamImageView" destination="bod-Jh-9nE" id="rI2-Zt-EO5"/>
+                                            <outlet property="teamNameLabel" destination="gvC-mn-GJl" id="gsV-OT-91F"/>
                                             <segue destination="OEk-U0-avN" kind="show" identifier="rosterSegue" id="kLd-Vh-p3d"/>
                                         </connections>
                                     </tableViewCell>
@@ -479,6 +511,7 @@
     <resources>
         <image name="bus" catalog="system" width="128" height="122"/>
         <image name="flame" catalog="system" width="108" height="128"/>
+        <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
         <namedColor name="Bistre">
             <color red="0.5607843137254902" green="0.45882352941176469" blue="0.30980392156862746" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

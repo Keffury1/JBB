@@ -21,4 +21,5 @@ struct Player: Codable {
     var height: String
     var weight: String
     var hometown: String
+    var image: String
 }

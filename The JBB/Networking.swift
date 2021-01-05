@@ -96,8 +96,9 @@ class Networking {
         return league
     }
     
-    func fetchImage(at urlString: String, completion: @escaping (_ data: Data?) -> ()) {
-        let imageUrl = URL(string: urlString)!
+    func fetchImage(at urlString: String?, completion: @escaping (_ data: Data?) -> ()) {
+        guard let string = urlString else { return }
+        let imageUrl = URL(string: string)!
         
         var request = URLRequest(url: imageUrl)
         request.httpMethod = "GET"
