@@ -14,6 +14,11 @@ class TeamsViewController: UIViewController {
     
     var players: [Player] = []
     var teams: [[Player]] = []
+    var divisionOne: [[Player]] = []
+    var divisionTwo: [[Player]] = []
+    var divisionThree: [[Player]] = []
+    var cCCAA: [[Player]] = []
+    var selectedIndex = 0
     
     // MARK: - Outlets
     
@@ -32,6 +37,11 @@ class TeamsViewController: UIViewController {
                     let result = try result.get()
                     self.players = result
                     self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
+                    for team in self.teams {
+                        if team.first?.division == "1" {
+                            self.divisionOne.append(team)
+                        }
+                    }
                     self.teamsTableView.reloadData()
                 } catch {
                     print("Error getting rankings: \(error)")
@@ -73,8 +83,41 @@ class TeamsViewController: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func indexDidChange(_ sender: Any) {
-        // Handle Multiple Divisions
+    @IBAction func indexDidChange(_ sender: UISegmentedControl) {
+        self.selectedIndex = sender.selectedSegmentIndex
+        switch selectedIndex {
+        case 0:
+            let division = "1"
+            for team in teams {
+                if team.first?.division == division {
+                    divisionOne.append(team)
+                }
+            }
+        case 1:
+            let division = "2"
+            for team in teams {
+                if team.first?.division == division {
+                    divisionTwo.append(team)
+                }
+            }
+        case 2:
+            let division = "3"
+            for team in teams {
+                if team.first?.division == division {
+                    divisionThree.append(team)
+                }
+            }
+        case 3:
+            let division = "CCCAA"
+            for team in teams {
+                if team.first?.division == division {
+                    cCCAA.append(team)
+                }
+            }
+        default:
+            return
+        }
+        teamsTableView.reloadData()
     }
     
     // MARK: - Navigation
@@ -91,17 +134,41 @@ class TeamsViewController: UIViewController {
 
 extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return teams.count
+        switch selectedIndex {
+        case 0:
+            return divisionOne.count
+        case 1:
+            return divisionTwo.count
+        case 2:
+            return divisionThree.count
+        case 3:
+            return cCCAA.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath)
         
-        let team = teams[indexPath.row]
+        var team: [Player]?
         
-        guard let player = team.first else { return UITableViewCell() }
+        switch selectedIndex {
+        case 0:
+            team = divisionOne[indexPath.row]
+        case 1:
+            team = divisionTwo[indexPath.row]
+        case 2:
+            team = divisionThree[indexPath.row]
+        case 3:
+            team = cCCAA[indexPath.row]
+        default:
+            return UITableViewCell()
+        }
         
-        cell.textLabel?.text = player.school
+        guard let teamCell = team else { return UITableViewCell() }
+        
+        cell.textLabel?.text = teamCell.first?.school
         
         return cell
     }
@@ -123,5 +190,7 @@ extension TeamsViewController: MKMapViewDelegate {
 }
 
 extension TeamsViewController: UISearchBarDelegate {
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
+    }
 }
