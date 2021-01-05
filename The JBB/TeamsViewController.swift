@@ -66,19 +66,15 @@ class TeamsViewController: UIViewController {
         teamsSearchBar.backgroundImage = UIImage()
     }
     
-    func addAnnotations() {
+    func addAnnotation(_ player: Player) {
         let all = teamsMapView.annotations
         teamsMapView.removeAnnotations(all)
-        for team in teams {
-            if let player = team.first {
-                let annotation = MKPointAnnotation()
-                annotation.title = player.school
-                let lat = CLLocationDegrees(player.lat)
-                let lon = CLLocationDegrees(player.lon)
-                annotation.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
-                teamsMapView.addAnnotation(annotation)
-            }
-        }
+        let annotation = MKPointAnnotation()
+        annotation.title = player.school
+        let lat = CLLocationDegrees(player.lat)
+        let lon = CLLocationDegrees(player.lon)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+        teamsMapView.addAnnotation(annotation)
     }
     
     // MARK: - Actions
@@ -186,6 +182,33 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 60
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch selectedIndex {
+        case 0:
+            let team = divisionOne[indexPath.row]
+            if let player = team.first {
+                addAnnotation(player)
+            }
+        case 1:
+            let team = divisionOne[indexPath.row]
+            if let player = team.first {
+                addAnnotation(player)
+            }
+        case 2:
+            let team = divisionOne[indexPath.row]
+            if let player = team.first {
+                addAnnotation(player)
+            }
+        case 3:
+            let team = divisionOne[indexPath.row]
+            if let player = team.first {
+                addAnnotation(player)
+            }
+        default:
+            return
+        }
     }
 }
 
