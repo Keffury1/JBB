@@ -8,8 +8,8 @@
 import UIKit
 import MapKit
 
-class TeamsViewController: UIViewController {
-
+class TeamsViewController: UIViewController, TableViewCellDelegate {
+    
     // MARK: - Properties
     
     var players: [Player] = []
@@ -57,6 +57,26 @@ class TeamsViewController: UIViewController {
     }
     
     // MARK: - Methods
+    
+    func buttonPressed(index: Int) {
+        
+        var sender: [Player]?
+        
+        switch selectedIndex {
+        case 0:
+            sender = divisionOne[index]
+        case 1:
+            sender = divisionTwo[index]
+        case 2:
+            sender = divisionThree[index]
+        case 3:
+            sender = cCCAA[index]
+        default:
+            return
+        }
+        
+        self.performSegue(withIdentifier: "rosterSegue", sender:  sender)
+    }
     
     func setupSubviews() {
         teamsTableView.dataSource = self
@@ -120,9 +140,8 @@ class TeamsViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "rosterSegue" {
-            if let detailVC = segue.destination as? TeamDetailViewController,
-               let indexPath = teamsTableView.indexPathForSelectedRow {
-                detailVC.team = teams[indexPath.row]
+            if let detailVC = segue.destination as? TeamDetailViewController {
+                detailVC.team = sender as? [Player]
             }
         }
     }
@@ -146,6 +165,9 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as? TeamTableViewCell else { return UITableViewCell() }
+        
+        cell.delegate = self
+        cell.index = indexPath.row
         
         var team: [Player]?
         
