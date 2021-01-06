@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class TeamDetailViewController: UIViewController {
 
     // MARK: - Properties
@@ -19,6 +20,7 @@ class TeamDetailViewController: UIViewController {
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var playerSearchBar: UISearchBar!
     @IBOutlet weak var rosterCollectionView: UICollectionView!
+    @IBOutlet weak var bannerAdView: UIView!
     
     // MARK: - Views
     

@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26B6E01A179D110D3E4C0D05 /* Pods_The_JBB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E575E402971A43F4C2C4973 /* Pods_The_JBB.framework */; };
 		379521722592747B0093BF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521712592747B0093BF62 /* AppDelegate.swift */; };
 		379521742592747B0093BF62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521732592747B0093BF62 /* SceneDelegate.swift */; };
 		379521792592747B0093BF62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379521772592747B0093BF62 /* Main.storyboard */; };
@@ -25,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E575E402971A43F4C2C4973 /* Pods_The_JBB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_JBB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3710F58425A53FC600589884 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		3795216E2592747B0093BF62 /* The JBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The JBB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		379521712592747B0093BF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		379521732592747B0093BF62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +45,8 @@
 		37D4483025A3997500B89FA9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		37D5B94325A141B0006EB814 /* PlayerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerCollectionViewCell.swift; sourceTree = "<group>"; };
 		37EE8D6325A4F0F600A2EB21 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
+		4AC784F9C4D7BE81C53F244F /* Pods-The JBB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The JBB.debug.xcconfig"; path = "Target Support Files/Pods-The JBB/Pods-The JBB.debug.xcconfig"; sourceTree = "<group>"; };
+		6DEF6B769603B9D87DCE46A4 /* Pods-The JBB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The JBB.release.xcconfig"; path = "Target Support Files/Pods-The JBB/Pods-The JBB.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B6E01A179D110D3E4C0D05 /* Pods_The_JBB.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +66,8 @@
 			children = (
 				379521702592747B0093BF62 /* The JBB */,
 				3795216F2592747B0093BF62 /* Products */,
+				3AF772E13DA3802DFE60A3EF /* Pods */,
+				40914280B5A32DE66DC47001 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +158,24 @@
 			name = "App Lifecycle";
 			sourceTree = "<group>";
 		};
+		3AF772E13DA3802DFE60A3EF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4AC784F9C4D7BE81C53F244F /* Pods-The JBB.debug.xcconfig */,
+				6DEF6B769603B9D87DCE46A4 /* Pods-The JBB.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		40914280B5A32DE66DC47001 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3710F58425A53FC600589884 /* GoogleMobileAds.xcframework */,
+				1E575E402971A43F4C2C4973 /* Pods_The_JBB.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -157,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 379521822592747C0093BF62 /* Build configuration list for PBXNativeTarget "The JBB" */;
 			buildPhases = (
+				B264E03EC1A479698A6EFED7 /* [CP] Check Pods Manifest.lock */,
 				3795216A2592747B0093BF62 /* Sources */,
 				3795216B2592747B0093BF62 /* Frameworks */,
 				3795216C2592747B0093BF62 /* Resources */,
+				431D48B749A7D934ECFE3629 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -214,6 +242,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		431D48B749A7D934ECFE3629 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-The JBB/Pods-The JBB-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-The JBB/Pods-The JBB-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-The JBB/Pods-The JBB-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B264E03EC1A479698A6EFED7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-The JBB-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3795216A2592747B0093BF62 /* Sources */ = {
@@ -375,6 +445,7 @@
 		};
 		379521832592747C0093BF62 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4AC784F9C4D7BE81C53F244F /* Pods-The JBB.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -394,6 +465,7 @@
 		};
 		379521842592747C0093BF62 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6DEF6B769603B9D87DCE46A4 /* Pods-The JBB.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
