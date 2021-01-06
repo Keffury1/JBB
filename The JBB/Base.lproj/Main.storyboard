@@ -136,7 +136,7 @@
             <objects>
                 <viewController title="Team Detail View Controller" id="OEk-U0-avN" customClass="TeamDetailViewController" customModule="The_JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8id-8k-wMF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="UOw-4O-uYy">
@@ -144,7 +144,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xrR-dp-lup">
-                                <rect key="frame" x="20" y="197" width="374" height="591"/>
+                                <rect key="frame" x="20" y="217" width="374" height="571"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="S8u-IA-ryz">
                                     <size key="itemSize" width="179" height="198"/>
@@ -280,7 +280,7 @@
                             <constraint firstItem="M6t-4Q-sQO" firstAttribute="leading" secondItem="PoL-74-VOu" secondAttribute="leading" id="YHt-Le-nCb"/>
                             <constraint firstItem="UOw-4O-uYy" firstAttribute="leading" secondItem="PoL-74-VOu" secondAttribute="leading" id="aFo-rz-gxh"/>
                             <constraint firstItem="kYf-qL-MLz" firstAttribute="leading" secondItem="xrR-dp-lup" secondAttribute="leading" id="bTa-rW-3fc"/>
-                            <constraint firstItem="xrR-dp-lup" firstAttribute="top" secondItem="kYf-qL-MLz" secondAttribute="bottom" constant="20" id="gaN-DB-FKa"/>
+                            <constraint firstItem="xrR-dp-lup" firstAttribute="top" secondItem="kYf-qL-MLz" secondAttribute="bottom" constant="40" id="gaN-DB-FKa"/>
                             <constraint firstItem="PoL-74-VOu" firstAttribute="bottom" secondItem="xrR-dp-lup" secondAttribute="bottom" constant="20" id="jve-Kj-etG"/>
                             <constraint firstItem="UOw-4O-uYy" firstAttribute="trailing" secondItem="PoL-74-VOu" secondAttribute="trailing" id="xvJ-0d-AXO"/>
                         </constraints>
