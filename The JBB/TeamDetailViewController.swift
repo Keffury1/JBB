@@ -105,4 +105,9 @@ extension TeamDetailViewController: UISearchBarDelegate {
         self.searchResult = results
         rosterCollectionView.reloadData()
     }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.searchResult = nil
+        rosterCollectionView.reloadData()
+    }
 }
