@@ -12,6 +12,7 @@ class TeamDetailViewController: UIViewController {
     // MARK: - Properties
     
     var team: [Player]?
+    var searchResult: [Player]?
     
     // MARK: - Outlets
     
@@ -48,37 +49,60 @@ class TeamDetailViewController: UIViewController {
 extension TeamDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         guard let team = team else { return 1 }
-        return team.count
+        if searchResult?.count != nil {
+            return searchResult!.count
+        } else {
+            return team.count
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath) as? PlayerCollectionViewCell else { return UICollectionViewCell() }
         
-        if let team = team {
-            
-            let player = team[indexPath.row]
-            
-            cell.numberLabel.text = "#\(player.num)"
-            cell.positionLabel.text = player.pos
-            cell.batThrowLabel.text = player.batThrow
-            cell.nameLabel.text = player.name
-            cell.heightLabel.text = player.height
-            cell.weightLabel.text = player.weight
-            cell.hometownLabel.text = player.hometown
-            
-            cell.backgroundColor = .clear
-            cell.contentView.backgroundColor = .clear
-            cell.shadowView.layer.shadowColor = UIColor.lightGray.cgColor
-            cell.shadowView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
-            cell.shadowView.layer.shadowRadius = 2.0
-            cell.shadowView.layer.shadowOpacity = 1.0
-            cell.shadowView.layer.cornerRadius = 10.0
-            cell.shadowView.layer.masksToBounds = false
+        var player: Player?
+        
+        if searchResult != nil {
+            player = searchResult![indexPath.row]
+        } else {
+            if let team = team {
+                player = team[indexPath.row]
+            }
         }
+        
+        guard let athlete = player else { return UICollectionViewCell() }
+        
+        cell.numberLabel.text = "#\(athlete.num)"
+        cell.positionLabel.text = athlete.pos
+        cell.batThrowLabel.text = athlete.batThrow
+        cell.nameLabel.text = athlete.name
+        cell.heightLabel.text = athlete.height
+        cell.weightLabel.text = athlete.weight
+        cell.hometownLabel.text = athlete.hometown
+        
+        cell.backgroundColor = .clear
+        cell.contentView.backgroundColor = .clear
+        cell.shadowView.layer.shadowColor = UIColor.lightGray.cgColor
+        cell.shadowView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
+        cell.shadowView.layer.shadowRadius = 2.0
+        cell.shadowView.layer.shadowOpacity = 1.0
+        cell.shadowView.layer.cornerRadius = 10.0
+        cell.shadowView.layer.masksToBounds = false
+        
         return cell
     }
 }
 
 extension TeamDetailViewController: UISearchBarDelegate {
-    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchResult = searchBar.text else { return }
+        
+        var results: [Player]?
+        
+        results = team?.filter({ (player) -> Bool in
+            player.name.lowercased().contains(searchResult.lowercased())
+        })
+        
+        self.searchResult = results
+        rosterCollectionView.reloadData()
+    }
 }
