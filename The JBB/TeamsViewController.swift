@@ -18,6 +18,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     var divisionTwo: [[Player]] = []
     var divisionThree: [[Player]] = []
     var cCCAA: [[Player]] = []
+    var searchResults: [[Player]]?
     var selectedIndex = 0
     
     // MARK: - Outlets
@@ -103,30 +104,26 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         self.selectedIndex = sender.selectedSegmentIndex
         switch selectedIndex {
         case 0:
-            let division = "1"
             for team in teams {
-                if team.first?.division == division {
+                if team.first?.division == "1" {
                     divisionOne.append(team)
                 }
             }
         case 1:
-            let division = "2"
             for team in teams {
-                if team.first?.division == division {
+                if team.first?.division == "2" {
                     divisionTwo.append(team)
                 }
             }
         case 2:
-            let division = "3"
             for team in teams {
-                if team.first?.division == division {
+                if team.first?.division == "3" {
                     divisionThree.append(team)
                 }
             }
         case 3:
-            let division = "CCCAA"
             for team in teams {
-                if team.first?.division == division {
+                if team.first?.division == "CCCAA" {
                     cCCAA.append(team)
                 }
             }
@@ -149,17 +146,21 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
 
 extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch selectedIndex {
-        case 0:
-            return divisionOne.count
-        case 1:
-            return divisionTwo.count
-        case 2:
-            return divisionThree.count
-        case 3:
-            return cCCAA.count
-        default:
-            return 0
+        if searchResults?.count != nil {
+            return searchResults!.count
+        } else {
+            switch selectedIndex {
+            case 0:
+                return divisionOne.count
+            case 1:
+                return divisionTwo.count
+            case 2:
+                return divisionThree.count
+            case 3:
+                return cCCAA.count
+            default:
+                return 0
+            }
         }
     }
     
@@ -171,17 +172,21 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         
         var team: [Player]?
         
-        switch selectedIndex {
-        case 0:
-            team = divisionOne[indexPath.row]
-        case 1:
-            team = divisionTwo[indexPath.row]
-        case 2:
-            team = divisionThree[indexPath.row]
-        case 3:
-            team = cCCAA[indexPath.row]
-        default:
-            return UITableViewCell()
+        if searchResults?.count != nil {
+            team = searchResults![indexPath.row]
+        } else {
+            switch selectedIndex {
+            case 0:
+                team = divisionOne[indexPath.row]
+            case 1:
+                team = divisionTwo[indexPath.row]
+            case 2:
+                team = divisionThree[indexPath.row]
+            case 3:
+                team = cCCAA[indexPath.row]
+            default:
+                return UITableViewCell()
+            }
         }
         
         guard let teamCell = team else { return UITableViewCell() }
@@ -247,6 +252,38 @@ extension TeamsViewController: MKMapViewDelegate {
 
 extension TeamsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = searchBar.text else { return }
         
+        var results: [[Player]]?
+        
+        switch selectedIndex {
+        case 0:
+            results = divisionOne.filter({ (team) -> Bool in
+                team.contains(where: { $0.school == searchTerm })
+            })
+        case 1:
+            results = divisionTwo.filter({ (team) -> Bool in
+                team.contains(where: { $0.school == searchTerm })
+            })
+        case 2:
+            results = divisionThree.filter({ (team) -> Bool in
+                team.contains(where: { $0.school == searchTerm })
+            })
+        case 3:
+            results = cCCAA.filter({ (team) -> Bool in
+                team.contains(where: { $0.school == searchTerm })
+            })
+        default:
+            return
+        }
+        if let result = results {
+            self.searchResults = result
+            self.teamsTableView.reloadData()
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchResults = nil
+        teamsTableView.reloadData()
     }
 }
