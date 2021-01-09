@@ -17,10 +17,8 @@ class TeamDetailViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var teamNameLabel: UILabel!
-    @IBOutlet weak var playerSearchBar: UISearchBar!
-    @IBOutlet weak var rosterCollectionView: UICollectionView!
-    @IBOutlet weak var bannerAdView: UIView!
+    @IBOutlet weak var teamImageView: UIImageView!
+    @IBOutlet weak var rosterTableView: UITableView!
     
     // MARK: - Views
     
@@ -33,11 +31,18 @@ class TeamDetailViewController: UIViewController {
     // MARK: - Methods
     
     func setupSubviews() {
-        playerSearchBar.delegate = self
-        playerSearchBar.backgroundImage = UIImage()
-        rosterCollectionView.dataSource = self
-        rosterCollectionView.delegate = self
-        teamNameLabel.text = team?.first?.school
+        rosterTableView.dataSource = self
+        if let team = team {
+            Networking.shared.fetchImage(at: team.first?.image, completion: { (data) in
+                if let data = data {
+                    DispatchQueue.main.async {
+                        self.teamImageView.image = UIImage(data: data)
+                    }
+                } else {
+                    print("Error fetching leader image")
+                }
+            })
+        }
     }
     
     // MARK: - Actions
@@ -48,68 +53,39 @@ class TeamDetailViewController: UIViewController {
     }
 }
 
-extension TeamDetailViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        guard let team = team else { return 1 }
-        if searchResult?.count != nil {
-            return searchResult!.count
-        } else {
-            return team.count
-        }
+extension TeamDetailViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return team?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "playerCell", for: indexPath) as? PlayerCollectionViewCell else { return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "playerCell", for: indexPath) as? PlayerTableViewCell else { return UITableViewCell() }
         
-        var player: Player?
+        guard let team = team else { return UITableViewCell() }
         
-        if searchResult != nil {
-            player = searchResult![indexPath.row]
-        } else {
-            if let team = team {
-                player = team[indexPath.row]
-            }
+        let player = team[indexPath.row]
+        
+        cell.numberLabel.text = player.num
+        cell.nameLabel.text = player.name
+        cell.hometownLabel.text = player.hometown
+        cell.positionLabel.text = player.pos
+        cell.batThrowLabel.text = player.batThrow
+        cell.heightWeightLabel.text = "\(player.height)/\(player.weight)"
+        switch Int(player.year) {
+        case 1:
+            cell.yearLabel.text = "Fr"
+        case 2:
+            cell.yearLabel.text = "So"
+        case 3:
+            cell.yearLabel.text = "Jr"
+        case 4:
+            cell.yearLabel.text = "Sr"
+        default:
+            cell.yearLabel.text = ""
         }
-        
-        guard let athlete = player else { return UICollectionViewCell() }
-        
-        cell.numberLabel.text = "#\(athlete.num)"
-        cell.positionLabel.text = athlete.pos
-        cell.batThrowLabel.text = athlete.batThrow
-        cell.nameLabel.text = athlete.name
-        cell.heightLabel.text = athlete.height
-        cell.weightLabel.text = athlete.weight
-        cell.hometownLabel.text = athlete.hometown
-        
-        cell.backgroundColor = .clear
-        cell.contentView.backgroundColor = .clear
-        cell.shadowView.layer.shadowColor = UIColor.lightGray.cgColor
-        cell.shadowView.layer.shadowOffset = CGSize(width:0.0, height: 2.0)
-        cell.shadowView.layer.shadowRadius = 2.0
-        cell.shadowView.layer.shadowOpacity = 1.0
-        cell.shadowView.layer.cornerRadius = 10.0
-        cell.shadowView.layer.masksToBounds = false
         
         return cell
     }
-}
-
-extension TeamDetailViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchResult = searchBar.text else { return }
-        
-        var results: [Player]?
-        
-        results = team?.filter({ (player) -> Bool in
-            player.name.lowercased().contains(searchResult.lowercased())
-        })
-        
-        self.searchResult = results
-        rosterCollectionView.reloadData()
-    }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.searchResult = nil
-        rosterCollectionView.reloadData()
-    }
+    
 }
