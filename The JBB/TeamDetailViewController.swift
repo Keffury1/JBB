@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import UIImageColors
 
 class TeamDetailViewController: UIViewController {
 
@@ -14,10 +14,17 @@ class TeamDetailViewController: UIViewController {
     
     var team: [Player]?
     var searchResult: [Player]?
+    var backgroundColor: UIColor?
+    var textColor: UIColor?
+    var secondaryTextColor: UIColor?
     
     // MARK: - Outlets
     
-    @IBOutlet weak var teamImageView: UIImageView!
+    @IBOutlet weak var teamImageView: UIImageView! {
+        didSet {
+            updateViews()
+        }
+    }
     @IBOutlet weak var rosterTableView: UITableView!
     
     // MARK: - Views
@@ -45,6 +52,15 @@ class TeamDetailViewController: UIViewController {
         }
     }
     
+    func updateViews() {
+        teamImageView.image?.getColors { colors in
+            self.backgroundColor = colors?.background
+            self.view.backgroundColor = self.backgroundColor
+            self.textColor = colors?.primary
+            self.secondaryTextColor = colors?.secondary
+        }
+    }
+    
     // MARK: - Actions
     
     // MARK: - Navigation
@@ -66,11 +82,17 @@ extension TeamDetailViewController: UITableViewDataSource {
         let player = team[indexPath.row]
         
         cell.numberLabel.text = player.num
+        cell.numberLabel.textColor = secondaryTextColor
         cell.nameLabel.text = player.name
+        cell.nameLabel.textColor = textColor
         cell.hometownLabel.text = player.hometown
+        cell.hometownLabel.textColor = secondaryTextColor
         cell.positionLabel.text = player.pos
+        cell.positionLabel.textColor = secondaryTextColor
         cell.batThrowLabel.text = player.batThrow
+        cell.batThrowLabel.textColor = secondaryTextColor
         cell.heightWeightLabel.text = "\(player.height)/\(player.weight)"
+        cell.heightWeightLabel.textColor = secondaryTextColor
         switch Int(player.year) {
         case 1:
             cell.yearLabel.text = "Fr"
@@ -83,7 +105,9 @@ extension TeamDetailViewController: UITableViewDataSource {
         default:
             cell.yearLabel.text = ""
         }
+        cell.yearLabel.textColor = secondaryTextColor
         
+        cell.backgroundColor = backgroundColor
         return cell
     }
 }
