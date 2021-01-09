@@ -12,7 +12,11 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     
     // MARK: - Properties
     
-    var players: [Player] = []
+    var players: [Player] = [] {
+        didSet {
+            self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
+        }
+    }
     var teams: [[Player]] = []
     var divisionOne: [[Player]] = []
     var divisionTwo: [[Player]] = []
@@ -29,27 +33,6 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     @IBOutlet weak var divisionSegmentedControl: UISegmentedControl!
     
     // MARK: - Views
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        Networking.shared.fetchTeams(completion: { (result) in
-            DispatchQueue.main.async {
-                do {
-                    let result = try result.get()
-                    self.players = result
-                    self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
-                    for team in self.teams {
-                        if team.first?.division == "1" {
-                            self.divisionOne.append(team)
-                        }
-                    }
-                    self.teamsTableView.reloadData()
-                } catch {
-                    print("Error getting rankings: \(error)")
-                }
-            }
-        })
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,6 +68,14 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         teamsMapView.delegate = self
         teamsSearchBar.delegate = self
         teamsSearchBar.backgroundImage = UIImage()
+        
+        self.players = Networking.shared.playerList ?? []
+        for team in self.teams {
+            if team.first?.division == "1" {
+                self.divisionOne.append(team)
+            }
+        }
+        self.teamsTableView.reloadData()
     }
     
     func addAnnotation(_ player: Player) {
@@ -97,6 +88,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         annotation.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
         teamsMapView.addAnnotation(annotation)
     }
+
     
     // MARK: - Actions
     

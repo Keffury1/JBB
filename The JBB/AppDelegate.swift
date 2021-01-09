@@ -13,7 +13,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        Networking.shared.fetchTeams { result in
+            if let teams = try? result.get() {
+                DispatchQueue.main.async {
+                    Networking.shared.playerList = teams
+                }
+            }
+        }
+        Networking.shared.fetchRankings { result in
+            if let rankings = try? result.get() {
+                DispatchQueue.main.async {
+                    Networking.shared.rankingList = rankings
+                }
+            }
+        }
         return true
     }
 

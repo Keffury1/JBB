@@ -18,7 +18,7 @@ class RankingsViewController: UIViewController {
     }
     var rankingList: [Ranking] = [] {
         didSet {
-            self.rankings = sortTeamsByDivision()
+            self.rankings = Networking.shared.sortTeamsByDivision(from: self.rankingList)
         }
     }
     var rankings: [[Ranking]] = []
@@ -43,19 +43,9 @@ class RankingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        Networking.shared.fetchRankings { (result) in
-            DispatchQueue.main.async {
-                do {
-                    let result = try result.get()
-                    self.rankingList = result
-                    self.division1 = self.rankings[1]
-                    self.leader = self.division1.removeFirst()
-                    self.rankingsCollectionView.reloadData()
-                } catch {
-                    print("Error getting rankings: \(error)")
-                }
-            }
-        }
+        self.rankingList = Networking.shared.rankingList ?? []
+        self.division1 = rankings[1]
+        self.rankingsCollectionView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -97,23 +87,6 @@ class RankingsViewController: UIViewController {
         } else {
             leaderChangeLabel.textColor = .green
         }
-    }
-    
-    private func sortTeamsByDivision() -> [[Ranking]] {
-        var rankings: [[Ranking]] = [[]]
-        
-        var previous: String? = nil
-        
-        for team in rankingList {
-            let first = team.Division
-            
-            if first != previous {
-                rankings.append([])
-                previous = first
-            }
-            rankings[rankings.endIndex - 1].append(team)
-        }
-        return rankings
     }
     
     // MARK: - Actions

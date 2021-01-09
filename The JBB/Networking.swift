@@ -19,6 +19,9 @@ class Networking {
     
     static let shared = Networking()
     
+    var rankingList: [Ranking]?
+    var playerList: [Player]?
+    
     // MARK: - URLs
     
     private let rankingsUrl = URL(string: "https://sheetdb.io/api/v1/zpcfljmndw1hh")!
@@ -94,6 +97,23 @@ class Networking {
             league[league.endIndex - 1].append(player)
         }
         return league
+    }
+    
+    func sortTeamsByDivision(from teams: [Ranking]) -> [[Ranking]] {
+        var rankings: [[Ranking]] = [[]]
+        
+        var previous: String? = nil
+        
+        for team in teams {
+            let first = team.Division
+            
+            if first != previous {
+                rankings.append([])
+                previous = first
+            }
+            rankings[rankings.endIndex - 1].append(team)
+        }
+        return rankings
     }
     
     func fetchImage(at urlString: String?, completion: @escaping (_ data: Data?) -> ()) {
