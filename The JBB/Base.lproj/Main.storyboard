@@ -357,23 +357,18 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="elI-Za-8Vc">
                                 <rect key="frame" x="15" y="94" width="384" height="216"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="vM2-Ii-I0V">
-                                        <rect key="frame" x="10" y="138.5" width="182" height="24"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcV-Z7-pfy">
-                                                <rect key="frame" x="0.0" y="0.0" width="57" height="24"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                                <color key="textColor" name="Burlywood"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWR-7T-hP9">
-                                                <rect key="frame" x="113.5" y="0.0" width="68.5" height="24"/>
-                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZcV-Z7-pfy">
+                                        <rect key="frame" x="10" y="133.5" width="57" height="20.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                        <color key="textColor" name="Burlywood"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uWR-7T-hP9">
+                                        <rect key="frame" x="77" y="132" width="68.5" height="24"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SBG-hi-NZN">
                                         <rect key="frame" x="212" y="27" width="162" height="162"/>
                                         <constraints>
@@ -395,19 +390,20 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="vM2-Ii-I0V" firstAttribute="top" secondItem="GiF-5a-Rgy" secondAttribute="bottom" constant="10" id="8zb-Sy-TBA"/>
+                                    <constraint firstItem="ZcV-Z7-pfy" firstAttribute="top" secondItem="GiF-5a-Rgy" secondAttribute="bottom" constant="5" id="31G-WP-BV3"/>
                                     <constraint firstItem="SBG-hi-NZN" firstAttribute="leading" secondItem="cdK-WW-gGG" secondAttribute="trailing" id="Ank-6g-L6n"/>
+                                    <constraint firstItem="uWR-7T-hP9" firstAttribute="centerY" secondItem="ZcV-Z7-pfy" secondAttribute="centerY" id="DyY-2p-7Qp"/>
                                     <constraint firstItem="SBG-hi-NZN" firstAttribute="leading" secondItem="GiF-5a-Rgy" secondAttribute="trailing" id="GQJ-H2-AKc"/>
                                     <constraint firstItem="SBG-hi-NZN" firstAttribute="leading" secondItem="elI-Za-8Vc" secondAttribute="centerX" constant="20" id="Gho-eH-jnU"/>
                                     <constraint firstAttribute="trailing" secondItem="SBG-hi-NZN" secondAttribute="trailing" constant="10" id="GkO-D8-EEw"/>
                                     <constraint firstItem="cdK-WW-gGG" firstAttribute="leading" secondItem="elI-Za-8Vc" secondAttribute="leading" constant="10" id="KLC-ZL-Pjj"/>
-                                    <constraint firstItem="SBG-hi-NZN" firstAttribute="leading" secondItem="vM2-Ii-I0V" secondAttribute="trailing" constant="20" id="Kl9-cK-KxE"/>
                                     <constraint firstItem="GiF-5a-Rgy" firstAttribute="top" secondItem="cdK-WW-gGG" secondAttribute="bottom" id="PLB-lW-HgU"/>
+                                    <constraint firstItem="uWR-7T-hP9" firstAttribute="leading" secondItem="ZcV-Z7-pfy" secondAttribute="trailing" constant="10" id="RFy-o1-efq"/>
+                                    <constraint firstItem="ZcV-Z7-pfy" firstAttribute="leading" secondItem="GiF-5a-Rgy" secondAttribute="leading" id="ae0-1A-cPh"/>
                                     <constraint firstItem="SBG-hi-NZN" firstAttribute="centerY" secondItem="elI-Za-8Vc" secondAttribute="centerY" id="lhy-dP-gNe"/>
                                     <constraint firstAttribute="width" secondItem="elI-Za-8Vc" secondAttribute="height" multiplier="16:9" id="maM-Q3-yvY"/>
                                     <constraint firstItem="GiF-5a-Rgy" firstAttribute="centerY" secondItem="SBG-hi-NZN" secondAttribute="centerY" id="tZd-0e-16l"/>
                                     <constraint firstItem="GiF-5a-Rgy" firstAttribute="leading" secondItem="elI-Za-8Vc" secondAttribute="leading" constant="10" id="unQ-uQ-EyI"/>
-                                    <constraint firstItem="vM2-Ii-I0V" firstAttribute="leading" secondItem="elI-Za-8Vc" secondAttribute="leading" constant="10" id="vRz-NS-v6A"/>
                                 </constraints>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4M3-fy-jQm">
