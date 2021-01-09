@@ -196,6 +196,9 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
+        cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
+        cell.teamImageView.clipsToBounds = true
+        
         return cell
     }
     

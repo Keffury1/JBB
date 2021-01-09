@@ -86,6 +86,4 @@ extension TeamDetailViewController: UITableViewDataSource {
         
         return cell
     }
-    
-    
 }
