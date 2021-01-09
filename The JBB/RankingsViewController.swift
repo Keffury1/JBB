@@ -198,6 +198,9 @@ extension RankingsViewController: UICollectionViewDataSource {
             }
         }
         
+        cell.logoImageView.layer.cornerRadius = cell.logoImageView.frame.size.width / 2
+        cell.logoImageView.clipsToBounds = true
+        
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
         cell.shadowView.addShadowAndRadius()
