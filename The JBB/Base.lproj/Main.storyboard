@@ -135,7 +135,7 @@
             <objects>
                 <viewController title="Team Detail View Controller" id="OEk-U0-avN" customClass="TeamDetailViewController" customModule="The_JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8id-8k-wMF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8TA-Lc-QQp">
@@ -284,7 +284,7 @@
                                                     <rect key="frame" x="5" y="5" width="170" height="239"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Baseball" translatesAutoresizingMaskIntoConstraints="NO" id="Wb5-FI-Uwa">
-                                                            <rect key="frame" x="25" y="104" width="120" height="120"/>
+                                                            <rect key="frame" x="25" y="114" width="120" height="120"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="120" id="S5l-1h-3vk"/>
                                                                 <constraint firstAttribute="width" constant="120" id="VoY-ct-p5V"/>
@@ -303,13 +303,13 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z1e-dy-J5C">
-                                                            <rect key="frame" x="5" y="39" width="165" height="60"/>
+                                                            <rect key="frame" x="5" y="39" width="165" height="70"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <color key="textColor" name="Indigo"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vuT-3K-hiZ">
-                                                            <rect key="frame" x="61" y="135" width="48" height="48"/>
+                                                            <rect key="frame" x="61" y="145" width="48" height="48"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="48" id="2rs-Dq-mLp"/>
                                                                 <constraint firstAttribute="width" constant="48" id="GuZ-Uy-XUC"/>
@@ -325,9 +325,9 @@
                                                         <constraint firstItem="Wb5-FI-Uwa" firstAttribute="centerX" secondItem="yOC-d2-gth" secondAttribute="centerX" id="RNW-bP-Vnh"/>
                                                         <constraint firstAttribute="trailing" secondItem="Z1e-dy-J5C" secondAttribute="trailing" id="TGn-Ja-OLM"/>
                                                         <constraint firstItem="zAX-Fz-ffh" firstAttribute="trailing" secondItem="Fyg-Nt-v7z" secondAttribute="trailing" id="jyk-0v-G70"/>
-                                                        <constraint firstAttribute="bottom" secondItem="Wb5-FI-Uwa" secondAttribute="bottom" constant="15" id="lmk-bm-WSL"/>
+                                                        <constraint firstAttribute="bottom" secondItem="Wb5-FI-Uwa" secondAttribute="bottom" constant="5" id="lmk-bm-WSL"/>
                                                         <constraint firstItem="vuT-3K-hiZ" firstAttribute="centerX" secondItem="yOC-d2-gth" secondAttribute="centerX" id="viE-aQ-35i"/>
-                                                        <constraint firstAttribute="bottom" secondItem="vuT-3K-hiZ" secondAttribute="bottom" constant="56" id="zs2-Fr-fiM"/>
+                                                        <constraint firstAttribute="bottom" secondItem="vuT-3K-hiZ" secondAttribute="bottom" constant="46" id="zs2-Fr-fiM"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnu-GI-3km">

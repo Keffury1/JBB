@@ -59,6 +59,7 @@ class TeamDetailViewController: UIViewController {
             self.textColor = colors?.primary
             self.secondaryTextColor = colors?.secondary
         }
+        teamImageView.addShadowAndRadius()
     }
     
     // MARK: - Actions
