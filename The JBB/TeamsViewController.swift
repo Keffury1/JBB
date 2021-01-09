@@ -7,6 +7,7 @@
 
 import UIKit
 import MapKit
+import UIImageColors
 
 class TeamsViewController: UIViewController, TableViewCellDelegate {
     
@@ -194,6 +195,11 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 print("Error fetching leader image")
             }
+        }
+        
+        cell.imageView?.image?.getColors { colors in
+            cell.teamNameLabel.textColor = colors?.primary
+            cell.rosterButton.backgroundColor = colors?.secondary
         }
         
         cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
