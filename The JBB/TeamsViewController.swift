@@ -241,17 +241,17 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
                 addAnnotation(player)
             }
         case 1:
-            let team = divisionOne[indexPath.row]
+            let team = divisionTwo[indexPath.row]
             if let player = team.first {
                 addAnnotation(player)
             }
         case 2:
-            let team = divisionOne[indexPath.row]
+            let team = divisionThree[indexPath.row]
             if let player = team.first {
                 addAnnotation(player)
             }
         case 3:
-            let team = divisionOne[indexPath.row]
+            let team = cCCAA[indexPath.row]
             if let player = team.first {
                 addAnnotation(player)
             }
