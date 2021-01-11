@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
         Networking.shared.fetchTeams { result in
             if let teams = try? result.get() {
                 DispatchQueue.main.async {
@@ -20,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
+        
         Networking.shared.fetchRankings { result in
             if let rankings = try? result.get() {
                 DispatchQueue.main.async {

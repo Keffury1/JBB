@@ -13,6 +13,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     
     // MARK: - Properties
     
+    var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var players: [Player] = [] {
         didSet {
             self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
