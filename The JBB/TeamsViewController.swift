@@ -8,12 +8,14 @@
 import UIKit
 import MapKit
 import UIImageColors
+import GoogleMobileAds
 
 class TeamsViewController: UIViewController, TableViewCellDelegate {
     
     // MARK: - Properties
     
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
+    var testBannerAd = "ca-app-pub-3940256099942544/2934735716"
     var players: [Player] = [] {
         didSet {
             self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
@@ -29,6 +31,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var bannerAdView: GADBannerView!
     @IBOutlet weak var teamsMapView: MKMapView!
     @IBOutlet weak var teamsTableView: UITableView!
     @IBOutlet weak var teamsSearchBar: UISearchBar!
@@ -40,9 +43,31 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         super.viewDidLoad()
         
         setupSubviews()
+        setupAds()
     }
     
     // MARK: - Methods
+    
+    func setupAds() {
+        bannerAdView.adUnitID = testBannerAd
+        bannerAdView.rootViewController = self
+        loadBannerAd()
+    }
+    
+    func loadBannerAd() {
+        let frame = { () -> CGRect in
+          if #available(iOS 11.0, *) {
+            return view.frame.inset(by: view.safeAreaInsets)
+          } else {
+            return view.frame
+          }
+        }()
+        let viewWidth = frame.size.width
+
+        bannerAdView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+
+        bannerAdView.load(GADRequest())
+    }
     
     func buttonPressed(index: Int) {
         

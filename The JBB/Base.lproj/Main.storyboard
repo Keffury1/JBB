@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rxj-Zd-w0Z">
-                                <rect key="frame" x="10" y="54" width="394" height="249.5"/>
+                                <rect key="frame" x="10" y="104" width="394" height="199.5"/>
                             </mapView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Vy-IBO">
                                 <rect key="frame" x="10" y="420.5" width="394" height="382.5"/>
@@ -98,28 +98,39 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8X-Jp-XrV">
+                                <rect key="frame" x="0.0" y="44" width="414" height="50"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="I07-Kt-bJR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="OmU-U6-kby"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rxj-Zd-w0Z" firstAttribute="leading" secondItem="OmU-U6-kby" secondAttribute="leading" constant="10" id="19Q-we-WeE"/>
-                            <constraint firstItem="rxj-Zd-w0Z" firstAttribute="top" secondItem="OmU-U6-kby" secondAttribute="top" constant="10" id="1q1-Qq-Mav"/>
                             <constraint firstItem="reI-Vy-IBO" firstAttribute="leading" secondItem="OmU-U6-kby" secondAttribute="leading" constant="10" id="3IL-oG-ZHf"/>
                             <constraint firstItem="zHP-rU-8bk" firstAttribute="leading" secondItem="OmU-U6-kby" secondAttribute="leading" constant="20" id="6EY-Dr-0lu"/>
                             <constraint firstItem="OmU-U6-kby" firstAttribute="trailing" secondItem="reI-Vy-IBO" secondAttribute="trailing" constant="10" id="7EG-IL-LND"/>
                             <constraint firstItem="OmU-U6-kby" firstAttribute="bottom" secondItem="reI-Vy-IBO" secondAttribute="bottom" constant="10" id="KP1-Du-lk8"/>
+                            <constraint firstItem="OmU-U6-kby" firstAttribute="trailing" secondItem="E8X-Jp-XrV" secondAttribute="trailing" id="PgZ-z3-MLe"/>
                             <constraint firstItem="8Za-i7-8DQ" firstAttribute="top" secondItem="zHP-rU-8bk" secondAttribute="bottom" constant="5" id="SoV-oH-OIk"/>
                             <constraint firstItem="reI-Vy-IBO" firstAttribute="top" secondItem="8Za-i7-8DQ" secondAttribute="bottom" constant="10" id="VIQ-Bl-f3S"/>
                             <constraint firstItem="8Za-i7-8DQ" firstAttribute="leading" secondItem="OmU-U6-kby" secondAttribute="leading" id="Z52-Vl-F6V"/>
                             <constraint firstItem="OmU-U6-kby" firstAttribute="trailing" secondItem="rxj-Zd-w0Z" secondAttribute="trailing" constant="10" id="amR-aH-63y"/>
                             <constraint firstItem="OmU-U6-kby" firstAttribute="trailing" secondItem="zHP-rU-8bk" secondAttribute="trailing" constant="20" id="cEo-rf-MjA"/>
+                            <constraint firstItem="E8X-Jp-XrV" firstAttribute="leading" secondItem="OmU-U6-kby" secondAttribute="leading" id="eav-Jb-sCF"/>
+                            <constraint firstItem="rxj-Zd-w0Z" firstAttribute="top" secondItem="E8X-Jp-XrV" secondAttribute="bottom" constant="10" id="egE-uA-Gc4"/>
                             <constraint firstItem="zHP-rU-8bk" firstAttribute="top" secondItem="rxj-Zd-w0Z" secondAttribute="bottom" constant="15" id="haR-fp-xsX"/>
                             <constraint firstItem="8Za-i7-8DQ" firstAttribute="trailing" secondItem="OmU-U6-kby" secondAttribute="trailing" id="oEa-dw-xXm"/>
+                            <constraint firstItem="E8X-Jp-XrV" firstAttribute="top" secondItem="bsb-bn-ssp" secondAttribute="topMargin" id="qq5-EC-AA0"/>
                             <constraint firstItem="OmU-U6-kby" firstAttribute="centerY" secondItem="rxj-Zd-w0Z" secondAttribute="bottom" constant="125" id="x6Y-pQ-6aG"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="bus" catalog="system" id="acY-kT-64o"/>
                     <connections>
+                        <outlet property="bannerAdView" destination="E8X-Jp-XrV" id="nC5-eK-zGK"/>
                         <outlet property="divisionSegmentedControl" destination="zHP-rU-8bk" id="eTl-SH-CN3"/>
                         <outlet property="teamsMapView" destination="rxj-Zd-w0Z" id="pbT-C4-YtK"/>
                         <outlet property="teamsSearchBar" destination="8Za-i7-8DQ" id="FHL-3q-wnW"/>
