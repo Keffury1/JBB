@@ -16,6 +16,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testBannerAd = "ca-app-pub-3940256099942544/2934735716"
+    var bannerView: GADBannerView!
     var players: [Player] = [] {
         didSet {
             self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
@@ -31,7 +32,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var bannerAdView: GADBannerView!
+    @IBOutlet weak var bannerAdView: UIView!
     @IBOutlet weak var teamsMapView: MKMapView!
     @IBOutlet weak var teamsTableView: UITableView!
     @IBOutlet weak var teamsSearchBar: UISearchBar!
@@ -43,31 +44,31 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         super.viewDidLoad()
         
         setupSubviews()
-        setupAds()
+//        setupAds()
     }
     
     // MARK: - Methods
     
-    func setupAds() {
-        bannerAdView.adUnitID = testBannerAd
-        bannerAdView.rootViewController = self
-        loadBannerAd()
-    }
-    
-    func loadBannerAd() {
-        let frame = { () -> CGRect in
-          if #available(iOS 11.0, *) {
-            return view.frame.inset(by: view.safeAreaInsets)
-          } else {
-            return view.frame
-          }
-        }()
-        let viewWidth = frame.size.width
-
-        bannerAdView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
-
-        bannerAdView.load(GADRequest())
-    }
+//    func setupAds() {
+//        bannerView.adUnitID = testBannerAd
+//        bannerView.rootViewController = self
+//        loadBannerAd()
+//    }
+//
+//    func loadBannerAd() {
+//        let frame = { () -> CGRect in
+//          if #available(iOS 11.0, *) {
+//            return view.frame.inset(by: view.safeAreaInsets)
+//          } else {
+//            return view.frame
+//          }
+//        }()
+//        let viewWidth = frame.size.width
+//
+//        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
+//
+//        bannerView.load(GADRequest())
+//    }
     
     func buttonPressed(index: Int) {
         
@@ -95,14 +96,6 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         teamsMapView.delegate = self
         teamsSearchBar.delegate = self
         teamsSearchBar.backgroundImage = UIImage()
-        
-        self.players = Networking.shared.playerList ?? []
-        for team in self.teams {
-            if team.first?.division == "1" {
-                self.divisionOne.append(team)
-            }
-        }
-        self.teamsTableView.reloadData()
     }
     
     func addAnnotation(_ player: Player) {
@@ -121,35 +114,37 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
         self.selectedIndex = sender.selectedSegmentIndex
-        switch selectedIndex {
-        case 0:
-            for team in teams {
-                if team.first?.division == "1" {
-                    divisionOne.append(team)
+        if let teams = Networking.shared.playerList {
+            switch selectedIndex {
+            case 0:
+                for team in teams {
+                    if team.first?.division == "1" {
+                        divisionOne.append(team)
+                    }
                 }
-            }
-        case 1:
-            for team in teams {
-                if team.first?.division == "2" {
-                    divisionTwo.append(team)
+            case 1:
+                for team in teams {
+                    if team.first?.division == "2" {
+                        divisionTwo.append(team)
+                    }
                 }
-            }
-        case 2:
-            for team in teams {
-                if team.first?.division == "3" {
-                    divisionThree.append(team)
+            case 2:
+                for team in teams {
+                    if team.first?.division == "3" {
+                        divisionThree.append(team)
+                    }
                 }
-            }
-        case 3:
-            for team in teams {
-                if team.first?.division == "CCCAA" {
-                    cCCAA.append(team)
+            case 3:
+                for team in teams {
+                    if team.first?.division == "CCCAA" {
+                        cCCAA.append(team)
+                    }
                 }
+            default:
+                return
             }
-        default:
-            return
+            teamsTableView.reloadData()
         }
-        teamsTableView.reloadData()
     }
     
     // MARK: - Navigation

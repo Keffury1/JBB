@@ -19,16 +19,16 @@ class Networking {
     
     static let shared = Networking()
     
-    var rankingList: [Ranking]?
-    var playerList: [Player]?
+    var rankingList: [[Ranking]]?
+    var playerList: [[Player]]?
     
     // MARK: - URLs
     
-    private let rankingsUrl = URL(string: "https://sheetdb.io/api/v1/zpcfljmndw1hh")!
+    private let rankingsUrl = URL(string: "https://sheetdb.io/api/v1/oxdzti3x7zh7c")!
     
-    private let teamsUrl = URL(string: "https://sheetdb.io/api/v1/af61ce4gn2ps4")!
+    private let teamsUrl = URL(string: "https://sheetdb.io/api/v1/9oqa36i1lo6wg")!
     
-    func fetchRankings(completion: @escaping (Result<[Ranking], Error>) -> Void) {
+    func fetchRankings(completion: @escaping (Result<[[Ranking]], Error>) -> Void) {
         var request = URLRequest(url: rankingsUrl)
         request.httpMethod = "GET"
         
@@ -46,7 +46,8 @@ class Networking {
             
             do {
                 let rankings = try decoder.decode([Ranking].self, from: data)
-                completion(.success(rankings))
+                let rankingsList = self.sortTeamsByDivision(from: rankings)
+                completion(.success(rankingsList))
             } catch {
                 print("Error decoding rankings: \(error)")
                 completion(.failure(error))
@@ -55,7 +56,7 @@ class Networking {
         }.resume()
     }
     
-    func fetchTeams(completion: @escaping (Result<[Player], Error>) -> Void) {
+    func fetchTeams(completion: @escaping (Result<[[Player]], Error>) -> Void) {
         var request = URLRequest(url: teamsUrl)
         request.httpMethod = "GET"
         
@@ -73,7 +74,8 @@ class Networking {
             
             do {
                 let teams = try decoder.decode([Player].self, from: data)
-                completion(.success(teams))
+                let players = self.sortPlayersByTeam(from: teams)
+                completion(.success(players))
             } catch {
                 print("Error decoding rankings: \(error)")
                 completion(.failure(error))
