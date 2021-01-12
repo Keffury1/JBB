@@ -40,6 +40,7 @@ class RankingsViewController: UIViewController {
     
     private func setupSubviews() {
         rankingsTableView.dataSource = self
+        rankingsTableView.delegate = self
     }
     
     // MARK: - Actions
@@ -50,7 +51,7 @@ class RankingsViewController: UIViewController {
     }
 }
 
-extension RankingsViewController: UITableViewDataSource {
+extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch selectedSegmentIndex {
         case 0:
@@ -119,6 +120,10 @@ extension RankingsViewController: UITableViewDataSource {
         
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 90
     }
 }
 
