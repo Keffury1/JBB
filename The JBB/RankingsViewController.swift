@@ -26,13 +26,10 @@ class RankingsViewController: UIViewController {
     
     // MARK: - Views
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
+        startAnimation()
         Networking.shared.rankingsDelegate = self
     }
     
@@ -43,7 +40,14 @@ class RankingsViewController: UIViewController {
         rankingsTableView.delegate = self
     }
     
-    func stopAnimation() {
+    private func startAnimation() {
+        logoImageView.transform = CGAffineTransform(scaleX: 0.000001, y: 0.000001)
+        UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: [], animations: {
+            self.logoImageView.transform = .identity
+        }, completion: nil)
+    }
+    
+    private func stopAnimation() {
         UIView.animate(withDuration: 1.0) {
             self.logoView.alpha = 0
         }

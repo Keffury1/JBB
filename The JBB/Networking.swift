@@ -35,8 +35,7 @@ class Networking {
     // MARK: - URLs
     
     private let teamsUrl = URL(string: "https://sheetdb.io/api/v1/9oqa36i1lo6wg")!
-    
-    
+
     func fetchTeams(completion: @escaping (Result<[[Player]], Error>) -> Void) {
         var request = URLRequest(url: teamsUrl)
         request.httpMethod = "GET"
