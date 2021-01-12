@@ -13,15 +13,20 @@ protocol TableViewCellDelegate {
 
 class TeamTableViewCell: UITableViewCell {
     
-    var delegate: TableViewCellDelegate?
+    //MARK: - Properties
     
+    var delegate: TableViewCellDelegate?
     var index: Int?
 
+    //MARK: - Outlets
+    
     @IBOutlet weak var rosterButton: UIButton!
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var latLonLabel: UILabel!
     @IBOutlet weak var regionLabel: UILabel!
+    
+    //MARK: - Actions
     
     @IBAction func rosterButtonTapped(_ sender: Any) {
         guard let index = index else { return }

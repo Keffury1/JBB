@@ -17,6 +17,7 @@ class TeamDetailViewController: UIViewController {
     
     // MARK: - Outlets
     
+    @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var teamImageView: UIImageView! {
         didSet {
             updateViews()
@@ -26,9 +27,8 @@ class TeamDetailViewController: UIViewController {
     
     // MARK: - Views
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         setupSubviews()
     }
     
@@ -37,6 +37,7 @@ class TeamDetailViewController: UIViewController {
     func setupSubviews() {
         rosterTableView.dataSource = self
         if let team = team {
+            teamNameLabel.text = team.first?.school
             Networking.shared.fetchImage(at: team.first?.image, completion: { (data) in
                 if let data = data {
                     DispatchQueue.main.async {
@@ -51,11 +52,15 @@ class TeamDetailViewController: UIViewController {
     }
     
     func updateViews() {
+        rosterTableView.reloadData()
         teamImageView.image?.getColors { colors in
             self.view.backgroundColor = colors?.background
+            self.teamNameLabel.textColor = colors?.primary
+            self.teamImageView.layer.borderColor = colors?.primary.cgColor
         }
         teamImageView.layer.cornerRadius = teamImageView.frame.size.width / 2
         teamImageView.clipsToBounds = true
+        teamImageView.layer.borderWidth = 2.0
     }
     
     // MARK: - Actions

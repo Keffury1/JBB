@@ -193,7 +193,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.teamNameLabel.text = teamCell.first?.school
         let lat = Double(teamCell.first!.lat)
         let lon = Double(teamCell.first!.lon)
-        cell.latLonLabel.text = "lat:\(String(format: "%.2f", ceil(lat!*100)/100)) lon:\(String(format: "%.2f", ceil(lon!*100)/100))"
+        cell.latLonLabel.text = "\(String(format: "%.2f", ceil(lat!*100)/100)) | \(String(format: "%.2f", ceil(lon!*100)/100))"
         cell.regionLabel.text = teamCell.first?.region
         
         Networking.shared.fetchImage(at: teamCell.first?.image) { (data) in
@@ -201,6 +201,10 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
             if let data = data {
                 DispatchQueue.main.async {
                     cell.teamImageView.image = UIImage(data: data)
+                    cell.teamImageView.image?.getColors { colors in
+                        cell.rosterButton.tintColor = colors?.primary
+                        cell.teamImageView.layer.borderColor = colors?.primary.cgColor
+                    }
                 }
             } else {
                 print("Error fetching leader image")
@@ -209,6 +213,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
         cell.teamImageView.clipsToBounds = true
+        cell.teamImageView.layer.borderWidth = 1.0
         
         return cell
     }
@@ -265,19 +270,19 @@ extension TeamsViewController: UISearchBarDelegate {
         switch selectedIndex {
         case 0:
             results = divisionOne.filter({ (team) -> Bool in
-                team.contains(where: { $0.school == searchTerm })
+                team.contains(where: { $0.school.contains(searchTerm) })
             })
         case 1:
             results = divisionTwo.filter({ (team) -> Bool in
-                team.contains(where: { $0.school == searchTerm })
+                team.contains(where: { $0.school.contains(searchTerm) })
             })
         case 2:
             results = divisionThree.filter({ (team) -> Bool in
-                team.contains(where: { $0.school == searchTerm })
+                team.contains(where: { $0.school.contains(searchTerm) })
             })
         case 3:
             results = cCCAA.filter({ (team) -> Bool in
-                team.contains(where: { $0.school == searchTerm })
+                team.contains(where: { $0.school.contains(searchTerm) })
             })
         default:
             return
@@ -286,10 +291,12 @@ extension TeamsViewController: UISearchBarDelegate {
             self.searchResults = result
             self.teamsTableView.reloadData()
         }
+        searchBar.endEditing(true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchResults = nil
+        searchBar.endEditing(true)
         teamsTableView.reloadData()
     }
 }

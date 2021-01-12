@@ -16,7 +16,4 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var changeLabel: UILabel!
-    @IBOutlet weak var rosterButton: UIButton!
-    @IBAction func rosterButtonTapped(_ sender: Any) {
-    }
 }

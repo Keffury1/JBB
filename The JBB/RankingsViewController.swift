@@ -91,12 +91,17 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
         if rank.Rank == "1" {
             cell.rankLabel.text = "👑"
         } else {
-            cell.rankLabel.text = "# \(rank.Rank)"
+            cell.rankLabel.text = "\(rank.Rank)"
         }
         cell.recordLabel.text = rank.Record
+        cell.changeLabel.text = rank.Change
         
         if change.rangeOfCharacter(from: characterset.inverted) != nil {
-            cell.changeLabel.textColor = .systemRed
+            if change == "-" {
+                cell.changeLabel.textColor = .black
+            } else {
+                cell.changeLabel.textColor = .systemRed
+            }
         } else {
             cell.changeLabel.textColor = .systemGreen
         }
@@ -106,6 +111,9 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
             if let data = data {
                 DispatchQueue.main.async {
                     cell.teamImageView.image = UIImage(data: data)
+                    cell.teamImageView.image?.getColors { colors in
+                        cell.teamImageView.layer.borderColor = colors?.primary.cgColor
+                    }
                 }
             } else {
                 print("Error fetching leader image")
@@ -114,10 +122,7 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
         cell.teamImageView.clipsToBounds = true
-        
-        cell.backgroundColor = .clear
-        cell.contentView.backgroundColor = .clear
-        
+        cell.teamImageView.layer.borderWidth = 1.5
         
         return cell
     }
