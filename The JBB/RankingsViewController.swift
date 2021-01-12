@@ -42,6 +42,7 @@ class RankingsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
+        Networking.shared.rankingsDelegate = self
     }
     
     // MARK: - Methods
@@ -85,23 +86,17 @@ class RankingsViewController: UIViewController {
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
         self.selectedSegmentIndex = sender.selectedSegmentIndex
-        if let rankings = Networking.shared.rankingList {
-            switch selectedSegmentIndex {
-            case 0:
-                division1 = rankings[1]
-                leader = division1.removeFirst()
-            case 1:
-                division2 = rankings[2]
-                leader = division2.removeFirst()
-            case 2:
-                division3 = rankings[3]
-                leader = division3.removeFirst()
-            case 3:
-                CCCAA = rankings[4]
-                leader = CCCAA.removeFirst()
-            default:
-                return
-            }
+        switch selectedSegmentIndex {
+        case 0:
+            leader = division1.first
+        case 1:
+            leader = division2.first
+        case 2:
+            leader = division3.first
+        case 3:
+            leader = CCCAA.first
+        default:
+            return
         }
         rankingsCollectionView.reloadData()
     }
@@ -174,5 +169,30 @@ extension RankingsViewController: UICollectionViewDataSource {
         cell.logoImageView.addShadowAndRadius()
         
         return cell
+    }
+}
+
+extension RankingsViewController: RankingsFilledDelegate {
+    func rankingsWereFilled(list: [[Ranking]]) {
+        let rankings = list
+        
+        division1 = rankings[1]
+        division2 = rankings[2]
+        division3 = rankings[3]
+        CCCAA = rankings[4]
+        
+        switch selectedSegmentIndex {
+        case 0:
+            leader = division1.removeFirst()
+        case 1:
+            leader = division2.removeFirst()
+        case 2:
+            leader = division3.removeFirst()
+        case 3:
+            leader = CCCAA.removeFirst()
+        default:
+            return
+        }
+        rankingsCollectionView.reloadData()
     }
 }

@@ -15,12 +15,22 @@ enum NetworkError: Error {
     case noDecode
 }
 
+protocol RankingsFilledDelegate {
+    func rankingsWereFilled(list: [[Ranking]])
+}
+
 class Networking {
     
     static let shared = Networking()
     
-    var rankingList: [[Ranking]]?
-    var playerList: [[Player]]?
+    var rankingsDelegate: RankingsFilledDelegate?
+    
+    var rankingList: [[Ranking]]? {
+        didSet {
+            rankingsDelegate?.rankingsWereFilled(list: self.rankingList!)
+        }
+    }
+    var playerList: [[Player]]? 
     
     // MARK: - URLs
     

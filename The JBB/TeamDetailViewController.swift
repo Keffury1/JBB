@@ -14,9 +14,6 @@ class TeamDetailViewController: UIViewController {
     
     var team: [Player]?
     var searchResult: [Player]?
-    var backgroundColor: UIColor?
-    var textColor: UIColor?
-    var secondaryTextColor: UIColor?
     
     // MARK: - Outlets
     
@@ -44,6 +41,7 @@ class TeamDetailViewController: UIViewController {
                 if let data = data {
                     DispatchQueue.main.async {
                         self.teamImageView.image = UIImage(data: data)
+                        self.updateViews()
                     }
                 } else {
                     print("Error fetching leader image")
@@ -54,11 +52,10 @@ class TeamDetailViewController: UIViewController {
     
     func updateViews() {
         teamImageView.image?.getColors { colors in
-            self.backgroundColor = colors?.background
-            self.view.backgroundColor = self.backgroundColor
-            self.textColor = colors?.primary
-            self.secondaryTextColor = colors?.secondary
+            self.view.backgroundColor = colors?.background
         }
+        teamImageView.layer.cornerRadius = teamImageView.frame.size.width / 2
+        teamImageView.clipsToBounds = true
         teamImageView.addShadowAndRadius()
     }
     
@@ -83,17 +80,11 @@ extension TeamDetailViewController: UITableViewDataSource {
         let player = team[indexPath.row]
         
         cell.numberLabel.text = player.num
-        cell.numberLabel.textColor = secondaryTextColor
         cell.nameLabel.text = player.name
-        cell.nameLabel.textColor = textColor
         cell.hometownLabel.text = player.hometown
-        cell.hometownLabel.textColor = secondaryTextColor
         cell.positionLabel.text = player.pos
-        cell.positionLabel.textColor = secondaryTextColor
         cell.batThrowLabel.text = player.batThrow
-        cell.batThrowLabel.textColor = secondaryTextColor
         cell.heightWeightLabel.text = "\(player.height)/\(player.weight)"
-        cell.heightWeightLabel.textColor = secondaryTextColor
         switch Int(player.year) {
         case 1:
             cell.yearLabel.text = "Fr"
@@ -106,9 +97,17 @@ extension TeamDetailViewController: UITableViewDataSource {
         default:
             cell.yearLabel.text = ""
         }
-        cell.yearLabel.textColor = secondaryTextColor
         
-        cell.backgroundColor = backgroundColor
+        teamImageView.image?.getColors { colors in
+            cell.yearLabel.textColor = colors?.secondary
+            cell.backgroundColor = colors?.background
+            cell.heightWeightLabel.textColor = colors?.secondary
+            cell.batThrowLabel.textColor = colors?.secondary
+            cell.positionLabel.textColor = colors?.secondary
+            cell.numberLabel.textColor = colors?.secondary
+            cell.nameLabel.textColor = colors?.primary
+            cell.hometownLabel.textColor = colors?.secondary
+        }
         return cell
     }
 }

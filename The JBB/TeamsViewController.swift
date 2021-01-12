@@ -17,12 +17,6 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testBannerAd = "ca-app-pub-3940256099942544/2934735716"
     var bannerView: GADBannerView!
-    var players: [Player] = [] {
-        didSet {
-            self.teams = Networking.shared.sortPlayersByTeam(from: self.players)
-        }
-    }
-    var teams: [[Player]] = []
     var divisionOne: [[Player]] = []
     var divisionTwo: [[Player]] = []
     var divisionThree: [[Player]] = []
@@ -44,6 +38,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         super.viewDidLoad()
         
         setupSubviews()
+        filterTeams()
 //        setupAds()
     }
     
@@ -108,43 +103,33 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         annotation.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
         teamsMapView.addAnnotation(annotation)
     }
+    
+    func filterTeams() {
+        if let teams = Networking.shared.playerList {
+            teams.forEach { (team) in
+                switch team.first?.division {
+                case "1":
+                    divisionOne.append(team)
+                case "2":
+                    divisionTwo.append(team)
+                case "3":
+                    divisionThree.append(team)
+                case "CCCAA":
+                    cCCAA.append(team)
+                default:
+                    return
+                }
+            }
+        }
+        teamsTableView.reloadData()
+    }
 
     
     // MARK: - Actions
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
         self.selectedIndex = sender.selectedSegmentIndex
-        if let teams = Networking.shared.playerList {
-            switch selectedIndex {
-            case 0:
-                for team in teams {
-                    if team.first?.division == "1" {
-                        divisionOne.append(team)
-                    }
-                }
-            case 1:
-                for team in teams {
-                    if team.first?.division == "2" {
-                        divisionTwo.append(team)
-                    }
-                }
-            case 2:
-                for team in teams {
-                    if team.first?.division == "3" {
-                        divisionThree.append(team)
-                    }
-                }
-            case 3:
-                for team in teams {
-                    if team.first?.division == "CCCAA" {
-                        cCCAA.append(team)
-                    }
-                }
-            default:
-                return
-            }
-            teamsTableView.reloadData()
-        }
+        teamsTableView.reloadData()
     }
     
     // MARK: - Navigation
@@ -216,11 +201,6 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
             } else {
                 print("Error fetching leader image")
             }
-        }
-        
-        cell.imageView?.image?.getColors { colors in
-            cell.teamNameLabel.textColor = colors?.primary
-            cell.rosterButton.backgroundColor = colors?.secondary
         }
         
         cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
