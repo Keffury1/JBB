@@ -11,10 +11,9 @@ class RankingsViewController: UIViewController {
 
     // MARK: - Properties
     
-    var division1: [Ranking] = []
-    var division2: [Ranking] = []
-    var division3: [Ranking] = []
-    var CCCAA: [Ranking] = []
+    var division1: [Player] = []
+    var division2: [Player] = []
+    var division3: [Player] = []
     var selectedSegmentIndex = 0
     let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+")
     
@@ -67,8 +66,6 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
             return division2.count
         case 2:
             return division3.count
-        case 3:
-            return CCCAA.count
         default:
             return 0
         }
@@ -77,7 +74,7 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as? RankingTableViewCell else { return UITableViewCell() }
         
-        var cellRank: Ranking?
+        var cellRank: Player?
         
         switch selectedSegmentIndex {
         case 0:
@@ -86,25 +83,23 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
             cellRank = division2[indexPath.row]
         case 2:
             cellRank = division3[indexPath.row]
-        case 3:
-            cellRank = CCCAA[indexPath.row]
         default:
             return UITableViewCell()
         }
         
-        guard let rank = cellRank, let change = rank.Change else { return UITableViewCell() }
+        guard let rank = cellRank else { return UITableViewCell() }
         
-        cell.teamNameLabel.text = rank.Team
-        if rank.Rank == "1" {
+        cell.teamNameLabel.text = rank.school
+        if rank.rank == "1" {
             cell.rankLabel.text = "👑"
         } else {
-            cell.rankLabel.text = "\(rank.Rank)"
+            cell.rankLabel.text = rank.rank
         }
-        cell.recordLabel.text = rank.Record
-        cell.changeLabel.text = rank.Change
+        cell.recordLabel.text = rank.record
+        cell.changeLabel.text = rank.change
         
-        if change.rangeOfCharacter(from: characterset.inverted) != nil {
-            if change == "-" {
+        if rank.change.rangeOfCharacter(from: characterset.inverted) != nil {
+            if rank.change == "-" {
                 cell.changeLabel.textColor = .black
             } else {
                 cell.changeLabel.textColor = .systemRed
@@ -113,7 +108,7 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.changeLabel.textColor = .systemGreen
         }
         
-        Networking.shared.fetchImage(at: rank.Image) { (data) in
+        Networking.shared.fetchImage(at: rank.image) { (data) in
             
             if let data = data {
                 DispatchQueue.main.async {
@@ -140,18 +135,26 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension RankingsViewController: RankingsFilledDelegate {
-    func rankingsWereFilled(list: [[Ranking]]) {
+    func rankingsWereFilled(list: [[Player]]) {
         let rankings = list
         
-        division1 = rankings[1]
-        division2 = rankings[2]
-        division3 = rankings[3]
-        CCCAA = rankings[4]
+        rankings.forEach { (team) in
+            switch team.first?.division {
+            case "1":
+                division1.append(contentsOf: team)
+            case "2":
+                division2.append(contentsOf: team)
+            case "3":
+                division3.append(contentsOf: team)
+            default:
+                return
+            }
+        }
         
         rankingsTableView.reloadData()
-    }
-    
-    func teamsWereFilled() {
-        stopAnimation()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.stopAnimation()
+        }
     }
 }

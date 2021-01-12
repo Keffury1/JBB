@@ -16,9 +16,7 @@ enum NetworkError: Error {
 }
 
 protocol RankingsFilledDelegate {
-    func rankingsWereFilled(list: [[Ranking]])
-    
-    func teamsWereFilled()
+    func rankingsWereFilled(list: [[Player]])
 }
 
 class Networking {
@@ -27,50 +25,17 @@ class Networking {
     
     var rankingsDelegate: RankingsFilledDelegate?
     
-    var rankingList: [[Ranking]]? {
+    var rankingList: [[Player]]? {
         didSet {
             rankingsDelegate?.rankingsWereFilled(list: self.rankingList!)
         }
     }
-    var playerList: [[Player]]? {
-        didSet {
-            rankingsDelegate?.teamsWereFilled()
-        }
-    }
+    var playerList: [[Player]]?
     
     // MARK: - URLs
     
-    private let rankingsUrl = URL(string: "https://sheetdb.io/api/v1/oxdzti3x7zh7c")!
-    
     private let teamsUrl = URL(string: "https://sheetdb.io/api/v1/9oqa36i1lo6wg")!
     
-    func fetchRankings(completion: @escaping (Result<[[Ranking]], Error>) -> Void) {
-        var request = URLRequest(url: rankingsUrl)
-        request.httpMethod = "GET"
-        
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
-            if let error = error {
-                print(String(describing: error))
-                completion(.failure(error))
-                return
-            }
-            
-            guard let data = data else { return }
-            
-            let decoder = JSONDecoder()
-            
-            do {
-                let rankings = try decoder.decode([Ranking].self, from: data)
-                let rankingsList = self.sortTeamsByDivision(from: rankings)
-                completion(.success(rankingsList))
-            } catch {
-                print("Error decoding rankings: \(error)")
-                completion(.failure(error))
-                return
-            }
-        }.resume()
-    }
     
     func fetchTeams(completion: @escaping (Result<[[Player]], Error>) -> Void) {
         var request = URLRequest(url: teamsUrl)
@@ -91,6 +56,7 @@ class Networking {
             do {
                 let teams = try decoder.decode([Player].self, from: data)
                 let players = self.sortPlayersByTeam(from: teams)
+                self.rankingList = self.sortTeamsByRank(from: teams)
                 completion(.success(players))
             } catch {
                 print("Error decoding rankings: \(error)")
@@ -117,21 +83,46 @@ class Networking {
         return league
     }
     
-    func sortTeamsByDivision(from teams: [Ranking]) -> [[Ranking]] {
-        var rankings: [[Ranking]] = [[]]
+    func sortTeamsByRank(from players: [Player]) -> [[Player]]? {
+        var teams: [[Player]] = [[]]
+        var previous: String? = nil
+        
+        for player in players {
+            let first = player.rank
+            
+            if first == "" {
+                continue
+            } else {
+                if first != previous {
+                    teams.append([])
+                    previous = first
+                }
+                teams[teams.endIndex - 1].append(player)
+            }
+        }
+        
+        teams.sort { (team1, team2) -> Bool in
+            Int(team1.first!.rank)! > Int(team2.first!.rank)!
+        }
+        
+        return teams
+    }
+    
+    func sortTeamsByDivision(from teams: [Player]) -> [[Player]] {
+        var players: [[Player]] = [[]]
         
         var previous: String? = nil
         
         for team in teams {
-            let first = team.Division
+            let first = team.division
             
             if first != previous {
-                rankings.append([])
+                players.append([])
                 previous = first
             }
-            rankings[rankings.endIndex - 1].append(team)
+            players[players.endIndex - 1].append(team)
         }
-        return rankings
+        return players
     }
     
     func fetchImage(at urlString: String?, completion: @escaping (_ data: Data?) -> ()) {

@@ -11,6 +11,9 @@ struct Player: Codable {
     var school: String
     var region: String
     var division: String
+    var rank: String
+    var record: String
+    var change: String
     var lat: String
     var lon: String
     var num: String

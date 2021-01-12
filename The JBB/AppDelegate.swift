@@ -20,13 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        Networking.shared.fetchRankings { result in
-            if let rankings = try? result.get() {
-                DispatchQueue.main.async {
-                    Networking.shared.rankingList = rankings
-                }
-            }
-        }
+        
         Networking.shared.fetchTeams { result in
             if let teams = try? result.get() {
                 DispatchQueue.main.async {
