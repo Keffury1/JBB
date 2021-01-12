@@ -56,7 +56,7 @@ class Networking {
             do {
                 let teams = try decoder.decode([Player].self, from: data)
                 let players = self.sortPlayersByTeam(from: teams)
-                self.rankingList = self.sortTeamsByRank(from: teams)
+                self.rankingList = self.getRankedTeams(from: players)
                 completion(.success(players))
             } catch {
                 print("Error decoding rankings: \(error)")
@@ -83,46 +83,18 @@ class Networking {
         return league
     }
     
-    func sortTeamsByRank(from players: [Player]) -> [[Player]]? {
-        var teams: [[Player]] = [[]]
-        var previous: String? = nil
-        
-        for player in players {
-            let first = player.rank
-            
-            if first == "" {
-                continue
-            } else {
-                if first != previous {
-                    teams.append([])
-                    previous = first
-                }
-                teams[teams.endIndex - 1].append(player)
-            }
-        }
-        
-        teams.sort { (team1, team2) -> Bool in
-            Int(team1.first!.rank)! > Int(team2.first!.rank)!
-        }
-        
-        return teams
-    }
-    
-    func sortTeamsByDivision(from teams: [Player]) -> [[Player]] {
-        var players: [[Player]] = [[]]
-        
-        var previous: String? = nil
+    func getRankedTeams(from teams: [[Player]]) -> [[Player]] {
+        var rankedTeams: [[Player]] = [[]]
         
         for team in teams {
-            let first = team.division
-            
-            if first != previous {
-                players.append([])
-                previous = first
+            if team.first?.rank != "" {
+                rankedTeams.append(team)
+            } else {
+                continue
             }
-            players[players.endIndex - 1].append(team)
         }
-        return players
+        
+        return rankedTeams
     }
     
     func fetchImage(at urlString: String?, completion: @escaping (_ data: Data?) -> ()) {
