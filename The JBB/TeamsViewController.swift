@@ -191,6 +191,10 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         guard let teamCell = team else { return UITableViewCell() }
         
         cell.teamNameLabel.text = teamCell.first?.school
+        let lat = Double(teamCell.first!.lat)
+        let lon = Double(teamCell.first!.lon)
+        cell.latLonLabel.text = "lat:\(String(format: "%.2f", ceil(lat!*100)/100)) lon:\(String(format: "%.2f", ceil(lon!*100)/100))"
+        cell.regionLabel.text = teamCell.first?.region
         
         Networking.shared.fetchImage(at: teamCell.first?.image) { (data) in
             

@@ -20,6 +20,8 @@ class TeamTableViewCell: UITableViewCell {
     @IBOutlet weak var rosterButton: UIButton!
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var teamImageView: UIImageView!
+    @IBOutlet weak var latLonLabel: UILabel!
+    @IBOutlet weak var regionLabel: UILabel!
     
     @IBAction func rosterButtonTapped(_ sender: Any) {
         guard let index = index else { return }
