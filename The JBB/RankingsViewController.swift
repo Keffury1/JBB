@@ -11,11 +11,6 @@ class RankingsViewController: UIViewController {
 
     // MARK: - Properties
     
-    var leader: Ranking? {
-        didSet {
-            updateViews()
-        }
-    }
     var division1: [Ranking] = []
     var division2: [Ranking] = []
     var division3: [Ranking] = []
@@ -25,13 +20,9 @@ class RankingsViewController: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var rankingsCollectionView: UICollectionView!
+    
+    @IBOutlet weak var rankingsTableView: UITableView!
     @IBOutlet weak var divisionSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var leaderNameLabel: UILabel!
-    @IBOutlet weak var leaderRecordLabel: UILabel!
-    @IBOutlet weak var leaderChangeLabel: UILabel!
-    @IBOutlet weak var leaderImageView: UIImageView!
-    @IBOutlet weak var leaderView: UIView!
     
     // MARK: - Views
     
@@ -48,64 +39,19 @@ class RankingsViewController: UIViewController {
     // MARK: - Methods
     
     private func setupSubviews() {
-        rankingsCollectionView.dataSource = self
-        leaderView.addShadow()
-        leaderImageView.addShadow()
-        leaderView.layer.cornerRadius = 10.0
-        leaderImageView.layer.cornerRadius = 10.0
-    }
-    
-    private func updateViews() {
-        guard let leader = leader, let change = leader.Change else { return }
-        leaderNameLabel.text = leader.Team
-        leaderRecordLabel.text = leader.Record
-        if leader.Change == "-" {
-            leaderChangeLabel.text = "👑"
-        } else {
-            leaderChangeLabel.text = leader.Change
-        }
-        
-        Networking.shared.fetchImage(at: leader.Image) { (data) in
-            
-            if let data = data {
-                DispatchQueue.main.async {
-                    self.leaderImageView.image = UIImage(data: data)
-                }
-            } else {
-                print("Error fetching leader image")
-            }
-        }
-        
-        if change.rangeOfCharacter(from: characterset.inverted) != nil {
-            leaderChangeLabel.textColor = .red
-        } else {
-            leaderChangeLabel.textColor = .green
-        }
-        self.rankingsCollectionView.reloadData()
+        rankingsTableView.dataSource = self
     }
     
     // MARK: - Actions
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
         self.selectedSegmentIndex = sender.selectedSegmentIndex
-        switch selectedSegmentIndex {
-        case 0:
-            leader = division1.first
-        case 1:
-            leader = division2.first
-        case 2:
-            leader = division3.first
-        case 3:
-            leader = CCCAA.first
-        default:
-            return
-        }
-        rankingsCollectionView.reloadData()
+        rankingsTableView.reloadData()
     }
 }
 
-extension RankingsViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension RankingsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch selectedSegmentIndex {
         case 0:
             return division1.count
@@ -120,8 +66,8 @@ extension RankingsViewController: UICollectionViewDataSource {
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "teamCell", for: indexPath) as? TeamCollectionViewCell else { return UICollectionViewCell() }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as? RankingTableViewCell else { return UITableViewCell() }
         
         var cellRank: Ranking?
         
@@ -135,15 +81,14 @@ extension RankingsViewController: UICollectionViewDataSource {
         case 3:
             cellRank = CCCAA[indexPath.row]
         default:
-            return UICollectionViewCell()
+            return UITableViewCell()
         }
         
-        guard let rank = cellRank, let change = rank.Change else { return UICollectionViewCell() }
+        guard let rank = cellRank, let change = rank.Change else { return UITableViewCell() }
         
-        cell.nameLabel.text = rank.Team
+        cell.teamNameLabel.text = rank.Team
         cell.rankLabel.text = "# \(rank.Rank)"
         cell.recordLabel.text = rank.Record
-        cell.changeLabel.text = change
         
         if change.rangeOfCharacter(from: characterset.inverted) != nil {
             cell.changeLabel.textColor = .systemRed
@@ -155,20 +100,18 @@ extension RankingsViewController: UICollectionViewDataSource {
             
             if let data = data {
                 DispatchQueue.main.async {
-                    cell.logoImageView.image = UIImage(data: data)
+                    cell.teamImageView.image = UIImage(data: data)
                 }
             } else {
                 print("Error fetching leader image")
             }
         }
         
-        cell.logoImageView.layer.cornerRadius = cell.logoImageView.frame.size.width / 2
-        cell.logoImageView.clipsToBounds = true
+        cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
+        cell.teamImageView.clipsToBounds = true
         
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
-        cell.shadowView.addShadow()
-        cell.shadowView.layer.cornerRadius = 10
         
         
         return cell
@@ -184,18 +127,6 @@ extension RankingsViewController: RankingsFilledDelegate {
         division3 = rankings[3]
         CCCAA = rankings[4]
         
-        switch selectedSegmentIndex {
-        case 0:
-            leader = division1.removeFirst()
-        case 1:
-            leader = division2.removeFirst()
-        case 2:
-            leader = division3.removeFirst()
-        case 3:
-            leader = CCCAA.removeFirst()
-        default:
-            return
-        }
-        rankingsCollectionView.reloadData()
+        rankingsTableView.reloadData()
     }
 }
