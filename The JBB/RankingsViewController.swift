@@ -145,17 +145,19 @@ extension RankingsViewController: RankingsFilledDelegate {
         rankings.forEach { (team) in
             switch team.first?.division {
             case "1":
-                division1.append(contentsOf: team)
+                division1.append(team.first!)
             case "2":
-                division2.append(contentsOf: team)
+                division2.append(team.first!)
             case "3":
-                division3.append(contentsOf: team)
+                division3.append(team.first!)
             default:
                 return
             }
         }
         
-        rankingsTableView.reloadData()
+        DispatchQueue.main.async {
+            self.rankingsTableView.reloadData()
+        }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             self.stopAnimation()

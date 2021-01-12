@@ -171,7 +171,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         
         var team: [Player]?
         
-        if searchResults?.count != nil {
+        if searchResults != nil {
             team = searchResults![indexPath.row]
         } else {
             switch selectedIndex {
@@ -285,12 +285,16 @@ extension TeamsViewController: UISearchBarDelegate {
                 team.contains(where: { $0.school.contains(searchTerm) })
             })
         default:
-            return
+            results = nil
         }
-        if let result = results {
-            self.searchResults = result
-            self.teamsTableView.reloadData()
+        if results?.isEmpty == true {
+            self.searchResults = nil
+        } else {
+            if let result = results {
+                self.searchResults = result
+            }
         }
+        self.teamsTableView.reloadData()
         searchBar.endEditing(true)
     }
     
