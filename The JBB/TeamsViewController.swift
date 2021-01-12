@@ -145,7 +145,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
 
 extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if searchResults?.count != nil {
+        if searchResults != nil {
             return searchResults!.count
         } else {
             switch selectedIndex {
@@ -255,7 +255,7 @@ extension TeamsViewController: MKMapViewDelegate {
         let identifier = "Annotation"
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         annotationView.canShowCallout = true
-        annotationView.pinTintColor = UIColor.init(named: "Indigo")
+        annotationView.pinTintColor = UIColor.black
         
         return annotationView
     }

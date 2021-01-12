@@ -17,6 +17,8 @@ enum NetworkError: Error {
 
 protocol RankingsFilledDelegate {
     func rankingsWereFilled(list: [[Ranking]])
+    
+    func teamsWereFilled()
 }
 
 class Networking {
@@ -30,7 +32,11 @@ class Networking {
             rankingsDelegate?.rankingsWereFilled(list: self.rankingList!)
         }
     }
-    var playerList: [[Player]]? 
+    var playerList: [[Player]]? {
+        didSet {
+            rankingsDelegate?.teamsWereFilled()
+        }
+    }
     
     // MARK: - URLs
     

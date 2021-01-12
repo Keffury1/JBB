@@ -165,7 +165,7 @@
             <objects>
                 <viewController title="Team Detail View Controller" id="OEk-U0-avN" customClass="TeamDetailViewController" customModule="The_JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8id-8k-wMF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8TA-Lc-QQp">
@@ -273,24 +273,47 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DF-Ov-G7c">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="XqB-GE-Gdr">
+                                        <rect key="frame" x="132" y="346" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="AKi-nF-Asv"/>
+                                            <constraint firstAttribute="width" constant="150" id="cIf-3y-wSb"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="XqB-GE-Gdr" firstAttribute="centerX" secondItem="9DF-Ov-G7c" secondAttribute="centerX" id="cky-h6-rbe"/>
+                                    <constraint firstItem="XqB-GE-Gdr" firstAttribute="centerY" secondItem="9DF-Ov-G7c" secondAttribute="centerY" id="h62-F5-Rom"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="PoL-74-VOu"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1DF-aW-AN5" firstAttribute="leading" secondItem="PoL-74-VOu" secondAttribute="leading" constant="10" id="1Sc-fe-oyr"/>
+                            <constraint firstItem="9DF-Ov-G7c" firstAttribute="top" secondItem="8id-8k-wMF" secondAttribute="top" id="52s-R1-KLe"/>
                             <constraint firstItem="PoL-74-VOu" firstAttribute="trailing" secondItem="1DF-aW-AN5" secondAttribute="trailing" constant="10" id="5Jz-81-u7g"/>
+                            <constraint firstItem="9DF-Ov-G7c" firstAttribute="leading" secondItem="8id-8k-wMF" secondAttribute="leading" id="7FE-IF-Pvg"/>
                             <constraint firstItem="8TA-Lc-QQp" firstAttribute="leading" secondItem="B4W-J5-H6P" secondAttribute="trailing" id="9gK-iZ-Myk"/>
                             <constraint firstItem="B4W-J5-H6P" firstAttribute="top" secondItem="8TA-Lc-QQp" secondAttribute="top" id="DOD-VJ-sk8"/>
                             <constraint firstItem="B4W-J5-H6P" firstAttribute="bottom" secondItem="8TA-Lc-QQp" secondAttribute="bottom" id="HXn-6O-hnw"/>
                             <constraint firstItem="8TA-Lc-QQp" firstAttribute="top" secondItem="PoL-74-VOu" secondAttribute="top" constant="50" id="Olz-Mu-c2B"/>
+                            <constraint firstAttribute="bottom" secondItem="9DF-Ov-G7c" secondAttribute="bottom" id="UD0-TP-fRC"/>
                             <constraint firstItem="1DF-aW-AN5" firstAttribute="top" secondItem="8TA-Lc-QQp" secondAttribute="bottom" constant="50" id="Ytr-sx-nKq"/>
                             <constraint firstItem="PoL-74-VOu" firstAttribute="bottom" secondItem="1DF-aW-AN5" secondAttribute="bottom" id="ZOL-7a-OXT"/>
+                            <constraint firstAttribute="trailing" secondItem="9DF-Ov-G7c" secondAttribute="trailing" id="f5F-XH-8pI"/>
                             <constraint firstItem="8TA-Lc-QQp" firstAttribute="trailing" secondItem="1DF-aW-AN5" secondAttribute="trailing" constant="-20" id="gsG-xq-X26"/>
                             <constraint firstItem="B4W-J5-H6P" firstAttribute="leading" secondItem="1DF-aW-AN5" secondAttribute="leading" constant="20" id="jJI-9O-lf2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Lt9-UV-Pej"/>
                     <connections>
+                        <outlet property="logoImageView" destination="XqB-GE-Gdr" id="xYq-0R-Qw2"/>
+                        <outlet property="logoView" destination="9DF-Ov-G7c" id="Dvg-NO-ynR"/>
                         <outlet property="rosterTableView" destination="1DF-aW-AN5" id="7dz-VR-GlA"/>
                         <outlet property="teamImageView" destination="8TA-Lc-QQp" id="35O-V1-WnZ"/>
                         <outlet property="teamNameLabel" destination="B4W-J5-H6P" id="kL3-yl-gek"/>
@@ -424,6 +447,23 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1V-I0-1gY">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="jnS-dD-t1q">
+                                        <rect key="frame" x="132" y="373" width="150" height="150"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="150" id="C5B-HW-M50"/>
+                                            <constraint firstAttribute="width" constant="150" id="i1W-VZ-828"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="jnS-dD-t1q" firstAttribute="centerX" secondItem="P1V-I0-1gY" secondAttribute="centerX" id="DkG-ZE-oDz"/>
+                                    <constraint firstItem="jnS-dD-t1q" firstAttribute="centerY" secondItem="P1V-I0-1gY" secondAttribute="centerY" id="cSJ-PU-oBR"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="06U-rw-1hL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -433,17 +473,23 @@
                             <constraint firstItem="06U-rw-1hL" firstAttribute="trailing" secondItem="4M3-fy-jQm" secondAttribute="trailing" constant="20" id="QTi-Yx-4Qt"/>
                             <constraint firstItem="06U-rw-1hL" firstAttribute="bottom" secondItem="Y9p-T7-QAo" secondAttribute="bottom" constant="10" id="TB4-EP-ASP"/>
                             <constraint firstItem="4M3-fy-jQm" firstAttribute="leading" secondItem="06U-rw-1hL" secondAttribute="leading" constant="20" id="UEU-oa-B4i"/>
+                            <constraint firstAttribute="trailing" secondItem="P1V-I0-1gY" secondAttribute="trailing" id="Usm-B4-5nj"/>
                             <constraint firstItem="uYS-eM-ZQJ" firstAttribute="trailing" secondItem="4M3-fy-jQm" secondAttribute="trailing" constant="-10" id="dKp-HM-EVl"/>
                             <constraint firstItem="uYS-eM-ZQJ" firstAttribute="top" secondItem="06U-rw-1hL" secondAttribute="top" id="hHo-Tc-ubH"/>
                             <constraint firstItem="zWV-an-A36" firstAttribute="centerY" secondItem="uYS-eM-ZQJ" secondAttribute="centerY" id="mUE-i6-KNK"/>
                             <constraint firstItem="zWV-an-A36" firstAttribute="leading" secondItem="4M3-fy-jQm" secondAttribute="leading" id="n8l-aM-YJa"/>
+                            <constraint firstItem="P1V-I0-1gY" firstAttribute="top" secondItem="8sU-Zn-2VB" secondAttribute="top" id="oUk-YY-AnC"/>
                             <constraint firstItem="06U-rw-1hL" firstAttribute="trailing" secondItem="Y9p-T7-QAo" secondAttribute="trailing" constant="10" id="obG-bx-REZ"/>
+                            <constraint firstAttribute="bottom" secondItem="P1V-I0-1gY" secondAttribute="bottom" id="qaS-OW-cL5"/>
+                            <constraint firstItem="P1V-I0-1gY" firstAttribute="leading" secondItem="8sU-Zn-2VB" secondAttribute="leading" id="xoI-tU-CnU"/>
                             <constraint firstItem="Y9p-T7-QAo" firstAttribute="leading" secondItem="06U-rw-1hL" secondAttribute="leading" constant="10" id="z9k-e1-NJ1"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="flame" catalog="system" id="qdI-SR-nrV"/>
                     <connections>
                         <outlet property="divisionSegmentedControl" destination="4M3-fy-jQm" id="o2B-S2-hXi"/>
+                        <outlet property="logoImageView" destination="jnS-dD-t1q" id="0M9-Z1-Gee"/>
+                        <outlet property="logoView" destination="P1V-I0-1gY" id="rMY-RC-XqV"/>
                         <outlet property="rankingsTableView" destination="Y9p-T7-QAo" id="o1F-aW-5tb"/>
                     </connections>
                 </viewController>

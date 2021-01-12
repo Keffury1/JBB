@@ -16,4 +16,10 @@ extension UIView {
         self.layer.shadowOpacity = 1.0
         self.layer.masksToBounds = false
     }
+    
+    func fadeOut(withDuration duration: TimeInterval = 1.0) {
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.0
+        })
+    }
 }

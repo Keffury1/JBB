@@ -18,18 +18,17 @@ class TeamDetailViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var teamNameLabel: UILabel!
-    @IBOutlet weak var teamImageView: UIImageView! {
-        didSet {
-            updateViews()
-        }
-    }
+    @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var rosterTableView: UITableView!
+    @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     // MARK: - Views
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         setupSubviews()
+        startAnimation()
     }
     
     // MARK: - Methods
@@ -42,25 +41,38 @@ class TeamDetailViewController: UIViewController {
                 if let data = data {
                     DispatchQueue.main.async {
                         self.teamImageView.image = UIImage(data: data)
-                        self.updateViews()
+                        self.rosterTableView.reloadData()
+                        self.teamImageView.image?.getColors { colors in
+                            self.view.backgroundColor = colors?.background
+                            self.teamNameLabel.textColor = colors?.primary
+                            self.teamImageView.layer.borderColor = colors?.primary.cgColor
+                        }
+                        self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
+                        self.teamImageView.clipsToBounds = true
+                        self.teamImageView.layer.borderWidth = 2.0
                     }
                 } else {
                     print("Error fetching leader image")
                 }
             })
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
+            self.stopAnimation()
+        }
     }
     
-    func updateViews() {
-        rosterTableView.reloadData()
-        teamImageView.image?.getColors { colors in
-            self.view.backgroundColor = colors?.background
-            self.teamNameLabel.textColor = colors?.primary
-            self.teamImageView.layer.borderColor = colors?.primary.cgColor
+    func startAnimation() {
+        logoImageView.transform = CGAffineTransform(scaleX: 0.000001, y: 0.000001)
+        UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: [], animations: {
+            self.logoImageView.transform = .identity
+        }, completion: nil)
+    }
+    
+    func stopAnimation() {
+        logoImageView.stopAnimating()
+        UIView.animate(withDuration: 1.0) {
+            self.logoView.alpha = 0
         }
-        teamImageView.layer.cornerRadius = teamImageView.frame.size.width / 2
-        teamImageView.clipsToBounds = true
-        teamImageView.layer.borderWidth = 2.0
     }
     
     // MARK: - Actions

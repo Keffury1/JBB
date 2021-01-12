@@ -20,7 +20,8 @@ class RankingsViewController: UIViewController {
     
     // MARK: - Outlets
     
-    
+    @IBOutlet weak var logoView: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var rankingsTableView: UITableView!
     @IBOutlet weak var divisionSegmentedControl: UISegmentedControl!
     
@@ -34,6 +35,7 @@ class RankingsViewController: UIViewController {
         super.viewDidLoad()
         setupSubviews()
         Networking.shared.rankingsDelegate = self
+        startAnimation()
     }
     
     // MARK: - Methods
@@ -41,6 +43,20 @@ class RankingsViewController: UIViewController {
     private func setupSubviews() {
         rankingsTableView.dataSource = self
         rankingsTableView.delegate = self
+    }
+    
+    func startAnimation() {
+        logoImageView.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
+        UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: [], animations: {
+            self.logoImageView.transform = .identity
+        }, completion: nil)
+    }
+    
+    func stopAnimation() {
+        logoImageView.stopAnimating()
+        UIView.animate(withDuration: 1.0) {
+            self.logoView.alpha = 0
+        }
     }
     
     // MARK: - Actions
@@ -142,5 +158,9 @@ extension RankingsViewController: RankingsFilledDelegate {
         CCCAA = rankings[4]
         
         rankingsTableView.reloadData()
+    }
+    
+    func teamsWereFilled() {
+        stopAnimation()
     }
 }
