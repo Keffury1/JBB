@@ -56,7 +56,6 @@ class TeamDetailViewController: UIViewController {
         }
         teamImageView.layer.cornerRadius = teamImageView.frame.size.width / 2
         teamImageView.clipsToBounds = true
-        teamImageView.addShadowAndRadius()
     }
     
     // MARK: - Actions

@@ -21,19 +21,19 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="rxj-Zd-w0Z">
                                 <rect key="frame" x="10" y="104" width="394" height="249.5"/>
                             </mapView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Vy-IBO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Vy-IBO">
                                 <rect key="frame" x="10" y="470.5" width="394" height="332.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" rowHeight="103" id="CE1-rv-Akf" customClass="TeamTableViewCell" customModule="The_JBB" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="394" height="103"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" rowHeight="100" id="CE1-rv-Akf" customClass="TeamTableViewCell" customModule="The_JBB" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="394" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="CE1-rv-Akf" id="zcm-D8-ehK">
-                                            <rect key="frame" x="0.0" y="0.0" width="394" height="103"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="394" height="100"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75q-Nv-Kan">
-                                                    <rect key="frame" x="334" y="0.0" width="40" height="103"/>
+                                                    <rect key="frame" x="334" y="0.0" width="40" height="100"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="12t-D8-F3S"/>
                                                     </constraints>
@@ -44,13 +44,13 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvC-mn-GJl">
-                                                    <rect key="frame" x="100" y="0.0" width="234" height="103"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="100" y="0.0" width="234" height="100"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bod-Jh-9nE">
-                                                    <rect key="frame" x="5" y="14" width="75" height="75"/>
+                                                    <rect key="frame" x="5" y="12.5" width="75" height="75"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="75" id="ioZ-ad-Tdw"/>
                                                         <constraint firstAttribute="width" constant="75" id="k1X-14-iaZ"/>
@@ -146,7 +146,7 @@
             <objects>
                 <viewController title="Team Detail View Controller" id="OEk-U0-avN" customClass="TeamDetailViewController" customModule="The_JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8id-8k-wMF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8TA-Lc-QQp">

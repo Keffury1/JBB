@@ -49,8 +49,10 @@ class RankingsViewController: UIViewController {
     
     private func setupSubviews() {
         rankingsCollectionView.dataSource = self
-        leaderView.addShadowAndRadius()
-        leaderImageView.addShadowAndRadius()
+        leaderView.addShadow()
+        leaderImageView.addShadow()
+        leaderView.layer.cornerRadius = 10.0
+        leaderImageView.layer.cornerRadius = 10.0
     }
     
     private func updateViews() {
@@ -165,8 +167,9 @@ extension RankingsViewController: UICollectionViewDataSource {
         
         cell.backgroundColor = .clear
         cell.contentView.backgroundColor = .clear
-        cell.shadowView.addShadowAndRadius()
-        cell.logoImageView.addShadowAndRadius()
+        cell.shadowView.addShadow()
+        cell.shadowView.layer.cornerRadius = 10
+        
         
         return cell
     }
