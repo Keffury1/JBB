@@ -35,7 +35,6 @@ class RankingsViewController: UIViewController {
         super.viewDidLoad()
         setupSubviews()
         Networking.shared.rankingsDelegate = self
-        startAnimation()
     }
     
     // MARK: - Methods
@@ -45,15 +44,7 @@ class RankingsViewController: UIViewController {
         rankingsTableView.delegate = self
     }
     
-    func startAnimation() {
-        logoImageView.transform = CGAffineTransform(scaleX: 0.0001, y: 0.0001)
-        UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: [], animations: {
-            self.logoImageView.transform = .identity
-        }, completion: nil)
-    }
-    
     func stopAnimation() {
-        logoImageView.stopAnimating()
         UIView.animate(withDuration: 1.0) {
             self.logoView.alpha = 0
         }
