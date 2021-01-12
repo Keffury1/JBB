@@ -83,7 +83,7 @@ extension TeamDetailViewController: UITableViewDataSource {
         cell.hometownLabel.text = player.hometown
         cell.positionLabel.text = player.pos
         cell.batThrowLabel.text = player.batThrow
-        cell.heightWeightLabel.text = "\(player.height)/\(player.weight)"
+        cell.heightWeightLabel.text = "\(player.height) \(player.weight)"
         switch Int(player.year) {
         case 1:
             cell.yearLabel.text = "Fr"
