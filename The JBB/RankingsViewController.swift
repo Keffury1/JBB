@@ -87,7 +87,11 @@ extension RankingsViewController: UITableViewDataSource {
         guard let rank = cellRank, let change = rank.Change else { return UITableViewCell() }
         
         cell.teamNameLabel.text = rank.Team
-        cell.rankLabel.text = "# \(rank.Rank)"
+        if rank.Rank == "1" {
+            cell.rankLabel.text = "👑"
+        } else {
+            cell.rankLabel.text = "# \(rank.Rank)"
+        }
         cell.recordLabel.text = rank.Record
         
         if change.rangeOfCharacter(from: characterset.inverted) != nil {
