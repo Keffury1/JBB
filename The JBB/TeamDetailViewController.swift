@@ -18,6 +18,7 @@ class TeamDetailViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var teamNameLabel: UILabel!
+    @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var rosterTableView: UITableView!
     @IBOutlet weak var logoView: UIView!
@@ -37,6 +38,11 @@ class TeamDetailViewController: UIViewController {
         rosterTableView.dataSource = self
         if let team = team {
             teamNameLabel.text = team.first?.school
+            if team.first!.record != "" {
+                recordLabel.text = "(\(team.first!.record))"
+            } else {
+                recordLabel.text = ""
+            }
             Networking.shared.fetchImage(at: team.first?.image, completion: { (data) in
                 if let data = data {
                     DispatchQueue.main.async {
@@ -46,6 +52,7 @@ class TeamDetailViewController: UIViewController {
                             self.view.backgroundColor = colors?.background
                             self.teamNameLabel.textColor = colors?.primary
                             self.teamImageView.layer.borderColor = colors?.primary.cgColor
+                            self.recordLabel.textColor = colors?.primary
                         }
                         self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
                         self.teamImageView.clipsToBounds = true
