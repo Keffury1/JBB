@@ -61,29 +61,39 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     }
     
     func buttonPressed(index: Int) {
-        
         bannerView.load(GADRequest())
         
-        var sender: [Player]?
-        
         if searchResults != nil {
-            sender = searchResults![index]
+            let team = searchResults![index]
+            if let player = team.first {
+                addAnnotation(player)
+            }
         } else {
             switch selectedIndex {
             case 0:
-                sender = divisionOne[index]
+                let team = divisionOne[index]
+                if let player = team.first {
+                    addAnnotation(player)
+                }
             case 1:
-                sender = divisionTwo[index]
+                let team = divisionTwo[index]
+                if let player = team.first {
+                    addAnnotation(player)
+                }
             case 2:
-                sender = divisionThree[index]
+                let team = divisionThree[index]
+                if let player = team.first {
+                    addAnnotation(player)
+                }
             case 3:
-                sender = cCCAA[index]
+                let team = cCCAA[index]
+                if let player = team.first {
+                    addAnnotation(player)
+                }
             default:
                 return
             }
         }
-        
-        self.performSegue(withIdentifier: "rosterSegue", sender:  sender)
     }
     
     func setupSubviews() {
@@ -176,8 +186,23 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "rosterSegue" {
-            if let detailVC = segue.destination as? TeamDetailViewController {
-                detailVC.team = sender as? [Player]
+            if let detailVC = segue.destination as? TeamDetailViewController, let indexPath = teamsTableView.indexPathForSelectedRow {
+                if searchResults != nil {
+                    detailVC.team = searchResults![indexPath.row]
+                } else {
+                    switch selectedIndex {
+                    case 0:
+                        detailVC.team = divisionOne[indexPath.row]
+                    case 1:
+                        detailVC.team = divisionTwo[indexPath.row]
+                    case 2:
+                        detailVC.team = divisionThree[indexPath.row]
+                    case 3:
+                        detailVC.team = cCCAA[indexPath.row]
+                    default:
+                        return
+                    }
+                }
             }
         }
     }
@@ -264,37 +289,6 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         bannerView.load(GADRequest())
-        if searchResults != nil {
-            let team = searchResults![indexPath.row]
-            if let player = team.first {
-                addAnnotation(player)
-            }
-        } else {
-            switch selectedIndex {
-            case 0:
-                let team = divisionOne[indexPath.row]
-                if let player = team.first {
-                    addAnnotation(player)
-                }
-            case 1:
-                let team = divisionTwo[indexPath.row]
-                if let player = team.first {
-                    addAnnotation(player)
-                }
-            case 2:
-                let team = divisionThree[indexPath.row]
-                if let player = team.first {
-                    addAnnotation(player)
-                }
-            case 3:
-                let team = cCCAA[indexPath.row]
-                if let player = team.first {
-                    addAnnotation(player)
-                }
-            default:
-                return
-            }
-        }
     }
 }
 

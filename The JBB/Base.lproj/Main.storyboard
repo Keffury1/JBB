@@ -32,12 +32,12 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75q-Nv-Kan">
-                                                    <rect key="frame" x="324" y="0.0" width="40" height="100"/>
+                                                    <rect key="frame" x="304" y="0.0" width="60" height="100"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="40" id="12t-D8-F3S"/>
+                                                        <constraint firstAttribute="width" constant="60" id="12t-D8-F3S"/>
                                                     </constraints>
                                                     <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <state key="normal" image="list.bullet.rectangle" catalog="system"/>
+                                                    <state key="normal" image="mappin.and.ellipse" catalog="system"/>
                                                     <connections>
                                                         <action selector="rosterButtonTapped:" destination="CE1-rv-Akf" eventType="touchUpInside" id="7EY-3B-9f1"/>
                                                     </connections>
@@ -49,14 +49,8 @@
                                                         <constraint firstAttribute="width" constant="55" id="k1X-14-iaZ"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZH-Pz-VSy">
-                                                    <rect key="frame" x="271.5" y="41" width="37.5" height="18"/>
-                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="lpr-Qg-vjo">
-                                                    <rect key="frame" x="82" y="29" width="179.5" height="42"/>
+                                                    <rect key="frame" x="80" y="29" width="224" height="42"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvC-mn-GJl">
                                                             <rect key="frame" x="0.0" y="0.0" width="48" height="24"/>
@@ -75,23 +69,21 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="lpr-Qg-vjo" firstAttribute="centerY" secondItem="zcm-D8-ehK" secondAttribute="centerY" id="7Pc-un-LR0"/>
-                                                <constraint firstItem="75q-Nv-Kan" firstAttribute="leading" secondItem="WZH-Pz-VSy" secondAttribute="trailing" constant="15" id="9Q1-sm-fNk"/>
                                                 <constraint firstItem="bod-Jh-9nE" firstAttribute="centerY" secondItem="zcm-D8-ehK" secondAttribute="centerY" id="CCK-PJ-Kwf"/>
-                                                <constraint firstItem="WZH-Pz-VSy" firstAttribute="centerY" secondItem="zcm-D8-ehK" secondAttribute="centerY" id="F2o-Oi-zeS"/>
                                                 <constraint firstItem="75q-Nv-Kan" firstAttribute="top" secondItem="zcm-D8-ehK" secondAttribute="top" id="FIB-gF-fi6"/>
                                                 <constraint firstAttribute="bottom" secondItem="75q-Nv-Kan" secondAttribute="bottom" id="JE9-pP-QIi"/>
-                                                <constraint firstItem="WZH-Pz-VSy" firstAttribute="leading" secondItem="lpr-Qg-vjo" secondAttribute="trailing" constant="10" id="NPx-9l-vib"/>
                                                 <constraint firstAttribute="trailing" secondItem="75q-Nv-Kan" secondAttribute="trailing" constant="20" id="Qdb-Ik-GiO"/>
                                                 <constraint firstItem="bod-Jh-9nE" firstAttribute="leading" secondItem="zcm-D8-ehK" secondAttribute="leading" constant="5" id="X0T-Ob-iIa"/>
-                                                <constraint firstItem="lpr-Qg-vjo" firstAttribute="leading" secondItem="bod-Jh-9nE" secondAttribute="trailing" constant="22" id="lmv-3n-5Bp"/>
+                                                <constraint firstItem="lpr-Qg-vjo" firstAttribute="leading" secondItem="bod-Jh-9nE" secondAttribute="trailing" constant="20" id="lmv-3n-5Bp"/>
+                                                <constraint firstItem="75q-Nv-Kan" firstAttribute="leading" secondItem="lpr-Qg-vjo" secondAttribute="trailing" id="oT5-2i-Lf8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="latLonLabel" destination="3Fs-jf-WLy" id="7ze-zl-Cia"/>
-                                            <outlet property="regionLabel" destination="WZH-Pz-VSy" id="wfS-tU-DBI"/>
                                             <outlet property="rosterButton" destination="75q-Nv-Kan" id="eHs-c5-gX9"/>
                                             <outlet property="teamImageView" destination="bod-Jh-9nE" id="rI2-Zt-EO5"/>
                                             <outlet property="teamNameLabel" destination="gvC-mn-GJl" id="gsV-OT-91F"/>
+                                            <segue destination="OEk-U0-avN" kind="show" identifier="rosterSegue" id="Zsn-Qc-BP1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -153,7 +145,6 @@
                         <outlet property="teamsMapView" destination="rxj-Zd-w0Z" id="pbT-C4-YtK"/>
                         <outlet property="teamsSearchBar" destination="8Za-i7-8DQ" id="FHL-3q-wnW"/>
                         <outlet property="teamsTableView" destination="reI-Vy-IBO" id="HAh-ZA-Owb"/>
-                        <segue destination="OEk-U0-avN" kind="show" identifier="rosterSegue" id="Oix-W1-W0Q"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tlg-q5-etN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -165,7 +156,7 @@
             <objects>
                 <viewController title="Team Detail View Controller" id="OEk-U0-avN" customClass="TeamDetailViewController" customModule="The_JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8id-8k-wMF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8TA-Lc-QQp">
@@ -329,7 +320,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="trz-94-kLU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1770" y="345"/>
+            <point key="canvasLocation" x="1799" y="-13"/>
         </scene>
         <!--Rankings View Controller-->
         <scene sceneID="Fij-nO-gsV">
@@ -450,6 +441,7 @@
                                             <outlet property="recordLabel" destination="7Vo-Wb-P2L" id="D5v-Xi-eX1"/>
                                             <outlet property="teamImageView" destination="Gw8-ZY-TPC" id="3Xr-RB-IGy"/>
                                             <outlet property="teamNameLabel" destination="Flj-lm-b3n" id="FOr-nw-djO"/>
+                                            <segue destination="OEk-U0-avN" kind="show" identifier="showRoster" id="6aE-pE-ecE"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -525,11 +517,14 @@
             <point key="canvasLocation" x="-243" y="-13"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6aE-pE-ecE"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo" width="422" height="334"/>
         <image name="bus" catalog="system" width="128" height="122"/>
         <image name="flame" catalog="system" width="108" height="128"/>
-        <image name="list.bullet.rectangle" catalog="system" width="128" height="93"/>
+        <image name="mappin.and.ellipse" catalog="system" width="118" height="128"/>
         <namedColor name="Burlywood">
             <color red="0.84313725490196079" green="0.70196078431372544" blue="0.46666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
