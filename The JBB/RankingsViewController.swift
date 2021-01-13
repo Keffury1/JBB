@@ -38,6 +38,7 @@ class RankingsViewController: UIViewController {
     private func setupSubviews() {
         rankingsTableView.dataSource = self
         rankingsTableView.delegate = self
+        super.tabBarController?.tabBar.isUserInteractionEnabled = false
     }
     
     private func startAnimation() {
@@ -51,6 +52,7 @@ class RankingsViewController: UIViewController {
         UIView.animate(withDuration: 1.0) {
             self.logoView.alpha = 0
         }
+        super.tabBarController?.tabBar.isUserInteractionEnabled = true
     }
     
     // MARK: - Actions
