@@ -53,6 +53,7 @@ class TeamDetailViewController: UIViewController {
                             self.teamNameLabel.textColor = colors?.primary
                             self.teamImageView.layer.borderColor = colors?.primary.cgColor
                             self.recordLabel.textColor = colors?.primary
+                            self.rosterTableView.backgroundColor = colors?.background
                         }
                         self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
                         self.teamImageView.clipsToBounds = true
