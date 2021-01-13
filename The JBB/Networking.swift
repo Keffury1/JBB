@@ -23,11 +23,14 @@ class Networking {
     
     static let shared = Networking()
     
+    var started: Bool? = true
+    
     var rankingsDelegate: RankingsFilledDelegate?
     
     var rankingList: [[Player]]? {
         didSet {
             rankingsDelegate?.rankingsWereFilled(list: self.rankingList!)
+            started = false
         }
     }
     var playerList: [[Player]]?

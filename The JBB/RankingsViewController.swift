@@ -26,10 +26,14 @@ class RankingsViewController: UIViewController {
     
     // MARK: - Views
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         setupSubviews()
-        startAnimation()
+        if Networking.shared.started == true {
+            startAnimation()
+        } else {
+            stopAnimation()
+        }
         Networking.shared.rankingsDelegate = self
     }
     
@@ -38,12 +42,11 @@ class RankingsViewController: UIViewController {
     private func setupSubviews() {
         rankingsTableView.dataSource = self
         rankingsTableView.delegate = self
-        super.tabBarController?.tabBar.isUserInteractionEnabled = false
     }
     
     private func startAnimation() {
-        logoImageView.transform = CGAffineTransform(scaleX: 0.000001, y: 0.000001)
-        UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: [], animations: {
+        logoImageView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
+        UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: [.repeat, .autoreverse], animations: {
             self.logoImageView.transform = .identity
         }, completion: nil)
     }
@@ -52,6 +55,7 @@ class RankingsViewController: UIViewController {
         UIView.animate(withDuration: 1.0) {
             self.logoView.alpha = 0
         }
+        self.logoImageView.stopAnimating()
         super.tabBarController?.tabBar.isUserInteractionEnabled = true
     }
     
