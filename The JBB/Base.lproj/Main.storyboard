@@ -43,14 +43,14 @@
                                                     </connections>
                                                 </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bod-Jh-9nE">
-                                                    <rect key="frame" x="5" y="22.5" width="55" height="55"/>
+                                                    <rect key="frame" x="20" y="22.5" width="55" height="55"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="55" id="ioZ-ad-Tdw"/>
                                                         <constraint firstAttribute="width" constant="55" id="k1X-14-iaZ"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="top" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="lpr-Qg-vjo">
-                                                    <rect key="frame" x="80" y="29" width="224" height="42"/>
+                                                    <rect key="frame" x="95" y="29" width="209" height="42"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gvC-mn-GJl">
                                                             <rect key="frame" x="0.0" y="0.0" width="48" height="24"/>
@@ -73,7 +73,7 @@
                                                 <constraint firstItem="75q-Nv-Kan" firstAttribute="top" secondItem="zcm-D8-ehK" secondAttribute="top" id="FIB-gF-fi6"/>
                                                 <constraint firstAttribute="bottom" secondItem="75q-Nv-Kan" secondAttribute="bottom" id="JE9-pP-QIi"/>
                                                 <constraint firstAttribute="trailing" secondItem="75q-Nv-Kan" secondAttribute="trailing" constant="20" id="Qdb-Ik-GiO"/>
-                                                <constraint firstItem="bod-Jh-9nE" firstAttribute="leading" secondItem="zcm-D8-ehK" secondAttribute="leading" constant="5" id="X0T-Ob-iIa"/>
+                                                <constraint firstItem="bod-Jh-9nE" firstAttribute="leading" secondItem="zcm-D8-ehK" secondAttribute="leading" constant="20" id="X0T-Ob-iIa"/>
                                                 <constraint firstItem="lpr-Qg-vjo" firstAttribute="leading" secondItem="bod-Jh-9nE" secondAttribute="trailing" constant="20" id="lmv-3n-5Bp"/>
                                                 <constraint firstItem="75q-Nv-Kan" firstAttribute="leading" secondItem="lpr-Qg-vjo" secondAttribute="trailing" id="oT5-2i-Lf8"/>
                                             </constraints>
@@ -156,7 +156,7 @@
             <objects>
                 <viewController title="Team Detail View Controller" id="OEk-U0-avN" customClass="TeamDetailViewController" customModule="The_JBB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8id-8k-wMF">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8TA-Lc-QQp">
@@ -518,7 +518,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="6aE-pE-ecE"/>
+        <segue reference="Zsn-Qc-BP1"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo" width="422" height="334"/>

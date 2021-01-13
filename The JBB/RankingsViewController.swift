@@ -11,9 +11,9 @@ class RankingsViewController: UIViewController {
 
     // MARK: - Properties
     
-    var division1: [Player] = []
-    var division2: [Player] = []
-    var division3: [Player] = []
+    var division1: [[Player]] = []
+    var division2: [[Player]] = []
+    var division3: [[Player]] = []
     var selectedSegmentIndex = 0
     let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+")
     
@@ -65,6 +65,25 @@ class RankingsViewController: UIViewController {
         self.selectedSegmentIndex = sender.selectedSegmentIndex
         rankingsTableView.reloadData()
     }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "showRoster" {
+            if let detailVC = segue.destination as? TeamDetailViewController, let indexPath = rankingsTableView.indexPathForSelectedRow {
+                switch selectedSegmentIndex {
+                case 0:
+                    detailVC.team = division1[indexPath.row]
+                case 1:
+                    detailVC.team = division2[indexPath.row]
+                case 2:
+                    detailVC.team = division3[indexPath.row]
+                default:
+                    return
+                }
+            }
+        }
+    }
 }
 
 extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
@@ -84,32 +103,32 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as? RankingTableViewCell else { return UITableViewCell() }
         
-        var cellRank: Player?
+        var team: [Player]?
         
         switch selectedSegmentIndex {
         case 0:
-            cellRank = division1[indexPath.row]
+            team = division1[indexPath.row]
         case 1:
-            cellRank = division2[indexPath.row]
+            team = division2[indexPath.row]
         case 2:
-            cellRank = division3[indexPath.row]
+            team = division3[indexPath.row]
         default:
             return UITableViewCell()
         }
         
-        guard let rank = cellRank else { return UITableViewCell() }
+        guard let teamCell = team, let player = teamCell.first else { return UITableViewCell() }
         
-        cell.teamNameLabel.text = rank.school
-        if rank.rank == "1" {
+        cell.teamNameLabel.text = player.school
+        if player.rank == "1" {
             cell.rankLabel.text = "👑"
         } else {
-            cell.rankLabel.text = rank.rank
+            cell.rankLabel.text = player.rank
         }
-        cell.recordLabel.text = rank.record
-        cell.changeLabel.text = rank.change
+        cell.recordLabel.text = player.record
+        cell.changeLabel.text = player.change
         
-        if rank.change.rangeOfCharacter(from: characterset.inverted) != nil {
-            if rank.change == "-" {
+        if player.change.rangeOfCharacter(from: characterset.inverted) != nil {
+            if player.change == "-" {
                 cell.changeLabel.textColor = .black
             } else {
                 cell.changeLabel.textColor = .systemRed
@@ -118,7 +137,7 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.changeLabel.textColor = .systemGreen
         }
         
-        Networking.shared.fetchImage(at: rank.image) { (data) in
+        Networking.shared.fetchImage(at: player.image) { (data) in
             
             if let data = data {
                 DispatchQueue.main.async {
@@ -151,11 +170,11 @@ extension RankingsViewController: RankingsFilledDelegate {
         rankings.forEach { (team) in
             switch team.first?.division {
             case "1":
-                division1.append(team.first!)
+                division1.append(team)
             case "2":
-                division2.append(team.first!)
+                division2.append(team)
             case "3":
-                division3.append(team.first!)
+                division3.append(team)
             default:
                 return
             }

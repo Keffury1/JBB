@@ -253,15 +253,14 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
             }
         }
         
-        guard let teamCell = team else { return UITableViewCell() }
+        guard let teamCell = team, let player = teamCell.first else { return UITableViewCell() }
         
-        cell.teamNameLabel.text = teamCell.first?.school
-        let lat = Double(teamCell.first!.lat)
-        let lon = Double(teamCell.first!.lon)
+        cell.teamNameLabel.text = player.school
+        let lat = Double(player.lat)
+        let lon = Double(player.lon)
         cell.latLonLabel.text = "\(String(format: "%.2f", ceil(lat!*100)/100)) | \(String(format: "%.2f", ceil(lon!*100)/100))"
-        cell.regionLabel.text = teamCell.first?.region
         
-        Networking.shared.fetchImage(at: teamCell.first?.image) { (data) in
+        Networking.shared.fetchImage(at: player.image) { (data) in
             
             if let data = data {
                 DispatchQueue.main.async {
