@@ -62,6 +62,8 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     
     func buttonPressed(index: Int) {
         
+        bannerView.load(GADRequest())
+        
         var sender: [Player]?
         
         if searchResults != nil {
@@ -261,6 +263,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        bannerView.load(GADRequest())
         if searchResults != nil {
             let team = searchResults![indexPath.row]
             if let player = team.first {
