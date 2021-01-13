@@ -116,7 +116,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <textInputTraits key="textInputTraits" returnKeyType="done"/>
                             </searchBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8X-Jp-XrV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E8X-Jp-XrV" customClass="GADBannerView">
                                 <rect key="frame" x="0.0" y="44" width="414" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
@@ -148,7 +148,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="bus" catalog="system" id="acY-kT-64o"/>
                     <connections>
-                        <outlet property="bannerAdView" destination="E8X-Jp-XrV" id="nC5-eK-zGK"/>
+                        <outlet property="bannerView" destination="E8X-Jp-XrV" id="0aY-lz-COz"/>
                         <outlet property="divisionSegmentedControl" destination="zHP-rU-8bk" id="eTl-SH-CN3"/>
                         <outlet property="teamsMapView" destination="rxj-Zd-w0Z" id="pbT-C4-YtK"/>
                         <outlet property="teamsSearchBar" destination="8Za-i7-8DQ" id="FHL-3q-wnW"/>

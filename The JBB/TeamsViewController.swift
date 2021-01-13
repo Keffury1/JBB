@@ -10,13 +10,12 @@ import MapKit
 import UIImageColors
 import GoogleMobileAds
 
-class TeamsViewController: UIViewController, TableViewCellDelegate {
+class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerViewDelegate {
     
     // MARK: - Properties
     
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testBannerAd = "ca-app-pub-3940256099942544/2934735716"
-    var bannerView: GADBannerView!
     var divisionOne: [[Player]] = []
     var divisionTwo: [[Player]] = []
     var divisionThree: [[Player]] = []
@@ -26,7 +25,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var bannerAdView: UIView!
+    @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var teamsMapView: MKMapView!
     @IBOutlet weak var teamsTableView: UITableView!
     @IBOutlet weak var teamsSearchBar: UISearchBar!
@@ -39,47 +38,47 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         
         setupSubviews()
         filterTeams()
-//        setupAds()
+        bannerView.isHidden = true
+        setupAds()
     }
     
     // MARK: - Methods
     
-//    func setupAds() {
-//        bannerView.adUnitID = testBannerAd
-//        bannerView.rootViewController = self
-//        loadBannerAd()
-//    }
-//
-//    func loadBannerAd() {
-//        let frame = { () -> CGRect in
-//          if #available(iOS 11.0, *) {
-//            return view.frame.inset(by: view.safeAreaInsets)
-//          } else {
-//            return view.frame
-//          }
-//        }()
-//        let viewWidth = frame.size.width
-//
-//        bannerView.adSize = GADCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(viewWidth)
-//
-//        bannerView.load(GADRequest())
-//    }
+    func setupAds() {
+        bannerView.delegate = self
+        bannerView.adUnitID = testBannerAd
+        bannerView.adSize = kGADAdSizeSmartBannerPortrait
+        bannerView.rootViewController = self
+        bannerView.load(GADRequest())
+    }
+    
+    func adViewDidReceiveAd(_ bannerView: GADBannerView) {
+        bannerView.isHidden = false
+    }
+    
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        bannerView.isHidden = true
+    }
     
     func buttonPressed(index: Int) {
         
         var sender: [Player]?
         
-        switch selectedIndex {
-        case 0:
-            sender = divisionOne[index]
-        case 1:
-            sender = divisionTwo[index]
-        case 2:
-            sender = divisionThree[index]
-        case 3:
-            sender = cCCAA[index]
-        default:
-            return
+        if searchResults != nil {
+            sender = searchResults![index]
+        } else {
+            switch selectedIndex {
+            case 0:
+                sender = divisionOne[index]
+            case 1:
+                sender = divisionTwo[index]
+            case 2:
+                sender = divisionThree[index]
+            case 3:
+                sender = cCCAA[index]
+            default:
+                return
+            }
         }
         
         self.performSegue(withIdentifier: "rosterSegue", sender:  sender)
@@ -123,13 +122,52 @@ class TeamsViewController: UIViewController, TableViewCellDelegate {
         }
         teamsTableView.reloadData()
     }
+    
+    func searchForTeams(with searchTerm: String) {
+        var results: [[Player]]?
+        
+        switch selectedIndex {
+        case 0:
+            results = divisionOne.filter({ (team) -> Bool in
+                team.contains(where: { $0.school.contains(searchTerm) })
+            })
+        case 1:
+            results = divisionTwo.filter({ (team) -> Bool in
+                team.contains(where: { $0.school.contains(searchTerm) })
+            })
+        case 2:
+            results = divisionThree.filter({ (team) -> Bool in
+                team.contains(where: { $0.school.contains(searchTerm) })
+            })
+        case 3:
+            results = cCCAA.filter({ (team) -> Bool in
+                team.contains(where: { $0.school.contains(searchTerm) })
+            })
+        default:
+            results = nil
+        }
+        if results?.isEmpty == true {
+            self.searchResults = nil
+        } else {
+            if let result = results {
+                self.searchResults = result
+            }
+        }
+        
+        teamsTableView.reloadData()
+    }
 
     
     // MARK: - Actions
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
         self.selectedIndex = sender.selectedSegmentIndex
-        teamsTableView.reloadData()
+        if teamsSearchBar.text != nil {
+            searchForTeams(with: teamsSearchBar.text!)
+        } else {
+            teamsTableView.reloadData()
+        }
+        teamsSearchBar.endEditing(true)
     }
     
     // MARK: - Navigation
@@ -223,29 +261,36 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch selectedIndex {
-        case 0:
-            let team = divisionOne[indexPath.row]
+        if searchResults != nil {
+            let team = searchResults![indexPath.row]
             if let player = team.first {
                 addAnnotation(player)
             }
-        case 1:
-            let team = divisionTwo[indexPath.row]
-            if let player = team.first {
-                addAnnotation(player)
+        } else {
+            switch selectedIndex {
+            case 0:
+                let team = divisionOne[indexPath.row]
+                if let player = team.first {
+                    addAnnotation(player)
+                }
+            case 1:
+                let team = divisionTwo[indexPath.row]
+                if let player = team.first {
+                    addAnnotation(player)
+                }
+            case 2:
+                let team = divisionThree[indexPath.row]
+                if let player = team.first {
+                    addAnnotation(player)
+                }
+            case 3:
+                let team = cCCAA[indexPath.row]
+                if let player = team.first {
+                    addAnnotation(player)
+                }
+            default:
+                return
             }
-        case 2:
-            let team = divisionThree[indexPath.row]
-            if let player = team.first {
-                addAnnotation(player)
-            }
-        case 3:
-            let team = cCCAA[indexPath.row]
-            if let player = team.first {
-                addAnnotation(player)
-            }
-        default:
-            return
         }
     }
 }
@@ -264,37 +309,7 @@ extension TeamsViewController: MKMapViewDelegate {
 extension TeamsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else { return }
-        
-        var results: [[Player]]?
-        
-        switch selectedIndex {
-        case 0:
-            results = divisionOne.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        case 1:
-            results = divisionTwo.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        case 2:
-            results = divisionThree.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        case 3:
-            results = cCCAA.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        default:
-            results = nil
-        }
-        if results?.isEmpty == true {
-            self.searchResults = nil
-        } else {
-            if let result = results {
-                self.searchResults = result
-            }
-        }
-        self.teamsTableView.reloadData()
+        searchForTeams(with: searchTerm)
         searchBar.endEditing(true)
     }
     
