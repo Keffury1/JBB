@@ -168,7 +168,6 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         
         teamsTableView.reloadData()
     }
-
     
     // MARK: - Actions
     
@@ -210,6 +209,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
 }
 
 extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchResults != nil {
             return searchResults!.count
