@@ -105,8 +105,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     }
     
     func addAnnotation(_ player: Player) {
-        let all = teamsMapView.annotations
-        teamsMapView.removeAnnotations(all)
+        teamsMapView.removeAnnotations(teamsMapView.annotations)
         let annotation = MKPointAnnotation()
         annotation.title = player.school
         let lat = CLLocationDegrees(player.lat)
