@@ -308,7 +308,8 @@ extension TeamsViewController: MKMapViewDelegate {
         let identifier = "Annotation"
         let annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
         annotationView.canShowCallout = true
-        annotationView.pinTintColor = UIColor.black
+        annotationView.pinTintColor = .black
+        
         
         return annotationView
     }
