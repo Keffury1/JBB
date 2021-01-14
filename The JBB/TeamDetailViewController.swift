@@ -26,6 +26,7 @@ class TeamDetailViewController: UIViewController {
     
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var recordLabel: UILabel!
+    @IBOutlet weak var backgroundTeamImageView: UIView!
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var rosterTableView: UITableView!
     @IBOutlet weak var logoView: UIView!
@@ -80,9 +81,13 @@ class TeamDetailViewController: UIViewController {
                             textFieldInsideSearchBar?.textColor = colors?.primary
                             self.playerSearchBar.tintColor = colors?.primary
                         }
+                        
                         self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
                         self.teamImageView.clipsToBounds = true
                         self.teamImageView.layer.borderWidth = 2.0
+                        self.backgroundTeamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
+                        self.backgroundTeamImageView.clipsToBounds = true
+                        self.backgroundTeamImageView.layer.borderWidth = 2.0
                     }
                 } else {
                     print("Error fetching leader image")
