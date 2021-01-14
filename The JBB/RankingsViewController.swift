@@ -63,7 +63,10 @@ class RankingsViewController: UIViewController {
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
         self.selectedSegmentIndex = sender.selectedSegmentIndex
-        rankingsTableView.reloadData()
+        rankingsTableView.setContentOffset(.zero, animated: true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.rankingsTableView.reloadData()
+        }
     }
     
     // MARK: - Navigation
@@ -142,9 +145,6 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
             if let data = data {
                 DispatchQueue.main.async {
                     cell.teamImageView.image = UIImage(data: data)
-                    cell.teamImageView.image?.getColors { colors in
-                        cell.teamImageView.layer.borderColor = colors?.primary.cgColor
-                    }
                 }
             } else {
                 print("Error fetching leader image")
@@ -153,6 +153,7 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
         cell.teamImageView.clipsToBounds = true
+        cell.teamImageView.layer.borderColor = UIColor.black.cgColor
         cell.teamImageView.layer.borderWidth = 1.5
         
         return cell
@@ -178,6 +179,16 @@ extension RankingsViewController: RankingsFilledDelegate {
             default:
                 return
             }
+        }
+        
+        division1.sort { (team1, team2) -> Bool in
+            Int((team1.first?.rank)!)! < Int((team2.first?.rank)!)!
+        }
+        division2.sort { (team1, team2) -> Bool in
+            Int((team1.first?.rank)!)! < Int((team2.first?.rank)!)!
+        }
+        division3.sort { (team1, team2) -> Bool in
+            Int((team1.first?.rank)!)! < Int((team2.first?.rank)!)!
         }
         
         DispatchQueue.main.async {

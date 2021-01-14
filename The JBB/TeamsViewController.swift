@@ -178,6 +178,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         } else {
             teamsTableView.reloadData()
         }
+        teamsTableView.setContentOffset(.zero, animated: true)
         teamsSearchBar.endEditing(true)
     }
     
@@ -265,10 +266,6 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
             if let data = data {
                 DispatchQueue.main.async {
                     cell.teamImageView.image = UIImage(data: data)
-                    cell.teamImageView.image?.getColors { colors in
-                        cell.rosterButton.tintColor = colors?.primary
-                        cell.teamImageView.layer.borderColor = colors?.primary.cgColor
-                    }
                 }
             } else {
                 print("Error fetching leader image")
@@ -277,6 +274,8 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         
         cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
         cell.teamImageView.clipsToBounds = true
+        cell.rosterButton.tintColor = .black
+        cell.teamImageView.layer.borderColor = UIColor.black.cgColor
         cell.teamImageView.layer.borderWidth = 1.0
         
         return cell

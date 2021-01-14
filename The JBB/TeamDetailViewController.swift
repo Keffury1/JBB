@@ -14,6 +14,13 @@ class TeamDetailViewController: UIViewController {
     
     var team: [Player]?
     var searchResult: [Player]?
+    var primary: UIColor?
+    var secondary: UIColor?
+    var background: UIColor? {
+        didSet {
+            rosterTableView.reloadData()
+        }
+    }
     
     // MARK: - Outlets
     
@@ -26,10 +33,20 @@ class TeamDetailViewController: UIViewController {
     
     // MARK: - Views
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         setupSubviews()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         startAnimation()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.stopAnimation()
+        }
     }
     
     // MARK: - Methods
@@ -45,15 +62,18 @@ class TeamDetailViewController: UIViewController {
             }
             Networking.shared.fetchImage(at: team.first?.image, completion: { (data) in
                 if let data = data {
-                    DispatchQueue.main.async {
+                    DispatchQueue.main.sync {
                         self.teamImageView.image = UIImage(data: data)
                         self.rosterTableView.reloadData()
                         self.teamImageView.image?.getColors { colors in
+                            self.rosterTableView.backgroundColor = colors?.background
+                            self.primary = colors?.primary
+                            self.secondary = colors?.secondary
+                            self.background = colors?.background
                             self.view.backgroundColor = colors?.background
                             self.teamNameLabel.textColor = colors?.primary
                             self.teamImageView.layer.borderColor = colors?.primary.cgColor
                             self.recordLabel.textColor = colors?.primary
-                            self.rosterTableView.backgroundColor = colors?.background
                         }
                         self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
                         self.teamImageView.clipsToBounds = true
@@ -63,9 +83,6 @@ class TeamDetailViewController: UIViewController {
                     print("Error fetching leader image")
                 }
             })
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.3) {
-            self.stopAnimation()
         }
     }
     
@@ -109,6 +126,7 @@ extension TeamDetailViewController: UITableViewDataSource {
         cell.positionLabel.text = player.pos
         cell.batThrowLabel.text = player.batThrow
         cell.heightWeightLabel.text = "\(player.height) \(player.weight)"
+        
         switch Int(player.year) {
         case 1:
             cell.yearLabel.text = "Fr"
@@ -122,16 +140,15 @@ extension TeamDetailViewController: UITableViewDataSource {
             cell.yearLabel.text = ""
         }
         
-        teamImageView.image?.getColors { colors in
-            cell.yearLabel.textColor = colors?.secondary
-            cell.backgroundColor = colors?.background
-            cell.heightWeightLabel.textColor = colors?.secondary
-            cell.batThrowLabel.textColor = colors?.secondary
-            cell.positionLabel.textColor = colors?.secondary
-            cell.numberLabel.textColor = colors?.secondary
-            cell.nameLabel.textColor = colors?.primary
-            cell.hometownLabel.textColor = colors?.secondary
-        }
+        cell.yearLabel.textColor = secondary
+        cell.backgroundColor = background
+        cell.heightWeightLabel.textColor = secondary
+        cell.batThrowLabel.textColor = secondary
+        cell.positionLabel.textColor = secondary
+        cell.numberLabel.textColor = secondary
+        cell.nameLabel.textColor = primary
+        cell.hometownLabel.textColor = secondary
+        
         return cell
     }
 }
