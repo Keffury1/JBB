@@ -131,6 +131,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         teamsTableView.delegate = self
         teamsMapView.delegate = self
         teamsSearchBar.delegate = self
+        teamsSearchBar.tintColor = .black
         teamsSearchBar.placeholder = "Search for Teams"
         teamsSearchBar.backgroundImage = UIImage()
     }
@@ -242,7 +243,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "teamCell", for: indexPath) as? TeamTableViewCell else { return UITableViewCell() }
-        
+        cell.teamImageView?.image = nil
         cell.delegate = self
         cell.index = indexPath.row
         

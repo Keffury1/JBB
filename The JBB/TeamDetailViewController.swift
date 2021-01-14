@@ -78,6 +78,7 @@ class TeamDetailViewController: UIViewController {
                             self.recordLabel.textColor = colors?.primary
                             let textFieldInsideSearchBar = self.playerSearchBar.value(forKey: "searchField") as? UITextField
                             textFieldInsideSearchBar?.textColor = colors?.primary
+                            self.playerSearchBar.tintColor = colors?.primary
                         }
                         self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
                         self.teamImageView.clipsToBounds = true
