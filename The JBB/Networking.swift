@@ -17,6 +17,8 @@ enum NetworkError: Error {
 
 protocol RankingsFilledDelegate {
     func rankingsWereFilled(list: [[Player]])
+    
+    func teamsWereFilled()
 }
 
 class Networking {
@@ -33,13 +35,17 @@ class Networking {
             started = false
         }
     }
-    var playerList: [[Player]]?
+    var playerList: [[Player]]? {
+        didSet {
+            rankingsDelegate?.teamsWereFilled()
+        }
+    }
     
     // MARK: - URLs
     
     private let teamsUrl = URL(string: "https://sheetdb.io/api/v1/9oqa36i1lo6wg")!
 
-    func fetchTeams(completion: @escaping (Result<[[Player]], Error>) -> Void) {
+    func fetchTeams(completion: @escaping (Error?) -> Void) {
         var request = URLRequest(url: teamsUrl)
         request.httpMethod = "GET"
         
@@ -47,7 +53,7 @@ class Networking {
             
             if let error = error {
                 print(String(describing: error))
-                completion(.failure(error))
+                completion(error)
                 return
             }
             
@@ -58,11 +64,12 @@ class Networking {
             do {
                 let teams = try decoder.decode([Player].self, from: data)
                 let players = self.sortPlayersByTeam(from: teams)
+                self.playerList = players
                 self.rankingList = self.getRankedTeams(from: players)
-                completion(.success(players))
+                completion(nil)
             } catch {
                 print("Error decoding rankings: \(error)")
-                completion(.failure(error))
+                completion(error)
                 return
             }
         }.resume()

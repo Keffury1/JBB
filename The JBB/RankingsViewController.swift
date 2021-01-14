@@ -45,6 +45,8 @@ class RankingsViewController: UIViewController {
     }
     
     private func startAnimation() {
+        self.tabBarController?.tabBar.isHidden = true
+        self.tabBarController?.tabBar.alpha = 0
         logoImageView.transform = CGAffineTransform(scaleX: 0.001, y: 0.001)
         UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.2, initialSpringVelocity: 0, options: [.repeat, .autoreverse], animations: {
             self.logoImageView.transform = .identity
@@ -52,11 +54,12 @@ class RankingsViewController: UIViewController {
     }
     
     private func stopAnimation() {
+        self.tabBarController?.tabBar.isHidden = false
         UIView.animate(withDuration: 1.0) {
             self.logoView.alpha = 0
+            self.tabBarController?.tabBar.alpha = 1
         }
         self.logoImageView.stopAnimating()
-        super.tabBarController?.tabBar.isUserInteractionEnabled = true
     }
     
     // MARK: - Actions
@@ -165,6 +168,12 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
 }
 
 extension RankingsViewController: RankingsFilledDelegate {
+    func teamsWereFilled() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            self.stopAnimation()
+        }
+    }
+    
     func rankingsWereFilled(list: [[Player]]) {
         let rankings = list
         
@@ -193,10 +202,6 @@ extension RankingsViewController: RankingsFilledDelegate {
         
         DispatchQueue.main.async {
             self.rankingsTableView.reloadData()
-        }
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.stopAnimation()
         }
     }
 }

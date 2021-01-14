@@ -16,6 +16,13 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testBannerAd = "ca-app-pub-3940256099942544/2934735716"
+    var teams: [[Player]]? {
+        didSet {
+            if let teams = teams {
+                teamsWereFilled(list: teams)
+            }
+        }
+    }
     var divisionOne: [[Player]] = []
     var divisionTwo: [[Player]] = []
     var divisionThree: [[Player]] = []
@@ -35,9 +42,9 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        self.teams = Networking.shared.playerList
         setupSubviews()
-        filterTeams()
         bannerView.isHidden = true
         setupAds()
     }
@@ -96,6 +103,29 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         }
     }
     
+    func teamsWereFilled(list: [[Player]]) {
+        let teams = list
+        
+        teams.forEach { (team) in
+            switch team.first?.division {
+            case "1":
+                divisionOne.append(team)
+            case "2":
+                divisionTwo.append(team)
+            case "3":
+                divisionThree.append(team)
+            case "CCCAA":
+                cCCAA.append(team)
+            default:
+                return
+            }
+        }
+        
+        DispatchQueue.main.async {
+            self.teamsTableView.reloadData()
+        }
+    }
+    
     func setupSubviews() {
         teamsTableView.dataSource = self
         teamsTableView.delegate = self
@@ -113,26 +143,6 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         let lon = CLLocationDegrees(player.lon)
         annotation.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
         teamsMapView.addAnnotation(annotation)
-    }
-    
-    func filterTeams() {
-        if let teams = Networking.shared.playerList {
-            teams.forEach { (team) in
-                switch team.first?.division {
-                case "1":
-                    divisionOne.append(team)
-                case "2":
-                    divisionTwo.append(team)
-                case "3":
-                    divisionThree.append(team)
-                case "CCCAA":
-                    cCCAA.append(team)
-                default:
-                    return
-                }
-            }
-        }
-        teamsTableView.reloadData()
     }
     
     private func searchForTeams(with searchTerm: String) {

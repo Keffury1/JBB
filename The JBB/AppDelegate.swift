@@ -21,11 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
-        Networking.shared.fetchTeams { result in
-            if let teams = try? result.get() {
-                DispatchQueue.main.async {
-                    Networking.shared.playerList = teams
-                }
+        Networking.shared.fetchTeams { (error) in
+            if let _ = error {
+                return
             }
         }
         return true
