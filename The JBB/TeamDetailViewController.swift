@@ -174,6 +174,11 @@ extension TeamDetailViewController: UITableViewDataSource {
         cell.numberLabel.text = athlete.num
         cell.nameLabel.text = athlete.name
         cell.hometownLabel.text = athlete.hometown
+        if athlete.hometown == "" {
+            cell.hometownLabel.isHidden = true
+        } else {
+            cell.hometownLabel.isHidden = false
+        }
         cell.positionLabel.text = athlete.pos
         cell.batThrowLabel.text = athlete.batThrow
         cell.heightWeightLabel.text = "\(athlete.height) \(athlete.weight)"
