@@ -13,7 +13,6 @@ class TeamDetailViewController: UIViewController {
     // MARK: - Properties
     
     var team: [Player]?
-    var searchResult: [Player]?
     var primary: UIColor?
     var secondary: UIColor?
     var background: UIColor? {
@@ -21,6 +20,7 @@ class TeamDetailViewController: UIViewController {
             rosterTableView.reloadData()
         }
     }
+    private var searchResults: [Player]?
     
     // MARK: - Outlets
     
@@ -53,6 +53,8 @@ class TeamDetailViewController: UIViewController {
     // MARK: - Methods
     
     func setupSubviews() {
+        playerSearchBar.delegate = self
+        playerSearchBar.placeholder = "Search for Athletes"
         rosterTableView.dataSource = self
         if let team = team {
             teamNameLabel.text = team.first?.school
@@ -87,6 +89,26 @@ class TeamDetailViewController: UIViewController {
         }
     }
     
+    private func searchForTeams(with searchTerm: String) {
+        var results: [Player]?
+        
+        guard let team = team else { return }
+        
+        results = team.filter { (player) -> Bool in
+            player.name.contains(searchTerm)
+        }
+        
+        if results?.isEmpty == true {
+            self.searchResults = nil
+        } else {
+            if let result = results {
+                self.searchResults = result
+            }
+        }
+        
+        rosterTableView.reloadData()
+    }
+    
     private func startAnimation() {
         logoImageView.transform = CGAffineTransform(scaleX: 0.000001, y: 0.000001)
         UIView.animate(withDuration: 3.0, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 0, options: [], animations: {
@@ -111,7 +133,11 @@ class TeamDetailViewController: UIViewController {
 
 extension TeamDetailViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return team?.count ?? 0
+        if searchResults != nil {
+            return searchResults!.count
+        } else {
+            return team?.count ?? 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -119,16 +145,24 @@ extension TeamDetailViewController: UITableViewDataSource {
         
         guard let team = team else { return UITableViewCell() }
         
-        let player = team[indexPath.row]
+        var player: Player?
         
-        cell.numberLabel.text = player.num
-        cell.nameLabel.text = player.name
-        cell.hometownLabel.text = player.hometown
-        cell.positionLabel.text = player.pos
-        cell.batThrowLabel.text = player.batThrow
-        cell.heightWeightLabel.text = "\(player.height) \(player.weight)"
+        if searchResults != nil {
+            player = searchResults![indexPath.row]
+        } else {
+            player = team[indexPath.row]
+        }
         
-        switch Int(player.year) {
+        guard let athlete = player else { return UITableViewCell() }
+        
+        cell.numberLabel.text = athlete.num
+        cell.nameLabel.text = athlete.name
+        cell.hometownLabel.text = athlete.hometown
+        cell.positionLabel.text = athlete.pos
+        cell.batThrowLabel.text = athlete.batThrow
+        cell.heightWeightLabel.text = "\(athlete.height) \(athlete.weight)"
+        
+        switch Int(athlete.year) {
         case 1:
             cell.yearLabel.text = "Fr"
         case 2:
@@ -151,5 +185,13 @@ extension TeamDetailViewController: UITableViewDataSource {
         cell.hometownLabel.textColor = secondary
         
         return cell
+    }
+}
+
+extension TeamDetailViewController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = searchBar.text else { return }
+        searchForTeams(with: searchTerm)
+        searchBar.endEditing(true)
     }
 }

@@ -20,7 +20,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     var divisionTwo: [[Player]] = []
     var divisionThree: [[Player]] = []
     var cCCAA: [[Player]] = []
-    var searchResults: [[Player]]?
+    private var searchResults: [[Player]]?
     var selectedIndex = 0
     
     // MARK: - Outlets
@@ -101,6 +101,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         teamsTableView.delegate = self
         teamsMapView.delegate = self
         teamsSearchBar.delegate = self
+        teamsSearchBar.placeholder = "Search for Teams"
         teamsSearchBar.backgroundImage = UIImage()
     }
     
@@ -134,7 +135,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         teamsTableView.reloadData()
     }
     
-    func searchForTeams(with searchTerm: String) {
+    private func searchForTeams(with searchTerm: String) {
         var results: [[Player]]?
         
         switch selectedIndex {
