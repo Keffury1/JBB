@@ -12,7 +12,16 @@ class TeamDetailViewController: UIViewController {
 
     // MARK: - Properties
     
-    var team: [Player]?
+    var team: [Player]? {
+        didSet {
+            team?.sort(by: { (player1, player2) -> Bool in
+                let a:Int? = Int(player1.num) // firstText is UITextField
+                let b:Int? = Int(player2.num)
+                guard let num1 = a, let num2 = b else { return false }
+                return num1 < num2
+            })
+        }
+    }
     var primary: UIColor?
     var secondary: UIColor?
     var background: UIColor? {
