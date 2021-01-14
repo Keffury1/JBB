@@ -20,7 +20,7 @@
                             <mapView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxj-Zd-w0Z">
                                 <rect key="frame" x="10" y="104" width="394" height="249.5"/>
                             </mapView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Vy-IBO">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="reI-Vy-IBO">
                                 <rect key="frame" x="20" y="470.5" width="384" height="332.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
@@ -167,7 +167,7 @@
                                 </constraints>
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="1DF-aW-AN5">
-                                <rect key="frame" x="10" y="250" width="394" height="558"/>
+                                <rect key="frame" x="10" y="300" width="394" height="508"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -264,13 +264,17 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="wCS-1y-TfG">
+                                <rect key="frame" x="0.0" y="234" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XKX-AR-6ug">
-                                <rect key="frame" x="30" y="166" width="57" height="20.5"/>
+                                <rect key="frame" x="30" y="166" width="184" height="20.5"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DF-Ov-G7c">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9DF-Ov-G7c">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="XqB-GE-Gdr">
@@ -292,26 +296,31 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1DF-aW-AN5" firstAttribute="leading" secondItem="PoL-74-VOu" secondAttribute="leading" constant="10" id="1Sc-fe-oyr"/>
+                            <constraint firstItem="wCS-1y-TfG" firstAttribute="trailing" secondItem="PoL-74-VOu" secondAttribute="trailing" id="2mv-TM-Shw"/>
                             <constraint firstItem="9DF-Ov-G7c" firstAttribute="top" secondItem="8id-8k-wMF" secondAttribute="top" id="52s-R1-KLe"/>
                             <constraint firstItem="PoL-74-VOu" firstAttribute="trailing" secondItem="1DF-aW-AN5" secondAttribute="trailing" constant="10" id="5Jz-81-u7g"/>
                             <constraint firstItem="9DF-Ov-G7c" firstAttribute="leading" secondItem="8id-8k-wMF" secondAttribute="leading" id="7FE-IF-Pvg"/>
                             <constraint firstItem="8TA-Lc-QQp" firstAttribute="leading" secondItem="B4W-J5-H6P" secondAttribute="trailing" constant="20" id="9gK-iZ-Myk"/>
                             <constraint firstItem="XKX-AR-6ug" firstAttribute="leading" secondItem="B4W-J5-H6P" secondAttribute="leading" id="9vB-SH-KW5"/>
                             <constraint firstItem="B4W-J5-H6P" firstAttribute="centerY" secondItem="8TA-Lc-QQp" secondAttribute="centerY" constant="-10" id="EAf-c4-PoL"/>
+                            <constraint firstItem="wCS-1y-TfG" firstAttribute="leading" secondItem="PoL-74-VOu" secondAttribute="leading" id="JGo-wF-47i"/>
                             <constraint firstItem="8TA-Lc-QQp" firstAttribute="top" secondItem="PoL-74-VOu" secondAttribute="top" constant="50" id="Olz-Mu-c2B"/>
+                            <constraint firstItem="XKX-AR-6ug" firstAttribute="trailing" secondItem="B4W-J5-H6P" secondAttribute="trailing" id="Prf-hi-Um4"/>
                             <constraint firstAttribute="bottom" secondItem="9DF-Ov-G7c" secondAttribute="bottom" id="UD0-TP-fRC"/>
-                            <constraint firstItem="1DF-aW-AN5" firstAttribute="top" secondItem="8TA-Lc-QQp" secondAttribute="bottom" constant="50" id="Ytr-sx-nKq"/>
+                            <constraint firstItem="1DF-aW-AN5" firstAttribute="top" secondItem="8TA-Lc-QQp" secondAttribute="bottom" constant="100" id="Ytr-sx-nKq"/>
                             <constraint firstItem="PoL-74-VOu" firstAttribute="bottom" secondItem="1DF-aW-AN5" secondAttribute="bottom" id="ZOL-7a-OXT"/>
                             <constraint firstItem="XKX-AR-6ug" firstAttribute="top" secondItem="B4W-J5-H6P" secondAttribute="bottom" constant="10" id="cn4-3H-6zK"/>
                             <constraint firstAttribute="trailing" secondItem="9DF-Ov-G7c" secondAttribute="trailing" id="f5F-XH-8pI"/>
                             <constraint firstItem="8TA-Lc-QQp" firstAttribute="trailing" secondItem="1DF-aW-AN5" secondAttribute="trailing" constant="-20" id="gsG-xq-X26"/>
                             <constraint firstItem="B4W-J5-H6P" firstAttribute="leading" secondItem="1DF-aW-AN5" secondAttribute="leading" constant="20" id="jJI-9O-lf2"/>
+                            <constraint firstItem="1DF-aW-AN5" firstAttribute="top" secondItem="wCS-1y-TfG" secondAttribute="bottom" constant="10" id="s1R-0W-fJB"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="Lt9-UV-Pej"/>
                     <connections>
                         <outlet property="logoImageView" destination="XqB-GE-Gdr" id="xYq-0R-Qw2"/>
                         <outlet property="logoView" destination="9DF-Ov-G7c" id="Dvg-NO-ynR"/>
+                        <outlet property="playerSearchBar" destination="wCS-1y-TfG" id="TOi-uo-ylC"/>
                         <outlet property="recordLabel" destination="XKX-AR-6ug" id="ue8-hU-ygg"/>
                         <outlet property="rosterTableView" destination="1DF-aW-AN5" id="7dz-VR-GlA"/>
                         <outlet property="teamImageView" destination="8TA-Lc-QQp" id="35O-V1-WnZ"/>

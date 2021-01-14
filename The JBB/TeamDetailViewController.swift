@@ -30,6 +30,7 @@ class TeamDetailViewController: UIViewController {
     @IBOutlet weak var rosterTableView: UITableView!
     @IBOutlet weak var logoView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var playerSearchBar: UISearchBar!
     
     // MARK: - Views
     
