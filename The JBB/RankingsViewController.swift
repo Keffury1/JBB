@@ -154,7 +154,7 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.teamImageView.layer.cornerRadius = cell.teamImageView.frame.size.width / 2
         cell.teamImageView.clipsToBounds = true
         cell.teamImageView.layer.borderColor = UIColor.black.cgColor
-        cell.teamImageView.layer.borderWidth = 1.5
+        cell.teamImageView.layer.borderWidth = 0.5
         
         return cell
     }

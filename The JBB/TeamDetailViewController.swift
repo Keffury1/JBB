@@ -45,9 +45,7 @@ class TeamDetailViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            self.stopAnimation()
-        }
+        self.stopAnimation()
     }
     
     // MARK: - Methods
@@ -55,6 +53,7 @@ class TeamDetailViewController: UIViewController {
     func setupSubviews() {
         playerSearchBar.delegate = self
         playerSearchBar.placeholder = "Search for Athletes"
+        playerSearchBar.backgroundImage = UIImage()
         rosterTableView.dataSource = self
         if let team = team {
             teamNameLabel.text = team.first?.school
@@ -77,6 +76,8 @@ class TeamDetailViewController: UIViewController {
                             self.teamNameLabel.textColor = colors?.primary
                             self.teamImageView.layer.borderColor = colors?.primary.cgColor
                             self.recordLabel.textColor = colors?.primary
+                            let textFieldInsideSearchBar = self.playerSearchBar.value(forKey: "searchField") as? UITextField
+                            textFieldInsideSearchBar?.textColor = colors?.primary
                         }
                         self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
                         self.teamImageView.clipsToBounds = true

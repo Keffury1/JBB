@@ -24,6 +24,7 @@ class TeamTableViewCell: UITableViewCell {
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var latLonLabel: UILabel!
+    @IBOutlet weak var regionLabel: UILabel!
     
     //MARK: - Actions
     
