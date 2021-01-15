@@ -17,9 +17,11 @@ class RankingsViewController: UIViewController {
     private var searchResults: [[Player]]?
     var selectedSegmentIndex = 0
     let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+")
+    private var searching: Bool = false
     
     // MARK: - Outlets
     
+    @IBOutlet weak var noRankResultsView: UIView!
     @IBOutlet weak var logoView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var rankingsSearchBar: UISearchBar!
@@ -69,29 +71,37 @@ class RankingsViewController: UIViewController {
     }
     
     private func searchForTeams(with searchTerm: String) {
+        noRankResultsView.alpha = 0
+        self.searching = true
         var results: [[Player]]?
         
-        switch selectedSegmentIndex {
-        case 0:
-            results = division1.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        case 1:
-            results = division2.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        case 2:
-            results = division3.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        default:
-            results = nil
-        }
-        if results?.isEmpty == true {
-            self.searchResults = nil
+        if searchTerm == "" {
+            searchResults = nil
+            self.searching = false
+            rankingsTableView.reloadData()
+            return
         } else {
+            switch selectedSegmentIndex {
+            case 0:
+                results = division1.filter({ (team) -> Bool in
+                    team.contains(where: { $0.school.contains(searchTerm) })
+                })
+            case 1:
+                results = division2.filter({ (team) -> Bool in
+                    team.contains(where: { $0.school.contains(searchTerm) })
+                })
+            case 2:
+                results = division3.filter({ (team) -> Bool in
+                    team.contains(where: { $0.school.contains(searchTerm) })
+                })
+            default:
+                results = nil
+            }
             if let result = results {
                 self.searchResults = result
+            } else {
+                self.searchResults = nil
+                noRankResultsView.alpha = 1
             }
         }
         
@@ -133,15 +143,19 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
         if searchResults != nil {
             return searchResults!.count
         } else {
-            switch selectedSegmentIndex {
-            case 0:
-                return division1.count
-            case 1:
-                return division2.count
-            case 2:
-                return division3.count
-            default:
+            if searching {
                 return 0
+            } else {
+                switch selectedSegmentIndex {
+                case 0:
+                    return division1.count
+                case 1:
+                    return division2.count
+                case 2:
+                    return division3.count
+                default:
+                    return 0
+                }
             }
         }
     }
@@ -255,11 +269,5 @@ extension RankingsViewController: UISearchBarDelegate {
         guard let searchTerm = searchBar.text else { return }
         searchForTeams(with: searchTerm)
         searchBar.endEditing(true)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchResults = nil
-        searchBar.endEditing(true)
-        rankingsTableView.reloadData()
     }
 }

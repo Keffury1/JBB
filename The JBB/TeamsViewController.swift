@@ -29,9 +29,11 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     var cCCAA: [[Player]] = []
     private var searchResults: [[Player]]?
     var selectedIndex = 0
+    private var searching: Bool = false
     
     // MARK: - Outlets
     
+    @IBOutlet weak var noResultsView: UIView!
     @IBOutlet weak var bannerView: GADBannerView!
     @IBOutlet weak var teamsMapView: MKMapView!
     @IBOutlet weak var teamsTableView: UITableView!
@@ -147,33 +149,41 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     }
     
     private func searchForTeams(with searchTerm: String) {
+        noResultsView.alpha = 0
+        self.searching = true
         var results: [[Player]]?
         
-        switch selectedIndex {
-        case 0:
-            results = divisionOne.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        case 1:
-            results = divisionTwo.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        case 2:
-            results = divisionThree.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        case 3:
-            results = cCCAA.filter({ (team) -> Bool in
-                team.contains(where: { $0.school.contains(searchTerm) })
-            })
-        default:
-            results = nil
-        }
-        if results?.isEmpty == true {
-            self.searchResults = nil
+        if searchTerm == "" {
+            searchResults = nil
+            self.searching = false
+            teamsTableView.reloadData()
+            return
         } else {
+            switch selectedIndex {
+            case 0:
+                results = divisionOne.filter({ (team) -> Bool in
+                    team.contains(where: { $0.school.contains(searchTerm) })
+                })
+            case 1:
+                results = divisionTwo.filter({ (team) -> Bool in
+                    team.contains(where: { $0.school.contains(searchTerm) })
+                })
+            case 2:
+                results = divisionThree.filter({ (team) -> Bool in
+                    team.contains(where: { $0.school.contains(searchTerm) })
+                })
+            case 3:
+                results = cCCAA.filter({ (team) -> Bool in
+                    team.contains(where: { $0.school.contains(searchTerm) })
+                })
+            default:
+                results = nil
+            }
             if let result = results {
                 self.searchResults = result
+            } else {
+                self.searchResults = nil
+                noResultsView.alpha = 1
             }
         }
         
@@ -226,17 +236,21 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         if searchResults != nil {
             return searchResults!.count
         } else {
-            switch selectedIndex {
-            case 0:
-                return divisionOne.count
-            case 1:
-                return divisionTwo.count
-            case 2:
-                return divisionThree.count
-            case 3:
-                return cCCAA.count
-            default:
+            if searching {
                 return 0
+            } else {
+                switch selectedIndex {
+                case 0:
+                    return divisionOne.count
+                case 1:
+                    return divisionTwo.count
+                case 2:
+                    return divisionThree.count
+                case 3:
+                    return cCCAA.count
+                default:
+                    return 0
+                }
             }
         }
     }

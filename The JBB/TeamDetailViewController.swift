@@ -30,9 +30,12 @@ class TeamDetailViewController: UIViewController {
         }
     }
     private var searchResults: [Player]?
+    private var searching: Bool = false
     
     // MARK: - Outlets
     
+    @IBOutlet weak var noPlayersView: UIView!
+    @IBOutlet weak var noPlayersImageView: UIImageView!
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var backgroundTeamImageView: UIView!
@@ -89,6 +92,7 @@ class TeamDetailViewController: UIViewController {
                             let textFieldInsideSearchBar = self.playerSearchBar.value(forKey: "searchField") as? UITextField
                             textFieldInsideSearchBar?.textColor = colors?.primary
                             self.playerSearchBar.tintColor = colors?.primary
+                            self.noPlayersImageView.tintColor = colors?.primary
                         }
                         
                         self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
@@ -105,21 +109,30 @@ class TeamDetailViewController: UIViewController {
         }
     }
     
+    
     private func searchForTeams(with searchTerm: String) {
-        var results: [Player]?
-        
         guard let team = team else { return }
         
-        results = team.filter { (player) -> Bool in
-            player.name.contains(searchTerm)
+        noPlayersView.alpha = 0
+        searching = true
+        var results: [Player]?
+        
+        if searchTerm == "" {
+            searchResults = nil
+            self.searching = false
+            rosterTableView.reloadData()
+            return
+        } else {
+            results = team.filter { (player) -> Bool in
+                player.name.contains(searchTerm)
+            }
         }
         
-        if results?.isEmpty == true {
-            self.searchResults = nil
+        if let result = results {
+            self.searchResults = result
         } else {
-            if let result = results {
-                self.searchResults = result
-            }
+            self.searchResults = nil
+            noPlayersView.alpha = 1
         }
         
         rosterTableView.reloadData()
