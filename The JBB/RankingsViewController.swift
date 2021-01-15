@@ -98,10 +98,12 @@ class RankingsViewController: UIViewController {
                 results = nil
             }
             if let result = results {
-                self.searchResults = result
-            } else {
-                self.searchResults = nil
-                noRankResultsView.alpha = 1
+                if result.count == 0 {
+                    noRankResultsView.alpha = 1
+                    self.searchResults = nil
+                } else {
+                    self.searchResults = result
+                }
             }
         }
         
@@ -269,5 +271,9 @@ extension RankingsViewController: UISearchBarDelegate {
         guard let searchTerm = searchBar.text else { return }
         searchForTeams(with: searchTerm)
         searchBar.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        noRankResultsView.alpha = 0
     }
 }

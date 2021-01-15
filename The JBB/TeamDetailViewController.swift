@@ -35,6 +35,7 @@ class TeamDetailViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var noPlayersView: UIView!
+    @IBOutlet weak var noPlayersLabel: UILabel!
     @IBOutlet weak var noPlayersImageView: UIImageView!
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var recordLabel: UILabel!
@@ -92,7 +93,9 @@ class TeamDetailViewController: UIViewController {
                             let textFieldInsideSearchBar = self.playerSearchBar.value(forKey: "searchField") as? UITextField
                             textFieldInsideSearchBar?.textColor = colors?.primary
                             self.playerSearchBar.tintColor = colors?.primary
+                            self.noPlayersView.backgroundColor = colors?.background
                             self.noPlayersImageView.tintColor = colors?.primary
+                            self.noPlayersLabel.textColor = colors?.primary
                         }
                         
                         self.teamImageView.layer.cornerRadius = self.teamImageView.frame.size.width / 2
@@ -129,12 +132,13 @@ class TeamDetailViewController: UIViewController {
         }
         
         if let result = results {
-            self.searchResults = result
-        } else {
-            self.searchResults = nil
-            noPlayersView.alpha = 1
+            if result.count == 0 {
+                self.searchResults = nil
+                noPlayersView.alpha = 1
+            } else {
+                self.searchResults = result
+            }
         }
-        
         rosterTableView.reloadData()
     }
     
@@ -227,5 +231,9 @@ extension TeamDetailViewController : UISearchBarDelegate {
         guard let searchTerm = searchBar.text else { return }
         searchForTeams(with: searchTerm)
         searchBar.endEditing(true)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        noPlayersView.alpha = 0
     }
 }

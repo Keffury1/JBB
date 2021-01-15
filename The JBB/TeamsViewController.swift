@@ -180,10 +180,12 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
                 results = nil
             }
             if let result = results {
-                self.searchResults = result
-            } else {
-                self.searchResults = nil
-                noResultsView.alpha = 1
+                if result.count == 0 {
+                    self.searchResults = nil
+                    noResultsView.alpha = 1
+                } else {
+                    self.searchResults = result
+                }
             }
         }
         
@@ -337,10 +339,7 @@ extension TeamsViewController: UISearchBarDelegate {
         bannerView.load(GADRequest())
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchResults = nil
-        searchBar.endEditing(true)
-        teamsTableView.reloadData()
-        bannerView.load(GADRequest())
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        noResultsView.alpha = 0
     }
 }
