@@ -59,6 +59,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
+        bannerView.layer.cornerRadius = 10.0
     }
     
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
@@ -131,7 +132,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         teamsTableView.dataSource = self
         teamsTableView.delegate = self
         teamsMapView.delegate = self
-        teamsMapView.mapType = MKMapType.satellite
+        teamsMapView.mapType = MKMapType.standard
         teamsMapView.layer.cornerRadius = 10.0
         teamsMapView.clipsToBounds = true
         teamsSearchBar.delegate = self
