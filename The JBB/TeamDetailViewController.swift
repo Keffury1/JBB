@@ -62,7 +62,7 @@ class TeamDetailViewController: UIViewController {
     
     func setupSubviews() {
         playerSearchBar.delegate = self
-        playerSearchBar.placeholder = "Search for Athletes"
+        playerSearchBar.placeholder = "Search Athletes"
         playerSearchBar.backgroundImage = UIImage()
         rosterTableView.dataSource = self
         if let team = team {

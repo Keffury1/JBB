@@ -404,8 +404,12 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ioh-6V-BZO">
+                                <rect key="frame" x="20" y="250" width="374" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Y9p-T7-QAo">
-                                <rect key="frame" x="10" y="265" width="394" height="538"/>
+                                <rect key="frame" x="10" y="311" width="394" height="492"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="teamCell" rowHeight="95" id="j21-jD-Vag" customClass="RankingTableViewCell" customModule="The_JBB" customModuleProvider="target">
@@ -505,11 +509,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="4M3-fy-jQm" firstAttribute="top" secondItem="uYS-eM-ZQJ" secondAttribute="bottom" constant="20" id="20u-Mx-S70"/>
-                            <constraint firstItem="Y9p-T7-QAo" firstAttribute="top" secondItem="4M3-fy-jQm" secondAttribute="bottom" constant="20" id="DdD-zk-Vsz"/>
+                            <constraint firstItem="ioh-6V-BZO" firstAttribute="top" secondItem="4M3-fy-jQm" secondAttribute="bottom" constant="5" id="5pd-3s-mbD"/>
+                            <constraint firstItem="ioh-6V-BZO" firstAttribute="leading" secondItem="4M3-fy-jQm" secondAttribute="leading" id="CGf-xQ-sRK"/>
+                            <constraint firstItem="Y9p-T7-QAo" firstAttribute="top" secondItem="ioh-6V-BZO" secondAttribute="bottom" constant="5" id="EiJ-K1-BWn"/>
                             <constraint firstItem="06U-rw-1hL" firstAttribute="trailing" secondItem="4M3-fy-jQm" secondAttribute="trailing" constant="20" id="QTi-Yx-4Qt"/>
                             <constraint firstItem="06U-rw-1hL" firstAttribute="bottom" secondItem="Y9p-T7-QAo" secondAttribute="bottom" constant="10" id="TB4-EP-ASP"/>
                             <constraint firstItem="4M3-fy-jQm" firstAttribute="leading" secondItem="06U-rw-1hL" secondAttribute="leading" constant="20" id="UEU-oa-B4i"/>
                             <constraint firstAttribute="trailing" secondItem="P1V-I0-1gY" secondAttribute="trailing" id="Usm-B4-5nj"/>
+                            <constraint firstItem="ioh-6V-BZO" firstAttribute="trailing" secondItem="4M3-fy-jQm" secondAttribute="trailing" id="X9Y-0Y-3sx"/>
                             <constraint firstItem="uYS-eM-ZQJ" firstAttribute="trailing" secondItem="4M3-fy-jQm" secondAttribute="trailing" constant="-10" id="dKp-HM-EVl"/>
                             <constraint firstItem="uYS-eM-ZQJ" firstAttribute="top" secondItem="06U-rw-1hL" secondAttribute="top" id="hHo-Tc-ubH"/>
                             <constraint firstItem="zWV-an-A36" firstAttribute="centerY" secondItem="uYS-eM-ZQJ" secondAttribute="centerY" id="mUE-i6-KNK"/>
@@ -526,6 +533,7 @@
                         <outlet property="divisionSegmentedControl" destination="4M3-fy-jQm" id="o2B-S2-hXi"/>
                         <outlet property="logoImageView" destination="jnS-dD-t1q" id="0M9-Z1-Gee"/>
                         <outlet property="logoView" destination="P1V-I0-1gY" id="rMY-RC-XqV"/>
+                        <outlet property="rankingsSearchBar" destination="ioh-6V-BZO" id="3dQ-ze-SRI"/>
                         <outlet property="rankingsTableView" destination="Y9p-T7-QAo" id="o1F-aW-5tb"/>
                     </connections>
                 </viewController>
@@ -555,7 +563,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Zsn-Qc-BP1"/>
+        <segue reference="6aE-pE-ecE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Logo" width="422" height="334"/>

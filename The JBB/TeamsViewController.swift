@@ -132,7 +132,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         teamsMapView.delegate = self
         teamsSearchBar.delegate = self
         teamsSearchBar.tintColor = .black
-        teamsSearchBar.placeholder = "Search for Teams"
+        teamsSearchBar.placeholder = "Search Teams"
         teamsSearchBar.backgroundImage = UIImage()
     }
     

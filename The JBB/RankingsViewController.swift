@@ -14,6 +14,7 @@ class RankingsViewController: UIViewController {
     var division1: [[Player]] = []
     var division2: [[Player]] = []
     var division3: [[Player]] = []
+    private var searchResults: [[Player]]?
     var selectedSegmentIndex = 0
     let characterset = CharacterSet(charactersIn: "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+")
     
@@ -21,6 +22,7 @@ class RankingsViewController: UIViewController {
     
     @IBOutlet weak var logoView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var rankingsSearchBar: UISearchBar!
     @IBOutlet weak var rankingsTableView: UITableView!
     @IBOutlet weak var divisionSegmentedControl: UISegmentedControl!
     
@@ -42,6 +44,10 @@ class RankingsViewController: UIViewController {
     private func setupSubviews() {
         rankingsTableView.dataSource = self
         rankingsTableView.delegate = self
+        rankingsSearchBar.delegate = self
+        rankingsSearchBar.tintColor = .black
+        rankingsSearchBar.placeholder = "Search Leaders"
+        rankingsSearchBar.backgroundImage = UIImage()
     }
     
     private func startAnimation() {
@@ -60,6 +66,36 @@ class RankingsViewController: UIViewController {
             self.tabBarController?.tabBar.alpha = 1
         }
         self.logoImageView.stopAnimating()
+    }
+    
+    private func searchForTeams(with searchTerm: String) {
+        var results: [[Player]]?
+        
+        switch selectedSegmentIndex {
+        case 0:
+            results = division1.filter({ (team) -> Bool in
+                team.contains(where: { $0.school.contains(searchTerm) })
+            })
+        case 1:
+            results = division2.filter({ (team) -> Bool in
+                team.contains(where: { $0.school.contains(searchTerm) })
+            })
+        case 2:
+            results = division3.filter({ (team) -> Bool in
+                team.contains(where: { $0.school.contains(searchTerm) })
+            })
+        default:
+            results = nil
+        }
+        if results?.isEmpty == true {
+            self.searchResults = nil
+        } else {
+            if let result = results {
+                self.searchResults = result
+            }
+        }
+        
+        rankingsTableView.reloadData()
     }
     
     // MARK: - Actions
@@ -94,15 +130,19 @@ class RankingsViewController: UIViewController {
 
 extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch selectedSegmentIndex {
-        case 0:
-            return division1.count
-        case 1:
-            return division2.count
-        case 2:
-            return division3.count
-        default:
-            return 0
+        if searchResults != nil {
+            return searchResults!.count
+        } else {
+            switch selectedSegmentIndex {
+            case 0:
+                return division1.count
+            case 1:
+                return division2.count
+            case 2:
+                return division3.count
+            default:
+                return 0
+            }
         }
     }
     
@@ -111,15 +151,19 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
         
         var team: [Player]?
         
-        switch selectedSegmentIndex {
-        case 0:
-            team = division1[indexPath.row]
-        case 1:
-            team = division2[indexPath.row]
-        case 2:
-            team = division3[indexPath.row]
-        default:
-            return UITableViewCell()
+        if searchResults != nil {
+            team = searchResults![indexPath.row]
+        } else {
+            switch selectedSegmentIndex {
+            case 0:
+                team = division1[indexPath.row]
+            case 1:
+                team = division2[indexPath.row]
+            case 2:
+                team = division3[indexPath.row]
+            default:
+                return UITableViewCell()
+            }
         }
         
         guard let teamCell = team, let player = teamCell.first else { return UITableViewCell() }
@@ -203,5 +247,19 @@ extension RankingsViewController: RankingsFilledDelegate {
         DispatchQueue.main.async {
             self.rankingsTableView.reloadData()
         }
+    }
+}
+
+extension RankingsViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let searchTerm = searchBar.text else { return }
+        searchForTeams(with: searchTerm)
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchResults = nil
+        searchBar.endEditing(true)
+        rankingsTableView.reloadData()
     }
 }
