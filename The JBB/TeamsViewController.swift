@@ -15,7 +15,6 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     // MARK: - Properties
     
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
-    var testBannerAd = "ca-app-pub-3940256099942544/2934735716"
     var teams: [[Player]]? {
         didSet {
             if let teams = teams {
@@ -55,7 +54,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     
     func setupAds() {
         bannerView.delegate = self
-        bannerView.adUnitID = testBannerAd
+        bannerView.adUnitID = bannerAd
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
