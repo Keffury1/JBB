@@ -70,7 +70,6 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     }
     
     func buttonPressed(index: Int) {
-        bannerView.load(GADRequest())
         
         if searchResults != nil {
             let team = searchResults![index]
@@ -132,6 +131,9 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         teamsTableView.dataSource = self
         teamsTableView.delegate = self
         teamsMapView.delegate = self
+        teamsMapView.mapType = MKMapType.satellite
+        teamsMapView.layer.cornerRadius = 10.0
+        teamsMapView.clipsToBounds = true
         teamsSearchBar.delegate = self
         teamsSearchBar.tintColor = .black
         teamsSearchBar.placeholder = "Search Teams"
@@ -195,7 +197,6 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     // MARK: - Actions
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
-        bannerView.load(GADRequest())
         self.selectedIndex = sender.selectedSegmentIndex
         if teamsSearchBar.text != nil {
             searchForTeams(with: teamsSearchBar.text!)
@@ -343,7 +344,6 @@ extension TeamsViewController: UISearchBarDelegate {
         guard let searchTerm = searchBar.text else { return }
         searchForTeams(with: searchTerm)
         searchBar.endEditing(true)
-        bannerView.load(GADRequest())
     }
     
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

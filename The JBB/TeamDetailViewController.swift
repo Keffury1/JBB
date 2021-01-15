@@ -113,7 +113,6 @@ class TeamDetailViewController: UIViewController {
         }
     }
     
-    
     private func searchForTeams(with searchTerm: String) {
         guard let team = team else { return }
         
