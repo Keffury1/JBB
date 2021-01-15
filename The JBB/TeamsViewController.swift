@@ -55,7 +55,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     
     func setupAds() {
         bannerView.delegate = self
-        bannerView.adUnitID = bannerAd
+        bannerView.adUnitID = testAd
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.rootViewController = self
         bannerView.load(GADRequest())

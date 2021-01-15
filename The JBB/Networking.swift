@@ -38,6 +38,7 @@ class ImageLoader {
             completion(.success(image))
             return nil
         }
+        
         let uuid = UUID()
         
         let task = URLSession.shared.dataTask(with: imageUrl) { data, response, error in
