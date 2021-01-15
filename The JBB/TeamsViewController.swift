@@ -15,6 +15,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     // MARK: - Properties
     
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
+    var testAd = "ca-app-pub-3940256099942544/6300978111"
     var teams: [[Player]]? {
         didSet {
             if let teams = teams {
