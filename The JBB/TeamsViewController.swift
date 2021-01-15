@@ -290,14 +290,21 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         let lon = Double(player.lon)
         cell.latLonLabel.text = "\(String(format: "%.2f", ceil(lat!*100)/100)) | \(String(format: "%.2f", ceil(lon!*100)/100))"
         
-        Networking.shared.fetchImage(at: player.image) { (data) in
+        let token = ImageLoader.shared.fetchImage(at: player.image) { (result) in
             
-            if let data = data {
+            do {
+                let image = try result.get()
                 DispatchQueue.main.async {
-                    cell.teamImageView.image = UIImage(data: data)
+                    cell.teamImageView.image = image
                 }
-            } else {
-                print("Error fetching leader image")
+            } catch {
+                print(error)
+            }
+        }
+        
+        cell.onReuse = {
+            if let token = token {
+                ImageLoader.shared.cancelLoad(token)
             }
         }
         

@@ -8,6 +8,10 @@
 import UIKit
 
 class RankingTableViewCell: UITableViewCell {
+    
+    //MARK: - Properties
+    
+    var onReuse: () -> Void = {}
 
     //MARK: - Outlets
     
@@ -16,4 +20,11 @@ class RankingTableViewCell: UITableViewCell {
     @IBOutlet weak var teamNameLabel: UILabel!
     @IBOutlet weak var recordLabel: UILabel!
     @IBOutlet weak var changeLabel: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        onReuse()
+        teamImageView.image = nil
+    }
+    
 }

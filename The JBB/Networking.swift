@@ -21,6 +21,53 @@ protocol RankingsFilledDelegate {
     func teamsWereFilled()
 }
 
+class ImageLoader {
+    
+    // MARK: - Properties
+    
+    static let shared = ImageLoader()
+    
+    private var loadedImages = [URL: UIImage]()
+    private var runningRequests = [UUID: URLSessionDataTask]()
+    
+    func fetchImage(at urlString: String?, _ completion: @escaping (Result<UIImage, Error>) -> (Void)) -> UUID? {
+        guard let string = urlString else { return nil }
+        let imageUrl = URL(string: string)!
+        
+        if let image = loadedImages[imageUrl] {
+            completion(.success(image))
+            return nil
+        }
+        let uuid = UUID()
+        
+        let task = URLSession.shared.dataTask(with: imageUrl) { data, response, error in
+            
+            defer{self.runningRequests.removeValue(forKey: uuid)}
+            
+            if let data = data, let image = UIImage(data: data) {
+                self.loadedImages[imageUrl] = image
+                completion(.success(image))
+                return
+            }
+            
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+            
+        }
+        
+        task.resume()
+        runningRequests[uuid] = task
+        return uuid
+    }
+    
+    func cancelLoad(_ uuid: UUID) {
+      runningRequests[uuid]?.cancel()
+      runningRequests.removeValue(forKey: uuid)
+    }
+}
+
 class Networking {
     
     static let shared = Networking()
@@ -104,30 +151,6 @@ class Networking {
         }
         
         return rankedTeams
-    }
-    
-    func fetchImage(at urlString: String?, completion: @escaping (_ data: Data?) -> ()) {
-        guard let string = urlString else { return }
-        let imageUrl = URL(string: string)!
-        
-        var request = URLRequest(url: imageUrl)
-        request.httpMethod = "GET"
-        
-        
-        URLSession.shared.dataTask(with: request) { (data, _, error) in
-            
-            if let _ = error {
-                completion(nil)
-                return
-            }
-            
-            guard let data = data else {
-                completion(nil)
-                return
-            }
-            
-            completion(data)
-        }.resume()
     }
 }
 

@@ -76,10 +76,11 @@ class TeamDetailViewController: UIViewController {
             } else {
                 recordLabel.text = ""
             }
-            Networking.shared.fetchImage(at: team.first?.image, completion: { (data) in
-                if let data = data {
-                    DispatchQueue.main.sync {
-                        self.teamImageView.image = UIImage(data: data)
+            let _ = ImageLoader.shared.fetchImage(at: team.first?.image) { (result) in
+                do {
+                    let image = try result.get()
+                    DispatchQueue.main.async {
+                        self.teamImageView.image = image
                         self.rosterTableView.reloadData()
                         self.teamImageView.image?.getColors { colors in
                             self.rosterTableView.backgroundColor = colors?.background
@@ -105,10 +106,10 @@ class TeamDetailViewController: UIViewController {
                         self.backgroundTeamImageView.clipsToBounds = true
                         self.backgroundTeamImageView.layer.borderWidth = 2.0
                     }
-                } else {
-                    print("Error fetching leader image")
+                } catch {
+                    print(error)
                 }
-            })
+            }
         }
     }
     

@@ -17,6 +17,7 @@ class TeamTableViewCell: UITableViewCell {
     
     var delegate: TableViewCellDelegate?
     var index: Int?
+    var onReuse: () -> Void = {}
 
     //MARK: - Outlets
     
@@ -25,6 +26,12 @@ class TeamTableViewCell: UITableViewCell {
     @IBOutlet weak var teamImageView: UIImageView!
     @IBOutlet weak var latLonLabel: UILabel!
     @IBOutlet weak var regionLabel: UILabel!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        onReuse()
+        teamImageView.image = nil
+    }
     
     //MARK: - Actions
     

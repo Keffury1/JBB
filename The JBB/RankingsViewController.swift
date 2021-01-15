@@ -203,14 +203,21 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.changeLabel.textColor = .systemGreen
         }
         
-        Networking.shared.fetchImage(at: player.image) { (data) in
+        let token = ImageLoader.shared.fetchImage(at: player.image) { (result) in
             
-            if let data = data {
+            do {
+                let image = try result.get()
                 DispatchQueue.main.async {
-                    cell.teamImageView.image = UIImage(data: data)
+                    cell.teamImageView.image = image
                 }
-            } else {
-                print("Error fetching leader image")
+            } catch {
+                print(error)
+            }
+        }
+        
+        cell.onReuse = {
+            if let token = token {
+                ImageLoader.shared.cancelLoad(token)
             }
         }
         
