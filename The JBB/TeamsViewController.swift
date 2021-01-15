@@ -60,6 +60,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
         bannerView.layer.cornerRadius = 10.0
+        bannerView.clipsToBounds = true
     }
     
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
@@ -264,6 +265,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.teamImageView?.image = nil
         cell.delegate = self
         cell.index = indexPath.row
+        cell.regionLabel.textAlignment = NSTextAlignment.center
         
         var team: [Player]?
         
@@ -279,6 +281,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
                 team = divisionThree[indexPath.row]
             case 3:
                 team = cCCAA[indexPath.row]
+                cell.regionLabel.textAlignment = NSTextAlignment.left
             default:
                 return UITableViewCell()
             }

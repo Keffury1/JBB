@@ -32,7 +32,7 @@ class ImageLoader {
     
     func fetchImage(at urlString: String?, _ completion: @escaping (Result<UIImage, Error>) -> (Void)) -> UUID? {
         guard let string = urlString else { return nil }
-        let imageUrl = URL(string: string)!
+        guard let imageUrl = URL(string: string) else { return nil}
         
         if let image = loadedImages[imageUrl] {
             completion(.success(image))
