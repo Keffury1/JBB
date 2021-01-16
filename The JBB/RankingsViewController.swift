@@ -50,6 +50,9 @@ class RankingsViewController: UIViewController {
         rankingsSearchBar.tintColor = .black
         rankingsSearchBar.placeholder = "Search Leaders"
         rankingsSearchBar.backgroundImage = UIImage()
+        self.edgesForExtendedLayout = UIRectEdge.all
+        self.extendedLayoutIncludesOpaqueBars = false
+        rankingsTableView.contentInsetAdjustmentBehavior = .never
     }
     
     private func startAnimation() {
