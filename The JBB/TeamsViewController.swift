@@ -167,19 +167,19 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
             switch selectedIndex {
             case 0:
                 results = divisionOne.filter({ (team) -> Bool in
-                    team.contains(where: { $0.school.contains(searchTerm) })
+                    team.contains(where: { $0.school.lowercased().contains(searchTerm.lowercased()) })
                 })
             case 1:
                 results = divisionTwo.filter({ (team) -> Bool in
-                    team.contains(where: { $0.school.contains(searchTerm) })
+                    team.contains(where: { $0.school.lowercased().contains(searchTerm.lowercased()) })
                 })
             case 2:
                 results = divisionThree.filter({ (team) -> Bool in
-                    team.contains(where: { $0.school.contains(searchTerm) })
+                    team.contains(where: { $0.school.lowercased().contains(searchTerm.lowercased()) })
                 })
             case 3:
                 results = cCCAA.filter({ (team) -> Bool in
-                    team.contains(where: { $0.school.contains(searchTerm) })
+                    team.contains(where: { $0.school.lowercased().contains(searchTerm.lowercased()) })
                 })
             default:
                 results = nil

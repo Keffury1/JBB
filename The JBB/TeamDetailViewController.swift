@@ -127,7 +127,7 @@ class TeamDetailViewController: UIViewController {
             return
         } else {
             results = team.filter { (player) -> Bool in
-                player.name.contains(searchTerm)
+                player.name.lowercased().contains(searchTerm.lowercased())
             }
         }
         
@@ -190,7 +190,9 @@ extension TeamDetailViewController: UITableViewDataSource {
         
         cell.numberLabel.text = athlete.num
         cell.nameLabel.text = athlete.name
+        cell.nameLabel.text = cell.nameLabel.text?.capitalized
         cell.hometownLabel.text = athlete.hometown
+        cell.hometownLabel.text = cell.hometownLabel.text?.capitalized
         if athlete.hometown == "" {
             cell.hometownLabel.isHidden = true
         } else {

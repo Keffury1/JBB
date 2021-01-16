@@ -73,7 +73,7 @@ class RankingsViewController: UIViewController {
         self.logoImageView.stopAnimating()
     }
     
-    private func searchForTeams(with searchTerm: String) {
+    private func searchForLeaders(with searchTerm: String) {
         noRankResultsView.alpha = 0
         self.searching = true
         var results: [[Player]]?
@@ -87,15 +87,15 @@ class RankingsViewController: UIViewController {
             switch selectedSegmentIndex {
             case 0:
                 results = division1.filter({ (team) -> Bool in
-                    team.contains(where: { $0.school.contains(searchTerm) })
+                    team.contains(where: { $0.school.lowercased().contains(searchTerm.lowercased()) })
                 })
             case 1:
                 results = division2.filter({ (team) -> Bool in
-                    team.contains(where: { $0.school.contains(searchTerm) })
+                    team.contains(where: { $0.school.lowercased().contains(searchTerm.lowercased()) })
                 })
             case 2:
                 results = division3.filter({ (team) -> Bool in
-                    team.contains(where: { $0.school.contains(searchTerm) })
+                    team.contains(where: { $0.school.lowercased().contains(searchTerm.lowercased()) })
                 })
             default:
                 results = nil
@@ -283,7 +283,7 @@ extension RankingsViewController: RankingsFilledDelegate {
 extension RankingsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text else { return }
-        searchForTeams(with: searchTerm)
+        searchForLeaders(with: searchTerm)
         searchBar.endEditing(true)
     }
     
