@@ -117,10 +117,13 @@ class RankingsViewController: UIViewController {
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
         self.selectedSegmentIndex = sender.selectedSegmentIndex
-        rankingsTableView.setContentOffset(.zero, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            self.rankingsTableView.reloadData()
+        if rankingsSearchBar.text != nil {
+            searchForLeaders(with: rankingsSearchBar.text!)
+        } else {
+            rankingsTableView.reloadData()
         }
+        rankingsTableView.setContentOffset(.zero, animated: true)
+        rankingsSearchBar.endEditing(true)
     }
     
     // MARK: - Navigation
