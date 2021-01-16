@@ -125,15 +125,19 @@ class RankingsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showRoster" {
             if let detailVC = segue.destination as? TeamDetailViewController, let indexPath = rankingsTableView.indexPathForSelectedRow {
-                switch selectedSegmentIndex {
-                case 0:
-                    detailVC.team = division1[indexPath.row]
-                case 1:
-                    detailVC.team = division2[indexPath.row]
-                case 2:
-                    detailVC.team = division3[indexPath.row]
-                default:
-                    return
+                if searchResults != nil {
+                    detailVC.team = searchResults![indexPath.row]
+                } else {
+                    switch selectedSegmentIndex {
+                    case 0:
+                        detailVC.team = division1[indexPath.row]
+                    case 1:
+                        detailVC.team = division2[indexPath.row]
+                    case 2:
+                        detailVC.team = division3[indexPath.row]
+                    default:
+                        return
+                    }
                 }
             }
         }
