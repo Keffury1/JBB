@@ -153,6 +153,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     }
     
     private func searchForTeams(with searchTerm: String) {
+        teamsMapView.removeAnnotations(teamsMapView.annotations)
         noResultsView.alpha = 0
         self.searching = true
         var results: [[Player]]?
@@ -200,6 +201,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     
     @IBAction func indexDidChange(_ sender: UISegmentedControl) {
         self.selectedIndex = sender.selectedSegmentIndex
+        teamsMapView.removeAnnotations(teamsMapView.annotations)
         if teamsSearchBar.text != nil {
             searchForTeams(with: teamsSearchBar.text!)
         } else {
@@ -328,6 +330,7 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         bannerView.load(GADRequest())
+        teamsMapView.removeAnnotations(teamsMapView.annotations)
     }
 }
 
