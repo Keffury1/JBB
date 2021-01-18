@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3703140125AE0ACB005CAF58 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3703140025AE0ACB005CAF58 /* RankingTableViewCell.swift */; };
+		375C695D25B6342400C0F1D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */; };
 		379521722592747B0093BF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521712592747B0093BF62 /* AppDelegate.swift */; };
 		379521742592747B0093BF62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521732592747B0093BF62 /* SceneDelegate.swift */; };
 		379521792592747B0093BF62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379521772592747B0093BF62 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		1E446153AEE27B393BBE277B /* Pods-The JBB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The JBB.release.xcconfig"; path = "Target Support Files/Pods-The JBB/Pods-The JBB.release.xcconfig"; sourceTree = "<group>"; };
 		3703140025AE0ACB005CAF58 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		3710F58425A53FC600589884 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
+		375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "The JBB/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3795216E2592747B0093BF62 /* The JBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The JBB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		379521712592747B0093BF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		379521732592747B0093BF62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 			children = (
 				37B43C2F25958C07005D6452 /* Assets.xcassets */,
 				3795217F2592747C0093BF62 /* Info.plist */,
+				375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */,
 				37D4483025A3997500B89FA9 /* UIView+Extension.swift */,
 			);
 			name = Resources;
@@ -233,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3795217E2592747C0093BF62 /* LaunchScreen.storyboard in Resources */,
+				375C695D25B6342400C0F1D1 /* GoogleService-Info.plist in Resources */,
 				37B43C3025958C07005D6452 /* Assets.xcassets in Resources */,
 				379521792592747B0093BF62 /* Main.storyboard in Resources */,
 			);

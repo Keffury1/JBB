@@ -55,7 +55,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
     
     func setupAds() {
         bannerView.delegate = self
-        bannerView.adUnitID = bannerAd
+        bannerView.adUnitID = testAd
         bannerView.adSize = kGADAdSizeSmartBannerPortrait
         bannerView.rootViewController = self
         bannerView.load(GADRequest())
@@ -148,7 +148,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         annotation.title = player.school
         let lat = CLLocationDegrees(player.lat)
         let lon = CLLocationDegrees(player.lon)
-        annotation.coordinate = CLLocationCoordinate2D(latitude: lat!, longitude: lon!)
+        annotation.coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
         teamsMapView.addAnnotation(annotation)
     }
     
@@ -292,10 +292,10 @@ extension TeamsViewController: UITableViewDataSource, UITableViewDelegate {
         guard let teamCell = team, let player = teamCell.first else { return UITableViewCell() }
         
         cell.teamNameLabel.text = player.school
-        cell.regionLabel.text = player.region
+        cell.regionLabel.text = "\(player.region)"
         let lat = Double(player.lat)
         let lon = Double(player.lon)
-        cell.latLonLabel.text = "\(String(format: "%.2f", ceil(lat!*100)/100)) | \(String(format: "%.2f", ceil(lon!*100)/100))"
+        cell.latLonLabel.text = "\(String(format: "%.2f", ceil(lat*100)/100)) | \(String(format: "%.2f", ceil(lon*100)/100))"
         
         let token = ImageLoader.shared.fetchImage(at: player.image) { (result) in
             

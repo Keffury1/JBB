@@ -15,7 +15,7 @@ class TeamDetailViewController: UIViewController {
     var team: [Player]? {
         didSet {
             team?.sort(by: { (player1, player2) -> Bool in
-                let a:Int? = Int(player1.num) // firstText is UITextField
+                let a:Int? = Int(player1.num)
                 let b:Int? = Int(player2.num)
                 guard let num1 = a, let num2 = b else { return false }
                 return num1 < num2
@@ -76,7 +76,7 @@ class TeamDetailViewController: UIViewController {
             } else {
                 recordLabel.text = ""
             }
-            let _ = ImageLoader.shared.fetchImage(at: team.first?.image) { (result) in
+            let _ = ImageLoader.shared.fetchImage(at: team.first!.image) { (result) in
                 do {
                     let image = try result.get()
                     DispatchQueue.main.async {
@@ -188,7 +188,7 @@ extension TeamDetailViewController: UITableViewDataSource {
         
         guard let athlete = player else { return UITableViewCell() }
         
-        cell.numberLabel.text = athlete.num
+        cell.numberLabel.text = "\(athlete.num)"
         cell.nameLabel.text = athlete.name
         cell.nameLabel.text = cell.nameLabel.text?.capitalized
         cell.hometownLabel.text = athlete.hometown

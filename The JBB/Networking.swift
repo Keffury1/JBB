@@ -91,7 +91,7 @@ class Networking {
     
     // MARK: - URLs
     
-    private let teamsUrl = URL(string: "https://sheetdb.io/api/v1/9oqa36i1lo6wg")!
+    private let teamsUrl = URL(string: "https://the-juco-baseball-blog-66981-default-rtdb.firebaseio.com/.json")!
 
     func fetchTeams(completion: @escaping (Error?) -> Void) {
         var request = URLRequest(url: teamsUrl)
@@ -144,7 +144,7 @@ class Networking {
         var rankedTeams: [[Player]] = [[]]
         
         for team in teams {
-            if team.first?.rank != "" {
+            if team.first?.rank != nil {
                 rankedTeams.append(team)
             } else {
                 continue

@@ -11,11 +11,11 @@ struct Player: Codable {
     var school: String
     var region: String
     var division: String
-    var rank: String
+    var rank: Int?
     var record: String
     var change: String
-    var lat: String
-    var lon: String
+    var lat: Double
+    var lon: Double
     var num: String
     var name: String
     var pos: String

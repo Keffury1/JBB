@@ -9,6 +9,7 @@ target 'The JBB' do
   # Pods for The JBB
   pod 'UIImageColors'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'Firebase/Analytics'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

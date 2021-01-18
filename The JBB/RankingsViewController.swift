@@ -195,10 +195,10 @@ extension RankingsViewController: UITableViewDataSource, UITableViewDelegate {
         guard let teamCell = team, let player = teamCell.first else { return UITableViewCell() }
         
         cell.teamNameLabel.text = player.school
-        if player.rank == "1" {
+        if player.rank == 1 {
             cell.rankLabel.text = "👑"
         } else {
-            cell.rankLabel.text = player.rank
+            cell.rankLabel.text = "\(player.rank!)"
         }
         cell.recordLabel.text = player.record
         cell.changeLabel.text = player.change
@@ -268,13 +268,16 @@ extension RankingsViewController: RankingsFilledDelegate {
         }
         
         division1.sort { (team1, team2) -> Bool in
-            Int((team1.first?.rank)!)! < Int((team2.first?.rank)!)!
+            guard let rank1 = team1.first?.rank, let rank2 = team2.first?.rank else { return false }
+            return rank1 < rank2
         }
         division2.sort { (team1, team2) -> Bool in
-            Int((team1.first?.rank)!)! < Int((team2.first?.rank)!)!
+            guard let rank1 = team1.first?.rank, let rank2 = team2.first?.rank else { return false }
+            return rank1 < rank2
         }
         division3.sort { (team1, team2) -> Bool in
-            Int((team1.first?.rank)!)! < Int((team2.first?.rank)!)!
+            guard let rank1 = team1.first?.rank, let rank2 = team2.first?.rank else { return false }
+            return rank1 < rank2
         }
         
         DispatchQueue.main.async {
