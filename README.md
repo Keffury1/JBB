@@ -34,9 +34,9 @@ You can clone and build this project in Xcode.
 -   Map to identify team's field locations
 -   Search functionality for leaders, teams, & players
 
-![](https://github.com/Keffury1/JBB/blob/master/README_images/Rankings.jpeg)
-![](https://github.com/Keffury1/JBB/blob/master/README_images/Search.jpeg)
-![](https://github.com/Keffury1/JBB/blob/master/README_images/Rosters.jpeg)
+Solarized dark             |  Solarized Ocean         |    Solarized dark
+:-------------------------:|:-------------------------:|:-------------------------:
+![](https://github.com/Keffury1/JBB/blob/master/README_images/Rankings.jpeg)  | ![](https://github.com/Keffury1/JBB/blob/master/README_images/Search.jpeg) | ![](https://github.com/Keffury1/JBB/blob/master/README_images/Rosters.jpeg)
 
 
 ## Requirements
