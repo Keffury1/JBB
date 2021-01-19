@@ -29,22 +29,15 @@ You can clone and build this project in Xcode.
 
 ### Features
 
--   News page listing articles written by the company
-    - Detail view for readability & futher information
--   Rankings page listing most recent rankings first
-    - Player names & stats listed where appropriate
--  FaceID/ AppleID to enter membership portal
-    - Membership options to access higher level articles & rankings
--   Info page to contact or gather information
-
-### Authentication API here
-
-Authentication is done through the use of AppleID & FaceID
+-   Rankings page listing top - 25 junior college baseball teams in the U.S.
+-   Player names & attributes listed on rosters with color theming
+-   Map to identify team's field locations
+-   Search functionality for leaders, teams, & players
 
 ## Requirements
 
--   iOS 13.0+
--   Xcode 11.0+
+-   iOS 14.0+
+-   Xcode 12.0+
 
 ## Contributing
 
