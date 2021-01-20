@@ -51,6 +51,7 @@ class TeamDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSubviews()
+        overrideUserInterfaceStyle = .light
     }
     
     override func viewWillAppear(_ animated: Bool) {

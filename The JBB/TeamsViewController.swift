@@ -49,6 +49,7 @@ class TeamsViewController: UIViewController, TableViewCellDelegate, GADBannerVie
         setupSubviews()
         bannerView.isHidden = true
         setupAds()
+        overrideUserInterfaceStyle = .light
     }
     
     // MARK: - Methods

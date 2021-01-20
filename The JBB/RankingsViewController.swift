@@ -39,6 +39,7 @@ class RankingsViewController: UIViewController {
             stopAnimation()
         }
         Networking.shared.rankingsDelegate = self
+        overrideUserInterfaceStyle = .light
     }
     
     // MARK: - Methods
