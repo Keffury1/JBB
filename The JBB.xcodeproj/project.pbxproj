@@ -7,30 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3703140125AE0ACB005CAF58 /* RankingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3703140025AE0ACB005CAF58 /* RankingTableViewCell.swift */; };
 		375C695D25B6342400C0F1D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */; };
+		377C3822279B625300D87199 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3821279B625300D87199 /* Post.swift */; };
+		377C3824279B626D00D87199 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3823279B626D00D87199 /* PostsTableViewController.swift */; };
+		377C3826279B62C100D87199 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3825279B62C100D87199 /* PostTableViewCell.swift */; };
+		377C3828279B62F200D87199 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3827279B62F200D87199 /* PostDetailViewController.swift */; };
 		379521722592747B0093BF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521712592747B0093BF62 /* AppDelegate.swift */; };
 		379521742592747B0093BF62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521732592747B0093BF62 /* SceneDelegate.swift */; };
 		379521792592747B0093BF62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379521772592747B0093BF62 /* Main.storyboard */; };
 		3795217E2592747C0093BF62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3795217C2592747C0093BF62 /* LaunchScreen.storyboard */; };
 		37952195259275500093BF62 /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37952194259275500093BF62 /* Networking.swift */; };
-		3795219C2592767D0093BF62 /* RankingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3795219B2592767D0093BF62 /* RankingsViewController.swift */; };
-		379521A52592A4700093BF62 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521A42592A4700093BF62 /* Player.swift */; };
 		37B43C3025958C07005D6452 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 37B43C2F25958C07005D6452 /* Assets.xcassets */; };
-		37C397622592E30C00690FC0 /* TeamsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C397612592E30C00690FC0 /* TeamsViewController.swift */; };
-		37C397652592E53A00690FC0 /* TeamDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37C397642592E53A00690FC0 /* TeamDetailViewController.swift */; };
-		37D3A45325AA34AA00B217E9 /* PlayerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3A45225AA34AA00B217E9 /* PlayerTableViewCell.swift */; };
 		37D4483125A3997500B89FA9 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D4483025A3997500B89FA9 /* UIView+Extension.swift */; };
-		37EE8D6425A4F0F600A2EB21 /* TeamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EE8D6325A4F0F600A2EB21 /* TeamTableViewCell.swift */; };
 		4BE9521AB5D4B3FFC7D323A5 /* Pods_The_JBB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1BB3C484CB041CB6A73C3B4A /* Pods_The_JBB.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1BB3C484CB041CB6A73C3B4A /* Pods_The_JBB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_JBB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E446153AEE27B393BBE277B /* Pods-The JBB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The JBB.release.xcconfig"; path = "Target Support Files/Pods-The JBB/Pods-The JBB.release.xcconfig"; sourceTree = "<group>"; };
-		3703140025AE0ACB005CAF58 /* RankingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingTableViewCell.swift; sourceTree = "<group>"; };
 		3710F58425A53FC600589884 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "The JBB/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		377C3821279B625300D87199 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		377C3823279B626D00D87199 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
+		377C3825279B62C100D87199 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		377C3827279B62F200D87199 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		3795216E2592747B0093BF62 /* The JBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The JBB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		379521712592747B0093BF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		379521732592747B0093BF62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -38,14 +38,8 @@
 		3795217D2592747C0093BF62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3795217F2592747C0093BF62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		37952194259275500093BF62 /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
-		3795219B2592767D0093BF62 /* RankingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RankingsViewController.swift; sourceTree = "<group>"; };
-		379521A42592A4700093BF62 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		37B43C2F25958C07005D6452 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "The JBB/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
-		37C397612592E30C00690FC0 /* TeamsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsViewController.swift; sourceTree = "<group>"; };
-		37C397642592E53A00690FC0 /* TeamDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamDetailViewController.swift; sourceTree = "<group>"; };
-		37D3A45225AA34AA00B217E9 /* PlayerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTableViewCell.swift; sourceTree = "<group>"; };
 		37D4483025A3997500B89FA9 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
-		37EE8D6325A4F0F600A2EB21 /* TeamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTableViewCell.swift; sourceTree = "<group>"; };
 		B42F4881030E0A8BB0C86291 /* Pods-The JBB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The JBB.debug.xcconfig"; path = "Target Support Files/Pods-The JBB/Pods-The JBB.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -116,9 +110,8 @@
 		3795218A259274ED0093BF62 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				3795219B2592767D0093BF62 /* RankingsViewController.swift */,
-				37C397612592E30C00690FC0 /* TeamsViewController.swift */,
-				37C397642592E53A00690FC0 /* TeamDetailViewController.swift */,
+				377C3823279B626D00D87199 /* PostsTableViewController.swift */,
+				377C3827279B62F200D87199 /* PostDetailViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -126,9 +119,7 @@
 		3795218B259274F10093BF62 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				37EE8D6325A4F0F600A2EB21 /* TeamTableViewCell.swift */,
-				37D3A45225AA34AA00B217E9 /* PlayerTableViewCell.swift */,
-				3703140025AE0ACB005CAF58 /* RankingTableViewCell.swift */,
+				377C3825279B62C100D87199 /* PostTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -144,7 +135,7 @@
 		3795218D259274F80093BF62 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				379521A42592A4700093BF62 /* Player.swift */,
+				377C3821279B625300D87199 /* Post.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -291,17 +282,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				37D3A45325AA34AA00B217E9 /* PlayerTableViewCell.swift in Sources */,
+				377C3826279B62C100D87199 /* PostTableViewCell.swift in Sources */,
+				377C3828279B62F200D87199 /* PostDetailViewController.swift in Sources */,
 				37D4483125A3997500B89FA9 /* UIView+Extension.swift in Sources */,
-				3703140125AE0ACB005CAF58 /* RankingTableViewCell.swift in Sources */,
-				37C397652592E53A00690FC0 /* TeamDetailViewController.swift in Sources */,
+				377C3824279B626D00D87199 /* PostsTableViewController.swift in Sources */,
 				37952195259275500093BF62 /* Networking.swift in Sources */,
 				379521722592747B0093BF62 /* AppDelegate.swift in Sources */,
-				37EE8D6425A4F0F600A2EB21 /* TeamTableViewCell.swift in Sources */,
-				3795219C2592767D0093BF62 /* RankingsViewController.swift in Sources */,
-				379521A52592A4700093BF62 /* Player.swift in Sources */,
 				379521742592747B0093BF62 /* SceneDelegate.swift in Sources */,
-				37C397622592E30C00690FC0 /* TeamsViewController.swift in Sources */,
+				377C3822279B625300D87199 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
