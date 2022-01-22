@@ -9,6 +9,13 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
 
+    
+    //MARK: - Outlets
+
+    @IBOutlet weak var titleLabel: UILabel!
+    
+    //MARK: - Methods
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
