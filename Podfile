@@ -10,6 +10,7 @@ target 'The JBB' do
   pod 'UIImageColors'
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/Analytics'
+  pod 'Kingfisher'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

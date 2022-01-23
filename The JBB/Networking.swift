@@ -16,8 +16,15 @@ class Networking {
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testAd = "ca-app-pub-3940256099942544/6300978111"
     
+    func getPostURL() -> URL? {
+        let queryItems = [URLQueryItem(name: "per_page", value: "50")]
+        var urlComps = URLComponents(string: baseURL + "/posts")!
+        urlComps.queryItems = queryItems
+        return urlComps.url
+    }
+    
     func getAllPosts(onSuccess: @escaping(_ posts: [Post]) -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
-        guard let url = URL(string: baseURL + "/posts") else {
+        guard let url = getPostURL() else {
             onError("Bad URL")
             return
         }

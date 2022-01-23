@@ -12,7 +12,7 @@ struct Post: Codable {
     let link: URL
     let title: Rendered
     let content: Rendered
-    let jetpack_featured_media_url: URL
+    let jetpack_featured_media_url: String?
 }
 
 struct Rendered: Codable {

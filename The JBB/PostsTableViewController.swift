@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class PostsTableViewController: UITableViewController {
 
@@ -44,7 +45,10 @@ class PostsTableViewController: UITableViewController {
 
         let post = posts[indexPath.row]
 
+        cell.dateLabel.text = post.date
         cell.titleLabel.text = post.title.rendered.capitalized
+        let url = URL(string: post.jetpack_featured_media_url ?? "")
+        cell.postImageView.kf.setImage(with: url)
 
         return cell
     }

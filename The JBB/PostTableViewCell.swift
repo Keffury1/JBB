@@ -12,6 +12,8 @@ class PostTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
 
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
     //MARK: - Methods
