@@ -7,8 +7,17 @@
 
 import UIKit
 
+protocol PostTVCellDelegate {
+    func buttonTapped(int: Int)
+}
+
 class PostTableViewCell: UITableViewCell {
 
+    
+    //MARK: - Properties
+    
+    var postTVCellDelegate: PostTVCellDelegate?
+    var indexPath: IndexPath?
     
     //MARK: - Outlets
 
@@ -16,6 +25,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var postButton: UIButton!
     
     //MARK: - Methods
     
@@ -33,5 +43,10 @@ class PostTableViewCell: UITableViewCell {
         containerView.addShadow()
         postImageView.layer.masksToBounds = true
         postImageView.layer.cornerRadius = 10
+        postButton.setTitle("", for: .normal)
+    }
+
+    @IBAction func postButtonTapped(_ sender: Any) {
+        postTVCellDelegate?.buttonTapped(int: indexPath!.row)
     }
 }

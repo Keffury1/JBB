@@ -13,6 +13,7 @@ class PostsTableViewController: UITableViewController {
     // MARK: - Properties
     
     var posts: [Post] = []
+    var row: Int?
     
     // MARK: - Outlets
     
@@ -61,7 +62,9 @@ class PostsTableViewController: UITableViewController {
         cell.titleLabel.text = replaced.capitalized
         let url = URL(string: post.jetpack_featured_media_url ?? "")
         cell.postImageView.kf.setImage(with: url)
-
+        cell.postTVCellDelegate = self
+        cell.indexPath = indexPath
+        
         return cell
     }
     
@@ -70,5 +73,17 @@ class PostsTableViewController: UITableViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "postDetailSegue" {
+            if let detailVC = segue.destination as? PostDetailViewController {
+                detailVC.post = posts[row!]
+            }
+        }
+    }
+}
+
+extension PostsTableViewController: PostTVCellDelegate {
+    func buttonTapped(int: Int) {
+        self.row = int
+        self.performSegue(withIdentifier: "postDetailSegue", sender: self)
     }
 }
