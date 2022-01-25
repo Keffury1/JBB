@@ -122,13 +122,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hb-k1-TJx">
-                                <rect key="frame" x="20" y="228" width="374" height="37"/>
+                                <rect key="frame" x="10" y="228" width="394" height="37"/>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Detail" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA9-cb-jtg">
-                                <rect key="frame" x="20" y="280" width="374" height="528"/>
+                                <rect key="frame" x="15" y="280" width="384" height="528"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
@@ -138,13 +138,13 @@
                         <viewLayoutGuide key="safeArea" id="bir-6P-cot"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bir-6P-cot" firstAttribute="trailing" secondItem="PA9-cb-jtg" secondAttribute="trailing" constant="20" id="0hH-SK-Y1K"/>
+                            <constraint firstItem="bir-6P-cot" firstAttribute="trailing" secondItem="PA9-cb-jtg" secondAttribute="trailing" constant="15" id="0hH-SK-Y1K"/>
                             <constraint firstItem="6hb-k1-TJx" firstAttribute="top" secondItem="RVs-y3-yPc" secondAttribute="bottom" constant="8" symbolic="YES" id="MSC-ve-qfi"/>
                             <constraint firstItem="RVs-y3-yPc" firstAttribute="trailing" secondItem="bir-6P-cot" secondAttribute="trailing" id="R6s-F4-33Q"/>
-                            <constraint firstItem="PA9-cb-jtg" firstAttribute="leading" secondItem="bir-6P-cot" secondAttribute="leading" constant="20" id="WeF-YJ-Xxd"/>
+                            <constraint firstItem="PA9-cb-jtg" firstAttribute="leading" secondItem="bir-6P-cot" secondAttribute="leading" constant="15" id="WeF-YJ-Xxd"/>
                             <constraint firstItem="PA9-cb-jtg" firstAttribute="bottom" secondItem="bir-6P-cot" secondAttribute="bottom" id="Wpa-zV-lSR"/>
-                            <constraint firstItem="6hb-k1-TJx" firstAttribute="leading" secondItem="bir-6P-cot" secondAttribute="leading" constant="20" id="f0e-e3-Age"/>
-                            <constraint firstItem="bir-6P-cot" firstAttribute="trailing" secondItem="6hb-k1-TJx" secondAttribute="trailing" constant="20" id="hGg-ZL-FGQ"/>
+                            <constraint firstItem="6hb-k1-TJx" firstAttribute="leading" secondItem="bir-6P-cot" secondAttribute="leading" constant="10" id="f0e-e3-Age"/>
+                            <constraint firstItem="bir-6P-cot" firstAttribute="trailing" secondItem="6hb-k1-TJx" secondAttribute="trailing" constant="10" id="hGg-ZL-FGQ"/>
                             <constraint firstAttribute="top" secondItem="RVs-y3-yPc" secondAttribute="top" id="iw2-hL-nkx"/>
                             <constraint firstItem="RVs-y3-yPc" firstAttribute="leading" secondItem="bir-6P-cot" secondAttribute="leading" id="jur-fn-pWr"/>
                             <constraint firstItem="PA9-cb-jtg" firstAttribute="top" secondItem="6hb-k1-TJx" secondAttribute="bottom" constant="15" id="kaI-Lv-1kC"/>

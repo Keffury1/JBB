@@ -33,7 +33,7 @@ class PostDetailViewController: UIViewController {
         let string = post.title.rendered.replacingOccurrences(of: "&#8211;", with: "-", options: .literal, range: nil)
         let replaced = string.replacingOccurrences(of: "&#038;", with: "&", options: .literal, range: nil)
         titleLabel.text = replaced.capitalized
-        textView.text = post.content.rendered
+        textView.text = post.content.rendered.html2String
         let url = URL(string: post.jetpack_featured_media_url ?? "")
         postImageView.kf.setImage(with: url)
     }
