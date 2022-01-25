@@ -12,6 +12,7 @@ class PostTableViewCell: UITableViewCell {
     
     //MARK: - Outlets
 
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -20,13 +21,17 @@ class PostTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        setupSubviews()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
-
+    
+    private func setupSubviews() {
+        containerView.layer.cornerRadius = 10
+        containerView.addShadow()
+        postImageView.layer.masksToBounds = true
+        postImageView.layer.cornerRadius = 10
+    }
 }

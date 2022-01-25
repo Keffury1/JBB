@@ -45,8 +45,20 @@ class PostsTableViewController: UITableViewController {
 
         let post = posts[indexPath.row]
 
-        cell.dateLabel.text = post.date
-        cell.titleLabel.text = post.title.rendered.capitalized
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        if let someDateTime = dateFormatter.date(from: post.date) {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE, MMM d, yyyy"
+            let date = formatter.string(from: someDateTime)
+            cell.dateLabel.text = date
+        } else {
+            cell.dateLabel.text = ""
+        }
+        let string = post.title.rendered.replacingOccurrences(of: "&#8211;", with: "-", options: .literal, range: nil)
+        let replaced = string.replacingOccurrences(of: "&#038;", with: "&", options: .literal, range: nil)
+        cell.titleLabel.text = replaced.capitalized
         let url = URL(string: post.jetpack_featured_media_url ?? "")
         cell.postImageView.kf.setImage(with: url)
 
