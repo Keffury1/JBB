@@ -26,6 +26,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var postButton: UIButton!
+    @IBOutlet weak var imageViewContainer: UIView!
     
     //MARK: - Methods
     
@@ -41,8 +42,6 @@ class PostTableViewCell: UITableViewCell {
     private func setupSubviews() {
         containerView.layer.cornerRadius = 10
         containerView.addShadow()
-        postImageView.layer.masksToBounds = true
-        postImageView.layer.cornerRadius = 10
         postButton.setTitle("", for: .normal)
     }
 
