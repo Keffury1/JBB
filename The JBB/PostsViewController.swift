@@ -28,21 +28,31 @@ class PostsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchPosts()
+        setupSubviews()
+    }
+
+    // MARK: - Methods
+
+    private func setupSubviews() {
         tableView.dataSource = self
+        searchBar.delegate = self
         filterButton.setTitle("", for: .normal)
         searchBar.backgroundImage = UIImage()
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = UIColor.white.cgColor
+        animatedLogo.heartbeatAnimation()
+        animatedLogo.startAnimating()
     }
-
-    // MARK: - Methods
 
     private func fetchPosts() {
         Networking.shared.getAllPosts { posts in
             self.posts = posts
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                self.animatedLogoView.alpha = 0
+                UIView.animate(withDuration: 0.5) {
+                    self.animatedLogoView.alpha = 0
+                    self.animatedLogo.stopAnimating()
+                }
             }
         } onError: { errorMessage in
             print(errorMessage ?? "")
@@ -102,5 +112,17 @@ extension PostsViewController: UITableViewDataSource {
         cell.indexPath = indexPath
         
         return cell
+    }
+}
+
+extension PostsViewController: UISearchBarDelegate {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        //ReloadViews
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        //Search!!!!!
     }
 }
