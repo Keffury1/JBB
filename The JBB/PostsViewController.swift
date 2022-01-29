@@ -1,47 +1,83 @@
 //
-//  PostsTableViewController.swift
+//  PostsViewController.swift
 //  The JBB
 //
-//  Created by Bobby Keffury on 1/21/22.
+//  Created by Bobby Keffury on 1/29/22.
 //
 
 import UIKit
 import Kingfisher
 
-class PostsTableViewController: UITableViewController {
+class PostsViewController: UIViewController {
 
     // MARK: - Properties
-    
+
     var posts: [Post] = []
     var row: Int?
-    
+
     // MARK: - Outlets
+
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var animatedLogoView: UIView!
+    @IBOutlet weak var animatedLogo: UIImageView!
+    @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: - Views
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchPosts()
+        tableView.dataSource = self
+        filterButton.setTitle("", for: .normal)
+        searchBar.backgroundImage = UIImage()
+        searchBar.layer.borderWidth = 1
+        searchBar.layer.borderColor = UIColor.white.cgColor
     }
-    
+
     // MARK: - Methods
-    
+
     private func fetchPosts() {
         Networking.shared.getAllPosts { posts in
             self.posts = posts
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.animatedLogoView.alpha = 0
             }
         } onError: { errorMessage in
             print(errorMessage ?? "")
         }
     }
+
+    // MARK: - Actions
+
+    @IBAction func filterButtonTapped(_ sender: Any) {
+    }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "postDetailSegue" {
+            if let detailVC = segue.destination as? PostDetailViewController {
+                detailVC.post = posts[row!]
+            }
+        }
+    }
+}
+
+extension PostsViewController: PostTVCellDelegate {
+    func buttonTapped(int: Int) {
+        row = int
+        self.performSegue(withIdentifier: "postDetailSegue", sender: self)
+    }
+}
+
+extension PostsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return posts.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
 
         let post = posts[indexPath.row]
@@ -66,24 +102,5 @@ class PostsTableViewController: UITableViewController {
         cell.indexPath = indexPath
         
         return cell
-    }
-    
-    // MARK: - Actions
-    
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "postDetailSegue" {
-            if let detailVC = segue.destination as? PostDetailViewController {
-                detailVC.post = posts[row!]
-            }
-        }
-    }
-}
-
-extension PostsTableViewController: PostTVCellDelegate {
-    func buttonTapped(int: Int) {
-        self.row = int
-        self.performSegue(withIdentifier: "postDetailSegue", sender: self)
     }
 }

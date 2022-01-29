@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		375C695D25B6342400C0F1D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */; };
+		3761A69627A5E147000E1C56 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3761A69527A5E147000E1C56 /* PostsViewController.swift */; };
 		377C3822279B625300D87199 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3821279B625300D87199 /* Post.swift */; };
-		377C3824279B626D00D87199 /* PostsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3823279B626D00D87199 /* PostsTableViewController.swift */; };
 		377C3826279B62C100D87199 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3825279B62C100D87199 /* PostTableViewCell.swift */; };
 		377C3828279B62F200D87199 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3827279B62F200D87199 /* PostDetailViewController.swift */; };
 		379521722592747B0093BF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521712592747B0093BF62 /* AppDelegate.swift */; };
@@ -27,8 +27,8 @@
 		1E446153AEE27B393BBE277B /* Pods-The JBB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The JBB.release.xcconfig"; path = "Target Support Files/Pods-The JBB/Pods-The JBB.release.xcconfig"; sourceTree = "<group>"; };
 		3710F58425A53FC600589884 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "The JBB/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		3761A69527A5E147000E1C56 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		377C3821279B625300D87199 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		377C3823279B626D00D87199 /* PostsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsTableViewController.swift; sourceTree = "<group>"; };
 		377C3825279B62C100D87199 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		377C3827279B62F200D87199 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
 		3795216E2592747B0093BF62 /* The JBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The JBB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,7 +110,7 @@
 		3795218A259274ED0093BF62 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				377C3823279B626D00D87199 /* PostsTableViewController.swift */,
+				3761A69527A5E147000E1C56 /* PostsViewController.swift */,
 				377C3827279B62F200D87199 /* PostDetailViewController.swift */,
 			);
 			name = "View Controllers";
@@ -285,7 +285,7 @@
 				377C3826279B62C100D87199 /* PostTableViewCell.swift in Sources */,
 				377C3828279B62F200D87199 /* PostDetailViewController.swift in Sources */,
 				37D4483125A3997500B89FA9 /* UIView+Extension.swift in Sources */,
-				377C3824279B626D00D87199 /* PostsTableViewController.swift in Sources */,
+				3761A69627A5E147000E1C56 /* PostsViewController.swift in Sources */,
 				37952195259275500093BF62 /* Networking.swift in Sources */,
 				379521722592747B0093BF62 /* AppDelegate.swift in Sources */,
 				379521742592747B0093BF62 /* SceneDelegate.swift in Sources */,
