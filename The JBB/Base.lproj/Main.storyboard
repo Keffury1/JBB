@@ -45,7 +45,10 @@
                                     </imageView>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JIm-H5-E3G">
                                         <rect key="frame" x="55" y="0.0" width="299" height="50"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="Teel"/>
+                                        <color key="barTintColor" name="Teel"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </searchBar>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCl-my-bHe">
                                         <rect key="frame" x="359" y="0.0" width="35" height="50"/>
