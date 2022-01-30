@@ -43,6 +43,7 @@ class PostsViewController: UIViewController {
 
     private func setupSubviews() {
         tableView.dataSource = self
+        tableView.delegate = self
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
         searchBar.layer.borderWidth = 1
@@ -92,6 +93,8 @@ class PostsViewController: UIViewController {
                         if let newItems = thisBatchOfItems {
                             self.searchedPosts.append(contentsOf: newItems)
                             self.tableView.reloadData()
+                            self.tableView.tableFooterView = nil
+                            self.tableView.tableFooterView?.isHidden = true
                             if newItems.count < 25 {
                                 self.reachedEndOfItems = true
                             }
@@ -113,6 +116,8 @@ class PostsViewController: UIViewController {
                         if let newItems = thisBatchOfItems {
                             self.posts.append(contentsOf: newItems)
                             self.tableView.reloadData()
+                            self.tableView.tableFooterView = nil
+                            self.tableView.tableFooterView?.isHidden = true
                             if newItems.count < 25 {
                                 self.reachedEndOfItems = true
                             }
@@ -166,7 +171,7 @@ extension PostsViewController: PostTVCellDelegate {
     }
 }
 
-extension PostsViewController: UITableViewDataSource {
+extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching == true {
             return searchedPosts.count
@@ -213,6 +218,20 @@ extension PostsViewController: UITableViewDataSource {
         }
 
         return cell
+    }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let lastSectionIndex = tableView.numberOfSections - 1
+        let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
+        if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
+            let spinner = UIActivityIndicatorView(style: .medium)
+            spinner.color = UIColor(named: "Teel")
+            spinner.startAnimating()
+            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+
+            self.tableView.tableFooterView = spinner
+            self.tableView.tableFooterView?.isHidden = false
+        }
     }
 }
 
