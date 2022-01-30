@@ -13,10 +13,12 @@ class PostsViewController: UIViewController {
     // MARK: - Properties
 
     var posts: [Post] = []
+    var searchedPosts: [Post] = []
     var categories: [Category] = []
     var row: Int?
     var offset = 0
     var reachedEndOfItems = false
+    var isSearching = false
 
     // MARK: - Outlets
 
@@ -136,34 +138,46 @@ extension PostsViewController: PostTVCellDelegate {
 
 extension PostsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return posts.count
+        if isSearching == true {
+            return searchedPosts.count
+        } else {
+            return posts.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
 
-        let post = posts[indexPath.row]
-
-        cell.postCategories = translateCategories(post.categories ?? [])
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        var post: Post?
         
-        if let someDateTime = dateFormatter.date(from: post.date) {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "EEEE, MMM d, yyyy"
-            let date = formatter.string(from: someDateTime)
-            cell.dateLabel.text = date
+        if isSearching == true {
+            post = searchedPosts[indexPath.row]
         } else {
-            cell.dateLabel.text = ""
+            post = posts[indexPath.row]
         }
-        cell.titleLabel.text = post.title.rendered.html2String.capitalized
-        let url = URL(string: post.jetpack_featured_media_url ?? "")
-        cell.postImageView.kf.setImage(with: url)
-        cell.postTVCellDelegate = self
-        cell.indexPath = indexPath
 
-        if indexPath.row == self.posts.count - 1 {
-            self.loadMore()
+        if let post = post {
+            cell.postCategories = translateCategories(post.categories ?? [])
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            
+            if let someDateTime = dateFormatter.date(from: post.date) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "EEEE, MMM d, yyyy"
+                let date = formatter.string(from: someDateTime)
+                cell.dateLabel.text = date
+            } else {
+                cell.dateLabel.text = ""
+            }
+            cell.titleLabel.text = post.title.rendered.html2String.capitalized
+            let url = URL(string: post.jetpack_featured_media_url ?? "")
+            cell.postImageView.kf.setImage(with: url)
+            cell.postTVCellDelegate = self
+            cell.indexPath = indexPath
+
+            if indexPath.row == self.posts.count - 1 {
+                self.loadMore()
+            }
         }
 
         return cell
@@ -171,13 +185,20 @@ extension PostsViewController: UITableViewDataSource {
 }
 
 extension PostsViewController: UISearchBarDelegate {
+    
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //ReloadViews
+        isSearching = false
+        tableView.reloadData()
     }
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        if searchBar.text?.isEmpty == true {
+            isSearching = false
+        } else {
+            isSearching = true
+            searchedPosts = posts.filter { $0.title.rendered.html2String.contains(searchBar.text ?? "")}
+        }
+        tableView.reloadData()
         searchBar.resignFirstResponder()
-    }
-    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        //Search!!!!!
     }
 }
