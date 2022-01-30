@@ -156,8 +156,6 @@ extension PostsViewController: UITableViewDataSource {
         } else {
             cell.dateLabel.text = ""
         }
-//        let string = post.title.rendered.replacingOccurrences(of: "&#8211;", with: "-", options: .literal, range: nil)
-//        let replaced = string.replacingOccurrences(of: "&#038;", with: "&", options: .literal, range: nil)
         cell.titleLabel.text = post.title.rendered.html2String.capitalized
         let url = URL(string: post.jetpack_featured_media_url ?? "")
         cell.postImageView.kf.setImage(with: url)
