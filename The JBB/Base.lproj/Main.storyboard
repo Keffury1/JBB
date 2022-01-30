@@ -44,21 +44,9 @@
                                         </constraints>
                                     </imageView>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JIm-H5-E3G">
-                                        <rect key="frame" x="55" y="0.0" width="304" height="50"/>
+                                        <rect key="frame" x="55" y="0.0" width="339" height="50"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MQu-n2-yzj">
-                                        <rect key="frame" x="364" y="0.0" width="30" height="50"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="Be6-yv-ZE4"/>
-                                        </constraints>
-                                        <color key="tintColor" name="Teel"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease.circle" catalog="system"/>
-                                        <connections>
-                                            <action selector="filterButtonTapped:" destination="2EI-SP-iwv" eventType="touchUpInside" id="HW9-Pd-eS1"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tdF-i2-uZj"/>
@@ -197,7 +185,6 @@
                     <connections>
                         <outlet property="animatedLogo" destination="KXi-EH-r0P" id="5kJ-bl-RF6"/>
                         <outlet property="animatedLogoView" destination="i7w-Gf-sA8" id="7vX-cs-DhE"/>
-                        <outlet property="filterButton" destination="MQu-n2-yzj" id="H6l-AD-w9O"/>
                         <outlet property="searchBar" destination="JIm-H5-E3G" id="ynQ-zP-vUV"/>
                         <outlet property="tableView" destination="1Rc-Tf-Hdz" id="dSr-yk-wTf"/>
                         <segue destination="Bky-oS-f8F" kind="showDetail" identifier="postDetailSegue" id="Oqs-JP-TKM"/>
@@ -286,7 +273,6 @@
         <image name="NewLogo" width="1280" height="944"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="doc.text.below.ecg.fill.rtl" catalog="system" width="115" height="128"/>
-        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

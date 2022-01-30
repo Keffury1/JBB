@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import DropDown
 
 class PostsViewController: UIViewController {
 
@@ -20,7 +21,6 @@ class PostsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var animatedLogoView: UIView!
     @IBOutlet weak var animatedLogo: UIImageView!
-    @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: - Views
@@ -36,7 +36,6 @@ class PostsViewController: UIViewController {
     private func setupSubviews() {
         tableView.dataSource = self
         searchBar.delegate = self
-        filterButton.setTitle("", for: .normal)
         searchBar.backgroundImage = UIImage()
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = UIColor.white.cgColor
@@ -57,11 +56,6 @@ class PostsViewController: UIViewController {
         } onError: { errorMessage in
             print(errorMessage ?? "")
         }
-    }
-
-    // MARK: - Actions
-
-    @IBAction func filterButtonTapped(_ sender: Any) {
     }
     
     // MARK: - Navigation
