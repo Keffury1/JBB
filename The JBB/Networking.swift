@@ -16,15 +16,15 @@ class Networking {
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testAd = "ca-app-pub-3940256099942544/6300978111"
     
-    func getPostURL() -> URL? {
-        let queryItems = [URLQueryItem(name: "per_page", value: "100")]
+    func getPostURL(offset: Int?) -> URL? {
+        let queryItems = [URLQueryItem(name: "per_page", value: "25"), URLQueryItem(name: "offset", value: "\(offset ?? 0)")]
         var urlComps = URLComponents(string: baseURL + "/posts")!
         urlComps.queryItems = queryItems
         return urlComps.url
     }
     
-    func getAllPosts(onSuccess: @escaping(_ posts: [Post]) -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
-        guard let url = getPostURL() else {
+    func getAllPosts(offset: Int?, onSuccess: @escaping(_ posts: [Post]) -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
+        guard let url = getPostURL(offset: offset) else {
             onError("Bad URL")
             return
         }

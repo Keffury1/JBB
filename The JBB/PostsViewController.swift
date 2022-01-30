@@ -14,6 +14,8 @@ class PostsViewController: UIViewController {
 
     var posts: [Post] = []
     var row: Int?
+    var offset = 0
+    var reachedEndOfItems = false
 
     // MARK: - Outlets
 
@@ -43,7 +45,7 @@ class PostsViewController: UIViewController {
     }
 
     private func fetchPosts() {
-        Networking.shared.getAllPosts { posts in
+        Networking.shared.getAllPosts(offset: offset) { posts in
             self.posts = posts
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -54,6 +56,34 @@ class PostsViewController: UIViewController {
             }
         } onError: { errorMessage in
             print(errorMessage ?? "")
+        }
+    }
+    
+    private func loadMore() {
+        guard !self.reachedEndOfItems else {
+            return
+        }
+
+        DispatchQueue.global(qos: .background).async {
+            var thisBatchOfItems: [Post]?
+    
+
+            Networking.shared.getAllPosts(offset: self.offset, onSuccess: { posts in
+                thisBatchOfItems = posts
+                DispatchQueue.main.async {
+
+                    if let newItems = thisBatchOfItems {
+                        self.posts.append(contentsOf: newItems)
+                        self.tableView.reloadData()
+                        if newItems.count < 25 {
+                            self.reachedEndOfItems = true
+                        }
+                        self.offset += 25
+                    }
+                }
+            }) { errorMessage in
+                print("query failed")
+            }
         }
     }
     
@@ -103,7 +133,11 @@ extension PostsViewController: UITableViewDataSource {
         cell.postImageView.kf.setImage(with: url)
         cell.postTVCellDelegate = self
         cell.indexPath = indexPath
-        
+
+        if indexPath.row == self.posts.count - 1 {
+            self.loadMore()
+        }
+
         return cell
     }
 }
