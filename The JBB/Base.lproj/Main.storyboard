@@ -44,9 +44,21 @@
                                         </constraints>
                                     </imageView>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JIm-H5-E3G">
-                                        <rect key="frame" x="55" y="0.0" width="339" height="50"/>
+                                        <rect key="frame" x="55" y="0.0" width="299" height="50"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </searchBar>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCl-my-bHe">
+                                        <rect key="frame" x="359" y="0.0" width="35" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="35" id="KL0-90-PVV"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Teel"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="arrow.up.square.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="topButtonTapped:" destination="2EI-SP-iwv" eventType="touchUpInside" id="ALt-11-kFr"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tdF-i2-uZj"/>
@@ -187,6 +199,7 @@
                         <outlet property="animatedLogoView" destination="i7w-Gf-sA8" id="7vX-cs-DhE"/>
                         <outlet property="searchBar" destination="JIm-H5-E3G" id="ynQ-zP-vUV"/>
                         <outlet property="tableView" destination="1Rc-Tf-Hdz" id="dSr-yk-wTf"/>
+                        <outlet property="topButton" destination="sCl-my-bHe" id="6dJ-eG-cqs"/>
                         <segue destination="Bky-oS-f8F" kind="showDetail" identifier="postDetailSegue" id="Oqs-JP-TKM"/>
                     </connections>
                 </viewController>
@@ -297,6 +310,7 @@
     </scenes>
     <resources>
         <image name="NewLogo" width="1280" height="944"/>
+        <image name="arrow.up.square.fill" catalog="system" width="128" height="114"/>
         <image name="calendar.badge.plus" catalog="system" width="128" height="108"/>
         <image name="doc.text.below.ecg.fill.rtl" catalog="system" width="115" height="128"/>
         <namedColor name="AccentColor">

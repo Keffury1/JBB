@@ -8,16 +8,12 @@
 import UIKit
 import GoogleMobileAds
 import Firebase
-import ProgressHUD
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
-        ProgressHUD.colorBackground = .white
-        ProgressHUD.colorStatus = UIColor(named: "Teel")!
-        ProgressHUD.animationType = .lineSpinFade
         return true
     }
     

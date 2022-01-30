@@ -23,6 +23,7 @@ class PostsViewController: UIViewController {
     @IBOutlet weak var animatedLogoView: UIView!
     @IBOutlet weak var animatedLogo: UIImageView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var topButton: UIButton!
     
     // MARK: - Views
 
@@ -42,6 +43,7 @@ class PostsViewController: UIViewController {
         searchBar.layer.borderColor = UIColor.white.cgColor
         animatedLogo.heartbeatAnimation()
         animatedLogo.startAnimating()
+        topButton.setTitle("", for: .normal)
     }
 
     private func fetchPosts() {
@@ -85,6 +87,12 @@ class PostsViewController: UIViewController {
                 print("query failed")
             }
         }
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func topButtonTapped(_ sender: Any) {
+        tableView.setContentOffset(.zero, animated: true)
     }
     
     // MARK: - Navigation
