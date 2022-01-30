@@ -18,7 +18,9 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textView: UITextView!
-
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var headerView: UIView!
+    
     // MARK: - Views
     
     override func viewDidLoad() {
@@ -36,6 +38,18 @@ class PostDetailViewController: UIViewController {
         textView.text = post.content.rendered.html2String
         let url = URL(string: post.jetpack_featured_media_url ?? "")
         postImageView.kf.setImage(with: url)
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        
+        if let someDateTime = dateFormatter.date(from: post.date) {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "EEEE, MMM d, yyyy"
+            let date = formatter.string(from: someDateTime)
+            dateLabel.text = date
+        } else {
+            dateLabel.text = ""
+        }
+        headerView.addTopDownGradient(color: UIColor(named: "Teel")!.cgColor)
     }
     
     // MARK: - Actions

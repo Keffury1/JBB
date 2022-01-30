@@ -22,6 +22,18 @@ extension UIView {
             self.alpha = 0.0
         })
     }
+    
+    func addTopDownGradient(color: CGColor) {
+        let gradient = CAGradientLayer()
+
+        gradient.frame = self.bounds
+        gradient.colors = [UIColor.white.cgColor, color]
+
+        gradient.startPoint = CGPoint(x: 0.5, y: 1)
+        gradient.endPoint = CGPoint(x: 0.5, y: 0)
+        self.layer.insertSublayer(gradient, at: 0)
+        self.clipsToBounds = true
+    }
 }
 
 extension UIImageView {
