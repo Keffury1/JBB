@@ -18,6 +18,7 @@ class PostTableViewCell: UITableViewCell {
     
     var postTVCellDelegate: PostTVCellDelegate?
     var indexPath: IndexPath?
+    var categories: [String]?
     
     //MARK: - Outlets
 
@@ -27,6 +28,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var imageViewContainer: UIView!
+    @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     //MARK: - Methods
     
@@ -40,6 +42,7 @@ class PostTableViewCell: UITableViewCell {
     }
     
     private func setupSubviews() {
+        categoriesCollectionView.dataSource = self
         containerView.layer.cornerRadius = 10
         containerView.addShadow()
         postButton.setTitle("", for: .normal)
@@ -47,5 +50,20 @@ class PostTableViewCell: UITableViewCell {
 
     @IBAction func postButtonTapped(_ sender: Any) {
         postTVCellDelegate?.buttonTapped(int: indexPath!.row)
+    }
+}
+
+extension PostTableViewCell: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categories?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.containerView.layer.cornerRadius = 8
+        cell.categoryTitleLabel.text = categories?[indexPath.row]
+        
+        return cell
     }
 }

@@ -12,6 +12,7 @@ class PostDetailViewController: UIViewController {
     // MARK: - Properties
     
     var post: Post?
+    var categories: [String]?
     
     // MARK: - Outlets
     
@@ -20,12 +21,14 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var categoriesCollectionView: UICollectionView!
     
     // MARK: - Views
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
+        categoriesCollectionView.dataSource = self
     }
     
     // MARK: - Methods
@@ -49,7 +52,6 @@ class PostDetailViewController: UIViewController {
         } else {
             dateLabel.text = ""
         }
-        headerView.addTopDownGradient(color: UIColor(named: "Teel")!.cgColor)
     }
     
     // MARK: - Actions
@@ -57,5 +59,20 @@ class PostDetailViewController: UIViewController {
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    }
+}
+
+extension PostDetailViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return categories?.count ?? 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
+        
+        cell.containerView.layer.cornerRadius = 8
+        cell.categoryTitleLabel.text = categories?[indexPath.row]
+        
+        return cell
     }
 }

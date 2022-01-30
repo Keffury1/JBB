@@ -54,4 +54,43 @@ class Networking {
             }
         }.resume()
     }
+    
+    func getCategoriesURL() -> URL? {
+        let queryItems = [URLQueryItem(name: "per_page", value: "50")]
+        var urlComps = URLComponents(string: baseURL + "/categories")!
+        urlComps.queryItems = queryItems
+        return urlComps.url
+    }
+    
+    func getAllCategories(onSuccess: @escaping(_ categories: [Category]) -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
+        guard let url = getCategoriesURL() else {
+            onError("Bad URL")
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let _ = error {
+                onError(error.debugDescription)
+                return
+            }
+            
+            guard let data = data else {
+                onError("Bad Data")
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let categories = try decoder.decode([Category].self, from: data)
+                onSuccess(categories)
+            } catch {
+                onError("Error Decoding Posts: \(error)")
+                return
+            }
+        }.resume()
+    }
 }

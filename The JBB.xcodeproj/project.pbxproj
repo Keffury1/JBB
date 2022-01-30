@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		375C695D25B6342400C0F1D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */; };
 		3761A69627A5E147000E1C56 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3761A69527A5E147000E1C56 /* PostsViewController.swift */; };
+		376F95EA27A6F68500DE7206 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376F95E927A6F68500DE7206 /* Category.swift */; };
+		376F95EC27A6FAD000DE7206 /* CategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376F95EB27A6FAD000DE7206 /* CategoryCollectionViewCell.swift */; };
 		377C3822279B625300D87199 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3821279B625300D87199 /* Post.swift */; };
 		377C3826279B62C100D87199 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3825279B62C100D87199 /* PostTableViewCell.swift */; };
 		377C3828279B62F200D87199 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3827279B62F200D87199 /* PostDetailViewController.swift */; };
@@ -28,6 +30,8 @@
 		3710F58425A53FC600589884 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "The JBB/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3761A69527A5E147000E1C56 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
+		376F95E927A6F68500DE7206 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		376F95EB27A6FAD000DE7206 /* CategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		377C3821279B625300D87199 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		377C3825279B62C100D87199 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		377C3827279B62F200D87199 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
@@ -120,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				377C3825279B62C100D87199 /* PostTableViewCell.swift */,
+				376F95EB27A6FAD000DE7206 /* CategoryCollectionViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				377C3821279B625300D87199 /* Post.swift */,
+				376F95E927A6F68500DE7206 /* Category.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -287,6 +293,8 @@
 				37D4483125A3997500B89FA9 /* UIView+Extension.swift in Sources */,
 				3761A69627A5E147000E1C56 /* PostsViewController.swift in Sources */,
 				37952195259275500093BF62 /* Networking.swift in Sources */,
+				376F95EA27A6F68500DE7206 /* Category.swift in Sources */,
+				376F95EC27A6FAD000DE7206 /* CategoryCollectionViewCell.swift in Sources */,
 				379521722592747B0093BF62 /* AppDelegate.swift in Sources */,
 				379521742592747B0093BF62 /* SceneDelegate.swift in Sources */,
 				377C3822279B625300D87199 /* Post.swift in Sources */,

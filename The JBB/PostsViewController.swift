@@ -13,6 +13,7 @@ class PostsViewController: UIViewController {
     // MARK: - Properties
 
     var posts: [Post] = []
+    var categories: [Category] = []
     var row: Int?
     var offset = 0
     var reachedEndOfItems = false
@@ -29,6 +30,7 @@ class PostsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchCategories()
         fetchPosts()
         setupSubviews()
     }
@@ -56,6 +58,14 @@ class PostsViewController: UIViewController {
                     self.animatedLogo.stopAnimating()
                 }
             }
+        } onError: { errorMessage in
+            print(errorMessage ?? "")
+        }
+    }
+    
+    private func fetchCategories() {
+        Networking.shared.getAllCategories { categories in
+            self.categories = categories
         } onError: { errorMessage in
             print(errorMessage ?? "")
         }
@@ -89,6 +99,16 @@ class PostsViewController: UIViewController {
         }
     }
     
+    private func translateCategories(_ post_categories: [Int]) -> [String] {
+        var strings: [String] = []
+
+        for post_category in post_categories {
+            strings.append(categories.first(where: { $0.id == post_category })?.name ?? "")
+        }
+
+        return strings
+    }
+    
     // MARK: - Actions
     
     @IBAction func topButtonTapped(_ sender: Any) {
@@ -101,6 +121,7 @@ class PostsViewController: UIViewController {
         if segue.identifier == "postDetailSegue" {
             if let detailVC = segue.destination as? PostDetailViewController {
                 detailVC.post = posts[row!]
+                detailVC.categories = translateCategories(posts[row!].categories ?? [])
             }
         }
     }
@@ -123,6 +144,7 @@ extension PostsViewController: UITableViewDataSource {
 
         let post = posts[indexPath.row]
 
+        cell.categories = translateCategories(post.categories ?? [])
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         
