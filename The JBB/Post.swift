@@ -13,6 +13,7 @@ struct Post: Codable {
     let title: Rendered
     let content: Rendered
     let jetpack_featured_media_url: String?
+    let categories: [Int?]
 }
 
 struct Rendered: Codable {
