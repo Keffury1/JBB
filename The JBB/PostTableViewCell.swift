@@ -18,7 +18,7 @@ class PostTableViewCell: UITableViewCell {
     
     var postTVCellDelegate: PostTVCellDelegate?
     var indexPath: IndexPath?
-    var categories: [String]?
+    var postCategories: [String]?
     
     //MARK: - Outlets
 
@@ -55,14 +55,16 @@ class PostTableViewCell: UITableViewCell {
 
 extension PostTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories?.count ?? 0
+        return postCategories?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
-        
-        cell.containerView.layer.cornerRadius = 8
-        cell.categoryTitleLabel.text = categories?[indexPath.row]
+
+        if postCategories?.count ?? 0 > indexPath.row {
+            cell.containerView.layer.cornerRadius = 8
+            cell.categoryTitleLabel.text = postCategories?[indexPath.row]
+        }
         
         return cell
     }

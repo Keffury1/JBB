@@ -70,8 +70,10 @@ extension PostDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "categoryCell", for: indexPath) as? CategoryCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.containerView.layer.cornerRadius = 8
-        cell.categoryTitleLabel.text = categories?[indexPath.row]
+        if categories?.count ?? 0 > indexPath.row {
+            cell.containerView.layer.cornerRadius = 8
+            cell.categoryTitleLabel.text = categories?[indexPath.row]
+        }
         
         return cell
     }
