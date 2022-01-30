@@ -44,24 +44,43 @@
                                         </constraints>
                                     </imageView>
                                     <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="JIm-H5-E3G">
-                                        <rect key="frame" x="55" y="0.0" width="299" height="50"/>
+                                        <rect key="frame" x="55" y="0.0" width="284" height="50"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" name="Teel"/>
-                                        <color key="barTintColor" name="Teel"/>
+                                        <color key="barTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                     </searchBar>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCl-my-bHe">
-                                        <rect key="frame" x="359" y="0.0" width="35" height="50"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ha9-69-7L5">
+                                        <rect key="frame" x="344" y="0.0" width="50" height="50"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Top" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GAo-V0-AiY">
+                                                <rect key="frame" x="0.0" y="30.5" width="50" height="14.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <color key="textColor" name="Teel"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCl-my-bHe">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
+                                                <color key="tintColor" name="Teel"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="arrow.up.square.fill" catalog="system"/>
+                                                <connections>
+                                                    <action selector="topButtonTapped:" destination="2EI-SP-iwv" eventType="touchUpInside" id="ALt-11-kFr"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="35" id="KL0-90-PVV"/>
+                                            <constraint firstAttribute="trailing" secondItem="GAo-V0-AiY" secondAttribute="trailing" id="5vR-Xi-flV"/>
+                                            <constraint firstItem="sCl-my-bHe" firstAttribute="top" secondItem="Ha9-69-7L5" secondAttribute="top" id="CHE-GD-R5h"/>
+                                            <constraint firstAttribute="width" secondItem="Ha9-69-7L5" secondAttribute="height" multiplier="1:1" id="IbV-hw-M7C"/>
+                                            <constraint firstAttribute="bottom" secondItem="sCl-my-bHe" secondAttribute="bottom" constant="10" id="Q9K-Fz-zSQ"/>
+                                            <constraint firstAttribute="trailing" secondItem="sCl-my-bHe" secondAttribute="trailing" id="TRl-j7-PEG"/>
+                                            <constraint firstItem="sCl-my-bHe" firstAttribute="leading" secondItem="Ha9-69-7L5" secondAttribute="leading" id="oGa-Sk-CMY"/>
+                                            <constraint firstAttribute="bottom" secondItem="GAo-V0-AiY" secondAttribute="bottom" constant="5" id="sT1-b5-VeE"/>
+                                            <constraint firstItem="GAo-V0-AiY" firstAttribute="leading" secondItem="Ha9-69-7L5" secondAttribute="leading" id="xrK-WH-dxg"/>
                                         </constraints>
-                                        <color key="tintColor" name="Teel"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" image="arrow.up.square.fill" catalog="system"/>
-                                        <connections>
-                                            <action selector="topButtonTapped:" destination="2EI-SP-iwv" eventType="touchUpInside" id="ALt-11-kFr"/>
-                                        </connections>
-                                    </button>
+                                    </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="tdF-i2-uZj"/>
