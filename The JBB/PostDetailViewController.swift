@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import WebKit
 
 class PostDetailViewController: UIViewController {
 
@@ -18,7 +19,7 @@ class PostDetailViewController: UIViewController {
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
@@ -38,7 +39,9 @@ class PostDetailViewController: UIViewController {
         let string = post.title.rendered.replacingOccurrences(of: "&#8211;", with: "-", options: .literal, range: nil)
         let replaced = string.replacingOccurrences(of: "&#038;", with: "&", options: .literal, range: nil)
         titleLabel.text = replaced.capitalized
-        textView.text = post.content.rendered.html2String
+        let headerString = "<head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head>"
+        webView.loadHTMLString(headerString + post.content.rendered, baseURL: nil)
+        webView.scrollView.showsVerticalScrollIndicator = false
         let url = URL(string: post.jetpack_featured_media_url ?? "")
         postImageView.kf.setImage(with: url)
         let dateFormatter = DateFormatter()

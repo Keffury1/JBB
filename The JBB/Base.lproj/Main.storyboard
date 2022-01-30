@@ -412,24 +412,25 @@
                                     <constraint firstAttribute="trailing" secondItem="mAq-7x-ZM9" secondAttribute="trailing" constant="10" id="xxA-8B-bCS"/>
                                 </constraints>
                             </view>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" text="Detail" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA9-cb-jtg">
-                                <rect key="frame" x="15" y="335" width="384" height="473"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <color key="textColor" systemColor="labelColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wC5-He-vZ6">
+                                <rect key="frame" x="10" y="345" width="394" height="463"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences" minimumFontSize="25"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="bir-6P-cot"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="bir-6P-cot" firstAttribute="trailing" secondItem="PA9-cb-jtg" secondAttribute="trailing" constant="15" id="0hH-SK-Y1K"/>
                             <constraint firstItem="iJA-OC-Aqk" firstAttribute="top" secondItem="bir-6P-cot" secondAttribute="top" id="8W0-fL-i5X"/>
-                            <constraint firstItem="PA9-cb-jtg" firstAttribute="leading" secondItem="bir-6P-cot" secondAttribute="leading" constant="15" id="WeF-YJ-Xxd"/>
-                            <constraint firstItem="PA9-cb-jtg" firstAttribute="bottom" secondItem="bir-6P-cot" secondAttribute="bottom" id="Wpa-zV-lSR"/>
+                            <constraint firstItem="bir-6P-cot" firstAttribute="bottom" secondItem="wC5-He-vZ6" secondAttribute="bottom" id="Mp8-Q5-zpq"/>
+                            <constraint firstItem="wC5-He-vZ6" firstAttribute="top" secondItem="iJA-OC-Aqk" secondAttribute="bottom" constant="10" id="Tka-Hf-0H8"/>
                             <constraint firstItem="iJA-OC-Aqk" firstAttribute="leading" secondItem="DoT-to-sJ3" secondAttribute="leading" id="gPe-tw-LtA"/>
                             <constraint firstAttribute="trailing" secondItem="iJA-OC-Aqk" secondAttribute="trailing" id="ilq-Wg-oPI"/>
-                            <constraint firstItem="PA9-cb-jtg" firstAttribute="top" secondItem="iJA-OC-Aqk" secondAttribute="bottom" id="n6u-gd-zFT"/>
+                            <constraint firstItem="bir-6P-cot" firstAttribute="trailing" secondItem="wC5-He-vZ6" secondAttribute="trailing" constant="10" id="kQK-qb-nQO"/>
+                            <constraint firstItem="wC5-He-vZ6" firstAttribute="leading" secondItem="bir-6P-cot" secondAttribute="leading" constant="10" id="xem-fm-N1s"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="clR-Sd-6x4"/>
@@ -438,8 +439,8 @@
                         <outlet property="dateLabel" destination="qf1-if-yTv" id="u1H-Af-HZG"/>
                         <outlet property="headerView" destination="iJA-OC-Aqk" id="XX6-yi-Fpw"/>
                         <outlet property="postImageView" destination="RVs-y3-yPc" id="A7B-gZ-K5i"/>
-                        <outlet property="textView" destination="PA9-cb-jtg" id="NoS-by-IMm"/>
                         <outlet property="titleLabel" destination="6hb-k1-TJx" id="zXl-Z2-qEZ"/>
+                        <outlet property="webView" destination="wC5-He-vZ6" id="lAf-1S-zCl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M7V-4W-Kk3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -458,9 +459,6 @@
         <namedColor name="Teel">
             <color red="0.031372549019607843" green="0.5490196078431373" blue="0.7686274509803922" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
