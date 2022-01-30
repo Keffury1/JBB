@@ -17,8 +17,10 @@ class PostsViewController: UIViewController {
     var categories: [Category] = []
     var row: Int?
     var offset = 0
+    var searchOffset = 0
     var reachedEndOfItems = false
     var isSearching = false
+    var searchTerm: String?
 
     // MARK: - Outlets
 
@@ -51,9 +53,10 @@ class PostsViewController: UIViewController {
     }
 
     private func fetchPosts() {
-        Networking.shared.getAllPosts(offset: offset) { posts in
+        Networking.shared.getAllPosts(offset: offset, searchTerm: nil) { posts in
             self.posts = posts
             DispatchQueue.main.async {
+                self.offset += 25
                 self.tableView.reloadData()
                 UIView.animate(withDuration: 0.5) {
                     self.animatedLogoView.alpha = 0
@@ -78,25 +81,47 @@ class PostsViewController: UIViewController {
             return
         }
 
-        DispatchQueue.global(qos: .background).async {
-            var thisBatchOfItems: [Post]?
-    
+        if isSearching {
+            DispatchQueue.global(qos: .background).async {
+                var thisBatchOfItems: [Post]?
+        
+                Networking.shared.getAllPosts(offset: self.searchOffset, searchTerm: self.searchTerm, onSuccess: { posts in
+                    thisBatchOfItems = posts
+                    DispatchQueue.main.async {
 
-            Networking.shared.getAllPosts(offset: self.offset, onSuccess: { posts in
-                thisBatchOfItems = posts
-                DispatchQueue.main.async {
-
-                    if let newItems = thisBatchOfItems {
-                        self.posts.append(contentsOf: newItems)
-                        self.tableView.reloadData()
-                        if newItems.count < 25 {
-                            self.reachedEndOfItems = true
+                        if let newItems = thisBatchOfItems {
+                            self.searchedPosts.append(contentsOf: newItems)
+                            self.tableView.reloadData()
+                            if newItems.count < 25 {
+                                self.reachedEndOfItems = true
+                            }
+                            self.searchOffset += 25
                         }
-                        self.offset += 25
                     }
+                }) { errorMessage in
+                    print("query failed")
                 }
-            }) { errorMessage in
-                print("query failed")
+            }
+        } else {
+            DispatchQueue.global(qos: .background).async {
+                var thisBatchOfItems: [Post]?
+        
+                Networking.shared.getAllPosts(offset: self.offset, searchTerm: nil, onSuccess: { posts in
+                    thisBatchOfItems = posts
+                    DispatchQueue.main.async {
+
+                        if let newItems = thisBatchOfItems {
+                            self.posts.append(contentsOf: newItems)
+                            self.tableView.reloadData()
+                            if newItems.count < 25 {
+                                self.reachedEndOfItems = true
+                            }
+                            self.offset += 25
+                        }
+                    }
+                }) { errorMessage in
+                    print("query failed")
+                }
             }
         }
     }
@@ -122,8 +147,13 @@ class PostsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "postDetailSegue" {
             if let detailVC = segue.destination as? PostDetailViewController {
-                detailVC.post = posts[row!]
-                detailVC.categories = translateCategories(posts[row!].categories ?? [])
+                if isSearching {
+                    detailVC.post = searchedPosts[row!]
+                    detailVC.categories = translateCategories(searchedPosts[row!].categories ?? [])
+                } else {
+                    detailVC.post = posts[row!]
+                    detailVC.categories = translateCategories(posts[row!].categories ?? [])
+                }
             }
         }
     }
@@ -152,8 +182,14 @@ extension PostsViewController: UITableViewDataSource {
         
         if isSearching == true {
             post = searchedPosts[indexPath.row]
+            if indexPath.row == self.searchedPosts.count - 1 {
+                self.loadMore()
+            }
         } else {
             post = posts[indexPath.row]
+            if indexPath.row == self.posts.count - 1 {
+                self.loadMore()
+            }
         }
 
         if let post = post {
@@ -174,10 +210,6 @@ extension PostsViewController: UITableViewDataSource {
             cell.postImageView.kf.setImage(with: url)
             cell.postTVCellDelegate = self
             cell.indexPath = indexPath
-
-            if indexPath.row == self.posts.count - 1 {
-                self.loadMore()
-            }
         }
 
         return cell
@@ -192,11 +224,13 @@ extension PostsViewController: UISearchBarDelegate {
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        if searchBar.text?.isEmpty == true {
+        if searchBar.text == "" {
             isSearching = false
         } else {
             isSearching = true
-            searchedPosts = posts.filter { $0.title.rendered.html2String.contains(searchBar.text ?? "")}
+            self.searchTerm = searchBar.text
+            searchedPosts = posts.filter( { $0.title.rendered.html2String.lowercased().contains(searchBar.text!.lowercased())} )
+            searchOffset = searchedPosts.count
         }
         tableView.reloadData()
         searchBar.resignFirstResponder()
