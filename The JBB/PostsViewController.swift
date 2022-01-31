@@ -8,6 +8,7 @@
 import UIKit
 import Kingfisher
 import Firebase
+import GoogleMobileAds
 
 class PostsViewController: UIViewController {
 
@@ -39,6 +40,7 @@ class PostsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadAds()
         fetchCategories()
         fetchPosts()
         setupSubviews()
@@ -59,12 +61,12 @@ class PostsViewController: UIViewController {
     }
     
     private func loadAds() {
-        let options = GADMultipleAdsAdLoaderOptions()
-        options.numberOfAds = numAdsToLoad
-        adLoader = GADAdLoader(adUnitID: adUnitID,
-                               rootViewController: self,
+        let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
+        multipleAdsOptions.numberOfAds = numAdsToLoad
+        
+        adLoader = GADAdLoader(adUnitID: adUnitID, rootViewController: self,
                                adTypes: [.unifiedNative],
-                               options: [options])
+                               options: [multipleAdsOptions])
         adLoader.delegate = self
         adLoader.load(GADRequest())
     }
@@ -197,43 +199,59 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
-
-        var post: Post?
-        
-        if isSearching == true {
-            post = searchedPosts[indexPath.row]
-            if indexPath.row == self.searchedPosts.count - 1 {
-                self.loadMore()
-            }
-        } else {
-            post = posts[indexPath.row]
-            if indexPath.row == self.posts.count - 1 {
-                self.loadMore()
-            }
-        }
-
-        if let post = post {
-            cell.postCategories = translateCategories(post.categories ?? [])
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+        if (indexPath.row % 5 == 0) && indexPath.row != 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "adCell", for: indexPath) as? AdTableViewCell else { return UITableViewCell() }
             
-            if let someDateTime = dateFormatter.date(from: post.date) {
-                let formatter = DateFormatter()
-                formatter.dateFormat = "EEEE, MMM d, yyyy"
-                let date = formatter.string(from: someDateTime)
-                cell.dateLabel.text = date
-            } else {
-                cell.dateLabel.text = ""
-            }
-            cell.titleLabel.text = post.title.rendered.html2String.capitalized
-            let url = URL(string: post.jetpack_featured_media_url ?? "")
-            cell.postImageView.kf.setImage(with: url)
-            cell.postTVCellDelegate = self
-            cell.indexPath = indexPath
-        }
+            let ad = nativeAds[indexPath.row / 5]
 
-        return cell
+            cell.adTitleLabel.text = ad.headline?.capitalized
+            cell.adDetailLabel.text = ad.body
+            cell.mediaView.mediaContent = ad.mediaContent
+            cell.callToActionButton.setTitle(ad.callToAction, for: .normal)
+            cell.nativeAdView.nativeAd = ad
+            
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
+
+            var post: Post?
+            
+            if isSearching == true {
+                post = searchedPosts[indexPath.row - (indexPath.row / 5)]
+                if indexPath.row == self.searchedPosts.count - 1 {
+                    self.loadMore()
+                }
+            } else {
+                post = posts[indexPath.row - (indexPath.row / 5)]
+                if indexPath.row == self.posts.count - 1 {
+                    self.loadMore()
+                }
+            }
+
+            if let post = post {
+                cell.postCategories = translateCategories(post.categories ?? [])
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+                
+                if let someDateTime = dateFormatter.date(from: post.date) {
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "EEEE, MMM d, yyyy"
+                    let date = formatter.string(from: someDateTime)
+                    cell.dateLabel.text = date
+                } else {
+                    cell.dateLabel.text = ""
+                }
+                cell.titleLabel.text = post.title.rendered.html2String.capitalized
+                let url = URL(string: post.jetpack_featured_media_url ?? "")
+                cell.postImageView.kf.setImage(with: url)
+                cell.postTVCellDelegate = self
+                cell.indexPath = indexPath
+            } else {
+                
+            }
+
+            return cell
+        }
     }
 
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -272,8 +290,9 @@ extension PostsViewController: UISearchBarDelegate {
     }
 }
 
-extension PostsViewController: GADUnifiedNativeAdLoaderDelegate {
+extension PostsViewController: GADUnifiedNativeAdLoaderDelegate, GADUnifiedNativeAdDelegate {
     func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADUnifiedNativeAd) {
+        nativeAd.delegate = self
         nativeAds.append(nativeAd)
     }
     

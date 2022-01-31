@@ -14,6 +14,7 @@
 		377C3822279B625300D87199 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3821279B625300D87199 /* Post.swift */; };
 		377C3826279B62C100D87199 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3825279B62C100D87199 /* PostTableViewCell.swift */; };
 		377C3828279B62F200D87199 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 377C3827279B62F200D87199 /* PostDetailViewController.swift */; };
+		378A5D5527A798D30058CBA0 /* AdTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 378A5D5427A798D30058CBA0 /* AdTableViewCell.swift */; };
 		379521722592747B0093BF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521712592747B0093BF62 /* AppDelegate.swift */; };
 		379521742592747B0093BF62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379521732592747B0093BF62 /* SceneDelegate.swift */; };
 		379521792592747B0093BF62 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 379521772592747B0093BF62 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		377C3821279B625300D87199 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		377C3825279B62C100D87199 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		377C3827279B62F200D87199 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		378A5D5427A798D30058CBA0 /* AdTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdTableViewCell.swift; sourceTree = "<group>"; };
 		3795216E2592747B0093BF62 /* The JBB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "The JBB.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		379521712592747B0093BF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		379521732592747B0093BF62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 			children = (
 				377C3825279B62C100D87199 /* PostTableViewCell.swift */,
 				376F95EB27A6FAD000DE7206 /* CategoryCollectionViewCell.swift */,
+				378A5D5427A798D30058CBA0 /* AdTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -294,6 +297,7 @@
 				3761A69627A5E147000E1C56 /* PostsViewController.swift in Sources */,
 				37952195259275500093BF62 /* Networking.swift in Sources */,
 				376F95EA27A6F68500DE7206 /* Category.swift in Sources */,
+				378A5D5527A798D30058CBA0 /* AdTableViewCell.swift in Sources */,
 				376F95EC27A6FAD000DE7206 /* CategoryCollectionViewCell.swift in Sources */,
 				379521722592747B0093BF62 /* AppDelegate.swift in Sources */,
 				379521742592747B0093BF62 /* SceneDelegate.swift in Sources */,
