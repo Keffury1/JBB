@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Firebase
 
 class PostsViewController: UIViewController {
 
@@ -21,6 +22,10 @@ class PostsViewController: UIViewController {
     var reachedEndOfItems = false
     var isSearching = false
     var searchTerm: String?
+    let adUnitID = "ca-app-pub-3940256099942544/3986624511"
+    let numAdsToLoad = 5
+    var nativeAds = [GADUnifiedNativeAd]()
+    var adLoader: GADAdLoader!
 
     // MARK: - Outlets
 
@@ -51,6 +56,17 @@ class PostsViewController: UIViewController {
         animatedLogo.heartbeatAnimation()
         animatedLogo.startAnimating()
         topButton.setTitle("", for: .normal)
+    }
+    
+    private func loadAds() {
+        let options = GADMultipleAdsAdLoaderOptions()
+        options.numberOfAds = numAdsToLoad
+        adLoader = GADAdLoader(adUnitID: adUnitID,
+                               rootViewController: self,
+                               adTypes: [.unifiedNative],
+                               options: [options])
+        adLoader.delegate = self
+        adLoader.load(GADRequest())
     }
 
     private func fetchPosts() {
@@ -253,5 +269,15 @@ extension PostsViewController: UISearchBarDelegate {
         }
         tableView.reloadData()
         searchBar.resignFirstResponder()
+    }
+}
+
+extension PostsViewController: GADUnifiedNativeAdLoaderDelegate {
+    func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADUnifiedNativeAd) {
+        nativeAds.append(nativeAd)
+    }
+    
+    func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
+        print("Error loading Native Ad: \(error)")
     }
 }

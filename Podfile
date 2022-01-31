@@ -8,8 +8,8 @@ target 'The JBB' do
 
   # Pods for The JBB
   pod 'UIImageColors'
-  pod 'Google-Mobile-Ads-SDK'
-  pod 'Firebase/Analytics'
+  pod 'Firebase'
+  pod 'Firebase/AdMob'
   pod 'Kingfisher'
 
 post_install do |installer|
