@@ -59,7 +59,7 @@ extension UIImageView {
 extension String {
     func attributedString() -> NSAttributedString? {
         guard let data = self.data(using: String.Encoding.utf8,
-            allowLossyConversion: false) else { return nil }
+            allowLossyConversion: true) else { return nil }
         let options: [NSAttributedString.DocumentReadingOptionKey : Any] = [
             NSAttributedString.DocumentReadingOptionKey.characterEncoding : String.Encoding.utf8.rawValue,
             NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html
