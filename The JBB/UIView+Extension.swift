@@ -56,6 +56,23 @@ extension UIImageView {
     }
 }
 
+extension String {
+    func attributedString() -> NSAttributedString? {
+        guard let data = self.data(using: String.Encoding.utf8,
+            allowLossyConversion: false) else { return nil }
+        let options: [NSAttributedString.DocumentReadingOptionKey : Any] = [
+            NSAttributedString.DocumentReadingOptionKey.characterEncoding : String.Encoding.utf8.rawValue,
+            NSAttributedString.DocumentReadingOptionKey.documentType : NSAttributedString.DocumentType.html
+        ]
+        let htmlString = try? NSMutableAttributedString(data: data, options: options, documentAttributes: nil)
+
+        // Removing this line makes the bug reappear
+        htmlString?.addAttribute(NSAttributedString.Key.backgroundColor, value: UIColor.clear, range: NSMakeRange(0, 1))
+
+        return htmlString
+    }
+}
+
 extension Data {
     var html2AttributedString: NSAttributedString? {
         do {
