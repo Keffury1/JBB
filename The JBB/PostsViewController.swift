@@ -100,6 +100,8 @@ class PostsViewController: UIViewController {
             return
         }
 
+        loadAds()
+
         if isSearching {
             DispatchQueue.global(qos: .background).async {
                 var thisBatchOfItems: [Post]?
@@ -107,7 +109,6 @@ class PostsViewController: UIViewController {
                 Networking.shared.getAllPosts(offset: self.searchOffset, searchTerm: self.searchTerm, onSuccess: { posts in
                     thisBatchOfItems = posts
                     DispatchQueue.main.async {
-
                         if let newItems = thisBatchOfItems {
                             self.searchedPosts.append(contentsOf: newItems)
                             self.tableView.reloadData()
@@ -130,7 +131,6 @@ class PostsViewController: UIViewController {
                 Networking.shared.getAllPosts(offset: self.offset, searchTerm: nil, onSuccess: { posts in
                     thisBatchOfItems = posts
                     DispatchQueue.main.async {
-
                         if let newItems = thisBatchOfItems {
                             self.posts.append(contentsOf: newItems)
                             self.tableView.reloadData()
@@ -171,10 +171,10 @@ class PostsViewController: UIViewController {
         if segue.identifier == "postDetailSegue" {
             if let detailVC = segue.destination as? PostDetailViewController {
                 if isSearching {
-                    detailVC.post = searchedPosts[row!]
+                    detailVC.post = searchedPosts[row! - (row! / 5)]
                     detailVC.categories = translateCategories(searchedPosts[row!].categories ?? [])
                 } else {
-                    detailVC.post = posts[row!]
+                    detailVC.post = posts[row! - (row! / 5)]
                     detailVC.categories = translateCategories(posts[row!].categories ?? [])
                 }
             }
