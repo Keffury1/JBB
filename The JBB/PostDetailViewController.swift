@@ -19,28 +19,50 @@ class PostDetailViewController: UIViewController {
     
     @IBOutlet weak var postImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var postTextView: UITextView!
+    @IBOutlet weak var postWebView: WKWebView!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var authView: UIView!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var animatedLogoView: UIView!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     // MARK: - Views
     
     override func viewDidLoad() {
         super.viewDidLoad()
         updateViews()
-        categoriesCollectionView.dataSource = self
+        setupSubviews()
     }
     
     // MARK: - Methods
     
     private func updateViews() {
+        animatedLogoView.alpha = 1
         guard let post = post else { return }
-        let string = post.title.rendered.replacingOccurrences(of: "&#8211;", with: "-", options: .literal, range: nil)
-        let replaced = string.replacingOccurrences(of: "&#038;", with: "&", options: .literal, range: nil)
-        titleLabel.text = replaced.capitalized
-        postTextView.attributedText = post.content.rendered.attributedString()
-        postTextView.font = UIFont(name: postTextView.font!.fontName, size: 25)
+        titleLabel.text = post.title.rendered.html2String.capitalized
+        let cleanedText = post.content.rendered.replacingOccurrences(of: "\\/", with: "/")
+        if post.content.rendered.localizedStandardContains("This content is for") == true {
+            authView.isUserInteractionEnabled = true
+            authView.alpha = 1
+        } else {
+            authView.isUserInteractionEnabled = false
+            authView.alpha = 0
+        }
+        let header = """
+                <head>
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+                    <style>
+                        body {
+                            font-size: 22px;
+                        }
+                    </style>
+                </head>
+                <body>
+                """
+        postWebView.loadHTMLString(header + cleanedText, baseURL: URL(string: "https://thejbb.net/"))
         let url = URL(string: post.jetpack_featured_media_url ?? "")
         postImageView.kf.setImage(with: url)
         let dateFormatter = DateFormatter()
@@ -54,10 +76,34 @@ class PostDetailViewController: UIViewController {
         } else {
             dateLabel.text = ""
         }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            UIView.animate(withDuration: 0.75) {
+                self.animatedLogoView.alpha = 0
+            }
+        }
+    }
+    
+    private func setupSubviews() {
+        loginButton.layer.cornerRadius = 10
+        registerButton.layer.cornerRadius = 10
+        loginButton.addShadow()
+        registerButton.addShadow()
+        
+        categoriesCollectionView.dataSource = self
+        
+        postWebView.navigationDelegate = self
+        postWebView.scrollView.showsVerticalScrollIndicator = false
+        postWebView.scrollView.showsHorizontalScrollIndicator = false
     }
     
     // MARK: - Actions
     
+    @IBAction func loginButtonTapped(_ sender: Any) {
+    }
+
+    @IBAction func registerButtonTapped(_ sender: Any) {
+    }
+
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -78,5 +124,15 @@ extension PostDetailViewController: UICollectionViewDataSource {
         }
         
         return cell
+    }
+}
+
+extension PostDetailViewController: WKNavigationDelegate {
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        if navigationAction.navigationType == .linkActivated {
+            decisionHandler(.cancel)
+        } else {
+            decisionHandler(.allow)
+        }
     }
 }
