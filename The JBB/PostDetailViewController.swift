@@ -53,7 +53,7 @@ class PostDetailViewController: UIViewController {
         }
         let header = """
                 <head>
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+                    <meta name="viewport" content="width=100%, initial-scale=1.0, user-scalable=no" />
                     <style>
                         body {
                             font-size: 22px;
@@ -62,7 +62,8 @@ class PostDetailViewController: UIViewController {
                 </head>
                 <body>
                 """
-        postWebView.loadHTMLString(header + cleanedText, baseURL: URL(string: "https://thejbb.net/"))
+        let HTMLString = HTMLImageCorrector(HTMLString: header + cleanedText)
+        postWebView.loadHTMLString(HTMLString, baseURL: URL(string: "https://thejbb.net/"))
         let url = URL(string: post.jetpack_featured_media_url ?? "")
         postImageView.kf.setImage(with: url)
         let dateFormatter = DateFormatter()
@@ -91,9 +92,25 @@ class PostDetailViewController: UIViewController {
         
         categoriesCollectionView.dataSource = self
         
+        postWebView.scrollView.delegate = self
         postWebView.navigationDelegate = self
         postWebView.scrollView.showsVerticalScrollIndicator = false
         postWebView.scrollView.showsHorizontalScrollIndicator = false
+    }
+    
+    private func HTMLImageCorrector(HTMLString: String) -> String {
+        var HTMLToBeReturned = HTMLString
+        while HTMLToBeReturned.range(of: "(?<=width=\")[^\" height]+", options: .regularExpression) != nil {
+            if let match = HTMLToBeReturned.range(of: "(?<=width=\")[^\" height]+", options: .regularExpression) {
+                HTMLToBeReturned.removeSubrange(match)
+                if let matchTwo = HTMLToBeReturned.range(of: "(?<=height=\")[^\"]+", options: .regularExpression) {
+                    HTMLToBeReturned.removeSubrange(matchTwo)
+                    let stringToDelete = "width=\"\" height=\"\""
+                    HTMLToBeReturned = HTMLToBeReturned.replacingOccurrences(of: stringToDelete, with: "")
+                }
+            }
+        }
+        return HTMLToBeReturned
     }
     
     // MARK: - Actions
@@ -142,6 +159,14 @@ extension PostDetailViewController: WKNavigationDelegate {
             }
         } else {
             decisionHandler(.allow)
+        }
+    }
+}
+
+extension PostDetailViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x > 0 {
+            scrollView.contentOffset.x = 0
         }
     }
 }
