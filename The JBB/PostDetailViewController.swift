@@ -94,7 +94,7 @@ class PostDetailViewController: UIViewController {
         
         postWebView.scrollView.delegate = self
         postWebView.navigationDelegate = self
-        postWebView.scrollView.showsVerticalScrollIndicator = false
+        postWebView.scrollView.showsVerticalScrollIndicator = true
         postWebView.scrollView.showsHorizontalScrollIndicator = false
     }
     
