@@ -130,7 +130,16 @@ extension PostDetailViewController: UICollectionViewDataSource {
 extension PostDetailViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         if navigationAction.navigationType == .linkActivated {
-            decisionHandler(.cancel)
+            if let url = navigationAction.request.url {
+                if url.absoluteString.range(of: "http://thejbb.net/wp-login.php") != nil {
+                    decisionHandler(.cancel)
+                    return
+                } else {
+                    UIApplication.shared.open(url)
+                    decisionHandler(.cancel)
+                    return
+                }
+            }
         } else {
             decisionHandler(.allow)
         }
