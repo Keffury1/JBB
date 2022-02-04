@@ -17,7 +17,7 @@ class Networking {
     var testAd = "ca-app-pub-3940256099942544/6300978111"
     
     func getPostURL(offset: Int?, searchTerm: String?) -> URL? {
-        let queryItems = [URLQueryItem(name: "per_page", value: "25"), URLQueryItem(name: "offset", value: "\(offset ?? 0)"), URLQueryItem(name: "search", value: "\(searchTerm ?? "")")]
+        let queryItems = [URLQueryItem(name: "per_page", value: "15"), URLQueryItem(name: "offset", value: "\(offset ?? 0)"), URLQueryItem(name: "search", value: "\(searchTerm ?? "")")]
         var urlComps = URLComponents(string: baseURL + "/posts")!
         urlComps.queryItems = queryItems
         return urlComps.url

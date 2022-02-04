@@ -75,7 +75,7 @@ class PostsViewController: UIViewController {
         Networking.shared.getAllPosts(offset: offset, searchTerm: nil) { posts in
             self.posts = posts
             DispatchQueue.main.async {
-                self.offset += 25
+                self.offset += 15
                 self.tableView.reloadData()
                 UIView.animate(withDuration: 0.5) {
                     self.animatedLogoView.alpha = 0
@@ -114,10 +114,10 @@ class PostsViewController: UIViewController {
                             self.tableView.reloadData()
                             self.tableView.tableFooterView = nil
                             self.tableView.tableFooterView?.isHidden = true
-                            if newItems.count < 25 {
+                            if newItems.count < 15 {
                                 self.reachedEndOfItems = true
                             }
-                            self.searchOffset += 25
+                            self.searchOffset += 15
                         }
                     }
                 }) { errorMessage in
@@ -136,10 +136,10 @@ class PostsViewController: UIViewController {
                             self.tableView.reloadData()
                             self.tableView.tableFooterView = nil
                             self.tableView.tableFooterView?.isHidden = true
-                            if newItems.count < 25 {
+                            if newItems.count < 15 {
                                 self.reachedEndOfItems = true
                             }
-                            self.offset += 25
+                            self.offset += 15
                         }
                     }
                 }) { errorMessage in
