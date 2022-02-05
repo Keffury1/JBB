@@ -399,7 +399,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nKD-TD-EjA">
                                                         <rect key="frame" x="0.0" y="18" width="278" height="45"/>
                                                         <color key="backgroundColor" red="0.61176470589999998" green="0.58039215690000001" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="tintColor" name="Teel"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="Ion-2Q-5ai"/>
                                                         </constraints>
@@ -424,7 +424,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="up6-Be-1ge">
                                                         <rect key="frame" x="0.0" y="19.333333333333314" width="278" height="45"/>
                                                         <color key="backgroundColor" red="0.61176470589999998" green="0.58039215690000001" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <color key="tintColor" name="Teel"/>
+                                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="45" id="q0c-zg-ztR"/>
                                                         </constraints>
@@ -542,7 +542,7 @@
                         <outlet property="passwordTextField" destination="up6-Be-1ge" id="YEE-NU-u7t"/>
                         <outlet property="signUpButton" destination="XHe-fk-eZy" id="eX5-jD-x1F"/>
                         <outlet property="signUpView" destination="dLL-IG-8TJ" id="yN9-1G-CoJ"/>
-                        <segue destination="Pou-Eq-tJI" kind="presentation" modalPresentationStyle="fullScreen" id="koW-yY-Ks6"/>
+                        <segue destination="Pou-Eq-tJI" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="koW-yY-Ks6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ar8-ya-6Dn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -688,45 +688,28 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4H-cD-xan">
                                 <rect key="frame" x="0.0" y="753" width="428" height="90"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="HaV-uo-tNm">
-                                        <rect key="frame" x="10" y="10" width="408" height="60"/>
-                                        <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TVR-GI-Gnl">
-                                                <rect key="frame" x="0.0" y="0.0" width="199" height="60"/>
-                                                <color key="backgroundColor" name="Teel"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="bUu-lE-CVj"/>
-                                                </constraints>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Login">
-                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="22"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="loginButtonTapped:" destination="Bky-oS-f8F" eventType="touchUpInside" id="LJg-Sz-tP3"/>
-                                                </connections>
-                                            </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K25-wT-kNZ">
-                                                <rect key="frame" x="209" y="0.0" width="199" height="60"/>
-                                                <color key="backgroundColor" name="Teel"/>
-                                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                <state key="normal" title="Button"/>
-                                                <buttonConfiguration key="configuration" style="plain" title="Register">
-                                                    <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="22"/>
-                                                </buttonConfiguration>
-                                                <connections>
-                                                    <action selector="registerButtonTapped:" destination="Bky-oS-f8F" eventType="touchUpInside" id="hjM-uz-swn"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                    </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K25-wT-kNZ">
+                                        <rect key="frame" x="10" y="20" width="408" height="50"/>
+                                        <color key="backgroundColor" name="Teel"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="9DV-bg-QTr"/>
+                                        </constraints>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="+ Upgrade Membership">
+                                            <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="25"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="registerButtonTapped:" destination="Bky-oS-f8F" eventType="touchUpInside" id="hjM-uz-swn"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="2Bh-ma-lt3"/>
-                                    <constraint firstItem="HaV-uo-tNm" firstAttribute="top" secondItem="o4H-cD-xan" secondAttribute="top" constant="10" id="H9r-VT-ltM"/>
-                                    <constraint firstAttribute="trailing" secondItem="HaV-uo-tNm" secondAttribute="trailing" constant="10" id="ZlE-0c-7up"/>
-                                    <constraint firstItem="HaV-uo-tNm" firstAttribute="leading" secondItem="o4H-cD-xan" secondAttribute="leading" constant="10" id="rB7-wb-O5N"/>
+                                    <constraint firstItem="K25-wT-kNZ" firstAttribute="leading" secondItem="o4H-cD-xan" secondAttribute="leading" constant="10" id="3zc-RZ-o9c"/>
+                                    <constraint firstItem="K25-wT-kNZ" firstAttribute="top" secondItem="o4H-cD-xan" secondAttribute="top" constant="20" symbolic="YES" id="5NM-Di-O8H"/>
+                                    <constraint firstAttribute="trailing" secondItem="K25-wT-kNZ" secondAttribute="trailing" constant="10" id="pvk-bW-A16"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nlt-Vd-LxO">
@@ -773,7 +756,6 @@
                         <outlet property="categoriesCollectionView" destination="mAq-7x-ZM9" id="m2A-U2-OLa"/>
                         <outlet property="dateLabel" destination="qf1-if-yTv" id="u1H-Af-HZG"/>
                         <outlet property="headerView" destination="iJA-OC-Aqk" id="XX6-yi-Fpw"/>
-                        <outlet property="loginButton" destination="TVR-GI-Gnl" id="DxD-Qo-Ub0"/>
                         <outlet property="logoImageView" destination="hdv-nm-Yvr" id="6Md-Oj-Y1e"/>
                         <outlet property="postImageView" destination="RVs-y3-yPc" id="A7B-gZ-K5i"/>
                         <outlet property="postWebView" destination="zbT-no-MbS" id="v6B-TT-EjG"/>

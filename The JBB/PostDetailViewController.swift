@@ -23,7 +23,6 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var authView: UIView!
-    @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var animatedLogoView: UIView!
@@ -85,9 +84,7 @@ class PostDetailViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        loginButton.layer.cornerRadius = 10
         registerButton.layer.cornerRadius = 10
-        loginButton.addShadow()
         registerButton.addShadow()
         
         categoriesCollectionView.dataSource = self
@@ -114,9 +111,6 @@ class PostDetailViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
-    @IBAction func loginButtonTapped(_ sender: Any) {
-    }
 
     @IBAction func registerButtonTapped(_ sender: Any) {
     }

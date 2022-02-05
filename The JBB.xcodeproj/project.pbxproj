@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		372D90DD27AEF36600DE727E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372D90DC27AEF36600DE727E /* LoginViewController.swift */; };
+		372D90DF27AF114200DE727E /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372D90DE27AF114100DE727E /* Global.swift */; };
+		372D90E127AF127400DE727E /* LoginReturn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372D90E027AF127400DE727E /* LoginReturn.swift */; };
 		375C695D25B6342400C0F1D1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */; };
 		3761A69627A5E147000E1C56 /* PostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3761A69527A5E147000E1C56 /* PostsViewController.swift */; };
 		376F95EA27A6F68500DE7206 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376F95E927A6F68500DE7206 /* Category.swift */; };
@@ -29,6 +31,8 @@
 /* Begin PBXFileReference section */
 		3710F58425A53FC600589884 /* GoogleMobileAds.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = GoogleMobileAds.xcframework; path = "Pods/Google-Mobile-Ads-SDK/Frameworks/GoogleMobileAdsFramework-Current/GoogleMobileAds.xcframework"; sourceTree = "<group>"; };
 		372D90DC27AEF36600DE727E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		372D90DE27AF114100DE727E /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		372D90E027AF127400DE727E /* LoginReturn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginReturn.swift; sourceTree = "<group>"; };
 		375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "The JBB/GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		3761A69527A5E147000E1C56 /* PostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewController.swift; sourceTree = "<group>"; };
 		376F95E927A6F68500DE7206 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -102,6 +106,7 @@
 				3795217F2592747C0093BF62 /* Info.plist */,
 				375C695C25B6342400C0F1D1 /* GoogleService-Info.plist */,
 				37D4483025A3997500B89FA9 /* UIView+Extension.swift */,
+				372D90DE27AF114100DE727E /* Global.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -118,9 +123,9 @@
 		3795218A259274ED0093BF62 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				372D90DC27AEF36600DE727E /* LoginViewController.swift */,
 				3761A69527A5E147000E1C56 /* PostsViewController.swift */,
 				377C3827279B62F200D87199 /* PostDetailViewController.swift */,
-				372D90DC27AEF36600DE727E /* LoginViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			children = (
 				377C3821279B625300D87199 /* Post.swift */,
 				376F95E927A6F68500DE7206 /* Category.swift */,
+				372D90E027AF127400DE727E /* LoginReturn.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -295,10 +301,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				372D90DD27AEF36600DE727E /* LoginViewController.swift in Sources */,
+				372D90E127AF127400DE727E /* LoginReturn.swift in Sources */,
 				377C3826279B62C100D87199 /* PostTableViewCell.swift in Sources */,
 				377C3828279B62F200D87199 /* PostDetailViewController.swift in Sources */,
 				37D4483125A3997500B89FA9 /* UIView+Extension.swift in Sources */,
 				3761A69627A5E147000E1C56 /* PostsViewController.swift in Sources */,
+				372D90DF27AF114200DE727E /* Global.swift in Sources */,
 				37952195259275500093BF62 /* Networking.swift in Sources */,
 				376F95EA27A6F68500DE7206 /* Category.swift in Sources */,
 				378A5D5527A798D30058CBA0 /* AdTableViewCell.swift in Sources */,

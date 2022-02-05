@@ -9,6 +9,7 @@ import UIKit
 import Kingfisher
 import Firebase
 import GoogleMobileAds
+import ProgressHUD
 
 class PostsViewController: UIViewController {
 
@@ -40,6 +41,7 @@ class PostsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        ProgressHUD.dismiss()
         loadAds()
         fetchCategories()
         fetchPosts()

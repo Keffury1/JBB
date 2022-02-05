@@ -13,8 +13,46 @@ class Networking {
     
     static let shared = Networking()
     let baseURL = "https://thejbb.net/wp-json/wp/v2"
+    let authURL = "https://thejbb.net/"
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testAd = "ca-app-pub-3940256099942544/6300978111"
+    
+    func login(email: String, password: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
+        let queryItems = [URLQueryItem(name: "rest_route", value: "/simple-jwt-login/v1/auth"),URLQueryItem(name: "email", value: email), URLQueryItem(name: "password", value: password)]
+        var urlComps = URLComponents(string: authURL)!
+        urlComps.queryItems = queryItems
+
+        guard let url = urlComps.url else {
+            onError("Bad URL")
+            return
+        }
+
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            if let error = error {
+                onError(error.localizedDescription)
+                return
+            }
+            
+            guard let data = data else {
+                onError("Bad Data")
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let token = try decoder.decode(LoginReturn.self, from: data)
+                globalToken = token.data.jwt
+                onSuccess()
+            } catch {
+                onError("Error Logging In User: \(error)")
+                return
+            }
+        }.resume()
+    }
     
     func getPostURL(offset: Int?, searchTerm: String?) -> URL? {
         let queryItems = [URLQueryItem(name: "per_page", value: "15"), URLQueryItem(name: "offset", value: "\(offset ?? 0)"), URLQueryItem(name: "search", value: "\(searchTerm ?? "")")]
@@ -30,6 +68,9 @@ class Networking {
         }
         
         var request = URLRequest(url: url)
+        if let token = globalToken {
+            request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+        }
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in

@@ -12,6 +12,7 @@ target 'The JBB' do
   pod 'Firebase/AdMob'
   pod 'Kingfisher'
   pod 'IQKeyboardManagerSwift'
+  pod 'ProgressHUD'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

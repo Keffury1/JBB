@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ProgressHUD
 
 class LoginViewController: UIViewController {
 
@@ -42,16 +43,23 @@ class LoginViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction func loginButtonTapped(_ sender: Any) {
+        guard let email = emailAddressTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
+            return
+        }
+
+        ProgressHUD.show()
+        Networking.shared.login(email: email, password: password) {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "loginSegue", sender: self)
+            }
+        } onError: { errorMessage in
+            ProgressHUD.showError()
+            print(errorMessage)
+        }
     }
 
     @IBAction func signUpButtonTapped(_ sender: Any) {
     }
-
-    // MARK: - Navigation
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    }
-
 }
 
 extension LoginViewController: UITextFieldDelegate {
