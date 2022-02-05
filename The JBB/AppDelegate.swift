@@ -7,12 +7,15 @@
 
 import UIKit
 import Firebase
+import IQKeyboardManagerSwift
+import GoogleMobileAds
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        IQKeyboardManager.shared.enable = true
         GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544/3986624511")
         return true
     }

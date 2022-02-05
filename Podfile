@@ -11,6 +11,7 @@ target 'The JBB' do
   pod 'Firebase'
   pod 'Firebase/AdMob'
   pod 'Kingfisher'
+  pod 'IQKeyboardManagerSwift'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
