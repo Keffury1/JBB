@@ -390,13 +390,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="nic-VR-893">
                                                 <rect key="frame" x="0.0" y="0.0" width="278" height="63"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsn-fg-SO7">
-                                                        <rect key="frame" x="0.0" y="0.0" width="41" height="18"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Username:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dsn-fg-SO7">
+                                                        <rect key="frame" x="0.0" y="0.0" width="74.666666666666671" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nKD-TD-EjA">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nKD-TD-EjA">
                                                         <rect key="frame" x="0.0" y="18" width="278" height="45"/>
                                                         <color key="backgroundColor" red="0.61176470589999998" green="0.58039215690000001" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -535,13 +535,13 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="emailAddressTextField" destination="nKD-TD-EjA" id="a0t-LY-nfk"/>
                         <outlet property="loginButton" destination="gbA-Xj-zIQ" id="0K4-Pj-J4b"/>
                         <outlet property="loginView" destination="bCh-Cq-kE8" id="Uay-Mu-jmO"/>
                         <outlet property="logoImageView" destination="Jqe-cE-GkP" id="Rjg-nw-OLv"/>
                         <outlet property="passwordTextField" destination="up6-Be-1ge" id="YEE-NU-u7t"/>
                         <outlet property="signUpButton" destination="XHe-fk-eZy" id="eX5-jD-x1F"/>
                         <outlet property="signUpView" destination="dLL-IG-8TJ" id="yN9-1G-CoJ"/>
+                        <outlet property="usernameTextField" destination="nKD-TD-EjA" id="a0t-LY-nfk"/>
                         <segue destination="Pou-Eq-tJI" kind="presentation" identifier="loginSegue" modalPresentationStyle="fullScreen" id="koW-yY-Ks6"/>
                     </connections>
                 </viewController>

@@ -13,22 +13,19 @@ class Networking {
     
     static let shared = Networking()
     let baseURL = "https://thejbb.net/wp-json/wp/v2"
-    let authURL = "https://thejbb.net/"
+    let authURL = "https://thejbb.net/wp-json/api/v1/token"
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testAd = "ca-app-pub-3940256099942544/6300978111"
     
-    func login(email: String, password: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
-        let queryItems = [URLQueryItem(name: "rest_route", value: "/simple-jwt-login/v1/auth"),URLQueryItem(name: "email", value: email), URLQueryItem(name: "password", value: password)]
-        var urlComps = URLComponents(string: authURL)!
-        urlComps.queryItems = queryItems
+    func login(username: String, password: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
 
-        guard let url = urlComps.url else {
-            onError("Bad URL")
-            return
-        }
+        let data = "username=\(username)&password=\(password)".data(using: .utf8)
+        let url = URL(string: authURL)!
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
+        request.httpBody = data
+        
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
             if let error = error {
@@ -45,7 +42,7 @@ class Networking {
             
             do {
                 let token = try decoder.decode(LoginReturn.self, from: data)
-                globalToken = token.data.jwt
+                globalToken = token.jwt_token
                 onSuccess()
             } catch {
                 onError("Error Logging In User: \(error)")
@@ -110,6 +107,9 @@ class Networking {
         }
         
         var request = URLRequest(url: url)
+        if let token = globalToken {
+            request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
+        }
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in

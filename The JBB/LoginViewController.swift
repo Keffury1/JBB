@@ -15,7 +15,7 @@ class LoginViewController: UIViewController {
     // MARK: - Outlets
 
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var emailAddressTextField: UITextField!
+    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var loginButton: UIButton!
@@ -36,19 +36,19 @@ class LoginViewController: UIViewController {
         loginButton.setTitle("", for: .normal)
         signUpView.layer.cornerRadius = 10
         signUpButton.setTitle("", for: .normal)
-        emailAddressTextField.delegate = self
+        usernameTextField.delegate = self
         passwordTextField.delegate = self
     }
     
     // MARK: - Actions
     
     @IBAction func loginButtonTapped(_ sender: Any) {
-        guard let email = emailAddressTextField.text, !email.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
+        guard let username = usernameTextField.text, !username.isEmpty, let password = passwordTextField.text, !password.isEmpty else {
             return
         }
 
         ProgressHUD.show()
-        Networking.shared.login(email: email, password: password) {
+        Networking.shared.login(username: username, password: password) {
             DispatchQueue.main.async {
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
