@@ -113,6 +113,8 @@ class PostDetailViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func registerButtonTapped(_ sender: Any) {
+        let url = URL(string: "https://thejbb.net/login/")!
+        UIApplication.shared.open(url)
     }
 
     // MARK: - Navigation

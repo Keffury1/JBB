@@ -31,6 +31,7 @@ class PostsViewController: UIViewController {
 
     // MARK: - Outlets
 
+    @IBOutlet weak var noResultsView: UIView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var animatedLogoView: UIView!
     @IBOutlet weak var animatedLogo: UIImageView!
@@ -47,6 +48,12 @@ class PostsViewController: UIViewController {
         fetchPosts()
         setupSubviews()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        animatedLogo.heartbeatAnimation()
+        animatedLogo.startAnimating()
+    }
 
     // MARK: - Methods
 
@@ -57,8 +64,6 @@ class PostsViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = UIColor.white.cgColor
-        animatedLogo.heartbeatAnimation()
-        animatedLogo.startAnimating()
         topButton.setTitle("", for: .normal)
     }
     
@@ -194,8 +199,14 @@ extension PostsViewController: PostTVCellDelegate {
 extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isSearching == true {
+            if searchedPosts.count == 0 {
+                noResultsView.alpha = 1
+            } else {
+                noResultsView.alpha = 0
+            }
             return searchedPosts.count
         } else {
+            noResultsView.alpha = 0
             return posts.count
         }
     }

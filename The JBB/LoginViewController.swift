@@ -54,11 +54,13 @@ class LoginViewController: UIViewController {
             }
         } onError: { errorMessage in
             ProgressHUD.showError()
-            print(errorMessage)
+            print(errorMessage!)
         }
     }
 
     @IBAction func signUpButtonTapped(_ sender: Any) {
+        let url = URL(string: "https://thejbb.net/membership-account/membership-levels/")!
+        UIApplication.shared.open(url)
     }
 }
 
