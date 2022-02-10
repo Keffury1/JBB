@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.previousNextDisplayMode = .alwaysShow
         IQKeyboardManager.shared.toolbarTintColor = UIColor(named: "Teel")!
     
-        GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544/3986624511")
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-9585815002804979/4639935668")
         
         ProgressHUD.animationType = .circleSpinFade
         ProgressHUD.colorBackground = .white
