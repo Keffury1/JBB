@@ -513,8 +513,15 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLL-IG-8TJ">
                                         <rect key="frame" x="0.0" y="58" width="328" height="50"/>
                                         <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="safari" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="clL-ce-ab2">
+                                                <rect key="frame" x="193.66666666666666" y="13.999999999999998" width="24" height="22.666666666666664"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" secondItem="clL-ce-ab2" secondAttribute="height" multiplier="1:1" id="tdo-OF-xoQ"/>
+                                                </constraints>
+                                            </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="12O-ew-KXr">
-                                                <rect key="frame" x="129.33333333333334" y="13" width="69.333333333333343" height="24"/>
+                                                <rect key="frame" x="119.33333333333334" y="13" width="69.333333333333343" height="24"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -533,11 +540,14 @@
                                         <color key="backgroundColor" name="Teel"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="XHe-fk-eZy" secondAttribute="trailing" id="53g-Pz-wg3"/>
+                                            <constraint firstItem="clL-ce-ab2" firstAttribute="bottom" secondItem="12O-ew-KXr" secondAttribute="bottom" id="Buy-u4-KH7"/>
                                             <constraint firstItem="XHe-fk-eZy" firstAttribute="leading" secondItem="dLL-IG-8TJ" secondAttribute="leading" id="IWS-iD-Co6"/>
-                                            <constraint firstItem="12O-ew-KXr" firstAttribute="centerX" secondItem="dLL-IG-8TJ" secondAttribute="centerX" id="Ihf-Od-4cc"/>
+                                            <constraint firstItem="12O-ew-KXr" firstAttribute="centerX" secondItem="dLL-IG-8TJ" secondAttribute="centerX" constant="-10" id="Ihf-Od-4cc"/>
                                             <constraint firstAttribute="bottom" secondItem="XHe-fk-eZy" secondAttribute="bottom" id="NGh-Vc-fbX"/>
                                             <constraint firstItem="12O-ew-KXr" firstAttribute="centerY" secondItem="dLL-IG-8TJ" secondAttribute="centerY" id="ThN-H3-Ba4"/>
+                                            <constraint firstItem="clL-ce-ab2" firstAttribute="top" secondItem="12O-ew-KXr" secondAttribute="top" id="Tsh-C8-ycz"/>
                                             <constraint firstItem="XHe-fk-eZy" firstAttribute="top" secondItem="dLL-IG-8TJ" secondAttribute="top" id="UUL-kV-pme"/>
+                                            <constraint firstItem="clL-ce-ab2" firstAttribute="leading" secondItem="12O-ew-KXr" secondAttribute="trailing" constant="5" id="auL-NO-omM"/>
                                             <constraint firstAttribute="height" constant="50" id="tda-qg-7ew"/>
                                         </constraints>
                                     </view>
@@ -571,7 +581,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ar8-ya-6Dn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-245" y="-1177"/>
+            <point key="canvasLocation" x="-245.32710280373831" y="-1177.3218142548596"/>
         </scene>
         <!--Post Detail View Controller-->
         <scene sceneID="kTu-wK-e08">
@@ -699,7 +709,7 @@
                                         </constraints>
                                         <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="+ Upgrade Membership">
+                                        <buttonConfiguration key="configuration" style="plain" image="safari" catalog="system" title=" Upgrade Membership">
                                             <fontDescription key="titleFontDescription" type="system" weight="medium" pointSize="25"/>
                                         </buttonConfiguration>
                                         <connections>
@@ -774,6 +784,7 @@
     <resources>
         <image name="NewLogo" width="1280" height="944"/>
         <image name="arrow.up.square.fill" catalog="system" width="128" height="114"/>
+        <image name="safari" catalog="system" width="128" height="121"/>
         <namedColor name="AccentColor">
             <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
