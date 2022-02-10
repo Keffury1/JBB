@@ -299,12 +299,14 @@ extension PostsViewController: UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearching = false
         tableView.reloadData()
+        reachedEndOfItems = false
     }
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text == "" {
             isSearching = false
             tableView.reloadData()
+            reachedEndOfItems = false
         } else {
             isSearching = true
             self.searchTerm = searchBar.text
