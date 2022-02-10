@@ -91,6 +91,7 @@ PODS:
   - GoogleUtilities/UserDefaults (7.7.0):
     - GoogleUtilities/Logger
   - IQKeyboardManagerSwift (6.5.9)
+  - KeychainSwift (20.0.0)
   - Kingfisher (7.1.2)
   - nanopb (2.30908.0):
     - nanopb/decode (= 2.30908.0)
@@ -105,6 +106,7 @@ DEPENDENCIES:
   - Firebase
   - Firebase/AdMob
   - IQKeyboardManagerSwift
+  - KeychainSwift
   - Kingfisher
   - ProgressHUD
   - UIImageColors
@@ -122,6 +124,7 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - IQKeyboardManagerSwift
+    - KeychainSwift
     - Kingfisher
     - nanopb
     - ProgressHUD
@@ -140,12 +143,13 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: e0913149f6b0625b553d70dae12b49fc62914fd1
   IQKeyboardManagerSwift: 6e839c575c4aa1078d58a596e41244e77abe918f
+  KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
   Kingfisher: 44ed6a8504763f27bab46163adfac83f5deb240c
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   ProgressHUD: 4bdaa0d2ddf676b23324b199f9facffb5c3a1620
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   UIImageColors: d2ef3b0877d203cbb06489eeb78ea8b7788caabe
 
-PODFILE CHECKSUM: 8da039976638a4d737ede544f67408c4ee9c98b1
+PODFILE CHECKSUM: 8e8a93906fc54e0828e410cbc024136bb9fefefb
 
 COCOAPODS: 1.11.2

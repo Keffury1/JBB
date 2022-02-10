@@ -7,11 +7,14 @@
 
 import UIKit
 import ProgressHUD
+import KeychainSwift
 
 class LoginViewController: UIViewController {
 
     // MARK: - Properties
-    
+
+    let keychain = KeychainSwift()
+
     // MARK: - Outlets
 
     @IBOutlet weak var logoImageView: UIImageView!
@@ -38,6 +41,8 @@ class LoginViewController: UIViewController {
         signUpButton.setTitle("", for: .normal)
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+        usernameTextField.text = keychain.get("Username")
+        passwordTextField.text = keychain.get("Password")
     }
     
     // MARK: - Actions
@@ -48,8 +53,11 @@ class LoginViewController: UIViewController {
         }
 
         ProgressHUD.show()
+
         Networking.shared.login(username: username, password: password) {
             DispatchQueue.main.async {
+                self.keychain.set(username, forKey: "Username")
+                self.keychain.set(password, forKey: "Password")
                 self.performSegue(withIdentifier: "loginSegue", sender: self)
             }
         } onError: { errorMessage in

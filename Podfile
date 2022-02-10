@@ -13,6 +13,7 @@ target 'The JBB' do
   pod 'Kingfisher'
   pod 'IQKeyboardManagerSwift'
   pod 'ProgressHUD'
+  pod 'KeychainSwift'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|
