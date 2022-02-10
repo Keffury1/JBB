@@ -104,6 +104,8 @@ class PostsViewController: UIViewController {
     
     private func loadMore() {
         guard !self.reachedEndOfItems else {
+            self.tableView.tableFooterView = nil
+            self.tableView.tableFooterView?.isHidden = true
             return
         }
 
@@ -128,6 +130,9 @@ class PostsViewController: UIViewController {
                         }
                     }
                 }) { errorMessage in
+                    self.tableView.tableFooterView = nil
+                    self.tableView.tableFooterView?.isHidden = true
+                    ProgressHUD.showError()
                     print("query failed")
                 }
             }
@@ -150,6 +155,9 @@ class PostsViewController: UIViewController {
                         }
                     }
                 }) { errorMessage in
+                    self.tableView.tableFooterView = nil
+                    self.tableView.tableFooterView?.isHidden = true
+                    ProgressHUD.showError()
                     print("query failed")
                 }
             }
@@ -228,40 +236,33 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "postCell", for: indexPath) as? PostTableViewCell else { return UITableViewCell() }
 
             var post: Post?
-            
+
             if isSearching == true {
                 post = searchedPosts[indexPath.row - (indexPath.row / 5)]
-                if indexPath.row == self.searchedPosts.count - 1 {
-                    self.loadMore()
-                }
             } else {
                 post = posts[indexPath.row - (indexPath.row / 5)]
-                if indexPath.row == self.posts.count - 1 {
-                    self.loadMore()
-                }
             }
 
-            if let post = post {
-                cell.postCategories = translateCategories(post.categories ?? [])
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
-                
-                if let someDateTime = dateFormatter.date(from: post.date) {
-                    let formatter = DateFormatter()
-                    formatter.dateFormat = "EEEE, MMM d, yyyy"
-                    let date = formatter.string(from: someDateTime)
-                    cell.dateLabel.text = date
-                } else {
-                    cell.dateLabel.text = ""
-                }
-                cell.titleLabel.text = post.title.rendered.html2String.capitalized
-                let url = URL(string: post.jetpack_featured_media_url ?? "")
-                cell.postImageView.kf.setImage(with: url)
-                cell.postTVCellDelegate = self
-                cell.indexPath = indexPath
+            guard let post = post else { return UITableViewCell() }
+
+            cell.postCategories = translateCategories(post.categories ?? [])
+            cell.categoriesCollectionView.reloadData()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            
+            if let someDateTime = dateFormatter.date(from: post.date) {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "EEEE, MMM d, yyyy"
+                let date = formatter.string(from: someDateTime)
+                cell.dateLabel.text = date
             } else {
-                
+                cell.dateLabel.text = ""
             }
+            cell.titleLabel.text = post.title.rendered.html2String.capitalized
+            let url = URL(string: post.jetpack_featured_media_url ?? "")
+            cell.postImageView.kf.setImage(with: url)
+            cell.postTVCellDelegate = self
+            cell.indexPath = indexPath
 
             return cell
         }
@@ -271,13 +272,24 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
         let lastSectionIndex = tableView.numberOfSections - 1
         let lastRowIndex = tableView.numberOfRows(inSection: lastSectionIndex) - 1
         if indexPath.section ==  lastSectionIndex && indexPath.row == lastRowIndex {
-            let spinner = UIActivityIndicatorView(style: .medium)
-            spinner.color = UIColor(named: "Teel")
-            spinner.startAnimating()
-            spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
+            if self.reachedEndOfItems == false {
+                let spinner = UIActivityIndicatorView(style: .medium)
+                spinner.color = UIColor(named: "Teel")
+                spinner.startAnimating()
+                spinner.frame = CGRect(x: CGFloat(0), y: CGFloat(0), width: tableView.bounds.width, height: CGFloat(44))
 
-            self.tableView.tableFooterView = spinner
-            self.tableView.tableFooterView?.isHidden = false
+                self.tableView.tableFooterView = spinner
+                self.tableView.tableFooterView?.isHidden = false
+                if isSearching == true {
+                    if indexPath.row == self.searchedPosts.count - 1 {
+                        self.loadMore()
+                    }
+                } else {
+                    if indexPath.row == self.posts.count - 1 {
+                        self.loadMore()
+                    }
+                }
+            }
         }
     }
 }
@@ -292,13 +304,30 @@ extension PostsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if searchBar.text == "" {
             isSearching = false
+            tableView.reloadData()
         } else {
             isSearching = true
             self.searchTerm = searchBar.text
-            searchedPosts = posts.filter( { $0.title.rendered.html2String.lowercased().contains(searchBar.text!.lowercased())} )
-            searchOffset = searchedPosts.count
+            DispatchQueue.global(qos: .background).async {
+                ProgressHUD.show()
+                Networking.shared.getAllPosts(offset: self.searchOffset, searchTerm: self.searchTerm, onSuccess: { posts in
+                    self.searchedPosts = []
+                    self.reachedEndOfItems = false
+                    DispatchQueue.main.async {
+                        self.searchedPosts.append(contentsOf: posts)
+                        self.tableView.reloadData()
+                        ProgressHUD.dismiss()
+                        if posts.count < 15 {
+                            self.reachedEndOfItems = true
+                        }
+                        self.searchOffset += 15
+                    }
+                }) { errorMessage in
+                    print("query failed")
+                    ProgressHUD.showError()
+                }
+            }
         }
-        tableView.reloadData()
         searchBar.resignFirstResponder()
     }
 }
