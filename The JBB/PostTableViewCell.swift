@@ -29,6 +29,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var imageViewContainer: UIView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
+    @IBOutlet weak var backupImageView: UIImageView!
     
     //MARK: - Methods
     

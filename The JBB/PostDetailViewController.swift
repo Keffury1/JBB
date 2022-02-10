@@ -27,6 +27,7 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var animatedLogoView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var backupImageView: UIImageView!
     
     // MARK: - Views
     
@@ -63,8 +64,15 @@ class PostDetailViewController: UIViewController {
                 """
         let HTMLString = HTMLImageCorrector(HTMLString: header + cleanedText)
         postWebView.loadHTMLString(HTMLString, baseURL: URL(string: "https://thejbb.net/"))
-        let url = URL(string: post.jetpack_featured_media_url ?? "")
-        postImageView.kf.setImage(with: url)
+        if let imageString = post.jetpack_featured_media_url, imageString != "" {
+            let url = URL(string: imageString)
+            postImageView.kf.setImage(with: url)
+            postImageView.alpha = 1
+            backupImageView.alpha = 0
+        } else {
+            postImageView.alpha = 0
+            backupImageView.alpha = 1
+        }
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
         

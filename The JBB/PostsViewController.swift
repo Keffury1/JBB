@@ -259,8 +259,15 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.dateLabel.text = ""
             }
             cell.titleLabel.text = post.title.rendered.html2String.capitalized
-            let url = URL(string: post.jetpack_featured_media_url ?? "")
-            cell.postImageView.kf.setImage(with: url)
+            if let imageString = post.jetpack_featured_media_url, imageString != "" {
+                let url = URL(string: imageString)
+                cell.postImageView.kf.setImage(with: url)
+                cell.postImageView.alpha = 1
+                cell.backupImageView.alpha = 0
+            } else {
+                cell.postImageView.alpha = 0
+                cell.backupImageView.alpha = 1
+            }
             cell.postTVCellDelegate = self
             cell.indexPath = indexPath
 
