@@ -122,7 +122,7 @@ class PostDetailViewController: UIViewController {
     // MARK: - Actions
 
     @IBAction func registerButtonTapped(_ sender: Any) {
-        let url = URL(string: "https://thejbb.net/login/")!
+        let url = URL(string: "https://thejbb.net/membership-account/membership-levels/")!
         let config = SFSafariViewController.Configuration()
         let vc = SFSafariViewController(url: url, configuration: config)
         present(vc, animated: true)
