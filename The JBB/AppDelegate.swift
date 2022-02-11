@@ -22,7 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.toolbarTintColor = UIColor(named: "Teel")!
     
         GADMobileAds.configure(withApplicationID: "ca-app-pub-9585815002804979/4639935668")
-        
         ProgressHUD.animationType = .circleSpinFade
         ProgressHUD.colorBackground = .white
         ProgressHUD.colorAnimation = UIColor(named: "Teel")!

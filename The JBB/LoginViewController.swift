@@ -8,6 +8,7 @@
 import UIKit
 import ProgressHUD
 import KeychainSwift
+import SafariServices
 
 class LoginViewController: UIViewController {
 
@@ -68,7 +69,9 @@ class LoginViewController: UIViewController {
 
     @IBAction func signUpButtonTapped(_ sender: Any) {
         let url = URL(string: "https://thejbb.net/membership-account/membership-levels/")!
-        UIApplication.shared.open(url)
+        let config = SFSafariViewController.Configuration()
+        let vc = SFSafariViewController(url: url, configuration: config)
+        present(vc, animated: true)
     }
 }
 

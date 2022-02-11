@@ -7,6 +7,7 @@
 
 import UIKit
 import WebKit
+import SafariServices
 
 class PostDetailViewController: UIViewController {
 
@@ -122,7 +123,9 @@ class PostDetailViewController: UIViewController {
 
     @IBAction func registerButtonTapped(_ sender: Any) {
         let url = URL(string: "https://thejbb.net/login/")!
-        UIApplication.shared.open(url)
+        let config = SFSafariViewController.Configuration()
+        let vc = SFSafariViewController(url: url, configuration: config)
+        present(vc, animated: true)
     }
 
     // MARK: - Navigation
@@ -156,7 +159,9 @@ extension PostDetailViewController: WKNavigationDelegate {
                     decisionHandler(.cancel)
                     return
                 } else {
-                    UIApplication.shared.open(url)
+                    let config = SFSafariViewController.Configuration()
+                    let vc = SFSafariViewController(url: url, configuration: config)
+                    present(vc, animated: true)
                     decisionHandler(.cancel)
                     return
                 }
