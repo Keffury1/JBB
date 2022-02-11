@@ -16,7 +16,7 @@ class AdTableViewCell: UITableViewCell {
     @IBOutlet weak var adTitleLabel: UILabel!
     @IBOutlet weak var adDetailLabel: UILabel!
     @IBOutlet weak var mediaView: GADMediaView!
-    @IBOutlet weak var callToActionButton: UIButton!
+    @IBOutlet weak var callToActionView: UIView!
     
     // MARK: - Methods
 
@@ -26,7 +26,7 @@ class AdTableViewCell: UITableViewCell {
     }
     
     private func setupSubviews() {
-        callToActionButton.layer.cornerRadius = 10
+        callToActionView.layer.cornerRadius = 10
         nativeAdView.layer.cornerRadius = 10
         mediaView.layer.cornerRadius = 10
     }
