@@ -60,10 +60,16 @@ class PostsViewController: UIViewController {
     private func setupSubviews() {
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.backgroundColor = .white
         searchBar.delegate = self
         searchBar.backgroundImage = UIImage()
         searchBar.layer.borderWidth = 1
         searchBar.layer.borderColor = UIColor.white.cgColor
+        searchBar.searchTextField.textColor = .black
+        let textField = searchBar.value(forKey: "searchField") as! UITextField
+        let glassIconView = textField.leftView as! UIImageView
+        glassIconView.image = glassIconView.image?.withRenderingMode(.alwaysTemplate)
+        glassIconView.tintColor = UIColor.init(named: "Teel")
         topButton.setTitle("", for: .normal)
     }
     
