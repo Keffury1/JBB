@@ -352,7 +352,7 @@
                                     <constraint firstItem="JBj-NO-T4r" firstAttribute="leading" secondItem="C4d-yc-taL" secondAttribute="leading" id="umO-Vc-e8h"/>
                                 </constraints>
                             </view>
-                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7w-Gf-sA8">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="i7w-Gf-sA8">
                                 <rect key="frame" x="0.0" y="0.0" width="428" height="926"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="NewLogo" translatesAutoresizingMaskIntoConstraints="NO" id="KXi-EH-r0P">
