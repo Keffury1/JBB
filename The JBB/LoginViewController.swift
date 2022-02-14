@@ -23,8 +23,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var loginView: UIView!
     @IBOutlet weak var loginButton: UIButton!
-    @IBOutlet weak var signUpView: UIView!
-    @IBOutlet weak var signUpButton: UIButton!
 
     // MARK: - Views
     
@@ -38,8 +36,6 @@ class LoginViewController: UIViewController {
     private func setupSubviews() {
         loginView.layer.cornerRadius = 10
         loginButton.setTitle("", for: .normal)
-        signUpView.layer.cornerRadius = 10
-        signUpButton.setTitle("", for: .normal)
         usernameTextField.delegate = self
         passwordTextField.delegate = self
         usernameTextField.text = keychain.get("Username")
@@ -65,13 +61,6 @@ class LoginViewController: UIViewController {
             ProgressHUD.showError()
             print(errorMessage!)
         }
-    }
-
-    @IBAction func signUpButtonTapped(_ sender: Any) {
-        let url = URL(string: "https://thejbb.net/membership-account/membership-levels/")!
-        let config = SFSafariViewController.Configuration()
-        let vc = SFSafariViewController(url: url, configuration: config)
-        present(vc, animated: true)
     }
 }
 

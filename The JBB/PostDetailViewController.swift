@@ -24,7 +24,6 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var authView: UIView!
-    @IBOutlet weak var registerButton: UIButton!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var animatedLogoView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
@@ -93,9 +92,6 @@ class PostDetailViewController: UIViewController {
     }
     
     private func setupSubviews() {
-        registerButton.layer.cornerRadius = 10
-        registerButton.addShadow()
-        
         categoriesCollectionView.dataSource = self
         
         postWebView.scrollView.delegate = self
@@ -117,15 +113,6 @@ class PostDetailViewController: UIViewController {
             }
         }
         return HTMLToBeReturned
-    }
-    
-    // MARK: - Actions
-
-    @IBAction func registerButtonTapped(_ sender: Any) {
-        let url = URL(string: "https://thejbb.net/membership-account/membership-levels/")!
-        let config = SFSafariViewController.Configuration()
-        let vc = SFSafariViewController(url: url, configuration: config)
-        present(vc, animated: true)
     }
 
     // MARK: - Navigation
