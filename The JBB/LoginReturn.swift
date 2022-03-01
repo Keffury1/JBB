@@ -8,5 +8,9 @@
 import Foundation
 
 struct LoginReturn: Codable {
-    let jwt_token: String
+    let data: JWT
+}
+
+struct JWT: Codable {
+    let jwt: String
 }

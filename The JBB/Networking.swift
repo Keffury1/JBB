@@ -13,18 +13,17 @@ class Networking {
     
     static let shared = Networking()
     let baseURL = "https://thejbb.net/wp-json/wp/v2"
-    let authURL = "https://thejbb.net/wp-json/api/v1/token"
+    let authURL = "https://thejbb.net/?rest_route=/simple-jwt-login/v1/auth"
     var bannerAd = "ca-app-pub-9585815002804979/7202756884"
     var testAd = "ca-app-pub-3940256099942544/6300978111"
     
     func login(username: String, password: String, onSuccess: @escaping() -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
 
-        let data = "username=\(username)&password=\(password)".data(using: .utf8)
-        let url = URL(string: authURL)!
+        let data = "&username=\(username)&password=\(password)"
+        let url = URL(string: authURL + data)!
 
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.httpBody = data
         
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -42,7 +41,7 @@ class Networking {
             
             do {
                 let token = try decoder.decode(LoginReturn.self, from: data)
-                globalToken = token.jwt_token
+                globalToken = token.data.jwt
                 onSuccess()
             } catch {
                 onError("Error Logging In User: \(error)")
@@ -55,7 +54,12 @@ class Networking {
         let queryItems = [URLQueryItem(name: "per_page", value: "15"), URLQueryItem(name: "offset", value: "\(offset ?? 0)"), URLQueryItem(name: "search", value: "\(searchTerm ?? "")")]
         var urlComps = URLComponents(string: baseURL + "/posts")!
         urlComps.queryItems = queryItems
-        return urlComps.url
+        var url: URL?
+        if let string = urlComps.string {
+            guard let token = globalToken else { return nil }
+            url = URL(string: string + "&JWT=\(token)")
+        }
+        return url
     }
     
     func getAllPosts(offset: Int?, searchTerm: String?, onSuccess: @escaping(_ posts: [Post]) -> Void, onError: @escaping(_ errorMessage: String?) -> Void) {
@@ -65,9 +69,6 @@ class Networking {
         }
         
         var request = URLRequest(url: url)
-        if let token = globalToken {
-            request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
-        }
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
@@ -107,9 +108,6 @@ class Networking {
         }
         
         var request = URLRequest(url: url)
-        if let token = globalToken {
-            request.addValue("Bearer " + token, forHTTPHeaderField: "Authorization")
-        }
         request.httpMethod = "GET"
         
         URLSession.shared.dataTask(with: request) { (data, _, error) in
