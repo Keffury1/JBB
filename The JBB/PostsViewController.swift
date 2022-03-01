@@ -78,7 +78,7 @@ class PostsViewController: UIViewController {
         let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
         multipleAdsOptions.numberOfAds = numAdsToLoad
         
-        adLoader = GADAdLoader(adUnitID: adUnitID, rootViewController: self,
+        adLoader = GADAdLoader(adUnitID: testAdUnitID, rootViewController: self,
                                adTypes: [.unifiedNative],
                                options: [multipleAdsOptions])
         adLoader.delegate = self
