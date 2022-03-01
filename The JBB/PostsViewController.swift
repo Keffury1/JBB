@@ -25,6 +25,7 @@ class PostsViewController: UIViewController {
     var isSearching = false
     var searchTerm: String?
     let adUnitID = "ca-app-pub-9585815002804979/4639935668"
+    let testAdUnitID = "ca-app-pub-3940256099942544/3986624511"
     let numAdsToLoad = 5
     var nativeAds = [GADUnifiedNativeAd]()
     var adLoader: GADAdLoader!
@@ -77,7 +78,7 @@ class PostsViewController: UIViewController {
         let multipleAdsOptions = GADMultipleAdsAdLoaderOptions()
         multipleAdsOptions.numberOfAds = numAdsToLoad
         
-        adLoader = GADAdLoader(adUnitID: adUnitID, rootViewController: self,
+        adLoader = GADAdLoader(adUnitID: testAdUnitID, rootViewController: self,
                                adTypes: [.unifiedNative],
                                options: [multipleAdsOptions])
         adLoader.delegate = self
