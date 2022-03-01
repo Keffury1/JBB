@@ -24,7 +24,7 @@ class PostsViewController: UIViewController {
     var reachedEndOfItems = false
     var isSearching = false
     var searchTerm: String?
-    let adUnitID = "ca-app-pub-3940256099942544/3986624511"
+    let adUnitID = "ca-app-pub-9585815002804979/4639935668"
     let numAdsToLoad = 5
     var nativeAds = [GADUnifiedNativeAd]()
     var adLoader: GADAdLoader!
@@ -39,7 +39,7 @@ class PostsViewController: UIViewController {
     @IBOutlet weak var topButton: UIButton!
     
     // MARK: - Views
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ProgressHUD.dismiss()
@@ -226,9 +226,9 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if (indexPath.row % 5 == 0) && indexPath.row != 0 {
+        if (indexPath.row % 5 == 0) && indexPath.row != 0 && nativeAds.isEmpty == false {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "adCell", for: indexPath) as? AdTableViewCell else { return UITableViewCell() }
-            
+
             let ad = nativeAds[indexPath.row / 5]
 
             cell.adTitleLabel.text = ad.headline?.capitalized
