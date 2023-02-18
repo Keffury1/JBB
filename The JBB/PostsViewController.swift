@@ -235,8 +235,8 @@ extension PostsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.adTitleLabel.text = ad.headline?.capitalized
             cell.adDetailLabel.text = ad.body
             cell.mediaView.mediaContent = ad.mediaContent
-            cell.callToActionButton.isUserInteractionEnabled = false
-            cell.callToActionButton.setTitle(ad.callToAction, for: .normal)
+            cell.callToActionView.isUserInteractionEnabled = false
+            cell.callToActionLabel.text = ad.callToAction
             cell.nativeAdView.nativeAd = ad
             
             return cell

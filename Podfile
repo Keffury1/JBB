@@ -14,6 +14,7 @@ target 'The JBB' do
   pod 'IQKeyboardManagerSwift'
   pod 'ProgressHUD'
   pod 'KeychainSwift'
+  pod 'Google-Mobile-Ads-SDK'
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

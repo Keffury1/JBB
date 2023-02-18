@@ -28,7 +28,9 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var animatedLogoView: UIView!
     @IBOutlet weak var logoImageView: UIImageView!
     @IBOutlet weak var backupImageView: UIImageView!
-    
+    @IBOutlet weak var imageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var categoriesHeightConstraint: NSLayoutConstraint!
+
     // MARK: - Views
     
     override func viewDidLoad() {
@@ -123,6 +125,11 @@ class PostDetailViewController: UIViewController {
 
 extension PostDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if categories?.count == 1 {
+            categoriesHeightConstraint.constant = 0
+        } else {
+            categoriesHeightConstraint.constant = 35
+        }
         return categories?.count ?? 0
     }
     
@@ -161,8 +168,31 @@ extension PostDetailViewController: WKNavigationDelegate {
 
 extension PostDetailViewController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.isAtTop {
+            UIView.animate(withDuration: 0.5) {
+                self.imageViewHeightConstraint.constant = 220.0
+                self.view.layoutIfNeeded()
+            }
+        } else {
+            UIView.animate(withDuration: 0.5) {
+                self.imageViewHeightConstraint.constant = 0.0
+                self.view.layoutIfNeeded()
+            }
+        }
+
         if scrollView.contentOffset.x > 0 {
             scrollView.contentOffset.x = 0
         }
+    }
+}
+
+extension UIScrollView {
+    var isAtTop: Bool {
+        return contentOffset.y <= verticalOffsetForTop
+    }
+
+    var verticalOffsetForTop: CGFloat {
+        let topInset = contentInset.top
+        return -topInset
     }
 }

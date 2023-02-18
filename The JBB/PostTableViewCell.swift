@@ -30,6 +30,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var imageViewContainer: UIView!
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
     @IBOutlet weak var backupImageView: UIImageView!
+    @IBOutlet weak var categoriesHeightConstraint: NSLayoutConstraint!
     
     //MARK: - Methods
     
@@ -56,6 +57,11 @@ class PostTableViewCell: UITableViewCell {
 
 extension PostTableViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if postCategories?.count == 1 {
+            categoriesHeightConstraint.constant = 0
+        } else {
+            categoriesHeightConstraint.constant = 35
+        }
         return postCategories?.count ?? 0
     }
     
